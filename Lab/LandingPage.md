@@ -1,6 +1,6 @@
 ## Your first agent!
 
-[a relative link](SkillTutorial.md)
+[a link](SkillTutorial.md)
 
 ### Getting Started
 
