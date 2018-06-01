@@ -1,17 +1,3 @@
-### Getting Started
-
-#### Setting up your environment (prerequisites)
-
-Please refer to the README.md file in the root of this project.
-
-#### Obtaining and building source code
-
-The repository we use is located at https://github.ibm.com/wce-incubator/eba-core.  Please refer to the README.md file in the root of this project for building the agent in your local environment.
-
-#### Running
-
-Please refer to the README.md file in the root of this project for running the agent in your local environment.
-
 ### The Basics
 
 In this section we describe the integration points required to get your first agent up and running.  It is important to understand what each component does and how they operate with one another.
