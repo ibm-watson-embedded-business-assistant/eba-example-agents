@@ -1,4 +1,4 @@
-_Note: The documentation below explains creation of native EBA agents. The foundational principles are the same for hosted agents created and Lab hovewer some details are different. This documentation is work in progress now_
+_Note: The documentation below explains development of native EBA agents. The foundational principles are the same for hosted agents created in Lab hovewer some details are different. This documentation is work in progress now._
 
 ### The Basics
 
