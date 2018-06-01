@@ -1,0 +1,338 @@
+description: |-
+  Sales orders
+
+  - show me all sales orders
+  - show me top 5 scheduled sales orders
+  - show me sales orders with status “Scheduled”
+  - show me top 3 sales orders estimated to arrive in Aug 2017
+  - show me top 3 sales orders with requested ship date in Aug 2017
+  - show me top 3 sales orders for July 2017
+  - show me top 5 sales orders sorted by value
+  - what is average quantity
+
+  Sales order
+
+  - what is the quantity of sales order #100044322?
+  - tell me about sales order #100044322
+
+  Supply orders
+
+  - show me all supply orders
+settings:
+  - name: ClientId
+    value: put your key here
+  - name: UserSecret
+    value: put your key here
+  - name: ClientSecret
+    value: put your key here
+concepts:
+  - name: ':Number'
+  - name: ''
+  - name: 'sc:Quantity'
+    spelling: quantity
+    ontology:
+      subClassOf:
+        - ':NumAttribute'
+        - ':Attribute'
+  - name: ':NumAttribute'
+  - name: 'sc:RequestedShipDate'
+    spelling: requested ship date
+    ontology:
+      subClassOf:
+        - ':Attribute'
+        - ':DateAttribute'
+  - name: ':Showable'
+  - name: 'action:Filter'
+  - name: ':All'
+  - name: ':Filter'
+  - name: 'sc:Status'
+    spelling: status
+    ontology:
+      subClassOf:
+        - ':Attribute'
+        - ':StrAttribute'
+  - name: ':DateAttribute'
+  - name: 'sc:Value'
+    spelling: value
+    ontology:
+      subClassOf:
+        - ':NumAttribute'
+        - ':Attribute'
+  - name: ':WithId'
+  - name: 'sc:SalesOrders'
+    spelling: sales orders
+    ontology:
+      isListOf: 'sc:SalesOrder'
+      subClassOf: ':Showable'
+  - name: ':Relation'
+  - name: 'sc:SupplyOrder'
+    spelling: supply order
+    ontology:
+      subClassOf: ':Showable'
+  - name: 'sc:SalesOrder'
+    spelling: sales order
+    ontology:
+      subClassOf: ':Showable'
+    attributes:
+      orderValue: 'sc:Value'
+      recordCreated: 'sc:DateCreated'
+      quantity: 'sc:Quantity'
+      requestedShipDate: 'sc:RequestedShipDate'
+      orderStatus: 'sc:Status'
+      estimatedDeliveryDate: 'sc:EstimatedDeliveryDate'
+      plannedShipDate: 'sc:PlannedShipDate'
+  - name: 'sci:FilterScheduledOrders'
+    ontology:
+      subClassOf: 'action:Filter'
+  - name: ':StrAttribute'
+  - name: ':Scheduled'
+  - name: 'sc:PlannedShipDate'
+    spelling: planned ship date
+    ontology:
+      subClassOf:
+        - ':DateAttribute'
+        - ':Attribute'
+  - name: ':Timeframe'
+  - name: ':Attribute'
+  - name: 'sc:DateCreated'
+    spelling: date created
+    ontology:
+      subClassOf:
+        - ':Attribute'
+        - ':DateAttribute'
+  - name: 'sc:SupplyOrders'
+    spelling: supply orders
+    ontology:
+      subClassOf: ':Showable'
+      isListOf: 'sc:SupplyOrder'
+  - name: 'sc:EstimatedDeliveryDate'
+    spelling: estimated delivery date
+    ontology:
+      subClassOf:
+        - ':Attribute'
+        - ':DateAttribute'
+patterns:
+  - 'show me {supply orders|sc:SupplyOrders}'
+  - 'show me {scheduled|:Scheduled} sales orders'
+  - >-
+    show me sales orders with {requested ship date|sc:RequestedShipDate} in
+    January
+  - 'what sales orders {estimated to arrive|sc:EstimatedDeliveryDate} in January'
+  - 'show me {sales orders|sc:SalesOrders}'
+  - 'show me {status|sc:Status} of this order'
+  - 'what sales orders {planned to be shipped|sc:PlannedShipDate} in January'
+  - 'show me sales orders sorted by {quantity|sc:Quantity}'
+  - 'what sales orders were {created|sc:DateCreated} in January'
+  - 'show me sales orders sorted by {value|sc:Value}'
+actions:
+  - name: 'sci:GetSalesOrdersByDates'
+    signature: >-
+      a subClassOf :Timeframe, b subClassOf :DateAttribute, b attributeOf
+      sc:SalesOrders => sc:SalesOrders (optional :Relation (data a), optional
+      :Filter (optional data b)) -> data sc:SalesOrders
+    kind: 'nodejs:8'
+    code: |-
+      const eba = require("eba")
+
+      function main(params) {
+        let p = new eba.Params(params)
+        let timeframe = p.get("a")
+        let attrParam = p.get("b")
+        let attrName = attrParam ? attrParam.name : "datePlaced"
+        let orders = p.makeLazyData({ method: "getSalesOrders", attribute: attrName, timeframe: timeframe })
+
+        return new eba.Result().setData("sc:SalesOrders", orders)
+      }
+
+      module.exports = {main}
+  - name: 'sci:GetAllSalesOrders'
+    signature: 'sc:SalesOrders (optional :All) -> data sc:SalesOrders'
+    kind: 'nodejs:8'
+    code: |-
+      const eba = require("eba")
+
+      function main(params) {
+          let p = new eba.Params(params)
+          let orders = p.makeLazyData({ method: "getSalesOrders" })
+          return new eba.Result().setData("sc:SalesOrders", orders)
+      }
+
+      module.exports = {main}
+  - name: 'sci:FilterScheduledOrders'
+    signature: ':Scheduled (data sc:SalesOrders) -> data sc:SalesOrders'
+    kind: 'nodejs:8'
+    code: |-
+      const eba = require("eba")
+
+      function main(params) {
+          let p = new eba.Params(params)
+          let orders = p.getLazy("sc:SalesOrders")
+          return new eba.Result().setData("sc:SalesOrders", orders.lazyFilter("orderStatus", "=", "Scheduled"))
+      }
+
+      module.exports = {main}
+  - name: 'sci:GetSalesOrderById'
+    signature: 'sc:SalesOrder (optional :WithId (data :Number)) -> data sc:SalesOrder'
+    kind: 'nodejs:8'
+    code: |-
+      const eba = require("eba")
+      const util = require("./util.js")
+
+      function main({settings, input}) {
+        let id = input[":Number"].data
+        return util.api(settings, `salesorders/${id}`)
+          .then(salesOrder => new eba.Result().setData("sc:SalesOrder", salesOrder))
+      }
+
+      module.exports = {main}
+  - name: 'sci:GetAllSupplyOrders'
+    signature: 'sc:SupplyOrders (optional :All) -> data sc:SupplyOrders'
+    kind: 'nodejs:8'
+    code: |-
+      const eba = require("eba")
+
+      function main(params) {
+        let p = eba.Params(params)
+        let orders = p.makeLazyData({ method: "getSupplyOrders" })
+        return new eba.Result().setData("sc:SupplyOrders", orders)
+      }
+
+      module.exports = {main}
+endpoints:
+  - name: '@force'
+    kind: 'nodejs:8'
+    code: |-
+      const util = require("./util.js")
+      const eba = require("eba")
+      const _ = require("lodash")
+
+      class Executor extends eba.GenericLazyExecutor {
+        constructor(settings) {
+          super()
+          this.settings = settings
+        }
+        
+        load(params) {
+          console.log("forceData", params)
+
+          if (params.method == "getSupplyOrders") {
+            return util.api(this.settings, "supplyorders").then(response => response.results)
+          }
+        
+          if (params.method == "getSalesOrders") {
+            return util.api(this.settings, "salesorders").then(response => {
+              let items = response.results
+        
+              if (params.timeframe && params.attribute) {
+                let attrName = params.attribute
+                let start = new Date(params.timeframe.start)
+                let end = new Date(params.timeframe.end)
+                return _.filter(items, order => {
+                  let value = order[attrName]
+                  if (!value) return false
+                  let date = new Date(value)
+                  return date >= start && date <= end
+                })
+              } else {
+                return items
+              }
+            })
+          }
+          
+          console.log("forceData: unknown method", params)
+          return null
+        }
+      }
+
+      function main({settings, input}) {
+        return new Executor(settings)
+          .force(input)
+          .then(data => new eba.Result(data))
+      }
+
+      module.exports = {main}
+    notes: ''
+statics:
+  - name: common.css
+    mime: text/css
+    text: |-
+      .sc-order td:first-child {
+        width: 100px;
+      }
+      .sc-order {
+        margin-bottom: 10px;
+      }
+      .sc-order:last-child {
+        margin-bottom: 0;
+      }
+    frontend: true
+  - name: common.jsx
+    mime: text/jsx
+    text: |-
+      sc_SalesOrderData = ({data}) => {
+        const order = data
+        return (
+          <table className="sc-order sc-salesorder" key={order._id}>
+            <thead>
+              <tr><th colSpan="2">{"#" + order._salesOrderNumber}</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Customer</td><td>{order.customer}</td></tr>
+              <tr><td>Product</td><td>{order.product}</td></tr>
+              <tr><td>Order value</td><td>{order.orderValue}</td></tr>
+              <tr><td>Order status</td><td>{order.orderStatus}</td></tr>
+              <tr><td>Quantity</td><td>{order.quantity}</td></tr>
+              <tr><td>Date placed</td><td>{new Date(order.datePlaced).toLocaleString()}</td></tr>
+              <tr><td>Requested ship date</td><td>{new Date(order.requestedShipDate).toLocaleString()}</td></tr>
+              <tr><td>Requested delivery date</td><td>{new Date(order.requestedDeliveryDate).toLocaleString()}</td></tr>
+              <tr><td>Estimated delivery date</td><td>{order.estimatedDeliveryDate ? new Date(order.estimatedDeliveryDate).toLocaleString() : ""}</td></tr>
+            </tbody>
+          </table>
+        )
+      }
+
+      sc_SalesOrdersData = ({data}) => {
+        return <div>{data.map((order) => React.createElement(sc_SalesOrderData, {data: order}))}</div>
+      }
+
+      sc_SupplyOrderData = ({data}) => {
+        const order = data
+        return (
+          <table className="sc-order sc-supplyorder" key={order._id}>
+            <thead>
+              <tr><th colSpan="2">{"#" + order._salesOrderNumber}</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Supplier</td><td>{order.supplier}</td></tr>
+              <tr><td>Order value</td><td>{order.orderValue}</td></tr>
+              <tr><td>Order status</td><td>{order.orderStatus}</td></tr>
+              <tr><td>Quantity</td><td>{order.quantity}</td></tr>
+              <tr><td>Date placed</td><td>{new Date(order.datePlaced).toLocaleString()}</td></tr>
+            </tbody>
+          </table>
+        )
+      }
+
+      sc_SupplyOrdersData = ({data}) => {
+        return <div>{data.map((order) => React.createElement(sc_SupplyOrderData, {data: order}))}</div>
+      }
+    frontend: true
+  - name: util.js
+    mime: text/javascript
+    text: |-
+      const request = require("request-promise-native")
+
+      module.exports.api = function(settings, path) {
+        return request.get({
+          uri: `https://api.ibm.com/scinsights/run/api/${path}`,
+          headers: {
+            "Accept":              "application/json",
+            "Content-Type":        "application/json",
+            "X-IBM-Client-Id":     settings["ClientId"],
+            "X-IBM-Client-Secret": settings["ClientSecret"],
+            "X-IBM-User-Secret":   settings["UserSecret"]
+          },
+          json: true
+        })
+      }
+    backend: true
