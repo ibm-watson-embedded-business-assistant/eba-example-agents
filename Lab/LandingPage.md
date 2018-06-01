@@ -1,7 +1,3 @@
-## Your first agent!
-
-[a link](SkillTutorial.md)
-
 ### Getting Started
 
 #### Setting up your environment (prerequisites)
