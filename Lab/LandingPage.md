@@ -245,4 +245,5 @@ It's required to _hardlink_ your UI code to `online.html` now which will trigger
 
 Polymorfic definitions can be used for both input and output parameters of Semantic Action, instead of concept names. This allows a Semantic Action to be triggered based on a family of concepts. Each polymorfic definition can be additionally controlled by adding constraints as the first argument of `semanticAction` function.
 
-
+## Try it yourself
+[Skills Tutorial](SkillTutorial.md)
