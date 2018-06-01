@@ -8,6 +8,8 @@ The best way to think about integration is that you are building a skill in such
 
 Let's take a look at the integration points. 
 
+[SCI example](../samples/supplychain.yaml)
+
 #### /core/ontology
 
 The ontology is used to link semantic functions to end user concepts.  See the [Ontology](#Ontology) section below for details.
