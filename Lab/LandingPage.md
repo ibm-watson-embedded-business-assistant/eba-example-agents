@@ -1,3 +1,5 @@
+_Note: The documentation below explains creation of native EBA agents. The foundational principles are the same for hosted agents created and Lab hovewer some details are different. This documentation is work in progress now_
+
 ### The Basics
 
 In this section we describe the integration points required to get your first agent up and running.  It is important to understand what each component does and how they operate with one another.
