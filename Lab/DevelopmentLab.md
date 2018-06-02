@@ -48,12 +48,14 @@ This tab is responsible for managing your skill's concepts. A concept will requi
 
 The most common ontology predicates have been factored out into their own tabs within the concepts table. It is important to understand each. Spelling is useful for natural language generation (NLG). Watson Assistant does not produce hardcoded, canned responses to user questions. It relies on NLG to reply intelligently to users. Providing a spelling of your concept enables the system to reply to you in an intellegent and expected manner. SubClasses are used to model a hierarchial relationship between concepts. For instance, anything which is a subclass of :Showable concept is able to be shown to the user. isListOf is a predicate used to distinguish collections from the singular counterparts.
 
+[Learn more about ontology](Components.md#ontology)
+
 #### Attributes
 
 In order to attach an attribute to a concept, click on the attributes tab link, which will open a new table popup. An attribute must designate both the name of the attribute concept as well as the property field name that the assistant will search for when performing an data operations involving this attribute. For example, a :SalesOrder concept may contain an :CustomerID attribute, which we expect as the following key in a json payload: "customer_id".
 
 
-
+[Learn more about attributes](Components.md#attributes)
 
 
 
