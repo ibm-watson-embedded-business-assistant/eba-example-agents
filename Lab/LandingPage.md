@@ -1,5 +1,7 @@
 > _Note: This documentation is work in progress now._
 
+> _Hint: You can keep this window open while you are working. Stick it to conversation area to free some space._
+
 ## Programming Watson Assistant
 
 Watson Assistant consists of a reasoning engine and a set of domain agents. Agents can be programmed and directly executed using this lab. 
