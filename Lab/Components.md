@@ -53,3 +53,11 @@ Actions are the means by which the assistant can provide real data to correspond
 Note that this action does not have any constraints--constraints are optional. This action effectively states that if the assistant recognizes a :Product concept as well as a :Trending concept, then the system can produce real data for the :Products concepts. The data will be produced by the body of this action, which can query a database, call an api, etc.
 
 ### Rules
+
+Rewriting rules are a way to transform one single concept into a cluster of concepts assuming the context. Often times natural language can be very short and allow for the omission of certain words or concepts. Rewriting rules enable the assistant to handle such cases effectively. While our concepts are well formed, we anticipate that users will use imprecise langauge to ask about them. For example, we might expect a user to ask for "the best mailing" or "trending products". We can implement rewriting rules to reduce higher level notions such as "best" and "trending". For example consider the rewriting rule below.
+
+```
+:TheBest(:Mailing) -> :HighValue(:ClickToOpenRate, :Mailings)
+```
+
+Here we have defined the best mailing to be reproduced into lower level concepts. :HighValue is a concept used by the system to return highest quartile data points and :ClickToOpenRate is an attribute of :Mailing. We are effectively programming our system to recognize "the best mailings" as being equivalent to "mailings with clickToOpenRate attribute in the highest quartile".
