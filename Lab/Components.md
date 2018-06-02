@@ -60,4 +60,4 @@ Rewriting rules are a way to transform one single concept into a cluster of conc
 :TheBest(:Mailing) -> :HighValue(:ClickToOpenRate, :Mailings)
 ```
 
-Here we have defined the best mailing to be reproduced into lower level concepts. :HighValue is a concept used by the system to return highest quartile data points and :ClickToOpenRate is an attribute of :Mailing. We are effectively programming our system to recognize "the best mailings" as being equivalent to "mailings with clickToOpenRate attribute in the highest quartile".
+Here we have defined the best mailing to be reproduced into lower level concepts. :HighValue is a concept used by the system to return highest quartile data points and :ClickToOpenRate is an attribute of :Mailing. We are effectively programming our assistant to recognize "the best mailings" as being equivalent to "mailings with clickToOpenRate attribute in the highest quartile".
