@@ -1,1 +1,1 @@
-= [Programming Watson Assistant](Lab/LandingPage.md)
+[Programming Watson Assistant](Lab/LandingPage.md)
