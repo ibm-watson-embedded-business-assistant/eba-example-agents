@@ -61,3 +61,5 @@ The following packages are pre-installed in the Node.js version 8.11.1 environme
 * [xml2js v0.4.19](https://www.npmjs.com/package/xml2js) – Simple XML to JavaScript object converter. It supports bi-directional conversion.
 * [xmlhttprequest v1.8.0](https://www.npmjs.com/package/xmlhttprequest) – node-XMLHttpRequest is a wrapper for the built-in http client to emulate the browser XMLHttpRequest object.
 * [yauzl v2.9.1](https://www.npmjs.com/package/yauzl) – yet another unzip library for node. For zipping.
+
+See [Node.js version 8 environment with IBM SDKs](https://console.bluemix.net/docs/openwhisk/openwhisk_reference.html#openwhisk_ref_javascript_environments_8) for additional details.
