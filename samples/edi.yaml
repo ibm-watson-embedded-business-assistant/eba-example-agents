@@ -1,0 +1,582 @@
+version: 2
+description: >
+  Adapted EDI example from provided Email2Edi.yaml. This agent effectively
+  allows inspection operations on purchase orders and provides a series of
+  actions to model a process for submiting an invoice.
+
+
+  We support the following purchase order queries, viz. getting all orders,
+  getting an order by id, inspecting attributes of an order or across all
+  orders.
+
+
+  Purchase Order Questions:
+    - Show me all purchase orders
+    - Show me purchase order 4110003726
+    - Show me attribute for this order.
+
+  Note that the following attributes are supported, viz. general information,
+  document Information, purchase order date and number, recpient name and
+  number, supplier name and number, document type, invoice status, line item
+  details, trailer details. The concepts and patterns tab will contain details
+  on the use of each attribute. 
+
+
+  Invoice Questions:
+    - Create an invoice for order 4110003726
+    - set extra-field to value
+    - cancel this invoice
+    - submit this invoice
+    - get all invoices
+
+  Note that the following extra-fields are required for an invoice to be
+  submitted, viz. means of transporation, currency, and package id. Actions
+  contain some small business logic for processing the invoice accordingly. The
+  invoice template is currently hard-coded. EBA provides a persistency storage
+  via the Params api in "eba" package. Logic for initially populating this
+  storage can be viewed in the @start endpoint.
+concepts:
+  - name: 'reference:Direct'
+  - name: 'edi:Invoices'
+    spelling: invoices
+    ontology:
+      isListOf: 'edi:Invoice'
+      subClassOf: ':Showable'
+  - name: 'edi:Sample'
+    spelling: sample
+    ontology:
+      subClassOf: ':Showable'
+  - name: 'edi:To'
+  - name: 'edi:LineItem'
+    spelling: line item
+    ontology:
+      subClassOf:
+        - ':Attribute'
+        - ':Showable'
+  - name: 'edi:DocumentInfo'
+    spelling: document information
+    ontology:
+      subClassOf:
+        - ':Attribute'
+        - ':Showable'
+  - name: 'edi:PackageId'
+    ontology:
+      subClassOf: 'edi:ExtraField'
+  - name: 'edi:RecipientInfo'
+    spelling: recipient information
+    ontology:
+      subClassOf:
+        - ':Showable'
+        - ':Attribute'
+  - name: ':ActionShow'
+  - name: 'edi:TrailerDetails'
+    spelling: trailer details
+    ontology:
+      subClassOf: ':Attribute'
+  - name: 'edi:SupplierInfo'
+    spelling: supplier information
+    ontology:
+      subClassOf:
+        - ':Showable'
+        - ':Attribute'
+  - name: 'edi:Currency'
+    ontology:
+      subClassOf: 'edi:ExtraField'
+  - name: 'edi:OrderNumber'
+    spelling: order number
+    ontology:
+      subClassOf:
+        - ':Attribute'
+        - ':Showable'
+        - ':StrAttribute'
+  - name: 'edi:Modify'
+    ontology:
+      subClassOf: ':Message'
+  - name: 'edi:RecipientNumber'
+    spelling: recipient number
+    ontology:
+      subClassOf:
+        - ':StrAttribute'
+        - ':Attribute'
+        - ':Showable'
+  - name: 'edi:AddKey'
+    ontology:
+      subClassOf: ':Showable'
+  - name: ':Showable'
+  - name: ':Message'
+  - name: ':Attribute'
+  - name: 'edi:GeneralInfo'
+    spelling: general information
+    ontology:
+      subClassOf:
+        - ':Showable'
+        - ':Attribute'
+  - name: 'edi:TransporationMode'
+  - name: 'edi:RecipientName'
+    spelling: recipient name
+    ontology:
+      subClassOf:
+        - ':Showable'
+        - ':StrAttribute'
+        - ':Attribute'
+  - name: 'edi:PurchaseOrders'
+    spelling: purchase orders
+    ontology:
+      subClassOf: ':Showable'
+      isListOf: 'edi:PurchaseOrder'
+  - name: 'edi:SupplierNumber'
+    spelling: supplier number
+    ontology:
+      subClassOf:
+        - ':Showable'
+        - ':StrAttribute'
+        - ':Attribute'
+  - name: ':WithId'
+  - name: 'edi:PurchaseOrder'
+    spelling: purchase order
+    ontology:
+      subClassOf: ':Showable'
+    attributes:
+      'edi:SupplierName': General Information.Supplier Information.SUPPLIER NAME
+      'edi:SupplierInfo': General Information.Supplier Information
+      'edi:TrailerDetails': LINE ITEM DETAILS.TRAILER DETAILS
+      'edi:RecipientInfo': General Information.Shipto Information
+      'edi:InvoiceStatus': invoice
+      'edi:SupplierNumber': General Information.Supplier Information.SUPPLIER NUMBER
+      'edi:LineItem': LINE ITEM DETAILS
+      'edi:OrderNumber': General Information.Document Information.PURCHASE ORDER NUMBER
+      'edi:DocumentType': AutoDX Business Document
+      'edi:RecipientNumber': General Information.Shipto Information.SHIPTO NUMBER
+      'edi:TrailerAmount': TRAILER DETAILS.TOTAL AMOUNT
+      'edi:OrderDate': General Information.Document Information.PURCHASE ORDER DATE
+      'edi:RecipientName': General Information.Shipto Information.SHIPTO NAME
+      'edi:GeneralInfo': General Information
+      'edi:TrailerCount': TRAILER DETAILS.TOTAL NUMBER OF LINE ITEMS
+      'edi:DocumentInfo': General Information.Document Information
+  - name: 'edi:Invoice'
+    spelling: invoice
+    ontology:
+      subClassOf: ':Showable'
+  - name: 'edi:DocumentSpec'
+  - name: ':All'
+  - name: 'edi:Cancel'
+    ontology:
+      subClassOf: ':Message'
+  - name: 'edi:InvoiceStatus'
+    spelling: invoice status
+    ontology:
+      subClassOf:
+        - ':Showable'
+        - ':StrAttribute'
+        - ':Attribute'
+  - name: 'edi:SupplierName'
+    spelling: supplier name
+    ontology:
+      subClassOf:
+        - ':Attribute'
+        - ':StrAttribute'
+        - ':Showable'
+  - name: 'edi:TrailerAmount'
+    ontology:
+      subClassOf:
+        - ':Attribute'
+        - ':StrAttribute'
+  - name: 'edi:Submit'
+    ontology:
+      subClassOf: ':Message'
+  - name: 'edi:ExtraField'
+  - name: 'edi:DocumentType'
+    spelling: document type
+    ontology:
+      subClassOf:
+        - ':Attribute'
+        - ':StrAttribute'
+  - name: 'edi:TransportationMode'
+    ontology:
+      subClassOf: 'edi:ExtraField'
+  - name: 'edi:OrderDate'
+    spelling: order date
+    ontology:
+      subClassOf:
+        - ':Attribute'
+        - ':Showable'
+  - name: ':Number'
+  - name: 'edi:LineItems'
+    spelling: line items
+    ontology:
+      subClassOf: ':Showable'
+      isListOf: 'edi:LineItem'
+  - name: 'edi:TrailerCount'
+    spelling: trailer count
+    ontology:
+      subClassOf:
+        - ':Attribute'
+        - ':StrAttribute'
+        - ':Showable'
+  - name: ':StrAttribute'
+  - name: ':UserString'
+patterns:
+  - '{submit|edi:Submit} {the|reference:Direct} {invoice|edi:Invoice}'
+  - 'get all {invoices|edi:Invoices}'
+  - '{create|:ActionShow} an {invoice|edi:Invoice} {for|edi:To} order number 1234'
+  - 'show me the {sample|edi:Sample}'
+  - >-
+    show me the {document spec|edi:DocumentInfo} for this
+    {order|edi:PurchaseOrder} 
+  - 'get the {purchase order|edi:PurchaseOrder} with id 4110003726'
+  - >-
+    what is the {trailer items count|edi:TrailerCount} and {trailer
+    details|edi:TrailerDetails} and {trailer amount|edi:TrailerAmount} for this
+    {order|edi:PurchaseOrder}
+  - >-
+    show me the {supplier name|edi:SupplierName} and {supplier
+    number|edi:SupplierNumber} for this order
+  - >-
+    {set|edi:Modify} {transportation mode|edi:TransportationMode} {to|edi:To}
+    "road"
+  - '{set|edi:Modify} {currency|edi:Currency} {to|edi:To} "USD"'
+  - '{cancel|edi:Cancel} this {invoice|edi:Invoice}'
+  - '{submit|edi:Submit} this {invoice|edi:Invoice}'
+  - >-
+    how many {line items|edi:LineItems} does this {order|edi:PurchaseOrder}
+    have?
+  - '{set|edi:Modify} {transportation mode|edi:TransportationMode} to "air"'
+  - >-
+    {add|edi:Modify} {transportation mode|edi:TransporationMode} {as |edi:To}
+    "road"
+  - >-
+    show me {document information|edi:DocumentInfo} and {general
+    information|edi:GeneralInfo} for this order
+  - >-
+    what was the {means of transportation|edi:TransportationMode} for this
+    {invoice|edi:Invoice}?
+  - 'show me the {invoice status|edi:InvoiceStatus}'
+  - >-
+    show me {order number|edi:OrderNumber} and {order date|edi:OrderDate} for
+    this purchase order
+  - >-
+    what is the {recipient name|edi:RecipientName} and the {recipient
+    number|edi:RecipientNumber} for this order
+  - 'show me all {purchase orders|edi:PurchaseOrders}'
+  - >-
+    what is the {document type|edi:DocumentType}document information} for this
+    order
+  - '{create|:ActionShow} an {invoice|edi:Invoice}'
+  - '{finish|edi:Submit} the invoice'
+  - '{complete|edi:Submit} the invoice'
+  - 'set the {package id|edi:PackageId} {to|edi:To} "123"'
+actions:
+  - name: 'edi:GetAllInvoices'
+    signature: 'edi:Invoices (optional :All) -> data edi:Invoices'
+    kind: 'nodejs:8'
+    code: |-
+      const {Result, Params} = require('eba');
+
+      const main = (params) => {
+        console.log(JSON.stringify(params));
+        return new Params(params).load('invoices').then((invoices) => {
+          invoices = JSON.parse(invoices);
+          return new Result().setData('edi:Invoices', invoices);
+        });
+      };
+
+      module.exports = {main};
+  - name: 'edi:ModifyInvoice'
+    signature: >-
+      a subClassOf edi:ExtraField => edi:Modify (context data edi:Invoice, a,
+      optional edi:To (data :UserString)) -> data edi:Invoice
+    kind: 'nodejs:8'
+    code: |-
+      const {Result} = require('eba');
+      const {getAttributeByConceptName} = require('./util.js');
+
+      const main = (params) => {
+        const invoice = params.input['edi:Invoice'].data
+        // validate that the invoice is in-process, i.e. not canceled.
+        if (invoice.isCanceled) {
+          return {error: 'This is already cancelled. Please create a new invoice.'};
+        }
+        // construct key value pair for this field entry
+        const key = getAttributeByConceptName(params.input['a'].name);
+        const value = params.input[':UserString'].data;
+        
+        // see debug tab for actions logs.
+        console.log(`Field is ${JSON.stringify(key)} and value is ${JSON.stringify(value)}`);
+        
+        // set the field
+        invoice[key] = value.toString();
+        
+        // updated invoice is information space
+        return new Result().setData('edi:Invoice', invoice)
+      };
+
+      module.exports = {main};
+    notes: >-
+      Given an invoice from context, a field as specified in the constraints,
+      and a user string representing a json value, modify the current invoice to
+      contain the supplied key, value pair. 
+  - name: 'edi:CancelInvoice'
+    signature: 'edi:Cancel (context data edi:Invoice) -> data edi:Invoice'
+    kind: 'nodejs:8'
+    code: |-
+      const {Result} = require('eba');
+
+      // updates isCanceled field of invoice in the information space
+      const main = ({input}) => {
+        const invoice = input['edi:Invoice'].data;
+        invoice.isCanceled = true;
+        return new Result().setData('edi:Invoice', invoice);
+      };
+
+      module.exports = {main};
+    notes: >-
+      cancels the current invoice by appending isCanceled to true on object in
+      information space
+  - name: 'edi:SubmitInvoice'
+    signature: 'edi:Submit (context data edi:Invoice) -> data edi:Invoice'
+    kind: 'nodejs:8'
+    code: |-
+      const {Result, Params} = require('eba');
+      const _ =  require('lodash');
+
+      const main = (params) => {
+        // fetch and update invoice object
+        const invoice = params.input['edi:Invoice'].data
+        invoice.isSubmitted = true
+        
+        // validate that all fields are added
+        if(_.isEmpty(invoice['MEANS OF TRANSPORTATION']) || _.isEmpty(invoice['CURRENCY']) || _.isEmpty('PACKAGE IDENTIFICATION')) {
+          return {error: 'You did not enter all the extra fields. Please enter all fields.'};
+        }
+        
+        // post this invoice to remote storage
+        const paramsHelper = new Params(params);
+        return paramsHelper.load('invoices').then((invoices) => {
+          invoices = JSON.parse(invoices);
+          // append the new invoice to the list
+          invoices.push(invoice);
+          console.log(`Invoices: ${JSON.stringify(invoices)}`);
+          // store the updated list to storage and place updated object in information space
+          return paramsHelper.save('invoices', invoices).then((invoices) => {
+            return new Result().setData('edi:Invoice', invoice)
+          });
+        });
+      };
+
+      module.exports = {main};
+    notes: submits the completed invoice to storage
+  - name: 'edi:CreateInvoice'
+    signature: 'edi:Invoice (context data edi:PurchaseOrder) -> data edi:Invoice'
+    kind: 'nodejs:8'
+    code: |-
+      const {Result, Params} = require('eba');
+      const _ = require('lodash');
+      const {createTemplateInvoice, validateOrder} = require('./util.js');
+
+      const main = (params) => {
+        // provides api for remote storage
+        const p = new Params(params);
+        
+        // read purchase order number from context
+        const orderNumber = params.input['edi:PurchaseOrder'].data['General Information']['Document Information']['PURCHASE ORDER NUMBER'];
+        
+        // fetch orders from storage
+        return p.load('purchaseOrders').then((orders) => {
+          orders = JSON.parse(orders);
+          const order = _.find(orders, (order) => order['General Information']['Document Information']['PURCHASE ORDER NUMBER'] == orderNumber);
+          
+          // basic invoice validation
+          const maybeError = validateOrder(order);
+          if(maybeError) {
+            return maybeError;
+          }
+          
+          // hardcoded template invoice
+          const invoice = createTemplateInvoice();
+          
+          // store the invoice in information space. Check information space graph for details.
+          return new Result().setData('edi:Invoice', invoice);  
+        });
+        
+      };
+
+      module.exports = {main};
+    notes: >-
+      create an invoice provided a purchase order. Purchase order can be created
+      using order number. 
+  - name: 'edi:GetAllPurchaseOrders'
+    signature: 'edi:PurchaseOrders (optional :All) -> data edi:PurchaseOrders'
+    kind: 'nodejs:8'
+    code: |-
+      const {Result, Params} = require("eba.js")
+
+      const main = (params) => {
+        // fetch all orders via storage api
+        return new Params(params).load('purchaseOrders').then((orders) => {
+          orders = JSON.parse(orders);
+          return new Result().setData('edi:PurchaseOrders', orders)
+        });
+      };
+
+      module.exports = {main};
+  - name: 'edi:GetPurchaseOrderByNumber'
+    signature: >-
+      edi:PurchaseOrder (optional :WithId (data :Number)) -> data
+      edi:PurchaseOrder
+    kind: 'nodejs:8'
+    code: |-
+      const {Result, Params} = require('eba');
+      const _ = require('lodash');
+
+      const main = (params) => {
+        // get purchase order number from context
+        const id = params.input[":Number"].data;
+        // use eba storage api to fetch correct order
+        return new Params(params).load('purchaseOrders').then((orders) => {
+          orders = JSON.parse(orders);
+          const order = _.find(orders, (order) =>  order['General Information']['Document Information']['PURCHASE ORDER NUMBER'] == id);
+          return new Result().setData("edi:PurchaseOrder", order);
+        });
+      }
+
+      module.exports = {main};
+rules:
+  - name: 'edi:makeSubmitShowable'
+    signature: 'edi:Submit -> :ActionShow'
+  - name: 'edi:makeCancelShowable'
+    signature: 'edi:Cancel -> :ActionShow'
+  - name: 'edi:makeModifyShowable'
+    signature: 'edi:Modify -> :ActionShow'
+endpoints:
+  - name: '@start'
+    kind: 'nodejs:8'
+    code: |-
+      const {Params} = require('eba');
+
+      // hardcoded assets, used just for initial populating DB storage
+      const invoices = require('./invoices.json');
+      const orders = require('./purchaseOrders.json');
+
+
+      const tryPopulateInvoices = async (paramsHelper) => {
+        try {
+          return await paramsHelper.load('invoices');
+        } 
+        catch({statusCode}) {
+          console.log('populating invocies');
+          if (statusCode == 404) return await paramsHelper.save('invoices', invoices);
+        }
+      };
+
+      const tryPopulateOrders = async (paramsHelper) => {
+        try {
+          return await paramsHelper.load('purchaseOrders');
+        } catch({statusCode}) {
+          console.log('populating orders');
+          if (statusCode == 404) return await paramsHelper.save('purchaseOrders', orders);
+        }
+      };
+
+      const main = async (params) => {
+        const paramsHelper = new Params(params);
+        await tryPopulateOrders(paramsHelper);
+        await tryPopulateInvoices(paramsHelper);
+        return {};
+      };
+
+      module.exports = {main};
+    notes: ''
+statics:
+  - name: purchaseOrders.json
+    mime: application/json
+    text: >-
+      [
+
+      {"_id":"44657028bf61136e4119fe627b021cf5","General Information":{"Document
+      Information":{"PURCHASE ORDER NUMBER":"4110003726","PURCHASE ORDER
+      DATE":"2017/07/01"},"Shipto Information":{"SHIPTO NAME":"Hero MotoCorp
+      Ltd.","SHIPTO NUMBER":"31000004"},"Supplier Information":{"SUPPLIER
+      NUMBER":"0000107333","SUPPLIER NAME":"Varroc Engineering Pvt
+      Ltd."}},"AutoDX Business Document":"PURCHASE ORDER","invoice":"No","LINE
+      ITEM DETAILS":[{"PART Number of OEM":"BF182008","LINE ITEM
+      NUMBER":"00010","SHORT DESCRIPTION OF THE ITEM":"ASW 24/0.70L
+      JPN/FC/LOOSE/BOX","QUANTITY":"1080","UOM":"EA","BASE UNIT
+      PRICE":"3.25"},{"PART Number of OEM":"BF182006","LINE ITEM
+      NUMBER":"00020","SHORT DESCRIPTION OF THE ITEM":"PACKING
+      BOX","QUANTITY":"3000","UOM":"EA","BASE UNIT PRICE":"4.25"}],"TRAILER
+      DETAILS":{"TOTAL NUMBER OF LINE ITEMS":"2","TOTAL AMOUNT":"16260"}}
+
+      ]
+    notes: ''
+    backend: true
+  - name: invoices.json
+    mime: application/json
+    text: |-
+      [
+        {"_id":"44657028bf61136e4119fe627b025c28","GOODS REMOVAL DATE":"2018/05/25","INVOICE DATE":"2018/05/25","CURRENCY":"road","PART Number of OEM":"BF182008","SHORT DESCRIPTION OF THE ITEM":"ASW 24/0.70L JPN/FC/LOOSE/BOX","SUPPLIER NAME":"Varroc Engineering Pvt Ltd.","UOM":"EA","SHIPTO NUMBER":"31000004","DUE DATE":"2018/05/25","MEANS OF TRANSPORT":"001","SUPPLIER NUMBER":"0000107333","Key":"INV_4110003726_0000107333","INVOICE TYPE":"GST","QUANTITY":"1080","TOTAL AMOUNT":"16260","PACKAGE IDENTIFICATION":"SADASD2121","SHIPTO NAME":"Hero MotoCorp Ltd.","INVOICE NUMBER":-1,"CLIENT NUMBER":-1,"NUMBER OF PACKAGES":1,"PURCHASE ORDER DATE":"2017/07/01","DELIVERY DATE":"2018/05/25","ASN NUMBER":-1,"PURCHASE ORDER NUMBER":"4110003726","BASE UNIT PRICE":"3.25"}
+      ]
+    notes: ''
+    backend: true
+  - name: util.js
+    mime: text/javascript
+    text: |-
+      const _ = require('lodash');
+
+      module.exports.getAttributeByConceptName = (conceptName) => {
+        switch(conceptName) {
+          case 'edi:TransportationMode':
+            return 'MEANS OF TRANSPORTATION';
+          case 'edi:Currency':
+            return 'CURRENCY';
+          case 'edi:PackageId':
+            return 'PACKAGE IDENTIFICATION';
+        }
+      };
+
+      module.exports.validateOrder = (order) => {
+        // invalid order number
+        if (_.isEmpty(order)) {
+          return { error: `There is no purchase order with the number ${orderNumber}. Invoice cannot be created.` };
+        }
+        // invoice already generated
+        if (order['Invoice'] === 'yes') {
+          return {error: `An invoice already exists for purchase order with number ${orderNumber}` };
+        }
+        // means validation passed
+        return null;
+      };
+
+      module.exports.createTemplateInvoice = () => {
+        // short format date
+        const today = new Date().toJSON().slice(0,10).replace(/-/g,'/');
+        
+        // hardcoded new invoice
+        return {
+          "_id":"22359020bd60478c0119fe637a031c19",
+          "GOODS REMOVAL DATE": today,
+          "INVOICE DATE":today,
+          "PART Number of OEM":"DF923487",
+          "SHORT DESCRIPTION OF THE ITEM":"CFG 18/0.90L JPN/FC/HEAVY/BOX",
+          "SUPPLIER NAME":"Fortran Engineering Ltd.",
+          "UOM":"EA",
+          "SHIPTO NUMBER":"31000004",
+          "DUE DATE":today,
+          "SUPPLIER NUMBER":"0000107333",
+          "Key":"INV_4110003726_0000107333",
+          "INVOICE TYPE":"GST",
+          "QUANTITY":"1080",
+          "TOTAL AMOUNT":"16260",
+          "SHIPTO NAME":"Hero MotoCorp Ltd.",
+          "INVOICE NUMBER":-1,
+          "CLIENT NUMBER":-1,
+          "NUMBER OF PACKAGES":1,
+          "PURCHASE ORDER DATE":today,
+          "DELIVERY DATE":today,
+          "ASN NUMBER":-1,
+          "PURCHASE ORDER NUMBER":"4110003726",
+          "BASE UNIT PRICE":"3.25",
+          "isCanceled": false
+        };
+      };
+    notes: ''
+    backend: true
