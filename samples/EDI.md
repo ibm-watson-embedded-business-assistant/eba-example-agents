@@ -17,7 +17,15 @@ We support two concepts which correspond to our business entities, viz. `edi:Pur
 
 #### Patterns
 
-Patterns will be straigtforward for the most part. It is important to note only two details. First, note that we have implemented some granular patterns for certain prepositions: `{set|edi:Modify} {transportation mode|edi:TransportationMode} {to|edi:To} "road"`. We label {to|edi:To} to provide some increased confidence to the system. Other agents within the system may provide a different meaning to such tokens, e.g. it may be interpretted as `:RelationTo` and `:With`. More importantly, be advised that we have consolidated certain patterns, e.g. `what is the {trailer items count|edi:TrailerCount} and {trailer details|edi:TrailerDetails} and {trailer amount|edi:TrailerAmount} for this {order|edi:PurchaseOrder}`. This pattern will enable Watson Assistant to perform natural language understanding for these different concepts using just one pattern as an input. However, the assistant may not support answering this exact question. In this particular example, the assistant is not able to reuse the purchase order concept three times.
+Patterns will be straigtforward for the most part. It is important to note only two details. First, note that we have implemented some granular patterns for certain prepositions: 
+
+`{set|edi:Modify} {transportation mode|edi:TransportationMode} {to|edi:To} "road"`
+
+We label {to|edi:To} to provide some increased confidence to the system. Other agents within the system may provide a different meaning to such tokens, e.g. it may be interpretted as `:RelationTo` and `:With`. More importantly, be advised that we have consolidated certain patterns, e.g. 
+
+`what is the {trailer items count|edi:TrailerCount} and {trailer details|edi:TrailerDetails} and {trailer amount|edi:TrailerAmount} for this {order|edi:PurchaseOrder}`.
+
+This pattern will enable Watson Assistant to perform natural language understanding for these different concepts using just one pattern as an input. However, the assistant may not support answering this exact question. In this particular example, the assistant is not able to reuse the purchase order concept three times.
 
 #### Actions
 
