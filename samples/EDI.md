@@ -25,7 +25,7 @@ We have provided some detailed description of action signatures within the confi
 
 #### Rewriting Rules
 
-In order to show the user the results of our modifications. We following a convention of converting our data modification concepts to be reintrepeting as `:ActionShow`. This has the effect that after performing modifications to the invoice. The resulting invoice will be shown to the end user after the operation completes. 
+In order to show the user the results of our modifications. We following a convention of converting our data modification concepts to be reintrepeting as `:ActionShow`. This has the effect that, after performing modifications to the invoice, the resulting invoice will be shown to the end user after the operation completes. 
 
 #### Assets
 
