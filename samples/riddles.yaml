@@ -1,0 +1,174 @@
+version: 2
+concepts:
+  - name: 'riddle:Stop'
+  - name: 'riddle:Message'
+    ontology:
+      subClassOf: ':Message'
+  - name: ':Cancellation'
+  - name: 'riddle:Clue'
+    ontology:
+      subClassOf: ':Message'
+  - name: ':Confirmation'
+  - name: 'riddle:PossibleAnswer'
+  - name: 'riddle:Answer'
+  - name: ':Message'
+  - name: 'riddle:Question'
+    ontology:
+      subClassOf: ':Message'
+  - name: 'riddle:StartGame'
+patterns:
+  - '{stop|riddle:Stop}'
+  - '{stop the game|riddle:Stop}'
+  - '{give me a clue|riddle:Clue}'
+  - '{clue|riddle:Clue}?'
+  - 'Watson, {ask me a riddle|riddle:StartGame}'
+actions:
+  - name: 'riddle:HardStop'
+    signature: 'riddle:Stop -> data riddle:Message'
+    kind: 'nodejs:8'
+    code: |-
+      const game = require("./game.js")
+
+      module.exports.main = function(params) {
+        return game.endGame()
+      }
+  - name: 'riddle:GameStop'
+    signature: 'riddle:PossibleAnswer (:Cancellation) -> data riddle:Message'
+    kind: 'nodejs:8'
+    code: |-
+      const game = require("./game.js")
+
+      module.exports.main = function(params) {
+        return game.endGame()
+      }
+  - name: 'riddle:GiveClue'
+    signature: 'riddle:Clue -> data riddle:Clue'
+    kind: 'nodejs:8'
+    code: |-
+      const eba = require("eba")
+      const game = require("./game.js")
+
+      module.exports.main = function(params) {
+        let questionIndex = params.storage.currentQuestion
+        let clue = game.getClue(questionIndex)
+        
+        let messageText = clue ? clue : "I'm sorry, but I cannot provide a clue for this question("
+        
+        return new eba.Result().setData("riddle:Clue", messageText)
+      }
+  - name: 'riddle:GameNext'
+    signature: 'riddle:PossibleAnswer (:Confirmation) -> data riddle:Question'
+    kind: 'nodejs:8'
+    code: |-
+      const game = require("./game.js")
+
+      module.exports.main = function(params) {
+        return game.askQuestion(params.storage.currentQuestion + 1)
+      }
+  - name: 'riddle:GameDo'
+    signature: 'riddle:PossibleAnswer -> data riddle:Message'
+    kind: 'nodejs:8'
+    code: |-
+      const eba = require("eba")
+      const game = require("./game.js")
+
+      module.exports.main = function(params) {
+        let h = new eba.Params(params)
+        let questionIndex = params.storage.currentQuestion
+        let { correct, nextQuestionAvailable } = game.checkAnswer(questionIndex, h.get("@question"))
+          
+        if (correct && nextQuestionAvailable) {
+          return new eba.Result()
+            .setName("riddle:Message", ":Question")
+            .setType("riddle:Message", "promise")
+            .setData("riddle:Message", "Great you got that one! Would you like to hear one more?")
+            .store("listenAnswer", false)
+        } else {
+          return new eba.Result()
+            .setData("riddle:Message", correct ? "Great you got that one!" : "That's not correct! Try one more time.")
+            .store("listenAnswer", !correct)
+        }
+      }
+  - name: 'riddle:GameStart'
+    signature: 'riddle:StartGame -> data riddle:Question'
+    kind: 'nodejs:8'
+    code: |-
+      const game = require("./game.js")
+
+      module.exports.main = function(params) {
+        return game.askQuestion(0)
+      }
+endpoints:
+  - name: '@annotate'
+    kind: 'nodejs:8'
+    code: |-
+      const eba = require("eba");
+
+      function main(params) {
+        let tree = params.input.tokens
+        let clueOrStopAsked = eba.reduceTree(tree, (acc, taggedToken) => acc || eba.hasAnnotation(taggedToken, "riddle:Clue") || eba.hasAnnotation(taggedToken, "riddle:Stop"), false)
+        
+        return {
+          output: (params.storage.listenAnswer && !clueOrStopAsked)
+            ? eba.mapTree(tree, taggedToken => eba.insertAnnotation(taggedToken, "riddle:PossibleAnswer"))
+            : tree
+        }
+      }
+
+      module.exports = {main}
+    notes: ''
+statics:
+  - name: game.js
+    mime: text/javascript
+    text: |-
+      const eba = require("eba")
+
+      questions = [
+        {
+          question: "What asks no questions but requires many answers?",
+          clue: "Does this ring a “bell”?",
+          answer: ["doorbell"]
+        },
+        {
+          question: "The more you take, the more you leave behind. What am I?",
+          answer: ["footsteps"]
+        },
+        {
+          question: "What comes once in a minute, twice in a moment, but never in a thousand years?",
+          answer: ["the letter \"m\"", "m"]
+        },
+        {
+          question: "What room do ghosts avoid?",
+          answer: ["living room", "living"]
+        }
+        ]
+
+      module.exports.askQuestion = function(questionIndex) {
+        let q = questions[questionIndex]
+
+        return new eba.Result()
+          .setData("riddle:Question", q.question)
+          .store("listenAnswer", true)
+          .store("currentQuestion", questionIndex)
+      }
+
+      module.exports.endGame = function() {
+        return new eba.Result()
+          .setData("riddle:Message", "Ok, see you later!")
+          .store("listenAnswer", false)
+      }
+
+      module.exports.getClue = function(questionIndex) {
+        let q = questions[questionIndex]
+        return q.clue
+      }
+
+      module.exports.checkAnswer = function(questionIndex, answer) {
+        let q = questions[questionIndex]
+        return {
+          correct: q.answer.indexOf(answer) != -1,
+          nextQuestionAvailable: questionIndex < questions.length - 1
+        }
+      }
+    notes: ''
+    backend: true
