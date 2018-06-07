@@ -2,7 +2,7 @@ This sample models some basic operations within the [electronic data interchange
 
 In particular, we support a set of inspection operations for purchase orders as well as a small process for submitting a complete invoice. This sample should provide some insight into a number of areas in Watson Assistant development, e.g. attribute support, data modifiers, user storage via Params api, the start endpoint, as well as a simple action logic for handling a process.
 
-The get the most out of this sample. Please load the [yaml configuration](edi.yaml) into your own sandbox enviornment.
+To get the most out of this sample, please load the [yaml configuration](edi.yaml) into your own sandbox enviornment.
 
 ### Dev Notes
 
