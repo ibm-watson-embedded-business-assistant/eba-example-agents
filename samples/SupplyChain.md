@@ -2,7 +2,7 @@ This sample models a supply chain domain. In particular it allows us to inspect 
 
 The supply chain agent is perhaps the most concrete sample that we provide insofar as it utilizes our lazy data interface and provides insight into many areas of Watson Assistant Development, viz. endpoints, backend and frontend assets, multiple attribute types, and complex action signatures.
 
-To get the most out of this sample, please load the [yaml configuration](./supplychain.yaml) into your own sandbox enviornment. You will need access to the [supply chain insights api](https://developer.ibm.com/customer-engagement/supply-chain-insights/) in order to use this agent. Otherwise this agent should be treated as read-only.
+To get the most out of this sample, please load the [yaml configuration](./supplychain.yaml) into your own sandbox enviornment. You will need access to the [supply chain insights api](https://developer.ibm.com/api/view/scinsights-prod:supply-chain-insights:title-Supply_Chain_Insights) in order to use this agent. Otherwise this agent should be treated as read-only.
 
 ### Dev Notes
 
