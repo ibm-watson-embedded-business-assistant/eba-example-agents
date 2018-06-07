@@ -7,3 +7,5 @@ These agents were developed completely within our lab tools. The samples should 
 [Walmart Sample](../samples/Walmart.md)
 
 [Supply Chain Sample](../samples/SupplyChain.md)
+
+[Riddles](../samples/Riddles.md)
