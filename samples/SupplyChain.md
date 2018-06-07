@@ -12,7 +12,7 @@ In order to run this agent, you will need to enter the appropriate credentials i
 
 #### Concepts
 
-This agent follows a similar paradigm as our other samples. We have our main domain objects, viz. `sc:SalesOrders` and `sc:SupplyOrders`, following by a set a relevant attributes for each. Note that we support a few `:DateAttributes` in this sample, e.g. `sc:RequestedShipDate`. We do highlight one particular ontology entry: `sc:FilterScheduledOrders subClassOf action:Filter`. This is an example where we an action subclasses from a concept. In this case, we specify that our action is a type of filtering actions. The Assistant will internally assign it a given priority wihtin a chain of lazy operations. Our system supports three kinds of action types, viz. `action:Sort` and `action:Select`. These are listed in ascending order of priority.
+This agent follows a similar paradigm as our other samples. We have our main domain objects, viz. `sc:SalesOrders` and `sc:SupplyOrders`, following by a set a relevant attributes for each. Note that we support a few `:DateAttributes` in this sample, e.g. `sc:RequestedShipDate`. We do highlight one particular ontology entry: `sc:FilterScheduledOrders subClassOf action:Filter`. This is an example where we an action subclasses from a concept. In this case, we specify that our action is a type of filtering actions. The Assistant will internally assign it a given priority wihtin a chain of lazy operations. Our system supports three kinds of action types, viz. `action:Filter`, `action:Sort`, and `action:Select`. These are listed in ascending order of priority.
 
 #### Patterns
 
