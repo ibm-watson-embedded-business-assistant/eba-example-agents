@@ -4,7 +4,7 @@ The Walmart agent should prvoide insight into how to leverage well an existing a
 
 To get the most out of this sample, please load the [yaml configuration](./walmart.yaml) into your own sandbox enviornment. You will need to supply your own walmart apiKey within settings. You can get your API key [here](https://developer.walmartlabs.com).
 
-### Development Notes
+### Dev Notes
 
 #### General
 
