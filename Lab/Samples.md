@@ -4,8 +4,8 @@ These agents were developed completely within our lab tools. The samples should 
 
 [EDI Sample](../samples/EDI.md)
 
-[Walmart Sample](../samples/Walmart.md)
+[Walmart Trends](../samples/Walmart.md)
 
-[Supply Chain Sample](../samples/SupplyChain.md)
+[Supply Chain Insights](../samples/SupplyChain.md)
 
 [Riddles](../samples/Riddles.md)
