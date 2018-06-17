@@ -8,7 +8,7 @@ Sometimes is leads to unconditional page reload and potential data loss which is
 frustraing when you are working on something essential.
 
 **There is a quick fix:** Open Terminal and run the command below.
-It will disable two-finger back/forward navigation.
+It will disable two-finger back/forward navigation for Google Chrome only.
 Change parameter to TRUE to revert changes if needed.
 
 ```
