@@ -19,7 +19,7 @@ Once you have saved your changes, you may immediately begin to test your work by
 
 #### Import and Export
 
-The skills you develop within the lab are represented in an SCM friendly, yaml configuration. You can import and export this configuration using the "Import" and "Export" buttons on the lab actions bar.
+The skills you develop within the lab are represented in an source control friendly, yaml configuration. You can import and export this configuration using the "Import" and "Export" buttons on the lab actions bar.
 
 
 ### General Tab
