@@ -1,28 +1,28 @@
 The developement lab was created in an effort to enable an open system of Watson Assistant skill developers. Using the lab tools, developers can write skills to extend Watson Assistant to their organizational and personal needs. This document contains an overview of the various features and components of the lab.
 
 
-### Lab Actions Bar
+### Lab actions bar
 
-#### Agent Selector
+#### Agent selector
 
 You can use the agent selector to view and edit other agents. You will have read access to all agents, but write access only to your own agents. You are invited to view these public agents as a reference in the course of your development.
 
-#### Undo and Redo
+#### Undo and redo
 
 Our lab will maintain a history of your most recent changes within a given session. You may redo and undo changes accordingly.
 
-#### Saving and Discarding
+#### Saving and discarding
 
 In order for your changes to be published to EBA core, you must click the Save changes button. This will update your configuration, and the lab will remember this configuration the next time that you log in. If in the course of development, you want to back out your current change set, pressing the Discard changes button will revert your work back to the most recent published version. 
 
 Once you have saved your changes, you may immediately begin to test your work by asking the assistant questions in the left conversation panel. 
 
-#### Import and Export
+#### Import and export
 
 The skills you develop within the lab are represented in an source control friendly, yaml configuration. You can import and export this configuration using the "Import" and "Export" buttons on the lab actions bar.
 
 
-### General Tab
+### General tab
 
 #### Description
 
@@ -38,7 +38,7 @@ Settings is useful place to skill level parameters. It may be used to store cred
 
 Watson Assistant supports certain special endpoints that can be activated during the reasoning pipeline. Currently we support `@start`, `@tag`, and `@force` endpoints. `@start` is used to initial any storage configuration any session intialization parameters that your agent supports. `@tag` is used to support custom annotation. This is a good place to support named entity recognition for your skill's domain. `@force` is used in the context of lazy data evaluation. When a series of lazy data operations is finally required by the assistant, it will call this endpoint to fetch the real data beneath the lazy operations.
 
-### Concepts Tab
+### Concepts tab
 
 This tab is responsible for managing your skill's concepts.
 
@@ -67,7 +67,7 @@ The ontology tab link is provided to developers in order to inspect existing ont
 
 Notes are simply plain text descriptions regarding a particular concept. Feel free to use notes in any way to suits your needs. They may be particularly useful in denoted experimental concepts or disambiguation in the case of collaborative development.
 
-### Patterns Tab
+### Patterns tab
 
 This tab is responsible for managing natural lanugage patterns.
 
@@ -80,7 +80,7 @@ Concepts are color coded within the lab to help assistant readablity.
 [Learn more about patterns](Components.md#patterns)
 
 
-### Actions Tab
+### Actions tab
 
 This tab is responsbilie for managing your action signature defintions as well as the IBM cloud functions executors.
 
@@ -100,5 +100,24 @@ Click the constraints tab to enter a constraint. A constraint is also represente
 
 Click the input tab to enter an input definition. 
 
+### Assets tab
+
+EBA UI is implemented using React.js as the foundation library. Official React.js documentation is located [here](https://reactjs.org/docs). All data snippents you can see in conversation, content or graph areas are implemented using correspoding React.js components.
+
+We use auto discovery for data visualization components: give your component a name following the following convention: `<concept namespace>_<concept name><suffix>` where suffix can be one of:
+
+- `Data` – will be used both in conversation area and Knowledge Graph
+- `Node` – will be used in Knowledge Graph only
+- `Content` – will be used on Content tab and in full screen mode. 
+
+The following properties will be given to your component in `@props`:
+
+- `data` – concept’s data in JSON
+- `node` – information space node
+- `colors` – d3 ordinal colors you can use as a consistent palette
+
+Under any circumstances UI component **must not modify** data passed through `@props`.
+
+[Lodash](https://lodash.com/) library is widely used for data transformations. Consider it if it fits your needs.
 
 
