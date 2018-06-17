@@ -1,5 +1,5 @@
 
-=== Disabling Chrome swipe guesture on Mac
+=== Disabling
 
 _by Oleg Sidorkin_
 
