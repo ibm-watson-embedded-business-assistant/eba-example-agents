@@ -1,4 +1,4 @@
-= Disabling Chrome swipe guesture on Mac
+=== Disabling Chrome swipe guesture on Mac
 
 _by Oleg Sidorkin_
 
