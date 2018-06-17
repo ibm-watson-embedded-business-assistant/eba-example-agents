@@ -59,7 +59,7 @@ In order to attach an attribute to a concept, click on the attributes tab link, 
 
 #### Ontology
 
-The ontology tab link is provided to developers in order to inspect existing ontology as well as to add additional ontology predicates outside of spelling, subClassOf, and isListOf. You can expand your ontology in this tab by entering an rdf triple: subject, predicate, and ontology. Note that the spelling predicate is not enabled to be viewable in this tab. Deleting an ontology entry in this tab may have side effects in other existing components. For example, if we remove the triple `:CustomerID subClassOf :Attribtue` entry. You will see this change reflected in the concepts table itself, but, more importantly, any actions relying on this previous relationship may be broken. Our lab ensures that your changes will be propagated and reflected accordingly through the skill, but it is the responsbility of the developer to ensure that their components are consistent.
+The ontology tab link is provided to developers in order to inspect existing ontology as well as to add additional ontology predicates outside of spelling, subClassOf, and isListOf. You can expand your ontology in this tab by entering an RDF triple: subject, predicate, and ontology. Note that the spelling predicate is not enabled to be viewable in this tab. Deleting an ontology entry in this tab may have side effects in other existing components. For example, if we remove the triple `:CustomerID subClassOf :Attribtue` entry. You will see this change reflected in the concepts table itself, but, more importantly, any actions relying on this previous relationship may be broken. Our lab ensures that your changes will be propagated and reflected accordingly through the skill, but it is the responsbility of the developer to ensure that their components are consistent.
 
 [Learn more about attributes](Components.md#attributes)
 
@@ -94,7 +94,7 @@ Watson Assistant is able to reason about actions provided their signature. The s
 
 #### Constraints
 
-Click the constraints tab to enter a constraint. A constraint is also represented in the rdf format already mentioned, viz. subject predicate object. They serve as a way to provide generalism to our actions. Consider the following constraints: `a subClassOf :Lists` This constraint binds the parameter `a` to be any subclass of :Lists. This means that our action will be able to work generically with any type of list, e.g.  :ContactLists, :Orders, :Supplies. Note that the developer must provide appropriate entries in the ontology in order for the action to work properly, e.g. `:ContactList subClassOf :List`. The constraint parameter `a` can now be referenced in the input and output specifications.
+Click the constraints tab to enter a constraint. A constraint is also represented in the RDF format already mentioned, viz. subject predicate object. They serve as a way to provide generalism to our actions. Consider the following constraints: `a subClassOf :Lists` This constraint binds the parameter `a` to be any subclass of :Lists. This means that our action will be able to work generically with any type of list, e.g.  :ContactLists, :Orders, :Supplies. Note that the developer must provide appropriate entries in the ontology in order for the action to work properly, e.g. `:ContactList subClassOf :List`. The constraint parameter `a` can now be referenced in the input and output specifications.
 
 #### Input
 
