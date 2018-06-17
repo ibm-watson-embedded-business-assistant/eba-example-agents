@@ -15,7 +15,7 @@ Our lab will maintain a history of your most recent changes within a given sessi
 
 In order for your changes to be published to EBA core, you must click the Save changes button. This will update your configuration, and the lab will remember this configuration the next time that you log in. If in the course of development, you want to back out your current change set, pressing the Discard changes button will revert your work back to the most recent published version. 
 
-Once you have saved your changes, you may immediately begin to test your work by asking the assistant questions in the left message panel. 
+Once you have saved your changes, you may immediately begin to test your work by asking the assistant questions in the left conversation panel. 
 
 #### Import and Export
 
