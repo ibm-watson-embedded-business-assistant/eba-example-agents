@@ -1,5 +1,5 @@
 
-### How do I disable Chrome's two-finger back/forward navigation?
+### How to disable Chrome's two-finger back/forward navigation?
 
 _by Oleg Sidorkin_
 
