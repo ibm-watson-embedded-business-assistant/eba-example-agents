@@ -131,7 +131,7 @@ statics:
                 </p>
               </div>
             </div>
-            <div className="wmt-product-info-sescription">
+            <div className="wmt-product-info-description">
               <div dangerouslySetInnerHTML={{__html:wmt_decodeHTMLEntities(item.shortDescription
       )}}/>
             </div>
@@ -168,6 +168,16 @@ statics:
       }
       .wmt-product-discount {
         color: red;
+      }
+      .wmt-product-info-description {
+        display: block;
+        overflow: hidden;
+        line-height: 16px;
+        max-height: calc(16px * 5);
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 5;
       }
     frontend: true
     backend: false
