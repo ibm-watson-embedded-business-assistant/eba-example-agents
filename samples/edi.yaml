@@ -259,7 +259,7 @@ patterns:
     number|edi:RecipientNumber} for this order
   - 'show me all {purchase orders|edi:PurchaseOrders}'
   - >-
-    what is the {document type|edi:DocumentType}document information} for this
+    what is the {document type|edi:DocumentType} for this
     order
   - '{create|:ActionShow} an {invoice|edi:Invoice}'
   - '{finish|edi:Submit} the invoice'
