@@ -44,15 +44,96 @@ This pattern tells the system that trending and products tokens correspond to th
 
 ### Actions
 
-Actions are the means by which the assistant can provide real data to corresponding concepts. Each skill will contain a set of actions designated by the following signature: `constraints => input -> output`. Given an input configuration of concepts subject to certain constraints, the system will be able to produce the specified output given the body of the action. In addition to this signature, an action will have a name as well as a function to be invoked when the action is selected. For example consider the action below. 
+Actions are the means by which the assistant can provide real data to corresponding concepts. Each skill will contain a set of actions designated by the following signature: `constraints => input -> output`. Given an input configuration of concepts subject to certain constraints, the system will be able to produce the specified output given the body of the action. In addition to this signature, an action will have a name as well as a function to be invoked when the action is selected. For example consider the action below:
 
 ```
 :Products(:Trending) -> data :Products
 ```
 
-Note that this action does not have any constraints--constraints are optional. This action effectively states that if the assistant recognizes a :Product concept as well as a :Trending concept, then the system can produce real data for the :Products concepts. The data will be produced by the body of this action, which can query a database, call an api, etc.
+Note that this action does not have any constraints - constraints are optional. This action effectively states that if the assistant recognizes a `:Products` concept as well as a `:Trending` concept, then the system can produce real data for the `:Products` concepts. The data will be produced by the body of this action, which can query a database, call an api, etc.
 
 [Node.js modules](NodeModules.md)
+
+Actions can also take a data provided by other actions:
+
+```
+:Products(data :Category) -> data :Products
+```
+
+This action will expect a data node `:Category` which has to be created by another action. The action can be triggered once the user asks for products by category, for example:
+
+Q: _show me products for category "Jeans"_
+
+Inside the body you can access this data using params helpers:
+
+```
+const eba = require("eba")
+module.exports.main = async function(params) {
+	let p = new eba.Params(params)
+	let category = await p.get(":Category")
+	let products = ... get products by category here
+	return new eba.Result().setData(":Products", products)
+}
+```
+
+To get a category by it's name the following action can be used:
+
+```
+:Category(data :UserString) -> data :Category
+```
+
+Processing of quoted strings is available out of the box. Each quoted string will be annotated with `:UserString` concept and the corresponding data will be created. So you can just get this data in your action body:
+
+```
+let categoryName = await p.get(":UserString")
+```
+
+To clarify the sense of some input parameters we can add auxiliary concepts to the signature:
+
+```
+:Category(:WithName(data :UserString)) -> data :Category
+```
+
+In this case the action will be triggered __ONLY__ when `:UserString` node has an auxiliary neighbour concept `:WithName` as in questions like:
+
+Q: _show me products for category named "Jeans"_
+
+or
+
+Q: _show me products for category with name "Jeans"_
+
+The auxiliary concept can be marked as optional:
+```
+:Category(optional :WithName(data :UserString)) -> data :Category
+```
+
+This action can be triggered in both questions with or without the concept `:WithName`.
+
+The data parameters can be optional too:
+
+```
+:Category(optional data :UserString) -> data :Category
+```
+
+In this case we can return products related to a certain category if we have category data or all the products otherwise.
+
+The input parameters can be implicit:
+
+```
+:Products(implicit data :Category) -> data :Products
+```
+
+This action can be triggered without the `:Category` concept in the question thread (an optional parameter) but the agent will still be able to search for the `:Category` concept data in the context. For example the following scenario will work with implicit `:Category` parameter:
+
+Q: _show me category "Jeans"_
+
+A: Agent will get the category "Jeans"
+
+Q: _show me products_
+
+A: Agent will get products for category "Jeans"
+
+If no concept found in the context the agent will try to recover this concept data using available actions so we will be able to ask questions like _show me products for "Jeans"_.
 
 ### Rules
 
