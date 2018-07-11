@@ -18,6 +18,8 @@ settings:
     value: your-api-key-here
     notes: 'Get your API key at https://developer.walmartlabs.com/'
 concepts:
+  - name: ':UserString'
+  - name: ':WithName'
   - name: 'wmt:TrendingNow'
   - name: ':Showable'
   - name: ':NumAttribute'
@@ -67,7 +69,35 @@ patterns:
   - 'show {trending|wmt:Trending} {products|wmt:Products}'
   - 'show {popular|wmt:Trending} products'
 actions:
-  - name: getTrendingProducts
+  - name: 'wmt:GetProductByName'
+    signature: 'wmt:Product (optional :WithName (data :UserString)) -> data wmt:Product'
+    kind: 'nodejs:8'
+    code: |-
+      const request = require('request-promise-native')
+      const eba = require('eba')
+
+      module.exports.main = function (params) {
+        let h = new eba.Params(params)
+        let nameString = h.get(":UserString")
+
+        return request
+          .get(`http://api.walmartlabs.com/v1/trends?apiKey=${params.settings.apiKey}`)
+          .then(JSON.parse)
+          .then(({items}) => {
+            items.forEach((item) => {
+              if (!item.shortDescription)
+                item.shortDescription = ""
+            })
+            let item = items.find(x => x.name == nameString)
+            if (item) {
+              return new eba.Result().setData('wmt:Product', item)
+            } else {
+              return { error: "I haven't found any product" }
+            }
+          })
+      }
+    notes: ''
+  - name: 'wmt:GetTrendingProducts'
     signature: 'wmt:Products (wmt:Trending) -> data wmt:Products'
     kind: 'nodejs:8'
     code: |-
