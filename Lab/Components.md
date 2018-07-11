@@ -112,7 +112,7 @@ This action can be triggered in both questions with or without the concept `:Wit
 The data parameters can be optional too:
 
 ```
-:Category(optional data :UserString) -> data :Category
+:Products(optional data :Category) -> data :Products
 ```
 
 In this case we can return products related to a certain category if we have category data or all the products otherwise.
