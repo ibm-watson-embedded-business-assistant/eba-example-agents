@@ -13,12 +13,17 @@ description: |+
   - show me popular products with negative description
   - show me popular products with positive description
   - notify me if price of product "Maverix Monster Electric Skateboard" is less than $50
+  - show me product with UPC 647627503349
+  - what is product name for UPC 647627503349?
 
 settings:
   - name: apiKey
     value: your-api-key-here
     notes: 'Get your API key at https://developer.walmartlabs.com/'
 concepts:
+  - name: ':Number'
+  - name: ':UPC'
+    spelling: UPC
   - name: ':Name'
   - name: ':UserString'
   - name: ':WithName'
@@ -65,6 +70,7 @@ concepts:
       isListOf: 'wmt:Product'
       subClassOf: ':Showable'
 patterns:
+  - 'what is product name for {UPC|:UPC} 1234'
   - '{what''s|:What} {trending now|wmt:TrendingNow}'
   - 'show {price|wmt:SalePrice} for this product'
   - 'show {msrp|wmt:MSRP} for this product'
@@ -72,6 +78,35 @@ patterns:
   - 'show {trending|wmt:Trending} {products|wmt:Products}'
   - 'show {popular|wmt:Trending} products'
 actions:
+  - name: 'wmt:SearchProductByUPC'
+    signature: 'wmt:Product (optional :UPC (data :Number)) -> data wmt:Product'
+    kind: 'nodejs:8'
+    code: |-
+      const request = require('request-promise-native')
+      const eba = require('eba')
+
+      module.exports.main = function (params) {
+        let h = new eba.Params(params)
+        let upc = h.get(":Number")
+
+        return request
+          .get(`http://api.walmartlabs.com/v1/items?apiKey=${params.settings.apiKey}&upc=${encodeURIComponent(upc)}`)
+          .then(JSON.parse)
+          .then(({items}) => {
+            let item = items[0]
+            if (item) {
+              if (!item.shortDescription)
+                item.shortDescription = ""
+              return new eba.Result().setData('wmt:Product', item)
+            } else {
+              return { error: "I haven't found any product" }
+            }
+          })
+          .catch((error) => {
+            return { error: `Walmart API error: ${error}` }
+          })
+      }
+    notes: ''
   - name: 'wmt:SearchProductsByName'
     signature: 'wmt:Products (optional :WithName (data :UserString)) -> data wmt:Products'
     kind: 'nodejs:8'
