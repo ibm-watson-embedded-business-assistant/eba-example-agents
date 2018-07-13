@@ -12,12 +12,14 @@ description: |+
   - what is description sentiment for the first product?
   - show me popular products with negative description
   - show me popular products with positive description
+  - notify me if price of product "Maverix Monster Electric Skateboard" is less than $50
 
 settings:
   - name: apiKey
     value: your-api-key-here
     notes: 'Get your API key at https://developer.walmartlabs.com/'
 concepts:
+  - name: ':Name'
   - name: ':UserString'
   - name: ':WithName'
   - name: 'wmt:TrendingNow'
@@ -53,6 +55,7 @@ concepts:
     ontology:
       subClassOf: ':Showable'
     attributes:
+      ':Name': name
       'wmt:MSRP': msrp
       'wmt:SalePrice': salePrice
       'wmt:Description': shortDescription
@@ -69,7 +72,33 @@ patterns:
   - 'show {trending|wmt:Trending} {products|wmt:Products}'
   - 'show {popular|wmt:Trending} products'
 actions:
-  - name: 'wmt:GetProductByName'
+  - name: 'wmt:SearchProductsByName'
+    signature: 'wmt:Products (optional :WithName (data :UserString)) -> data wmt:Products'
+    kind: 'nodejs:8'
+    code: |-
+      const request = require('request-promise-native')
+      const eba = require('eba')
+
+      module.exports.main = function (params) {
+        let h = new eba.Params(params)
+        let nameString = h.get(":UserString")
+
+        return request
+          .get(`http://api.walmartlabs.com/v1/search?apiKey=${params.settings.apiKey}&query=${encodeURIComponent(nameString)}`)
+          .then(JSON.parse)
+          .then(({items}) => {
+            items.forEach((item) => {
+              if (!item.shortDescription)
+                item.shortDescription = ""
+            })
+            return new eba.Result().setData('wmt:Products', items);
+          })
+          .catch((error) => {
+            return { error: `Walmart API error: ${error}` }
+          })
+      }
+    notes: ''
+  - name: 'wmt:SearchProductByName'
     signature: 'wmt:Product (optional :WithName (data :UserString)) -> data wmt:Product'
     kind: 'nodejs:8'
     code: |-
@@ -81,19 +110,20 @@ actions:
         let nameString = h.get(":UserString")
 
         return request
-          .get(`http://api.walmartlabs.com/v1/trends?apiKey=${params.settings.apiKey}`)
+          .get(`http://api.walmartlabs.com/v1/search?apiKey=${params.settings.apiKey}&query=${encodeURIComponent(nameString)}`)
           .then(JSON.parse)
           .then(({items}) => {
-            items.forEach((item) => {
+            let item = items[0]
+            if (item) {
               if (!item.shortDescription)
                 item.shortDescription = ""
-            })
-            let item = items.find(x => x.name == nameString)
-            if (item) {
               return new eba.Result().setData('wmt:Product', item)
             } else {
               return { error: "I haven't found any product" }
             }
+          })
+          .catch((error) => {
+            return { error: `Walmart API error: ${error}` }
           })
       }
     notes: ''
@@ -102,7 +132,7 @@ actions:
     kind: 'nodejs:8'
     code: |-
       const request = require('request-promise-native')
-      const {Result} = require('eba');
+      const eba = require('eba');
 
       const main = ({settings}) => {
         return request
@@ -113,8 +143,11 @@ actions:
               if (!item.shortDescription)
                 item.shortDescription = ""
             })
-            return new Result().setData('wmt:Products', items);
-          });
+            return new eba.Result().setData('wmt:Products', items);
+          })
+          .catch((error) => {
+            return { error: `Walmart API error: ${error}` }
+          })
       }
       module.exports = {main}
 rules:
