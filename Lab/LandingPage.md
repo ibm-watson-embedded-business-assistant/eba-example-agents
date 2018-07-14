@@ -11,4 +11,4 @@ The following articles describe various features of Watson Assistant:
 
 > _You can keep this window open while you are working. Stick it to the conversation area on the left side to free some space._
 
-Also you can find some tips [here](DevTips.md).
+You can find some tips [here](DevTips.md).
