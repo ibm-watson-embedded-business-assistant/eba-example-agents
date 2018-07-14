@@ -17,6 +17,4 @@ When conversing with WA, it's enough to mention certain concept once in a patter
 
 So just one pattern will receive a boost factor as cardinality of the cartesian product:
 
-```
-portable NL pattern X auto synonyms X spell checking X auto translation X permutations X composability X polymorphism.
-```
+`portable NL pattern X auto synonyms X spell checking X auto translation X permutations X composability X polymorphism\
