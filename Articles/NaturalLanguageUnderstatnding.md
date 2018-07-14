@@ -15,4 +15,8 @@ When conversing with WA, it's enough to mention certain concept once in a patter
     * You can use Watson NLC for high level intent classification and its output can be used in downstream reasoning.
     * You can even intercept reasoning pipeline in the middle of a conversation and apply a completely different approach to handle NL questions like we do in our Riddle and Zork examples.
 
-So just one pattern will receive a boost factor as cardinality of the cartesian product: `portable NL pattern X auto synonyms X spell checking X auto translation X permutations X composability X polymorphism.`
+So just one pattern will receive a boost factor as cardinality of the cartesian product:
+
+```
+portable NL pattern X auto synonyms X spell checking X auto translation X permutations X composability X polymorphism.
+```
