@@ -1,4 +1,4 @@
-#  Amplification in natural language understanding
+## Amplification in natural language understanding
 
 Let's examine the ways in which Watson Assistant (WA) boosts natural language understanding.
 
