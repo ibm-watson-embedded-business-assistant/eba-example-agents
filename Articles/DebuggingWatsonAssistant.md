@@ -4,9 +4,9 @@ Watson Assistant was created with transparency in mind – we did not want to pr
 
 #### Syntactic Parsing
 
-After asking the assistant a question, hover over your question to see an information icon appear in the top right portion of the the message. Clicking this icon will reveal a tokenized representation of your original question. This tokenized representation will contain a part of speech (POS) breakdown of the questions along with the concept annotations selected by the assistant. 
+After asking the assistant a question, hover over your question to see an information icon appear in the top right portion of the the message. Clicking this icon will reveal a tokenized representation of your original question. This tokenized representation will contain a part of speech (PoS) breakdown of the questions along with the concept annotations selected by the assistant. 
 
-![syntatic-parsing.png](../Lab/assets/images/syntatic-parsing.png)
+![syntatic-parsing.png](../Lab/assets/images/syntatic-parsing.png#width=200px)
 
 *Common Bugs*: Parsing and annotation are earlier steps in the assistant's pipeline and can be particularly useful to consult when you notice an empty response from the assistant. A common cause of such responses is unannotated tokens, which result from a lack of relevant patterns. The concepts used in these annotations are the concepts that will be used later in the reasoning pipeline, so you will want to ensure that the assistant can correctly annotate your input, and, futhermore, that the actions you have declared correctly require these concepts. For instance, if you have a pattern `show me {x|:X}`, but you do not have any actions which produce `data :X`, you will likely get an unsatisying response from the assistant. It is through patterns that you can influence the assistant's understanding of parsing and annotations. It is through actions, that you link these concepts together to produce data.
 
