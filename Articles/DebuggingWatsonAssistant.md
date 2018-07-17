@@ -26,13 +26,13 @@ The information space also contains a set of auxilary nodes, viz. token, meta, a
 
 In addition to the variant nodes within the information space, the assistant provides user's a convenience to view all possible interpretations for a given question. By asking "show me reasoning meta", the assistant will show the alternative understandings for a particular question.
 
-<p align="center"><img src="../Lab/assets/images/alternative-intrepretations.png" width=400px height=375px></p>
+![alternative-intrepretations.png](../Lab/assets/images/alternative-intrepretations.png)
 
 #### Reasoning in Debug Mode
 
 To bring alternative understandings into the information space, simply asking your question and append "||debug" to the end of it, e.g. "show me all invoices||debug". The information space will now display all alternative variants. As a fair warning, the assistant is able to reason about many thousands of alternatives at a time, so this view can become too large for more complex questions. In order to view one particular path in isolation, you should double click the `message` node associated with that variant. Double clicking will highlight this specific variant path and hide the remaining paths for easier introspection.
 
-<p align="center"><img src="../Lab/assets/images/alternative-path.png" width=400px height=375px></p>
+![alternative-path.png](../Lab/assets/images/alternative-path.png)
 
 #### Debug Tab
 
