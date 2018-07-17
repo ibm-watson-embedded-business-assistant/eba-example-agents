@@ -8,7 +8,7 @@ The following articles describe various features of Watson Assistant:
 * [Amplification in Natural Language Understanding](../Articles/NaturalLanguageUnderstatnding.md)
 * [Debugging Watson Assistant](../Articles/DebuggingWatsonAssistant.md)
 
-> _This documentation is work in progress. You are welcome to contribute._
+> _This documentation is work in progress. You are welcome to contribute. Just click edit link in the top right corner and submit a pull request._
 
 > _You can keep this window open while you are working. Stick it to the conversation area on the left side to free some space._
 
