@@ -6,6 +6,7 @@ As you begin your agent development, you may want to familarize yourself with th
 
 The following articles describe various features of Watson Assistant:
 * [Amplification in Natural Language Understanding](../Articles/NaturalLanguageUnderstatnding.md)
+* [Debugging Watson Assistant](../Articles/DebuggingWatsonAssistant.md)
 
 > _This documentation is work in progress. You are welcome to contribute._
 
