@@ -16,9 +16,9 @@ This script should be loaded in the start of your application by simply adding a
     <script src="https://eba.ibm.com/static/assistant.js"></script>
     <script>
         IBM_Meta = {
-			userFirstName: "John",
-			userLastName: "Doe"
-		}
+            userFirstName: "John",
+            userLastName: "Doe"
+        }
         IBM_EBA.setup({
             agent_name: "Socrates"
             access_token: "1234",
