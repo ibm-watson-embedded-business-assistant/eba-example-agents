@@ -1,4 +1,4 @@
-##Lab Control Bar
+## Control bar
 
 #### Agent selector
 
