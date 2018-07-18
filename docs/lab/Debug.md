@@ -1,4 +1,4 @@
-### Debug Tab
+### Debug tab
 
 This is responsbile for showing debug output related to action invocations. Watson Assistant uses IBM FaaS to execute actions, and we have provided details related to timings, logs, and other infomration within this tab.
 

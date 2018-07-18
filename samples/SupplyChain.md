@@ -4,7 +4,7 @@ The supply chain agent is perhaps the most concrete sample that we provide insof
 
 To get the most out of this sample, please load the [yaml configuration](./supplychain.yaml) into your own sandbox enviornment. You will need access to the [supply chain insights api](https://developer.ibm.com/api/view/scinsights-prod:supply-chain-insights:title-Supply_Chain_Insights) in order to use this agent. Otherwise this agent should be treated as read-only.
 
-### Dev Notes
+### Dev notes
 
 #### General
 

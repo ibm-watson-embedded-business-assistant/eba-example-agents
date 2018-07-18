@@ -4,7 +4,7 @@ The Walmart agent should prvoide insight into how to leverage an existing api. Y
 
 To get the most out of this sample, please load the [yaml configuration](./walmart.yaml) into your own sandbox enviornment. You will need to supply your own walmart apiKey within settings. You can get your API key [here](https://developer.walmartlabs.com).
 
-### Dev Notes
+### Dev notes
 
 #### General
 
@@ -22,7 +22,7 @@ Patterns for this agent are straight forward. We label those concepts and attrib
 
 This sample makes use of one action, viz. a call to get all trending products. You will notice that the action body contains the definition of the `main` function. This function takes as input any settings parameters that were set by the developer. Hence, it is through this parameter that developers can access their apiKey to call their existing apis.
 
-#### Rewriting Rules
+#### Rewriting rules
 
 We supply one rewriting rule to the agent to inform it that whenever we ask for a `wmt:TrendingNow` concept, we are asking for the slightly lower level composition of concepts, viz. `wmt:Products(wmt:Trending)`, i.e. products trending now.
 

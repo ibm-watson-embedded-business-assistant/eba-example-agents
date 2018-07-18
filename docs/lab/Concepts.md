@@ -6,7 +6,7 @@ This tab is responsible for managing your skill's concepts.
 
 A concept will require a `:` deliminated name of the following form (domain):(concept), where the domain is optional, but encouraged. For example, `marketing:Mailings` and `:Size` is are valid concept names. Ill formed names will be rejected. Note that the domain can be scoped to your organization, e.g. `wca:Mailings` for Watson Campaign Automation (wca). 
 
-#### Spelling, SubClasses, and ListOfs
+#### Spelling, subClasses, and listOfs
 
 The most common ontology predicates have been factored out into their own tabs within the concepts table. It is important to understand each. Spelling is useful for natural language generation (NLG). Watson Assistant does not produce hardcoded, canned responses to user questions. It relies on NLG to reply intelligently to users. Providing a spelling of your concept enables the system to reply to you in an intellegent and expected manner. SubClasses are used to model a hierarchial relationship between concepts. For instance, anything which is a subclass of `:Showable` concept is able to be shown to the user. isListOf is a predicate used to distinguish collections from the singular counterparts.
 

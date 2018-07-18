@@ -8,7 +8,7 @@ show {trending|wmt:Trending} {products|wmt:Products}
 
 This pattern tells the system that trending and products tokens correspond to the concepts `wmt:Trending` and `wmt:Products` respectively. From now on, the system will recognize and consider "trending" and "products" approriately for all further input. Additionally, it is able to capture the syntatic part of speech tree associated with these tokens.
 
-#### Best Practices
+#### Best practices
 
 It is best to enter patterns in way that logically separates concepts. For instance, "show me {product id|:ProductId}" actually annotates two concepts as one, viz. "product" and "id". The better practice is to enter patterns for id and patterns for product separately, since they are actually two different concepts, viz. `{id|wmt:Identifier}` and `{product|wmt:Product}`. In applications with multiple business entities and multiple ways to refer to these entities, you will find yourself entering many unnecessary patterns if you do not separate them appropriately. 
 

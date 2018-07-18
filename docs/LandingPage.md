@@ -5,7 +5,7 @@ Watson Assistant consists of a reasoning engine and a set of domain agents. Agen
 As you begin your agent development, you may want to familarize yourself with the [components](./components/Components.md) necessary for building an agent, as well as with the [development lab](./lab/Overview.md) that is used to program them. Additionally, our team has created a set of useful [samples](./Samples.md) to help you get started.
 
 The following articles describe various features of Watson Assistant:
-* [Amplification in Natural Language Understanding](./articles/NaturalLanguageUnderstatnding.md)
+* [Amplification in natural language understanding](./articles/NaturalLanguageUnderstatnding.md)
 * [Debugging Watson Assistant](./articles/DebuggingWatsonAssistant.md)
 
 > _This documentation is work in progress. You are welcome to contribute. Just click edit link in the top right corner and submit a pull request._

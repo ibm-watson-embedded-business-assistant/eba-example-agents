@@ -95,7 +95,7 @@ Constraints are simply a way to qualify your concepts using rdf triples. As in t
 
 In certain cases, it is possible to refer to a constraint paramter multiple times within a single signature, so it is necessary to distinguish between these references. For instance, `a subClassOf :Showable => a(reference:Direct, context data a @src)` makes uses of the constraint parameter `a` twice. To distinguish the second occurence of the parameter, we add an alias: `@src`. Now, within the body of our action, we can require data by indexing our deps as "src".
 
-#### ParamType and QueryType
+#### ParamType and queryType
 
 Concepts within a signature can be qualified with additional specifications to apply different semantics to your action. These specifications are applied through the use of `paramTypes` and `queryTypes`. `paramTypes` qualify the parameters within a given signature, while `queryTypes` qualify the actual query. 
 

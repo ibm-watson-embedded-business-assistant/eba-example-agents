@@ -4,7 +4,7 @@ In particular, we support a set of inspection operations for purchase orders as 
 
 To get the most out of this sample, please load the [yaml configuration](edi.yaml) into your own sandbox enviornment.
 
-### Dev Notes
+### Dev notes
 
 #### General
 
@@ -31,7 +31,7 @@ This pattern will enable Watson Assistant to perform natural language understand
 
 We have provided some detailed description of action signatures within the configuration itself. The actions are modeled in a straight forward fashion. We support actions for fetching collections or fetching particualr elements by an indentifier, e.g. purchase order number. For data modification actions, you will see that we use the following pattern `dataModifier(context data edi:Invoice)`. We are supporting actions that modify data within the context of the information space. We expect users to input things like "set transporation mode to air", which modifies the invoice already existing within the conversation context. It is important to note that the data modifiers are simply appending attributes onto the existing invoice, e.g. canceling an invoice appends `isCancled:false` to the invoice. In order to persist these changes remotely, we need to actually finish the invoice submission process.The action bodies themselves make use of the Params and Result api to fetch objects from storage and update data to objects within the information space respectively. 
 
-#### Rewriting Rules
+#### Rewriting rules
 
 In order to show the user the results of our modifications. We following a convention of converting our data modification concepts to be reintrepeting as `:ActionShow`. This has the effect that, after performing modifications to the invoice, the resulting invoice will be shown to the end user after the operation completes. 
 

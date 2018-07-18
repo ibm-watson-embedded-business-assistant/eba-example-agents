@@ -4,7 +4,7 @@ When the user says "Watson, ask me a riddle", this agent will respond accordingl
 
 To get the most out of this sample, please load the [yaml configuration](./riddles.yaml) into your own sandbox enviornment.
 
-### Dev Notes
+### Dev notes
 
 #### General
 

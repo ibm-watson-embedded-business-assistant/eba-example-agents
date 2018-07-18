@@ -1,4 +1,4 @@
-## Node Modules
+## Node modules
 
 The following packages are pre-installed in the Node.js version 8.11.1 environment:
 

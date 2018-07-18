@@ -1,4 +1,4 @@
-### Explore Tab
+### Explore tab
 
 This tab is responsible for visualizing the various components that constitute your assistant. Watson Assistant may be represented as a graph composed of nodes and edges. The selector legends located in the top left corner of the explore screen will allow you to toggle and inspect various details of the graph.
 

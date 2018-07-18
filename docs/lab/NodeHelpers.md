@@ -1,4 +1,4 @@
-### Node Helpers
+### Node helpers
 
 A Node.js action within Watson Assistant can import the package "eba" which includes a variety of utility methods for working within the Assistant framework. The package can be required with `const eba = require("eba");`. 
 
@@ -32,7 +32,7 @@ The following functions are supported within `Result`:
 * `addTags(paramName, ..tags)`   -- sets tags of the node for paramName as tags
 * `store(key, value)`            -- stores the key, value pair to the result's storage
 
-#### LazyValue and LazyLike
+#### LazyValue and lazyLike
 
 Watson Assistant supports lazy valued collections to reduce its data footprint when reasoning. A collection may be either lazy valued or real valued. If it is lazy valued, it is will be instantiated as a `LazyValue`. If it is real valued, it will be instantiated as a `LazyLike`. Both lazy and real valued collection support the same operations--hence the name `LazyLike`. This is particularly useful for developers, since certain actions may support both types of collections.
 
