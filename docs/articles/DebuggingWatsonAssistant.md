@@ -1,4 +1,4 @@
-## Debgguing Watson Assistant
+## Debugging Watson Assistant
 
 Watson Assistant was created with transparency in mind – we did not want to provide users with another AI black box. As such, the assistant provides users a variety of open debug capabilities to inspect every relevant aspect of its own understanding. You will find these introspection capabilities useful in different steps of the assistant's reasoning pipeline.
 
