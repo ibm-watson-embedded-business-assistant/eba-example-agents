@@ -16,7 +16,7 @@ The main domain object that this agent supports is `wmt:Products`. This concept 
 
 #### Patterns
 
-Patterns for this agent are straight forward. We label those concepts and attributes that we expect users to ask accordingly. Please view [patterns documentation](../Lab/Components.md#patterns) if you are unfamilar with the notion of patterns within Watson Assistant.
+Patterns for this agent are straight forward. We label those concepts and attributes that we expect users to ask accordingly. Please view [patterns documentation](../docs/components/Patterns.md) if you are unfamilar with the notion of patterns within Watson Assistant.
 
 #### Actions
 
