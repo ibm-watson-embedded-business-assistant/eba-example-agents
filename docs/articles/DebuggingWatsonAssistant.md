@@ -4,7 +4,7 @@ Watson Assistant was created with transparency in mind – we did not want to pr
 
 #### Syntactic parsing
 
-After asking the assistant a question, hover over your question to see an information icon appear in the top right portion of the the message. Clicking this icon will reveal a tokenized representation of your original question. This tokenized representation will contain a part of speech (PoS) breakdown of the questions along with the concept annotations selected by the assistant. 
+After asking the assistant a question, hover over your question to see an information icon appear in the top right portion of the message. Clicking this icon will reveal a tokenized representation of your original question. This tokenized representation will contain a part of speech (PoS) breakdown of the questions along with the concept annotations selected by the assistant. 
 
 ![syntatic-parsing.png](../assets/images/syntatic-parsing.png#zoom=50%)
 
