@@ -20,15 +20,11 @@ Click the input tab to enter an input definition.
 
 #### Modules
 
-Actions within Watson Assistant can make use of a variety of pre-installed modules.
-
-* [node modules](./NodeModules.md)
+Actions within Watson Assistant can make use of a variety of pre-installed modules: [node modules](./NodeModules.md)
 
 #### Helpers
 
-Watson Assistant also provides developers with a utility pacakge for working with its own components.
-
-* [node helpers](./NodeHelpers.md)
+Watson Assistant also provides developers with a utility pacakge for working with its own components: [node helpers](./NodeHelpers.md)
 
 
-[Learn more about actions](./Actions.md)
+[Learn more about actions](../components/Actions.md)

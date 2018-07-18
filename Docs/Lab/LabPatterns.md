@@ -8,4 +8,4 @@ A pattern effectively contains an annotated question that you would like your as
 
 Concepts are color coded within the lab to help assistant readablity.
 
-[Learn more about patterns](./Patterns.md)
+[Learn more about patterns](../components/Patterns.md)

@@ -23,4 +23,4 @@ The ontology tab link is provided to developers in order to inspect existing ont
 
 Notes are simply plain text descriptions regarding a particular concept. Feel free to use notes in any way to suits your needs. They may be particularly useful in denoted experimental concepts or disambiguation in the case of collaborative development.
 
-[Learn more about concepts and ontology](./Ontology.md)
+[Learn more about concepts and ontology](../components/Ontology.md)
