@@ -38,7 +38,7 @@ To bring alternative understandings into the information space, simply asking yo
 
 Actions allow the assistant to perform api requests and other operations to produce real data. The Debug tab is created to provide insight into the FaaS code invocations, timings, and logs. Consequently, this tab is the best place to debug any runtime errors hindering the assistant.
 
-*Common Bugs*: If you see a 401 error after asking a question, it is likely due to an invalid api credential. Supply valid credentials using the Secrets or Settings tab. If you see a 500 error after asking a question, the problem lies in the api you are connecting to. If you see that null data is produced within the information space, there may likely be a runtime error within your action body itself, e.g. null pointer.
+*Common Bugs*: If you see a 401 error after asking a question, it is likely due to an invalid api credential. Supply valid credentials using the Secrets or Settings tab. If you see a 500 error after asking a question, the problem lies in the api you are connecting to. If you see that null data is produced within the information space, there may likely be a runtime error within your action body itself.
 
 #### Browser Console
 
