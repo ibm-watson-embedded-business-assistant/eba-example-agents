@@ -16,7 +16,7 @@ This agent follows a similar paradigm as our other samples. We have our main dom
 
 #### Patterns
 
-Patterns for this agent are straightforward. Please see our [documentation on patterns](../Lab/Components.md#patterns) if you are unfamiliar with this component of the assistant.
+Patterns for this agent are straightforward. Please see our [documentation on patterns](../docs/components/Patterns.md) if you are unfamiliar with this component of the assistant.
 
 #### Actions
 
