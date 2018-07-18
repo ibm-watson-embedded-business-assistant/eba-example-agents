@@ -7,5 +7,5 @@ The development lab is organized into [control bar](./ControlBar.md) and 8 tabs,
 * [Actions](./Actions.md)
 * [Rules](./Rules.md)
 * [Assets](./Assets.md)
-* [Explore](./LabExplore.md)
+* [Explore](./Explore.md)
 * [Debug](./Debug.md)
