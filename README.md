@@ -23,7 +23,7 @@ Please visit [Programming Watson Assistant](docs/LandingPage.md) for more inform
 * EBA Core Reasoning Machine OOTB
   * Standards-based Semantic Ontology
   * Base-level language understanding
-  * Domain-specific language understand 
+  * Domain-specific language understanding
   * Language extensions and annotations supported via embedded extention for business user
   * Disambiguation handling provided via enbedded extenstions for business user 
   * Automatic language translation for non-English input
