@@ -1,14 +1,1 @@
 theme: jekyll-theme-minimal
-analytics:
-  provider: "google-gtag"
-  google:
-    tracking_id: "UA-1234567-8"
-    anonymize_ip: false # default
-
-author:
-  name   : "Your Name"
-  avatar : "/assets/images/bio-photo.jpg"
-  bio    : "My awesome biography constrained to a sentence or two goes here."
-  email  : # optional
-  uri    : "http://your-site.com"
-  home   : # null (default), "absolute or relative url to link to author home"
