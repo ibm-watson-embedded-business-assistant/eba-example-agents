@@ -59,6 +59,7 @@ Please visit [Programming Watson Assistant](docs/LandingPage.md) for more inform
 
 * EBA Core Reasoning Machine
   * Curiosity extension
+  * More to come... deciding what to publicly share ;)
 
 Please log issues you encounter with EBA, and if you have a contribution, please submit a pull request.
 
