@@ -1,8 +1,8 @@
-## Greetings from the EBA Core Engineering Team
+## Greetings from the EBA core engineering team
 
 This is the public home of the Watson Embedded Business Assistant ("EBA"). EBA is an AI framework comprised of a proprietary feature-rich machine reasoning core, generic & industry domain-specific business agents, and an interactive user experience. 
 
-## Brief History of Watson Embedded Business Assistant ("EBA") ## 
+## Brief history of Watson Embedded Business Assistant ("EBA") ## 
 
 EBA began in 2016 as a proof of concept. The aim was to create a digital assistant for the business practioner using modern techniques in machine reasoning. We started by describing and emulating the nature of the intern-- growing from a helpful admin, not capable of making decisions, into a trusted employee. In order to do this, we needed to erase the typcal intent-based pre-crafted predicate rule system ans develop a wholly new approach to observation, self-learning, and domain application. We also recognized we needed to divorce the developer from on-going care and feeding of the AI, receiving full instruction through passive and active interaction with the business user. We needed to code a framework for an AI that becomes curious about its business context, and seeks to fill gaps in knowledge. 
 
@@ -12,13 +12,13 @@ What we found through these early years of EBA engineering was a profound means 
 
 While we haven't yet released the "curiosity extension", we feel we've advanced our work enough to share it with you. We have  opened up this fully self-contained business user and lab experience, along with a base set of contributing agents. In this way, our colleagues can craft custom AI-driven business experiences for their own use cases right along side our team. Please explore this public repository for articles and deeper dives on what powers EBA.
 
-## EBA Construction ##
+## EBA construction ##
 
 EBA borrows from many well-established machine reasoning techniques dating back to the 1980s and later. We've attracted a core group of engineers that have taken these concepts and greatly expanded on them through elegant functional design. In fact, EBA core was built using Haskell. Domain-agent extensions can be written in any language thanks to IBM Cloud Functions and the integration we've crafted to bridge other runtimes with our reasoning core.
 
 Please visit [Programming Watson Assistant](docs/LandingPage.md) for more information about EBA construction and building extensions using our sample agents included in this repository.
 
-## Current Major Features ##
+## Current major features ##
 
 * EBA Core Reasoning Machine OOTB
   * Standards-based semantic ontology
@@ -59,7 +59,7 @@ Please visit [Programming Watson Assistant](docs/LandingPage.md) for more inform
   
 * Grue is coming for you
  
-## Prospective Features ##
+## Prospective features ##
 
 * EBA Core Reasoning Machine
   * Curiosity extension
