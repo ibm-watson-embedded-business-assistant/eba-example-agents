@@ -1,2 +1,4 @@
 theme: jekyll-theme-minimal
+title: Watson Embedded Business Assistant
+description: This is the public home of the Watson Embedded Business Assistant (“EBA”). EBA is an AI framework comprised of a proprietary machine reasoning core, generic & industry domain-specific business agents, and an interactive user experience.
 google_analytics: UA-122581302-1
