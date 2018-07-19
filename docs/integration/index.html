@@ -1,0 +1,29 @@
+</!DOCTYPE html>
+<html>
+<head>
+    <title>Host Application</title>
+    <script src="https://eba.ibm.com/static/oms.js"></script>
+    <script>
+        IBM_EBA.setup({
+            userToken: "567890",
+            LoginId: "Kevin Grozav"
+        })
+    </script>
+</head>
+<body>
+    <button onclick="javascript:IBM_EBA.send({
+        orderMeta: {
+            orderID: 5678,
+            orderName: 'Paper',
+            customer: 1234
+        }})">Send orders details</button>
+    <button onclick="javascript:IBM_EBA.send({
+        customerMeta: {
+            customerID: 1234,
+            name: 'Morgan Freeman'
+        }})">Send customer details</button>
+    <button onclick="javascript:IBM_EBA.send({
+            empty: ''
+        })">Hide Insights</button>
+</body>
+</html>
