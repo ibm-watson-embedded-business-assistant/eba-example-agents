@@ -36,6 +36,8 @@ During the call to `IBM_EBA.setup`, you can pass in the following fields to cust
 * agent_name –– replaces Watson as the name to whatever is supplied
 * agent_voice –– tunes Watson Assistant's voice
 * user_first_name, user_last_name, user_full_name –– makes Watson Assistant aware about current user so it will use personalization in answers.
+* disable_button –– enables button control when set to false, disables button control when set to true
+* disable_shadow –– enables modal shadow when set to false, disables modal shadow when set to true
 
 #### IBM_EBA API
 
