@@ -35,7 +35,7 @@ Please visit [Programming Watson Assistant](docs/LandingPage.md) for more inform
   * Longitudinal and session based self-learning for increased accuracy in response
   * NLG-derived response framework -- NO hardcoded outputs!
   
-*  Business Process Extensions
+* Business Process Extensions
   * Multi-channel and cross-channel mode
   * Multi-human actor mode
   * Track and alert business user for any data state change (basic anomaly detection)
