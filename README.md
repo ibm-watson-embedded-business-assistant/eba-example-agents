@@ -20,7 +20,7 @@ Please visit [Programming Watson Assistant](docs/LandingPage.md) for more inform
 
 ## Current major features ##
 
-* EBA Core Reasoning Machine OOTB
+* EBA core reasoning machine 
   * Standards-based semantic ontology
   * Base-level language understanding
   * Domain-specific language understanding
@@ -35,7 +35,7 @@ Please visit [Programming Watson Assistant](docs/LandingPage.md) for more inform
   * Longitudinal and session based self-learning for increased accuracy in response
   * NLG-derived response framework -- NO hardcoded outputs!
   
-* Business Process Extensions
+* Business process extensions
   * Multi-channel and cross-channel mode
   * Multi-human actor mode
   * Track and alert business user for any data state change (basic anomaly detection)
@@ -47,11 +47,11 @@ Please visit [Programming Watson Assistant](docs/LandingPage.md) for more inform
   * News 
   * User and organizational profiling (goals, language)
   
-* UI Core and Extensions
+* UI core and extensions
   * Headless integration with other chat services
   * HTML/ReactJS chatbot-style experience
   
-* Developer Lab Experienc
+* Developer lab experience
   * Embedded directly in interface. No tools required.
   * Diagnostic tools
   * Instant self-service onboarding
@@ -61,7 +61,7 @@ Please visit [Programming Watson Assistant](docs/LandingPage.md) for more inform
  
 ## Prospective features ##
 
-* EBA Core Reasoning Machine
+* EBA core reasoning machine
   * Curiosity extension
   * More to come... deciding what to publicly share ;)
 
