@@ -34,6 +34,7 @@ Please visit [Programming Watson Assistant](docs/LandingPage.md) for more inform
   * Ontology-driven polymorphic actions and rules
   * Longitudinal and session based self-learning for increased accuracy in response
   * NLG-derived response framework -- NO hardcoded outputs!
+  
 *  Business Process Extensions
   * Multi-channel and cross-channel mode
   * Multi-human actor mode
@@ -45,15 +46,18 @@ Please visit [Programming Watson Assistant](docs/LandingPage.md) for more inform
   * Generic tone analysis 
   * News 
   * User and organizational profiling (goals, language)
+  
 * UI Core and Extensions
   * Headless integration with other chat services
   * HTML/ReactJS chatbot-style experience
+  
 * Developer Lab Experienc
   * Embedded directly in interface. No tools required.
   * Diagnostic tools
   * Instant self-service onboarding
   * Contextual documentation, tutorials, examples
-* Easter egg
+  
+* Grue is coming for you
  
 ## Prospective Features ##
 
