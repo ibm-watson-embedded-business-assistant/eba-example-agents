@@ -188,6 +188,52 @@ actions:
 rules:
   - name: rule
     signature: 'wmt:TrendingNow -> wmt:Trending (wmt:Products)'
+endpoints:
+  - name: '@render'
+    kind: 'nodejs:8'
+    code: |-
+      function renderProduct(item) {
+        return {
+          text: item.name,
+          thumb_url: item.mediumImage,
+          fields: [
+            {
+              title: "Price",
+              value: Number(item.salePrice).toLocaleString("en-US", { style: "currency", currency: "USD"}).replace(/\.00/,""),
+              short: true
+            }
+          ]
+        }
+      }
+
+      function render(channel, { text, data, name }) {
+        if (channel == "slack") {
+          if (name == "wmt:Products") {
+            let attachments = data.map(renderProduct)
+            return {
+              text: text,
+              attachments: attachments
+            }
+          }
+          
+          if (name == "wmt:Product") {
+            return {
+              text: text,
+              attachments: [renderProduct(data)]
+            }
+          }
+        }
+      }
+
+      module.exports.main = function({ input }) {
+        let result = render(input.channel, input.data)
+        if (result) {
+          return { output: result }
+        } else {
+          return {}
+        }
+      }
+    notes: ''
 statics:
   - name: wmt/products.jsx
     mime: text/jsx
