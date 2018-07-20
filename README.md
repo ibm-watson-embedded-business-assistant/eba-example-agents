@@ -11,8 +11,6 @@ What we found through these early years of EBA engineering was a profound means 
 
 While we haven’t yet released the “curiosity extension”, we feel we’ve advanced our work enough to share it with you. We have opened up this fully self-contained business user and lab experience, along with a base set of contributing agents. In this way, our colleagues can craft custom AI-driven business experiences for their own use cases right alongside our team. Please explore this public repository for articles and deeper dives on what powers EBA.
 
-While we haven't yet released the "curiosity extension", we feel we've advanced our work enough to share it with you. We have  opened up this fully self-contained business user and lab experience, along with a base set of contributing agents. In this way, our colleagues can craft custom AI-driven business experiences for their own use cases right along side our team. Please explore this public repository for articles and deeper dives on what powers EBA.
-
 ## EBA construction ##
 
 EBA borrows from many well-established machine reasoning techniques dating back to the 1980s and later. We've attracted a core group of engineers that have taken these concepts and greatly expanded on them through elegant functional design. In fact, EBA core was built using Haskell. Domain-agent extensions can be written in any language thanks to IBM Cloud Functions and the integration we've crafted to bridge other runtimes with our reasoning core.
