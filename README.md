@@ -24,7 +24,7 @@ Please visit [Programming Watson Assistant](docs/LandingPage.md) for more inform
   * Base-level language understanding
   * Domain-specific language understanding
   * Language extensions and annotations supported via embedded extention for business user
-  * Disambiguation handling provided via enbedded extenstions for business user 
+  * Disambiguation handling provided via embedded extenstions for business user 
   * Automatic language translation for non-English input
   * Business organization-scoped persistence of language extensions
   * Data management provided via concept-linked actions (link any API/source to EBA core)
