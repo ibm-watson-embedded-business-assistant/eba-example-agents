@@ -2,9 +2,6 @@
 ---
 
 @import "{{ site.theme }}";
-header img {
-  width: 100px;
-}
 img[src*="zoom=50%"] {
   zoom: 50%;
   margin: 0 auto;
