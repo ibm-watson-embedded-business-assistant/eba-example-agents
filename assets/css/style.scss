@@ -2,6 +2,9 @@
 ---
 
 @import "{{ site.theme }}";
+body {
+  margin: 0;
+}
 img[src*="zoom=50%"] {
   zoom: 50%;
   margin: 0 auto;
