@@ -7,3 +7,8 @@ img[src*="zoom=50%"] {
   margin: 0 auto;
   display: block;
 }
+.wrapper:after {
+  content: "";
+  display: block;
+  clear: both;
+}
