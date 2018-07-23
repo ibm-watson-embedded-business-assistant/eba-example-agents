@@ -47,9 +47,11 @@ header ul.index {
     }
   }
 }
-a {
-  &, &:hover, &:focus {
-    color: #069;
-    font-weight: bold;
+@media (hover: none) {
+  a {
+    &, &:hover, &:focus {
+      color: #069;
+      font-weight: bold;
+    }
   }
 }
