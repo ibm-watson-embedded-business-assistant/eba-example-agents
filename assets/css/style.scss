@@ -30,5 +30,20 @@ header ul.index {
     float: none;
     border: none;
     border-radius: 0;
+    &[data-level="0"] {
+      padding-left: 0;
+    }
+    &[data-level="1"] {
+      padding-left: 15px;
+    }
+    a {
+      height: initial;
+      color: initial;
+      font-size: 14px;
+      text-align: left;
+      &:hover {
+        color: initial;
+      }
+    }
   }
 }
