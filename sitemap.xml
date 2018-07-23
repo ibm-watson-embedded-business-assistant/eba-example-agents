@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://www.eba.ai/</loc>
+  <lastmod>2018-07-23T05:09:42+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://www.eba.ai/docs/articles/NaturalLanguageUnderstatnding.html</loc>
+  <lastmod>2018-07-23T05:09:42+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.eba.ai/docs/LandingPage.html</loc>
+  <lastmod>2018-07-23T05:09:42+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.eba.ai/docs/components/Ontology.html</loc>
+  <lastmod>2018-07-23T05:09:42+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.eba.ai/docs/components/Patterns.html</loc>
+  <lastmod>2018-07-23T05:09:42+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.eba.ai/docs/components/Actions.html</loc>
+  <lastmod>2018-07-23T05:09:42+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.eba.ai/docs/components/Rules.html</loc>
+  <lastmod>2018-07-23T05:09:42+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.eba.ai/docs/articles/DebuggingWatsonAssistant.html</loc>
+  <lastmod>2018-07-23T05:09:42+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.eba.ai/docs/Samples.html</loc>
+  <lastmod>2018-07-23T05:09:42+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.eba.ai/docs/components/Components.html</loc>
+  <lastmod>2018-07-23T05:09:42+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.eba.ai/docs/lab/Overview.html</loc>
+  <lastmod>2018-07-23T05:09:42+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.eba.ai/docs/DevTips.html</loc>
+  <lastmod>2018-07-23T05:09:42+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.eba.ai/samples/EDI.html</loc>
+  <lastmod>2018-07-23T05:09:42+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.eba.ai/samples/Walmart.html</loc>
+  <lastmod>2018-07-23T05:09:42+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.eba.ai/samples/SupplyChain.html</loc>
+  <lastmod>2018-07-23T05:09:42+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.eba.ai/samples/Riddles.html</loc>
+  <lastmod>2018-07-23T05:09:42+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.eba.ai/docs/lab/ControlBar.html</loc>
+  <lastmod>2018-07-23T05:09:42+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.eba.ai/docs/lab/General.html</loc>
+  <lastmod>2018-07-23T05:09:42+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.eba.ai/docs/lab/Concepts.html</loc>
+  <lastmod>2018-07-23T05:09:42+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.eba.ai/docs/lab/Patterns.html</loc>
+  <lastmod>2018-07-23T05:09:42+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.eba.ai/docs/lab/Actions.html</loc>
+  <lastmod>2018-07-23T05:09:42+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.eba.ai/docs/lab/Rules.html</loc>
+  <lastmod>2018-07-23T05:09:42+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.eba.ai/docs/lab/Assets.html</loc>
+  <lastmod>2018-07-23T05:09:42+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.eba.ai/docs/lab/Explore.html</loc>
+  <lastmod>2018-07-23T05:09:42+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.eba.ai/docs/lab/Debug.html</loc>
+  <lastmod>2018-07-23T05:09:42+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.eba.ai/docs/lab/NodeModules.html</loc>
+  <lastmod>2018-07-23T05:09:42+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://www.eba.ai/docs/lab/NodeHelpers.html</loc>
+  <lastmod>2018-07-23T05:09:42+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+
+
+</urlset>
