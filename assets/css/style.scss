@@ -38,11 +38,11 @@ header ul.index {
     }
     a {
       height: initial;
-      color: initial;
       font-size: 14px;
       text-align: left;
-      &:hover {
-        color: initial;
+      line-height: 1.4;
+      &, &:hover {
+        color: #267CB9;
       }
     }
   }
