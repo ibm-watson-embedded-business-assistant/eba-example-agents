@@ -19,3 +19,9 @@ img[src*="zoom=50%"] {
   background-color: rgb(76,119,184)!important;
   cursor: pointer;
 }
+header ul.index {
+  background-color: transparent;
+  height: initial;
+  border: none;
+  border-radius: 0;
+}
