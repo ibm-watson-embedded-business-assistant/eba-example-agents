@@ -48,9 +48,9 @@ header ul.index {
   }
 }
 @media (hover: none) {
-  a {
+  a, header ul.index li a {
     &, &:hover, &:focus {
-      color: #069;
+      color: #267CB9;
       font-weight: bold;
     }
   }
