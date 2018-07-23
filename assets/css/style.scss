@@ -30,20 +30,22 @@ header ul.index {
     float: none;
     border: none;
     border-radius: 0;
-    &[data-level="0"] {
-      padding-left: 0;
-    }
-    &[data-level="1"] {
-      padding-left: 20px;
-    }
     a {
-      height: initial;
+      height: 22px;
       font-size: 14px;
       text-align: left;
-      line-height: 1.4;
+      line-height: 22px;
+      margin: 0;
+      padding: 0;
       &, &:hover {
         color: #267CB9;
       }
+    }
+    &[data-level="0"] a {
+      padding-left: 0;
+    }
+    &[data-level="1"] a {
+      padding-left: 20px;
     }
   }
 }
