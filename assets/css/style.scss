@@ -69,3 +69,8 @@ a.btn-download {
     font-weight: normal;
   }
 }
+p.buttons {
+  & > * {
+    margin-bottom: 10px;
+  }
+}
