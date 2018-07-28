@@ -66,7 +66,7 @@ a.btn-download {
     border-radius: 6px;
   &:hover, &:focus {
     font-weight: normal;
-    background-color: lighten(#7893c3, 50%);
+    background-color: transparentize(#7893c3, 0.8);
   }
 }
 p.buttons {
