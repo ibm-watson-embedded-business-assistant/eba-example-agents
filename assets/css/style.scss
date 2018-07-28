@@ -59,7 +59,6 @@ header ul.index {
 }
 a.btn-download {
     line-height: 38px;
-    display: inline-block;
     vertical-align: top;
     border: 1px solid #7893c3;
     width: 137px;
@@ -72,6 +71,7 @@ a.btn-download {
 }
 p.buttons {
   & > * {
+    display: inline-block;
     margin-bottom: 10px;
   }
 }
