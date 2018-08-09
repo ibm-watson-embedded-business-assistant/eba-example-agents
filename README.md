@@ -3,7 +3,7 @@
 This is the public home of the Watson Embedded Business Assistant ("EBA"). EBA is an AI framework comprised of a proprietary feature-rich machine reasoning core, generic & industry domain-specific business agents, and an interactive user experience.
 
 ## Elevator pitch
-EBA is *not* a chat bot. The embedded business assistant is an omni-channel assistant for the business practitioner that happens to support his human business counterpart wherever she may conduct business, including chat, slack, workspaces, voice, and soon SMS. The mission of EBA is to understand the basis of human decisions through observation over time, derive the motivation behind actions in an environment, and then codifying the path and results for machine interpretation and future autonomic response.
+At first glance, you may thing EBA is just another a chat bot-- but dig one level deeper and you'll see this to be a canard. The embedded business assistant is an omni-channel assistant for the business practitioner that happens to support his human business counterpart wherever she may conduct business, including chat, slack, workspaces, voice, and soon SMS. The mission of EBA is to understand the basis of human decisions through observation over time, derive the motivation behind actions in an environment, and then codifying the path and results for machine interpretation and future autonomic response.
 
 ## Brief history of Watson Embedded Business Assistant ("EBA") ## 
 
