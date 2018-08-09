@@ -1,6 +1,9 @@
 ## Greetings from the EBA core engineering team
 
-This is the public home of the Watson Embedded Business Assistant ("EBA"). EBA is an AI framework comprised of a proprietary feature-rich machine reasoning core, generic & industry domain-specific business agents, and an interactive user experience. 
+This is the public home of the Watson Embedded Business Assistant ("EBA"). EBA is an AI framework comprised of a proprietary feature-rich machine reasoning core, generic & industry domain-specific business agents, and an interactive user experience.
+
+## Elevator pitch
+EBA is *not* a chat bot. The embedded business assistant is an omni-channel assistant for the business practitioner that happens to support his human business counterpart wherever she may conduct business, including chat, slack, workspaces, voice, and soon SMS. The mission of EBA is to understand the basis of human decisions through observation over time, derive the motivation behind actions in an environment, and then codifying the path and results for machine interpretation and future autonomic response.
 
 ## Brief history of Watson Embedded Business Assistant ("EBA") ## 
 
@@ -36,8 +39,9 @@ Please visit [Programming Watson Assistant](docs/LandingPage.md) for more inform
   
 * Business process extensions
   * Multi-channel and cross-channel mode
+  * Time-series evaluation
   * Multi-human actor mode
-  * Track and alert business user for any data state change (basic anomaly detection)
+  * Track and notify business user for any data state change
   * Flexible data visualization, including plotting arbitrary vectors
   * Next-best action suggestions based on current session state 
   * Non-conversational data mode (process state/transition observation)
@@ -62,6 +66,8 @@ Please visit [Programming Watson Assistant](docs/LandingPage.md) for more inform
 
 * EBA core reasoning machine
   * Curiosity extension
+  * Advanced, automatic anomaly detection
+  * Autonomic resolution of business events and derived BPM paths
   * More to come... deciding what to publicly share ;)
 
 ## Contributing ##
