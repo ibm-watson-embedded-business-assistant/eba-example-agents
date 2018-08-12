@@ -8,7 +8,7 @@ Naming for actions follow a similar format as naming for concepts, viz. `domain:
 
 #### Signature
 
-Watson Assistant is able to reason about actions provided their signature. The signature can be taught be thought of as a map of mapping inputs to outputs while providing some optional constraints on these parameters. The format used for action signatures are the following, viz. `constraints => input -> output`. Watson Assistant is powered by Haskell, and this paradigm for defining actions will be familar to Haskell developers.
+Watson Assistant is able to reason about actions provided by their signature. The signature can be thought of as a map of inputs to outputs while providing some optional constraints on these parameters. The format used for action signatures are the following, viz. `constraints => input -> output`. Watson Assistant is powered by Haskell, and this paradigm for defining actions will be familar to Haskell developers.
 
 #### Constraints
 
