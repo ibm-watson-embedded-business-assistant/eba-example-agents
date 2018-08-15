@@ -1,0 +1,97 @@
+version: 4
+meta:
+  description: |-
+    ## Example agent that connects with SFDC force APIs. You'll need a sfdc account and related credentials to operate this agent.
+
+    ### Example questions
+      - show me all listviews
+      
+  name: Salesforce.com Force API Example
+settings:
+  - name: sfAuthUrl
+    value: 'https://login.salesforce.com/services/oauth2/token'
+    notes: ''
+secrets:
+  - name: sfClientSecret
+    notes: ''
+  - name: sfClientId
+    notes: ''
+  - name: sfUsername
+    notes: ''
+  - name: sfPasswordToken
+    notes: ''
+concepts:
+  - name: 'sfdc:Listview'
+    spelling: view|listview
+  - name: 'sfdc:Listviews'
+    spelling: views|listviews
+    ontology:
+      isListOf: 'sfdc:Listview'
+      subClassOf: ':Showable'
+  - name: ':All'
+  - name: ':Relation'
+  - name: ':Showable'
+  - name: ':ActionShow'
+patterns:
+  - text: 'show me all {listviews|sfdc:Listviews}'
+actions:
+  - name: 'expo:GetListviews'
+    signature: 'sfdc:Listviews (optional :All) -> data sfdc:Listviews'
+    kind: 'nodejs:8'
+    code: |
+      const eba = require("eba")
+      const request = require("request-promise-native")
+
+      async function main(params) {
+        
+        let pathListview = "/services/data/v32.0/sobjects/Account/listviews"
+        
+        console.log("Status: Reached sfquery")
+
+        var options = {
+          method: "POST",
+          uri: params.settings["sfAuthUrl"],
+          qs: {
+            "grant_type":     "password",
+            "client_id":      params.secrets["sfClientId"],
+            "client_secret":  params.secrets["sfClientSecret"],
+            "username":       params.secrets["sfUsername"],
+            "password":       params.secrets["sfPasswordToken"]
+          },
+          json: true
+        }
+        
+        console.log("Status: Preparing request to " + params.settings["sfAuthUrl"])
+          
+        return request(options)
+          .then(function(body) {
+
+            var access_token = body.access_token
+            var instance_url = body.instance_url
+            
+            console.log("Status: Instance url " + instance_url)
+            
+            return request
+              .get({
+                uri: instance_url + pathListview,
+                headers: {
+                  "Authorization": "Bearer " + access_token
+                }
+              })
+              .then(JSON.parse)
+              .then(function(body) {
+                console.log("Query result: " + JSON.stringify(body))
+                return new eba.Result().setData("sfdc:Listviews", body)
+              }
+            )
+            
+          })  
+        .catch(function (error) {
+          return { error: `API error: ${error}` }
+        })
+
+
+      }
+
+      module.exports = {main}
+    notes: ''
