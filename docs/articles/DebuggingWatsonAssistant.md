@@ -30,7 +30,7 @@ In addition to the variant nodes within the information space, the assistant pro
 
 #### Reasoning in debug mode
 
-To bring alternative understandings into the information space, simply asking your question and append "||debug" to the end of it, e.g. "show me all invoices||debug". The information space will now display all alternative variants. As a fair warning, the assistant is able to reason about many thousands of alternatives at a time, so this view can become too large for more complex questions. In order to view one particular path in isolation, you should double click the `message` node associated with that variant. Double clicking will highlight this specific variant path and hide the remaining paths for easier introspection.
+To bring alternative understandings into the information space, simply asking your question and append `"||debug"` to the end of it, e.g. "show me all invoices||debug". The information space will now display all alternative variants. As a fair warning, the assistant is able to reason about many thousands of alternatives at a time, so this view can become too large for more complex questions. In order to view one particular path in isolation, you should double click the `message` node associated with that variant. Double clicking will highlight this specific variant path and hide the remaining paths for easier introspection.
 
 ![alternative-path.png](../assets/images/alternative-path.png#zoom=50%)
 
