@@ -247,7 +247,7 @@ statics:
       }
 
 
-      .cca-wiki-tlefttop,
+      .cca-wiki-tleft,
 
       .cca-wiki-floatleft {
         clear: left;
