@@ -14,9 +14,13 @@ These agents were developed completely within our lab tools. The samples should 
 
 [Supply chain insights](../samples/SupplyChain.md) - provides an agent interface for working with supply orders and sales orders.
 
-**topics:** lazy data api, @force endpoint, multiple attribute types, backend assets, complex action signatures
+**topics:** lazy data api, @force endpoint, multiple attribute types, backend assets, complex action signatures.
 
 
-[Riddles](../samples/Riddles.md) - take over agent for asking riddles
+[Riddles](../samples/Riddles.md) - take over agent for asking riddles.
 
-**topics:** crafted dialog messages, session storage, reasoning take over, custom annotations
+**topics:** crafted dialog messages, session storage, reasoning take over, custom annotations.
+
+[Wikipedia](../samples/Wikipedia.md) - fallback style agent which search Wikipedia for relevant article if no other agent handled user question.
+
+**topics:** fallback style agent, @fallback endpoint, user input cleaning.
