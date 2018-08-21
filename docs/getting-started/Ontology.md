@@ -32,10 +32,10 @@ Lastly, they each contain an apppropraite spelling for NLG. Note that we did not
 
 As mentioned in the introduction, we will want to iteratively test each new piece of knowledge that we add to our system. Since this sample is small enough we can add two more auxillary nodes to cover all relevant types of questions. Lets add entries for `:UPC`, `wmt:Trending`, `wmt:TrendingNow`.
 
-| Name              | Subclass of                      | Spelling      |
-| ----------------- | -------------------------------- | ------------- |
-| `:UPC`            |                                  | `UPC`         |
-| `wmt:Trending`    |                                  |               |
-| `wmt:TrendingNow` |                                  |               |
+| Name              | Spelling      | 
+| ----------------- | ------------- |
+| `:UPC`            | `UPC`         |
+| `wmt:Trending`    |               |
+| `wmt:TrendingNow` |               |
 
 It is now a good time to add patterns, actions, and visualization to support questions related to products.
