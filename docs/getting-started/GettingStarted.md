@@ -5,7 +5,7 @@ Welcome to Watson Assistant development! This article serves as a getting starte
 - [patterns](./Patterns.md)
 - [actions](./Actions.md)
 - [rules](./Rules.md) 
-- [visualizers](./Visualizers.md).
+- [visualizers](./Visualizers.md)
 
 We propose the following development workflow for building any agent. Note that you will likely follow this workflow in an iterative process for each new piece of knowledge that you want to introduce to the assistant.
  
