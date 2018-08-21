@@ -2,10 +2,10 @@
 
 Beginning with a completely empty configuration, we decide that our domain is mostly about one thing--products from Walmart. We want our assistant to understand products, so we begin by adding the following entries into our ontology tab.
 
-| Name              | Spelling          | SubClass of         | List of       |
-| -------------     | ----------------- | ------------------- | ------------- |
-| `wmt:Product`     | `product`         | `:Showable`         |               |
-| `wmt:Products`    | `products|*`      | `:Showable`         | `wmt:Product` |
+| Name           | Spelling          | SubClass of         | List of       |
+| -------------- | ----------------- | ------------------- | ------------- |
+| `wmt:Product`  | `product`         | `:Showable`         |               |
+| `wmt:Products` | `products|*`      | `:Showable`         | `wmt:Product` |
 
 We have just provided the following information to our system. We can recognize two concepts, viz. `wmt:Product` and `wmt:Products`. Each of these concepts have an appropriate spelling which will be used in natural language generation (NLG). NLG enables Watson to compose appropriate responses to the user in the same terms as the original questions. For example, when asking for product 123, Watson may reply 'I have found the following **product** with id 123'. This helps to eliminate hardcoded responses. Furthermore, each of these concepts is a subclass of `:Showable` meaning that the data assocaited with these concepts can actually be shown to user within the chat panel. Lastly, we have specified that products is a list of individual product elements, which helps to enable useful operations on the collection such as filtering, sorting, etc.
 
