@@ -8,7 +8,7 @@ The IBM Watson Embedded Business Assistant is an omni-channel assistant for the 
 
 ## Why EBA?
 
-You may be thinking to yourself "&lt;sigh&gt;, another chat bot". It is here that we ask you to pause, for some patience and read why you should seriously consider switching to EBA or starting with EBA right now for your AI use case pattern engineering.
+You may be thinking to yourself "&lt;sigh&gt;, another chat bot". It is here that we ask you for some patience and read why you should seriously consider switching to EBA or starting with EBA right now for your AI use case pattern engineering.
  
 ### Experience
 The engineering team behind EBA has a combined 40 years in active AI development, including half of that time specifically on machine reasoning.  We are well versed in many theoretical and practical machine reasoning designs including basic rules, case-based, blackboard, and PRS.  (We like PRS... see below). You can rely on a team that is constantly analyzing leading edge movements in reasoning techniques-- all for your benefit. You concentrate on the use cases that will bring customer value, EBA has your back.
