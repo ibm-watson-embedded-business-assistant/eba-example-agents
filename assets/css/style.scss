@@ -69,6 +69,18 @@ a.btn-download {
     background-color: transparentize(#7893c3, 0.9);
   }
 }
+a.btn-launch {
+    line-height: 38px;
+    vertical-align: top;
+    border: 1px solid #7893c3;
+    width: 137px;
+    text-align: center;
+    border-radius: 6px;
+  &:hover, &:focus {
+    font-weight: normal;
+    background-color: transparentize(#7893c3, 0.9);
+  }
+}
 p.buttons {
   & > * {
     display: inline-block;
