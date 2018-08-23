@@ -4,7 +4,7 @@ This is the public home of the Watson Embedded Business Assistant ("EBA"). Pleas
 
 ## About EBA
 
-The IBM Watson Embedded Business Assistant is an omni-channel assistant for the business practitioner that happens to support his human business counterpart wherever she may conduct business, including chat, slack, workspaces, voice, and soon SMS. The mission of EBA is to understand the basis of human decisions through observation over time, derive the motivation behind actions in an environment, and then codifying the path and results for machine interpretation and future autonomic response.
+The IBM Watson Embedded Business Assistant is an omni-channel assistant for the business practitioner that supports the human  counterpart wherever she may conduct business, including chat, slack, workspaces, voice, and soon SMS. The mission of EBA is to understand the basis of human decisions through observation over time, derive the motivation behind actions in an environment, and then codifying the path and results for machine interpretation and future autonomic response.
 
 ## Why EBA?
 
