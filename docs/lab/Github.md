@@ -26,24 +26,24 @@ Github integration enables the following workflows.
 ### Configuration
 To connect your github repository, only two pieces of information are necessary, viz. the path to your yaml configuration on github and an access token which enables Github to trust our development lab.
 
-The path to your configuration file is really simple to obtain, simply traverse to the yaml file in Github and paste in the url. As a reference, here is the path to our Walmart sample: https://github.com/ibm-watson-embedded-business-assistant/eba-example-agents/blob/master/samples/walmart.yaml.
+The path to your configuration file is really simple to obtain. Simply traverse to the yaml file in Github, copy the url, and paste it into 'YAML configuration file' within our lab. As a reference, here is the path to our Walmart sample: https://github.com/ibm-watson-embedded-business-assistant/eba-example-agents/blob/master/samples/walmart.yaml.
 
-To generate an access token, follow these steps:
+To generate an access token, follow these steps.
 
-    - Login to your Github account.
+- Login to your Github account.
 
-    - Navigate to 'Settings' using the avatar drop down in the top right corner.
+- Navigate to 'Settings' using the avatar drop down in the top right corner.
 
-    - Navigate to 'Developer Settings'.
+- Navigate to 'Developer Settings'.
 
-    - Navigate to 'Personal access tokens'.
+- Navigate to 'Personal access tokens'.
 
-    - Click 'generate new token'.
+- Click 'generate new token'.
 
-    - Add a description and select 'repo' as the scope for the token.
+- Add a description and select 'repo' as the scope for the token.
 
-    - Click 'Generate token'.
+- Click 'Generate token'.
 
-    - Copy and safely store this token for future reference in a place of your choosing.
+- Copy and safely store this token for future reference in a place of your choosing.
 
-    - Paste this token into the 'Access Token' field within the development lab.
+- Paste this token into the 'Access Token' field within the development lab.
