@@ -1,35 +1,37 @@
-version: 3
-description: >+
-  Demo agent based on [Walmart Open API](https://developer.walmartlabs.com)
+version: 4
+meta:
+  description: >+
+    Demo agent based on [Walmart Open API](https://developer.walmartlabs.com)
 
 
-  You can try questions like:
+    You can try questions like:
 
-  - what's trending now?
+    - what's trending now?
 
-  - show me popular products
+    - show me popular products
 
-  - show me top 5 of these products
+    - show me top 5 of these products
 
-  - show me price for the first of them
+    - show me price for the first of them
 
-  - show me top 5 popular products sorted by price
+    - show me top 5 popular products sorted by price
 
-  - what is average price for them?
+    - what is average price for them?
 
-  - what is description sentiment for the first product?
+    - what is description sentiment for the first product?
 
-  - show me popular products with negative description
+    - show me popular products with negative description
 
-  - show me popular products with positive description
+    - show me popular products with positive description
 
-  - notify me if price of product "Maverix Monster Electric Skateboard" is less
-  than $50
+    - notify me if price of product "Maverix Monster Electric Skateboard" is
+    less than $50
 
-  - show me product with UPC 647627503349
+    - show me product with UPC 647627503349
 
-  - what is product name for UPC 647627503349?
+    - what is product name for UPC 647627503349?
 
+  name: Wallmart Trends
 secrets:
   - name: apiKey
     notes: 'Get your API key at https://developer.walmartlabs.com/'
