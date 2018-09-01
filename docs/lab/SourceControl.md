@@ -16,7 +16,7 @@ Github integration enables the following workflows.
 
 
 #### Checkout Changes
-- Devlop: Make changes to your assistant using our development lab.
+- Develop: Make changes to your assistant using our development lab.
 
 - Save Changes: Save these changes locally and test them within our chat panel. Press the 'Checkout' button. 
 
