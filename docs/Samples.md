@@ -21,6 +21,6 @@ These agents were developed completely within our lab tools. The samples should 
 
 **topics:** crafted dialog messages, session storage, reasoning take over, custom annotations.
 
-[Wikipedia](../samples/Wikipedia.md) - fallback style agent which search Wikipedia for relevant article if no other agent handled user question.
+[Wikipedia](../samples/Wikipedia.md) - fallback style agent which searches Wikipedia for relevant article if no other agent handled user question.
 
 **topics:** fallback style agent, @fallback endpoint, user input cleaning.
