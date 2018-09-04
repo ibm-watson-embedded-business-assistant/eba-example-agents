@@ -31,7 +31,7 @@ meta:
 
     - what is product name for UPC 647627503349?
 
-  name: Wallmart Trends
+  name: Walmart Trends
 secrets:
   - name: apiKey
     notes: 'Get your API key at https://developer.walmartlabs.com/'
