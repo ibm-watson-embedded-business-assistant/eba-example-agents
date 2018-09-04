@@ -9,3 +9,4 @@ The development lab is organized into a [control bar](./ControlBar.md) and 8 tab
 * [Assets](./Assets.md)
 * [Explore](./Explore.md)
 * [Debug](./Debug.md)
+* [Source Control](./SourceControl.md)
