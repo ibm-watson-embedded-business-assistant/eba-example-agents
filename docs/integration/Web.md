@@ -3,8 +3,9 @@
 It is possible to integrate Watson Assistant directly into your own web application as an embedded window. You can view a [working example](https://ibm-watson-embedded-business-assistant.github.io/eba-example-agents/docs/integration/index.html).
 
 There are two simple steps required to perform this integration:
-    1. Add a script tag that initializes a global IBM_EBA interface object
-    2. Calling the api exposed by the IBM_EBA object
+
+1. Add a script tag that initializes a global IBM_EBA interface object
+2. Calling the api exposed by the IBM_EBA object
 
 #### Adding IBM_EBA and Calling Setup
 
