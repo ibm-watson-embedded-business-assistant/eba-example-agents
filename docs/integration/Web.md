@@ -13,18 +13,13 @@ This script should be loaded in the start of your application by simply adding a
 ```
 <head>
     <title>Host Application</title>
-    <script src="https://eba.ibm.com/static/assistant.js"></script>
     <script>
-        IBM_Meta = {
-            userFirstName: "John",
-            userLastName: "Doe"
+        IBM_EBA_CONFIG = {
+            disable_button: false,
+            disable_shadow: true
         }
-        IBM_EBA.setup({
-            agent_name: "Socrates"
-            access_token: "1234",
-            login_id: "johndoe"
-        })
     </script>
+    <script src="https://eba.ibm.com/static/assistant.js" defer></script>
 </head>
 ```
 Note: IBM_META is another global object that can be created to store meta data specific to IBM. This object will be passed to Watson Assistant on setup.
@@ -33,6 +28,7 @@ With these few lines of code in your host application, Watson Assistant will be 
 
 During the call to `IBM_EBA.setup`, you can pass in the following fields to customize Watson Assistant, viz. 
 
+* access_token –– JWT access token, check Settings tab in Lab for more details
 * agent_name –– replaces Watson as the name to whatever is supplied
 * agent_voice –– tunes Watson Assistant's voice
 * user_first_name, user_last_name, user_full_name –– makes Watson Assistant aware about current user so it will use personalization in answers.
@@ -56,11 +52,11 @@ During the call to `IBM_EBA.setup`, you can pass in the following fields to cust
 Since IBM_EBA is a global object, you will be able to send data to the assistant anytime you like by simply invoking `IBM_EBA.send`. This enables you to encode various events across your web application. For instance, here is a click event that triggers an order event inside of Watson Assistant:
 
 ```
-<button onclick="javascript:IBM_EBA.send({
+<button onclick="javascript :IBM_EBA.send({
     order_meta: {
-        order_id: 5678,
-        order_name: 'Paper',
-        customer_id: 1234
+        order_id: 1234,
+        order_name: "paper",
+        customer_id: 5678
     }})">View Order</button>
 ```
 
