@@ -2,28 +2,42 @@
 <html>
 <head>
     <title>Host Application</title>
-    <script src="https://eba.ibm.com/static/oms.js"></script>
+    <script src="https://eba.ibm.com/static/assistant.js"></script>
     <script>
         IBM_EBA.setup({
-            userToken: "567890",
-            LoginId: "Kevin Grozav"
+            disable_button: false,
+            disable_shadow: true
         })
     </script>
 </head>
 <body>
-    <button onclick="javascript:IBM_EBA.send({
-        orderMeta: {
-            orderID: 5678,
-            orderName: 'Paper',
-            customer: 1234
-        }})">Send orders details</button>
-    <button onclick="javascript:IBM_EBA.send({
-        customerMeta: {
-            customerID: 1234,
-            name: 'Morgan Freeman'
-        }})">Send customer details</button>
-    <button onclick="javascript:IBM_EBA.send({
-            empty: ''
-        })">Hide Insights</button>
+    <p align="center"> Host application </p>
+    <p> Below are few button controls to illustrate the IBM_EBA api </p>
+    <p>
+        <label>Window</label>
+        <button onclick='javascript:IBM_EBA.open()'>Show</button>
+        <button onclick='javascript:IBM_EBA.close()'>Hide</button>
+        <button onclick='javascript:IBM_EBA.toggle()'>Toogle</button>
+        <button onclick='javascript:IBM_EBA.detach()'>Detach</button>
+    </p>
+    <p>
+        <label>Floating button</label>
+        <button onclick='javascript:IBM_EBA.setup({disable_button:false})'>Enable</button>
+        <button onclick='javascript:IBM_EBA.setup({disable_button:true})'>Disable</button>
+    </p>
+    <p>
+        <label>Modal shadow</label>
+        <button onclick='javascript:IBM_EBA.setup({disable_shadow:false})'>Enable</button>
+        <button onclick='javascript:IBM_EBA.setup({disable_shadow:true})'>Disable</button>
+    </p>
+    <p>
+        <label>Send event to EBA</label>
+        <button onclick="javascript:IBM_EBA.send({
+            order_meta: {
+                order_id: 5678,
+                order_name: 'Paper',
+                customer: 1234
+            }})">Send</button>
+    </p>
 </body>
 </html>
