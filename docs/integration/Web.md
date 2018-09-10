@@ -23,11 +23,9 @@ This script should be loaded in the start of your application by simply adding a
     <script src="https://eba.ibm.com/static/assistant.js" defer></script>
 </head>
 ```
-Note: IBM_META is another global object that can be created to store meta data specific to IBM. This object will be passed to Watson Assistant on setup.
-
 With these few lines of code in your host application, Watson Assistant will be up and running.
 
-During the call to `IBM_EBA.setup`, you can pass in the following fields to customize Watson Assistant, viz. 
+You can pass in the following fields to customize Watson Assistant either via optional global object `IBM_EBA_CONFIG` or during the call to `IBM_EBA.setup`, viz. 
 
 * access_token –– JWT access token, check Settings tab in Lab for more details
 * agent_name –– replaces Watson as the name to whatever is supplied
