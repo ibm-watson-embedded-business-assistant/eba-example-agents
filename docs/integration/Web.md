@@ -13,6 +13,7 @@ This script should be loaded in the start of your application by simply adding a
 ```
 <head>
     <title>Host Application</title>
+    ...
     <script>
         IBM_EBA_CONFIG = {
             disable_button: false,
