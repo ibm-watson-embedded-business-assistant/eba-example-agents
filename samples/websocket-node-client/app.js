@@ -4,7 +4,7 @@ const eba = require('./eba-client')
 const jwt = require('jsonwebtoken')
 const fs = require('fs')
 
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'
+// process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'
 
 const settings = {
     url: 'https://eba3.ibm.com/',
