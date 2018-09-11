@@ -2,7 +2,7 @@
 
 This is the public home of the Embedded Business Assistant ("EBA"). Please log [issues](https://github.com/ibm-watson-embedded-business-assistant/eba-example-agents/issues) you encounter with EBA, and if you have a contribution, please submit a [pull request](https://github.com/ibm-watson-embedded-business-assistant/eba-example-agents/pulls).
 
-[![Watson Marketing Assistant powered by EBA](/assets/img/eba_wma_screenshot.png "Watson Marketing Assistant powered by EBA")](/assets/img/eba_wma_screenshot.png)
+[![Watson Marketing Assistant powered by EBA!](/assets/img/eba_wma_screenshot.png "Watson Marketing Assistant powered by EBA!")](/assets/img/eba_wma_screenshot.png)
 
 ## About EBA
 
