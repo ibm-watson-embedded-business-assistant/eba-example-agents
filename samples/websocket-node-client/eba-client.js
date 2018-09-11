@@ -65,8 +65,8 @@ class Client extends EventEmitter {
         }
     }
 
-    _connect(session) {
-        this.sessionId = session.id
+    _connect(sessionId) {
+        this.sessionId = sessionId
 
         let headers = {
             referer: this.url,
@@ -76,7 +76,7 @@ class Client extends EventEmitter {
         let wsUrl = this.url.replace('https:', 'wss:').replace('http:', 'ws:')
 
         return new Promise((resolve, reject) => {
-            this.socket = new WebSocket(`${wsUrl}ws/${session.id}`, null, this.url.slice(0, -1), headers)
+            this.socket = new WebSocket(`${wsUrl}ws/${sessionId}`, null, this.url.slice(0, -1), headers)
 
             this.socket.onerror = reject
 
@@ -94,20 +94,24 @@ class Client extends EventEmitter {
         })
     }
 
-    login(path, params) {
+    start(config) {
         return this
             .api({
-                uri: path,
-                qs: params,
-                method: 'GET'
-            })
-            .then(() => this.api({
-                uri: 'session',
+                uri: 'assistant/setup',
+                body: config,
+                json: true,
                 method: 'POST'
-            }))
-            .then(session =>
+            })
+            .then(({session}) => {
                 this._connect(session)
-            )
+            })
+    }
+
+    stop() {
+        console.log('logging out...')
+        if (this.socket)
+            this.socket.close()
+        this.api({ uri: 'assistant/logout' })
     }
 
     ask(question) {
