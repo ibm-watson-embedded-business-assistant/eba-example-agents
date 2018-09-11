@@ -2,7 +2,7 @@
 
 Watson Assistant supports the following voices for Text-to-Speach service. The default voice is en-US_MichaelVoice.
 
-| Name | Langauge | Gender | Description |
+| Name | Language | Gender | Description |
 |------|----------|--------|-------------|
 | de-DE_BirgitVoice | de-DE | female | Birgit: Standard German of Germany (Standarddeutsch) female voice |
 | de-DE_DieterVoice | de-DE | male | Dieter: Standard German of Germany (Standarddeutsch) male voice |
