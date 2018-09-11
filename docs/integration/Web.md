@@ -9,7 +9,7 @@ There are two simple steps required to perform this integration:
 
 #### Adding IBM_EBA and Calling Setup
 
-This script should be loaded in the start of your application by simply adding a script tag which points to the path of the script. After loading this script, you should execute `IBM_EBA.setup` to pass any relevant data and credentials for logging into a session with the assistant. 
+This script should be loaded in the start of your application by simply adding a script tag which points to the path of the script. After loading this script, you should execute `IBM_EBA.setup` to pass any relevant data and credentials for logging into a session with the assistant. Note, in the example below, we have added an additional script tag in the beginning of the file to illustrate a method for providing custom intialization.
 
 ```
 <head>
@@ -17,6 +17,7 @@ This script should be loaded in the start of your application by simply adding a
     ...
     <script>
         IBM_EBA_CONFIG = {
+            agent_name: 'Agent Kevin',
             disable_button: false,
             disable_shadow: true
         }
@@ -26,7 +27,7 @@ This script should be loaded in the start of your application by simply adding a
 ```
 With these few lines of code in your host application, Watson Assistant will be up and running.
 
-You can pass in the following fields to customize Watson Assistant either via optional global object `IBM_EBA_CONFIG` or during the call to `IBM_EBA.setup`, viz. 
+As mentioned above, you can pass in the following fields to customize Watson Assistant either via optional global object `IBM_EBA_CONFIG` or during the call to `IBM_EBA.setup`, viz. 
 
 * `access_token` –– JWT access token, check Settings tab in Lab for more details
 * `agent_name` –– replaces Watson as the name to whatever is supplied
@@ -34,6 +35,8 @@ You can pass in the following fields to customize Watson Assistant either via op
 * `user_first_name`, `user_last_name`, `user_full_name` –– makes Watson Assistant aware about current user so it will use personalization in answers.
 * `disable_button` –– disables button control when set to true, enables button control when set to false
 * `disable_shadow` –– disables modal shadow when set to true, enables modal shadow when set to false
+
+In order to create a new session you will need to supply a JWT signed `access_token`. An `access_token` should be generated based on the `iss`, `sub`, and `private key` provided within our Lab Settings, where we have outlined the required integration steps. For an example on generating this `access_token` programatically, please reference our [headless integration](./Headless.md)
 
 #### IBM_EBA API
 
