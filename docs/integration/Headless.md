@@ -1,4 +1,4 @@
-### Headless Integration
+## Headless Integration
 
 It is possible to connect to Watson Assistant in headless mode. You can review a [working example](https://github.com/ibm-watson-embedded-business-assistant/eba-example-agents/tree/master/samples/websocket-node-client). This example demonstrates a web-socket based connection to EBA for a command line application. Following this example, you should be able to ask Watson questions from your terminal just like you would from our web application.
 
@@ -6,7 +6,7 @@ The steps required for integration are as follows:
 1) Generating an access_token used and connecting to your session using your headless client
 2) Implementing async interaction logic within your client to communicate with Watson
 
-#### Connecting to Watson Assistant
+### Connecting to Watson Assistant
 
 In order to generate an acess token, please visit our [settings page](https://eba-3.adm01.com/assistant#/lab/settings) to get started. You will find an `iss` and `sub` claims, as well as instructions for generating private and public keys. As mentioned within our documentation, please store your private key within a secure location and do not share it with anyone. Having obtained these required data elements, lets take a look at how you can generate an access token programatically within your headless client.
 
@@ -68,7 +68,7 @@ _connect(sessionId) {
 
 Here we establish a web socket connection to our eba url. We set the appropriate sessionId, headers, and url to create a web socket connection as well as the appropriate handlers for open, error, and message events. We are now ready to interact with Watson and handle messages.
 
-#### Interacting with Watson Assistant
+### Interacting with Watson Assistant
 
 When the promise above resolves, i.e. when the websocket connection is opened, we execute a function called `interact`.
 
