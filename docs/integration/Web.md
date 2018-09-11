@@ -31,7 +31,7 @@ As mentioned above, you can pass in the following fields to customize Watson Ass
 
 * `access_token` –– JWT access token, check Settings tab in Lab for more details
 * `agent_name` –– replaces Watson as the name to whatever is supplied
-* `agent_voice` –– tunes Watson Assistant's voice
+* `agent_voice` –– tunes Watson Assistant's voice. Check [the list of voices](./Voices.md) supported by Watson Assistant.
 * `user_first_name`, `user_last_name`, `user_full_name` –– makes Watson Assistant aware about current user so it will use personalization in answers.
 * `disable_button` –– disables button control when set to true, enables button control when set to false
 * `disable_shadow` –– disables modal shadow when set to true, enables modal shadow when set to false
