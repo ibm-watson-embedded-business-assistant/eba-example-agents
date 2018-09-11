@@ -1,4 +1,4 @@
-### Web Integration
+## Web Integration
 
 It is possible to integrate Watson Assistant directly into your own web application as an embedded window. You can view a [working example](https://ibm-watson-embedded-business-assistant.github.io/eba-example-agents/docs/integration/index.html).
 
@@ -7,7 +7,7 @@ There are two simple steps required to perform this integration:
 1. Add a script tag that initializes a global IBM_EBA interface object
 2. Calling the api exposed by the IBM_EBA object
 
-#### Adding IBM_EBA and Calling Setup
+### Adding IBM_EBA and Calling Setup
 
 This script should be loaded in the start of your application by simply adding a script tag which points to the path of the script. After loading this script, you should execute `IBM_EBA.setup` to pass any relevant data and credentials for logging into a session with the assistant. Note, in the example below, we have added an additional script tag in the beginning of the file to illustrate a method for providing custom intialization.
 
@@ -38,7 +38,7 @@ As mentioned above, you can pass in the following fields to customize Watson Ass
 
 In order to create a new session you will need to supply a JWT signed `access_token`. An `access_token` should be generated based on the `iss`, `sub`, and `private key` provided within our Lab Settings, where we have outlined the required integration steps. For an example on generating this `access_token` programatically, please reference our [headless integration](./Headless.md)
 
-#### IBM_EBA API
+### IBM_EBA API
 
 * `create()`      –– creates the IBM_EBA object and injects assistant into host application (note: this is called within this script itself and should be avoided)
 * `setup(config)` –– posts a setup message to Watson Assistant containing the supplied config
@@ -65,7 +65,7 @@ Since IBM_EBA is a global object, you will be able to send data to the assistant
 
 Using our development lab, you will be able to program the assistant to appropriately respond to this event. You may invoke the other api functions across your event handlers in a similar fashion.
 
-#### Display Modes
+### Display Modes
 
 Watson Assistant supports four display modes which reflect the size of the embedded iframe: 
 
