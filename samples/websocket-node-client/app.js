@@ -7,7 +7,7 @@ const fs = require('fs')
 // process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'
 
 const settings = {
-    url: 'https://eba3.ibm.com/',
+    url: 'https://eba.ibm.com/',
     key: 'private_key.pem',
     iss: 'https://prepiam.toronto.ca.ibm.com',
     sub: 'sergey.batin@ibm.com',
