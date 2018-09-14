@@ -1,4 +1,4 @@
-### Patterns
+## Patterns
 
 We want Watson to map natural language from user questions to the concept language we have just defined in our ontology. Patterns enable this mapping via token annotations. We add the following patterns:
 

@@ -1,4 +1,4 @@
-### Rules
+## Rules
 
 So far, anytime that we want to search for products we must have the keyword 'products' within the original sentence. It is likely that real users will want to ask less qualified questions, such as 'whats trending now?'. It is clear to us that this is a request to search for current trending products. Watson will likewise understand this if we add the following rewriting rule:
 

@@ -1,4 +1,4 @@
-### Visualizers
+## Visualizers
 
 Watson is able to understand our questions, but these raw JSON responses are not very pretty. We should add some visualizers to our frontend.
 

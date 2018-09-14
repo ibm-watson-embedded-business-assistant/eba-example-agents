@@ -1,4 +1,4 @@
-### Node helpers
+## Node helpers
 
 A nodejs action within Watson Assistant can import the package "eba" which includes a variety of utility methods for working within the Assistant framework.
 

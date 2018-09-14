@@ -1,4 +1,4 @@
-### Agent API
+## Agent API
 
 For some reason it can be necessary to communicate with your own agent directly using the REST API. To allow your agent to handle requests from client side you need to add a new endpoint with the name `@api`. The following example implements echo API which takes the input and returns it as the output:
 

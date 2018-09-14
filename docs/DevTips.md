@@ -1,5 +1,5 @@
 
-### How to disable Chrome's two-finger back/forward navigation?
+## How to disable Chrome's two-finger back/forward navigation?
 
 Google Chrome on Mac supports two-finger swipe guesture to navigate across pages.
 Sometimes, this leads to unconditional page reload and potential data loss which is

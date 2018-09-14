@@ -1,4 +1,4 @@
-### Actions
+## Actions
 
 As a quick test of Watson's natural langauge understanding, we can declare our actions and return hard coded responses just to verify that our questions are correctly understood. Once understanding is in place, we can hook up actual api calls to walmart and return real data.
 

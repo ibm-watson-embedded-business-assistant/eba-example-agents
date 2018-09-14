@@ -4,29 +4,29 @@ The Walmart agent should prvoide insight into how to leverage an existing api. Y
 
 To get the most out of this sample, please load the [yaml configuration](./walmart.yaml) into your own sandbox enviornment. You will need to supply your own walmart apiKey within settings. You can get your API key [here](https://developer.walmartlabs.com).
 
-### Dev notes
+## Dev notes
 
-#### General
+### General
 
 A description of potential actions you can ask the agent are provided in the description panel. As stated above, you will need to provide an apiKey to the settings table within General.
 
-#### Concepts
+### Concepts
 
 The main domain object that this agent supports is `wmt:Products`. This concept supports a number of attributes, e.g. `wmt:SalesPriceValue` and `wmt:Description`. You can view all attributes in the attributes tab for the `wmt:Product` concept. Note that you must subclass these attributes appropriately. For instance, `wmt:Description` subclasses from `:Attribute` and `:StrAttribute`. All attributes must subclass from `:Attribute` and depending on the type of the attribute, it may additionaly subclass from `:StrAttribute`, `:NumAttribute`, and `:DateAttribute`.
 
-#### Patterns
+### Patterns
 
 Patterns for this agent are straight forward. We label those concepts and attributes that we expect users to ask accordingly. Please view [patterns documentation](../docs/components/Patterns.md) if you are unfamilar with the notion of patterns within Watson Assistant.
 
-#### Actions
+### Actions
 
 This sample makes use of one action, viz. a call to get all trending products. You will notice that the action body contains the definition of the `main` function. This function takes as input any settings parameters that were set by the developer. Hence, it is through this parameter that developers can access their apiKey to call their existing apis.
 
-#### Rewriting rules
+### Rewriting rules
 
 We supply one rewriting rule to the agent to inform it that whenever we ask for a `wmt:TrendingNow` concept, we are asking for the slightly lower level composition of concepts, viz. `wmt:Products(wmt:Trending)`, i.e. products trending now.
 
-#### Assets
+### Assets
 
 This sample provides frontend jsx and css assets, which help render our resulting products. Styling can greatly improve the visualization of your results the end user. The assets are integrated so that setting a class attribute in jsx corresponds to the same class within css.
 

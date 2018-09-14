@@ -1,4 +1,4 @@
-### Ontology
+## Ontology
 
 Beginning with a completely empty configuration, we decide that our domain is mostly about one thing--products from Walmart. We want our assistant to understand products, so we begin by adding the following entries into our ontology tab.
 
