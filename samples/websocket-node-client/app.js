@@ -7,6 +7,8 @@ const chalk = require('chalk')
 
 // process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'
 
+// to enable programmatic access vist https://eba.ibm.com/assistant#/lab/settings
+
 const settings = {
     // url: 'https://eba-3.adm01.com/',
     url: 'https://eba.ibm.com/',
