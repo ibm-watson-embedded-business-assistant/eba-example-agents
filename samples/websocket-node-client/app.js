@@ -3,15 +3,16 @@ const readline = require('readline')
 const eba = require('./eba-client')
 const jwt = require('jsonwebtoken')
 const fs = require('fs')
+const chalk = require('chalk')
 
-// process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'
 
 const settings = {
-    url: 'https://eba3.ibm.com/',
+    url: 'https://eba-3.adm01.com/',
     key: 'private_key.pem',
-    iss: 'https://prepiam.toronto.ca.ibm.com',
-    sub: 'sergey.batin@ibm.com',
-    name: 'Sergey Batin'
+    iss: 'https://github.com',
+    sub: 'osidorkin',
+    name: 'Oleg Sidorkin'
 }
 
 const rl = readline.createInterface({
@@ -21,7 +22,13 @@ const rl = readline.createInterface({
 
 var client = new eba.Client(settings.url)
 
-client.on('message', console.log)
+client.on('message', (message) => {
+    console.log(message)
+})
+
+client.on('log', (text) => {
+    console.log(chalk.cyan(text))
+})
 
 function interact() {
     rl.question('', (text) => {
@@ -29,8 +36,6 @@ function interact() {
         _.defer(interact)
     })
 }
-
-console.log('connecting...')
 
 let claims = {
     iss: settings.iss,
@@ -47,8 +52,8 @@ client
         interact()
     })
     .catch((ex) => {
-        console.error('unable to connect to EBA server:')
-        console.error(`${ex}`)
+        console.error(chalk.red('unable to connect:'))
+        console.error(chalk.red(`${ex}`))
         process.exit(1)
     })
 
