@@ -6,7 +6,7 @@ const EventEmitter = require('events')
 function extractMessageData(actions) {
     return _.flatMap(actions, ({nodes, links}) =>
         _.flatMap(nodes, ([nodeId, node]) =>
-            (node && node.name == 'message' && node.tags.indexOf('selected') != -1 && node.data && node.data.content)
+            (node && node.name == 'message' && _.includes(node.tags, 'selected') && node.data && node.data.content)
                 ? [node.data.content]
                 : []
         )
@@ -25,7 +25,12 @@ class Client extends EventEmitter {
             jar: this.jar,
             json: true,
             baseUrl: url,
-            headers: { referer: url }
+            headers: { referer: url },
+            // debugging...
+            // transform: (body, response, resolveWithFullResponse) => {
+            //     console.log(response.headers)
+            //     return body
+            // }
         })
         this.started = false
         this.stopped = false
@@ -37,15 +42,11 @@ class Client extends EventEmitter {
     }
 
     _force(data) {
-        if (data && data.kind == 'genericLazyData') {
+        if (_.isObject(data) && data.kind == 'genericLazyData') {
             return this.api.get({
                 uri: 'data/query',
-                qs: {
-                    query: JSON.stringify(data)
-                },
-                headers: {
-                    'x-cca-sessionid': this.sessionId
-                }
+                qs: { query: JSON.stringify(data) },
+                headers: { 'x-cca-sessionid': this.sessionId }
             })
         } else {
             return data
@@ -99,7 +100,7 @@ class Client extends EventEmitter {
         return new Promise((resolve, reject) => {
             let headers = {
                 referer: this.url,
-                cookie: this.jar.getCookies(this.url).toString()
+                cookie: this.jar.getCookieString(this.url)
             }
 
             let url = `${this.url.replace(/^http(s?):/, (txt, tls) => `ws${tls}:`)}ws/${sessionId}`
@@ -119,9 +120,9 @@ class Client extends EventEmitter {
                     this.timer = setTimeout(this._connect.bind(this), 10000)
             }
 
-            this.socket.onerror = (error) => {
-                this._log(`websocket failed: ${error}`)
-                reject(error)
+            this.socket.onerror = (socket) => {
+                this._log(`websocket failed`)
+                reject(socket)
             }
 
             this.socket.onmessage = (e) => {

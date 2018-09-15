@@ -5,9 +5,10 @@ const jwt = require('jsonwebtoken')
 const fs = require('fs')
 const chalk = require('chalk')
 
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'
+// process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'
 
 const settings = {
+    // url: 'https://eba-3.adm01.com/',
     url: 'https://eba.ibm.com/',
     key: 'private_key.pem',
     iss: 'https://github.com',
