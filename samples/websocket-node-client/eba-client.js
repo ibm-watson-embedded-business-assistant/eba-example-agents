@@ -3,24 +3,15 @@ const request = require('request-promise')
 const WebSocket = require('websocket').w3cwebsocket
 const EventEmitter = require('events')
 
-function extractMessageData(actions) {
-    return _.flatMap(actions, ({nodes, links}) =>
-        _.flatMap(nodes, ([nodeId, node]) =>
-            (node && node.name == 'message' && _.includes(node.tags, 'selected') && node.data && node.data.content)
-                ? [node.data.content]
-                : []
-        )
-    )
-}
-
 class Client extends EventEmitter {
-    constructor(url) {
+
+    constructor(url = 'https://eba.ibm.com/') {
         super()
 
         this.url = url
         this.jar = request.jar()
-        this.sessionId = null
-        this.seqn = -1
+        this.session = null
+        this.version = 0
         this.api = request.defaults({
             jar: this.jar,
             json: true,
@@ -35,6 +26,14 @@ class Client extends EventEmitter {
         this.started = false
         this.stopped = false
         this.connected = false
+    }
+
+    _isMessage(node) {
+        return node &&
+            node.name == 'message' &&
+            node.data &&
+            node.data.content &&
+            _.includes(node.tags, 'selected')
     }
 
     _log(text) {
@@ -53,57 +52,63 @@ class Client extends EventEmitter {
         }
     }
 
+    async _handleNode(node) {
+        if (this._isMessage(node)) {
+            let content = node.data.content
+            if (_.isString(content)) {
+                let message = { text: content }
+                this.emit('message', message)
+            }
+
+            if (_.isObject(content)) {
+                let message = {}
+                if (!_.isNil(content.text))
+                    message.text = content.text
+                if (!_.isNil(content.data))
+                    message.data = await this._force(content.data)
+                if (!_.isNil(content.name))
+                    message.name = content.name
+                this.emit('message', message)
+            }
+        }
+    }
+
     async _handleMessages(messages) {
         for (let message of messages) {
-            var actions = []
 
             if (message.name == 'working')
                 this._log(`working: ${message.status}`)
 
             if (message.name == 'state') {
-                let {nodes, links} = message.state
-                let action = {
-                    nodes: _.sortBy(_.toPairs(nodes), ([id, {seqn}]) => seqn),
-                    links: _.sortBy(_.toPairs(links), ([id, {seqn}]) => seqn)
+                for (let node of _.sortBy(_.values(message.state.nodes), ({seqn}) => seqn)) {
+                    if (node && node.data && node.data.version > this.version)
+                        await this._handleNode(node)
                 }
-                actions = [action]
+                this.version = message.state.version
             }
 
             if (message.name == 'patch') {
-                actions = _.flatten(message.patch)
-            }
-
-            for (let content of extractMessageData(actions)) {
-                if (_.isString(content)) {
-                    this.emit('message', {
-                        text: content
-                    })
-                }
-
-                if (_.isObject(content)) {
-                    let message = {}
-                    if (!_.isNil(content.text))
-                        message.text = content.text
-                    if (!_.isNil(content.data))
-                        message.data = await this._force(content.data)
-                    if (!_.isNil(content.name))
-                        message.name = content.name
-                    this.emit('message', message)
+                for (let action of message.patch) {
+                    for (let {nodes} of action) {
+                        for (let [nodeId, node] of nodes) {
+                            if (this._isMessage(node))
+                                await this._handleNode(node)
+                        }
+                    }
+                    this.version += 1
                 }
             }
         }
     }
 
-    _connect(sessionId) {
-        this.sessionId = sessionId
-
+    _connect() {
         return new Promise((resolve, reject) => {
             let headers = {
                 referer: this.url,
                 cookie: this.jar.getCookieString(this.url)
             }
 
-            let url = `${this.url.replace(/^http(s?):/, (txt, tls) => `ws${tls}:`)}ws/${sessionId}`
+            let url = `${this.url.replace(/^http(s?):/, (txt, tls) => `ws${tls}:`)}ws/${this.session}`
 
             this.socket = new WebSocket(
                 url,
@@ -123,7 +128,7 @@ class Client extends EventEmitter {
                 this.connected = false
                 this._log(`websocket closed: ${reason}`)
                 if (!this.stopped)
-                    this.timer = setTimeout(this._connect.bind(this), 10000)
+                    this.timer = setTimeout(() => this._connect().catch(() => {}), 10000)
             }
 
             this.socket.onerror = (socket) => {
@@ -153,10 +158,11 @@ class Client extends EventEmitter {
         })
         this.request.then(({session}) => {
             if (!this.stopped) {
+                this.session = session
                 this.started = true
                 this._log(`session started: ${session}`)
                 this._log("opening websocket...")
-                return this._connect(session)
+                return this._connect()
             }
             else
                 throw "client is stopped"
