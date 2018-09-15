@@ -105,7 +105,13 @@ class Client extends EventEmitter {
 
             let url = `${this.url.replace(/^http(s?):/, (txt, tls) => `ws${tls}:`)}ws/${sessionId}`
 
-            this.socket = new WebSocket(url, null, this.url.slice(0, -1), headers)
+            this.socket = new WebSocket(
+                url,
+                null,
+                this.url.slice(0,-1),
+                headers,
+                null,
+                { maxReceivedFrameSize: 1024*1014*10 })
 
             this.socket.onopen = connection => {
                 this.connected = true
