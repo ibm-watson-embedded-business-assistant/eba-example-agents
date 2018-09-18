@@ -63,7 +63,7 @@ Since IBM_EBA is a global object, you will be able to send data to the assistant
     }})">View Order</button>
 ```
 
-Using our development lab, you will be able to program the assistant to appropriately respond to this event. You may invoke the other api functions across your event handlers in a similar fashion.
+Using our development lab, you will be able to program the assistant to appropriately respond to this event. You may invoke the other api functions across your event handlers in a similar fashion. For details on how to respond to such events using Watson Assistant, please refer to our [@react endpoint](../lab/General#endpoints).
 
 ### Display Modes
 
