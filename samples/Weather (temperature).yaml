@@ -1,0 +1,464 @@
+version: 4
+meta:
+  description: ''
+  name: Weather
+  icon: 'https://ibm.box.com/shared/static/64wicpx1obtl4wdyxq2z4nns1i1esv20.svg'
+secrets:
+  - name: twc_password
+    notes: ''
+  - name: twc_username
+    notes: ''
+concepts:
+  - name: 'twc:AggregatedTemperature'
+    spelling: aggregated temperature
+    ontology:
+      subClassOf: ':Showable'
+  - name: 'twc:Night'
+    ontology:
+      subClassOf: 'twc:DayPart'
+  - name: 'twc:Day'
+    ontology:
+      subClassOf: 'twc:DayPart'
+  - name: 'twc:Average'
+    spelling: average
+    ontology:
+      subClassOf: 'twc:Aggregation'
+  - name: 'twc:Maximum'
+    spelling: maximum
+    ontology:
+      subClassOf: 'twc:Aggregation'
+  - name: 'twc:Minimum'
+    spelling: minimum
+    ontology:
+      subClassOf: 'twc:Aggregation'
+  - name: 'twc:Aggregation'
+  - name: 'twc:DayPart'
+  - name: 'twc:Temperature'
+    spelling: temperature
+    ontology:
+      subClassOf: ':Showable'
+  - name: 'twc:City'
+    spelling: city
+  - name: ':Showable'
+  - name: ':Timeframe'
+  - name: ':Relation'
+  - name: 'twc:Weather'
+    spelling: weather
+    ontology:
+      subClassOf: ':Showable'
+  - name: 'ne:Country'
+  - name: 'ne:StateOrProvince'
+  - name: 'ne:City'
+  - name: 'twc:Location'
+  - name: ':ZIPCode'
+patterns:
+  - text: >-
+      what is the {maximum|twc:Maximum} wind speed and {minimum|twc:Minimum}
+      humidity in San Francisco now?
+  - text: 'show me {day|twc:Day} humidity chart for the next week'
+  - text: 'show me {weather forecast|twc:Weather} for tomorrow'
+  - text: 'show me {weather|twc:Weather} for tomorrow'
+  - text: >-
+      what is the {average|twc:Average} {night|twc:Night}
+      {temperature|twc:Temperature} tomorrow?
+actions:
+  - name: 'twc:AggregateTemperature'
+    signature: >-
+      aggregation subClassOf twc:Aggregation => aggregation (data
+      twc:Temperature) -> data twc:AggregatedTemperature
+    kind: 'nodejs:8'
+    code: |-
+      const _ = require('lodash')
+      const eba = require('eba')
+
+      module.exports.main = async (params) => {
+        const p = new eba.Params(params)
+        const aggregation = p.getName('aggregation')
+        const {location, temperature, timeframe, dayPart} = await p.get('twc:Temperature')
+        
+        const dropTZ = text => text.replace(/[-+]\d+$/, 'Z')
+        
+        const timeframeStart = timeframe ? new Date(dropTZ(timeframe.start)) : null
+        const timeframeEnd   = timeframe ? new Date(dropTZ(timeframe.end))   : null
+        const timeline = {}
+        
+        for (let interval of temperature.intervals) {
+          let intervalStart = new Date(interval.start)
+          let intervalEnd = new Date(interval.end)
+          for (let date = new Date(intervalStart);
+               date < intervalEnd;
+               date.setSeconds(date.getSeconds() + 60*60))
+          {
+            if (timeframeStart && date < timeframeStart)
+              continue
+            if (timeframeEnd && date >= timeframeEnd)
+              continue
+            let key = date.toISOString()
+            if (_.isNil(timeline[key]) || interval.type == 'hour')
+              timeline[key] = interval.value
+          }
+        }
+        
+        let f = _.head
+        switch (aggregation) {
+          case 'twc:Minimum': f = _.min; break
+          case 'twc:Maximum': f = _.max; break
+          case 'twc:Average': f = _.mean; break
+        }
+        
+        const value = f(_.values(timeline))
+        const data = { location, timeline, dayPart, value }
+        let meta = p.getMeta('twc:Temperature')
+          .addProperty('nlg:PreModifier', new eba.NLToken(aggregation))
+          .addProperty(':Is', new eba.NLToken(':Value', {value})
+            .addProperty('nlg:PostModifier', new eba.NLToken('nlg:PlainText', '°F')))
+
+        return new eba.Result()
+          .setData('twc:AggregatedTemperature', data)
+          .setMeta('twc:AggregatedTemperature', meta)
+      }
+    notes: ''
+  - name: 'twc:MakeLocationByState'
+    signature: 'data ne:StateOrProvince (optional data ne:Country) -> data twc:Location'
+    kind: 'nodejs:8'
+    code: |-
+      const _ = require('lodash')
+      const rp = require('request-promise-native')
+      const eba = require('eba')
+      const twc = require('./twc')
+
+      module.exports.main = async (params) => {
+        const p = new eba.Params(params)
+        const city = await p.get('ne:StateOrProvince')
+        const countryName = await p.get('ne:Country')
+        const countryCode = countryName ? await twc.getCountryCode(countryName.text) : 'US'
+        const query = city.text
+        const locationType = 'city'
+
+        const searchResult = await twc.api(
+          params.secrets,
+          'api/weather/v3/location/search',
+          { language: 'en-US', countryCode, locationType, query })
+
+        const location = _.assign(
+          { type: 'geo' },
+          _(searchResult.location)
+            .toPairs()
+            .map(([k,v]) => [k,v[0]])
+            .fromPairs()
+            .value())
+
+
+        const token = new eba.NLToken('twc:City')
+          // .addProperty(':WithName', new eba.NLToken(':UserString', city.text))
+          .addProperty('nlg:PostModifier', new eba.NLToken('nlg:PlainText', city.text))
+
+        return new eba.Result()
+          .setData('twc:Location', location)
+          .setMeta('twc:Location', token)
+      }
+    notes: ''
+  - name: 'twc:AskForLocation'
+    signature: 'twc:Weather -> promise twc:Weather'
+    kind: 'nodejs:8'
+    code: |-
+      const eba = require('eba')
+      module.exports.main = params => {
+        return new eba.Result()
+          .setName('twc:Weather', ':Question')
+          .setData('twc:Weather', 'Which location should I get the weather for?')
+      }
+    notes: ''
+  - name: 'twc:GetTemperature'
+    signature: >-
+      dayPart subClassOf twc:DayPart => twc:Temperature (implicit data
+      twc:Weather, optional :Relation (optional data :Timeframe), optional
+      dayPart) -> data twc:Temperature
+    kind: 'nodejs:8'
+    code: |-
+      const _ = require('lodash')
+      const eba = require('eba')
+
+      module.exports.main = async (params) => {
+        const p = new eba.Params(params)
+
+        const weather     = await p.get('twc:Weather')
+        const timeframe   = await p.get(':Timeframe')
+        const dayPart     = p.getName('dayPart')
+
+        const dropTZ = text => text.replace(/[-+]\d+$/, 'Z')
+        const shiftDate = (date, seconds) => {
+          date = new Date(date)
+          date.setSeconds(date.getSeconds() + seconds)
+          return date
+        }
+          
+        
+        let intervals = []
+        
+        for (let {day, night} of weather.forecast.daily) {
+          if (day && dayPart != 'twc:Night') {
+            let start = new Date(dropTZ(day.fcst_valid_local))
+            let end   = shiftDate(start, 12*60*60)
+            intervals.push({ type: 'day', start, end, value: day.temp })
+          }
+          if (night && dayPart != 'twc:Day') {
+            let start = new Date(dropTZ(night.fcst_valid_local))
+            let end   = shiftDate(start, 12*60*60)
+            intervals.push({ type: 'night', start, end, value: night.temp })
+          }
+        }
+        
+        for (let {fcst_valid_local, temp} of weather.forecast.hourly) {
+          let start = new Date(dropTZ(fcst_valid_local))
+          let end   = shiftDate(start, 60*60)
+          let hours = start.getUTCHours()
+          if (!dayPart ||
+               dayPart == 'twc:Day' && hours >= 7 && hours < 19 ||
+               dayPart == 'twc:Night' && (hours >= 19 || hours < 7))
+          {
+            intervals.push({ type: 'hour', start, end, value: temp })
+          }
+        }
+        
+        if (timeframe) {
+          let timeframeStart = new Date(dropTZ(timeframe.start))
+          let timeframeEnd   = new Date(dropTZ(timeframe.end))
+          
+          intervals = _.filter(intervals, ({start, end}) => !(start > timeframeEnd || end < timeframeStart))
+        }
+
+        let temperature = {intervals}
+        
+        let data = {location: weather.location, timeframe, dayPart, temperature}
+        let meta = new eba.NLToken('twc:Temperature')
+        
+        if (timeframe)
+          meta = meta.addProperty(':Relation', p.getMeta(':Timeframe'))
+          
+        console.log(JSON.stringify(p.getMeta('twc:Weather'), null, '_'))
+
+        for (let [name, token] of p.getMeta('twc:Weather').prop)
+          meta.addProperty(name, token)
+
+        return new eba.Result()
+          .setData('twc:Temperature', data)
+          .setMeta('twc:Temperature', meta)
+      }
+    notes: ''
+  - name: 'twc:MakeLocationByZIP'
+    signature: 'data :ZIPCode -> data twc:Location'
+    kind: 'nodejs:8'
+    code: |-
+      const eba = require('eba')
+
+      module.exports.main = async (params) => {
+        const p = new eba.Params(params)
+        const zip = await p.get(':ZIPCode')
+        const token = new eba.NLToken('nlg:PlainText', `ZIP code ${zip}`)
+        return new eba.Result()
+          .setData('twc:Location', { type: 'zip', zip })
+          .setMeta('twc:Location', token)
+      }
+    notes: ''
+  - name: 'twc:MakeLocationByCity'
+    signature: >-
+      data ne:City (optional data ne:StateOrProvince, optional data ne:Country)
+      -> data twc:Location
+    kind: 'nodejs:8'
+    code: |-
+      const _ = require('lodash')
+      const rp = require('request-promise-native')
+      const eba = require('eba')
+      const twc = require('./twc')
+
+      module.exports.main = async (params) => {
+        const p = new eba.Params(params)
+        const city = await p.get('ne:City')
+        const state = await p.get('ne:StateOrProvince')
+        const countryName = await p.get('ne:Country')
+        const countryCode = countryName ? await getCountryCode(countryName.text) : 'US'
+        const query = state ? `${city.text}, ${state.text}` : city.text
+        const locationType = 'city'
+
+        const searchResult = await twc.api(
+          params.secrets,
+          'api/weather/v3/location/search',
+          { language: 'en-US', countryCode, locationType, query })
+
+        const location = _.assign(
+          { type: 'geo' },
+          _(searchResult.location)
+            .toPairs()
+            .map(([k,v]) => [k,v[0]])
+            .fromPairs()
+            .value())
+
+
+        const token = new eba.NLToken('twc:City')
+          // .addProperty(':WithName', new eba.NLToken(':UserString', city.text))
+          .addProperty('nlg:PostModifier', new eba.NLToken('nlg:PlainText', city.text))
+
+        return new eba.Result()
+          .setData('twc:Location', location)
+          .setMeta('twc:Location', token)
+      }
+    notes: ''
+  - name: 'twc:GetWeatherByLocation'
+    signature: >-
+      twc:Weather (optional :Relation (context data twc:Location)) -> data
+      twc:Weather
+    kind: 'nodejs:8'
+    code: |-
+      const _ = require('lodash')
+      const rp = require('request-promise-native')
+      const eba = require('eba')
+      const twc = require('./twc')
+
+      const getDailyForecast = async (params, location) => {
+        switch (location.type) {
+          case 'zip':
+            return (await twc.api(
+              params.secrets,
+              `api/weather/v1/location/${location.zip}:4:US/forecast/daily/10day.json`,
+              { language: 'en-US' })).forecasts
+
+          case 'geo':
+            return (await twc.api(
+              params.secrets,
+              `api/weather/v1/geocode/${location.latitude}/${location.longitude}/forecast/daily/10day.json`,
+              { language: 'en-US' })).forecasts
+              
+          default:
+            return []
+        }
+      }
+
+      const getHourlyForecast = async (params, location) => {
+        switch (location.type) {
+          case 'zip':
+            return (await twc.api(
+              params.secrets,
+              `api/weather/v1/location/${location.zip}:4:US/forecast/hourly/48hour.json`,
+              { language: 'en-US' })).forecasts
+
+          case 'geo':
+            return (await twc.api(
+              params.secrets,
+              `api/weather/v1/geocode/${location.latitude}/${location.longitude}/forecast/hourly/48hour.json`,
+              { language: 'en-US' })).forecasts
+              
+          default:
+            return []
+        }
+      }
+
+      module.exports.main = async (params) => {
+        const p = new eba.Params(params)
+
+        const location = await p.get('twc:Location')
+
+        const [daily, hourly] = await Promise.all([
+            getDailyForecast(params, location),
+            getHourlyForecast(params, location)])
+
+        const data = {
+          location,
+          forecast: {daily, hourly}
+        }
+        
+        const meta = new eba.NLToken('twc:Weather')
+          .addProperty(':Relation', p.getMeta('twc:Location'))
+
+        return new eba.Result()
+          .setData('twc:Weather', data)
+          .setMeta('twc:Weather', meta)
+      }
+    notes: ''
+statics:
+  - name: twc.coffee
+    mime: application/vnd.coffeescript
+    text: |
+      class twc_TemperatureData extends PureComponent
+        render: ->
+          React.createElement Table,
+            title: R.h2 null, "Temperature"
+            items: @props.data.temperature.intervals
+            columns: [
+              ["Type", "type"]
+              ["Start", "start", (x) -> renderDate(x.replace(/Z$/,''))]
+              ["Hours", "end",   (x) -> renderDate(x.replace(/Z$/,''))]
+              ["Value", "value", (x) -> renderDecimal(x) + '°F']
+            ]
+            searchKeys: ["type"]
+            
+      class twc_AggregatedTemperatureData extends PureComponent
+        @getDerivedStateFromProps: (nextProps, prevState) ->
+          console.log(nextProps.data.timeline)
+          timeline = _(nextProps.data.timeline)
+            .toPairs()
+            .map ([x,y]) -> {x: new Date(x.replace(/Z$/,'')), y}
+            .sortBy('x')
+            .value()
+
+          traces = [
+            type: "line"
+            x: _.map(timeline, 'x')
+            y: _.map(timeline, 'y')
+          ]
+          
+          layout =
+            margin:
+                t: 10
+                l: 30
+                r: 10
+                b: 50
+          {traces, layout}
+            
+          
+        render: ->
+          R.div null,
+            R.h2 null, "Temperature chart"
+            React.createElement PlotlyChart,
+                traces: @state.traces
+                layout: @state.layout
+                style: height: 200
+    notes: ''
+    frontend: true
+  - name: twc.js
+    mime: text/javascript
+    text: |
+      const _ = require('lodash')
+      const rp = require('request-promise-native')
+
+      module.exports.api = (secrets, path, query) => {
+        const {twc_username, twc_password} = secrets
+
+        const authorization = `Basic ${Buffer.from(`${twc_username}:${twc_password}`).toString('base64')}`
+        
+        console.log({path, query})
+
+        return rp.get({
+          uri:`https://twcservice.mybluemix.net/${path}`,
+          qs: query,
+          headers: {
+            'Authorization': authorization,
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+          json:true
+        })
+      }
+
+      module.exports.getCountryCode = async (countryName) => {
+        if (countryName.length <= 3)
+          return countryName
+        let countries = rp.get({
+          uri: `https://restcountries.eu/rest/v2/name/${countryName}`,
+          json: true
+        })
+        return _.get(countries, '[0].alpha2Code') || 'US'
+      }
+    notes: ''
+    frontend: false
+    backend: true
