@@ -235,8 +235,6 @@ actions:
         
         if (timeframe)
           meta = meta.addProperty(':Relation', p.getMeta(':Timeframe'))
-          
-        console.log(JSON.stringify(p.getMeta('twc:Weather'), null, '_'))
 
         for (let [name, token] of p.getMeta('twc:Weather').prop)
           meta.addProperty(name, token)
@@ -394,7 +392,7 @@ statics:
             
       class twc_AggregatedTemperatureData extends PureComponent
         @getDerivedStateFromProps: (nextProps, prevState) ->
-          console.log(nextProps.data.timeline)
+
           timeline = _(nextProps.data.timeline)
             .toPairs()
             .map ([x,y]) -> {x: new Date(x.replace(/Z$/,'')), y}
@@ -435,8 +433,6 @@ statics:
         const {twc_username, twc_password} = secrets
 
         const authorization = `Basic ${Buffer.from(`${twc_username}:${twc_password}`).toString('base64')}`
-        
-        console.log({path, query})
 
         return rp.get({
           uri:`https://twcservice.mybluemix.net/${path}`,
