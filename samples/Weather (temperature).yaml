@@ -387,7 +387,7 @@ statics:
             columns: [
               ["Type", "type"]
               ["Start", "start", (x) -> renderDate(x.replace(/Z$/,''))]
-              ["Hours", "end",   (x) -> renderDate(x.replace(/Z$/,''))]
+              ["End",   "end",   (x) -> renderDate(x.replace(/Z$/,''))]
               ["Value", "value", (x) -> renderDecimal(x) + '°F']
             ]
             searchKeys: ["type"]
