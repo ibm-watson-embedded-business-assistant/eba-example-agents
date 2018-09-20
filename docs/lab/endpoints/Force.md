@@ -16,7 +16,7 @@ module.exports.main = async (params) => {
 };
 ```
 
-In this first action we have created a lazy data wrapper passing in as arguments both a method name as well as a timeframe. We will see later that the method `getSessions` will be executed within our `@force` endpoint to produce _real_ data when we finally need it. We will supply the timeframe as a body of api request within this method, so we have also passed it as an argument. When this cloud functions finishes executing, it will return the following lazy data or meta data wrapper:
+In this first action we have created a lazy data wrapper for sessions data passing in as arguments both a method name as well as a timeframe: `p.makeLazyData({method: 'getSessions', timeframe: timeframe})`. We will see later that the method `getSessions` will be executed within our `@force` endpoint to produce _real_ data when we finally need it. We will supply the timeframe as a body of api request to produce these sessions, so we have also passed it as an argument as well. When this action finishes executing, it will return the following lazy data or meta data wrapper:
 
 ```
 kind: genericLazyData
