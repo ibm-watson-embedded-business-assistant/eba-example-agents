@@ -11,10 +11,11 @@ The Embedded Business Assistant (“EBA”) is an omni-channel, enterprise-class
 
 ## What can you do with EBA?
 
-Here's a video we published that promotes the IBM Watson MArketing Assistant which was constructed using EBA technology. We also have sample agents within the dev lab for you to dig into.
+Here's a video we published that promotes the IBM Watson MArketing Assistant which was constructed using EBA technology.
 
 <iframe style="max-width: 100%" src="https://www.youtube.com/embed/KlavNwVEEuU" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
+We also have sample agents within the [dev lab](https://eba.ibm.com/assistant#/lab) for you to dig into.
 
 
 ## Why EBA?
