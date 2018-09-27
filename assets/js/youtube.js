@@ -24,5 +24,5 @@ window.onload = function() {
       a.parentNode.insertBefore(wrapper, a)
       a.remove()
     }
-  })
+  }
 }
