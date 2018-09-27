@@ -1,4 +1,4 @@
-$(function(){
+$(function() {
   $("body").find("a").each(function(n,a) {
     let match = a.href.match(/https?:\/\/www\.youtube\.com\/watch\?v=(.*)$/)
     if (match) {
@@ -23,5 +23,6 @@ $(function(){
       wrapper.appendChild(iframe)
       a.parentNode.insertBefore(wrapper, a)
       a.remove()
+    }
   })
 })
