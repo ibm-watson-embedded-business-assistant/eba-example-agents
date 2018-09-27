@@ -1,5 +1,5 @@
-$(function() {
-  $("body").find("a").each(function(n,a) {
+window.onload = function() {
+  for (let a of document.getElementsByTagName('a')) {
     let match = a.href.match(/https?:\/\/www\.youtube\.com\/watch\?v=(.*)$/)
     if (match) {
       let video = match[1]
@@ -25,4 +25,4 @@ $(function() {
       a.remove()
     }
   })
-})
+}
