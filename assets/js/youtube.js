@@ -1,4 +1,4 @@
-window.onload = function() {
+(function() {
   for (let a of document.getElementsByTagName('a')) {
     let match = a.href.match(/https?:\/\/www\.youtube\.com\/watch\?v=(.*)$/)
     if (match) {
@@ -25,4 +25,4 @@ window.onload = function() {
       a.remove()
     }
   }
-}
+})()
