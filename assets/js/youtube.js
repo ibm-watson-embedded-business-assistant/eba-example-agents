@@ -6,8 +6,8 @@
       let wrapper = document.createElement("div")
       wrapper.style.position = "relative"
       wrapper.style.height = "0"
-      wrapper.style.paddingTop = "25px"
-      wrapper.style.paddingBottom =  "56.26%"
+      wrapper.style.paddingTop = "0"
+      wrapper.style.paddingBottom =  "56.25%"
       
       let iframe = document.createElement("iframe")
       iframe.src = "https://www.youtube-nocookie.com/embed/" + video
