@@ -10,7 +10,7 @@ window.onload = function() {
       wrapper.style.paddingBottom =  "56.25%"
 
       let iframe = document.createElement("iframe")
-      iframe.src = "https://www.youtube-nocookie.com/embed/#{video}"
+      iframe.src = "https://www.youtube-nocookie.com/embed/" + video
       iframe.style.border = "none"
       iframe.style.position = "absolute"
       iframe.style.top = "0"
