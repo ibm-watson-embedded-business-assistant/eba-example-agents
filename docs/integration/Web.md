@@ -38,7 +38,7 @@ As mentioned above, you can pass in the following fields to customize Watson Ass
 * `disable_shadow` –– disables modal shadow when set to true, enables modal shadow when set to false.
 * `loading_delay` –– delays EBA iframe loading by given number of miliseconds, it helps to avoid showing browser spinning wheel while iframe is loading is background.
 
-In order to create a new session you will need to supply a JWT signed `access_token`. An `access_token` should be generated based on the `iss`, `sub`, and `private key` provided within our Lab Settings, where we have outlined the required integration steps. For an example on generating this `access_token` programatically, please reference our [headless integration](./Headless.md)
+In order to create a new session for authorized user you will need to supply a JWT signed `access_token`. An `access_token` should be generated based on the `iss`, `sub`, and `private key` provided within our Lab Settings, where we have outlined the required integration steps. For an example on generating this `access_token` programatically, please reference our [headless integration](./Headless.md)
 
 ### IBM_EBA API
 
