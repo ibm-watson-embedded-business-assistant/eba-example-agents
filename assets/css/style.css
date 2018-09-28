@@ -11103,4 +11103,32 @@ a {
         display: table-header-group;
         vertical-align: middle;
         border-color: inherit; }
-      
+      .wrapper section table tbody {
+        display: table-row-group;
+        vertical-align: middle;
+        border-color: inherit; }
+      .wrapper section table tr {
+        display: table-row;
+        vertical-align: inherit;
+        border-color: inherit; }
+      .wrapper section table th, .wrapper section table td {
+        text-align: left;
+        padding: 5px 0px 5px 15px;
+        border-bottom: 1px solid #e5e5e5; }
+      .wrapper section table th {
+        text-align: left;
+        background-color: #E0E0E0; }
+      .wrapper section table code {
+        padding: 0;
+        background-color: transparent; }
+  .wrapper:after {
+    content: "";
+    display: block;
+    clear: both; }
+  @media (max-width: 800px) {
+    .wrapper header, .wrapper footer, .wrapper section {
+      float: none;
+      position: relative;
+      width: 100%; } }
+
+/*# sourceMappingURL=style.css.map */
