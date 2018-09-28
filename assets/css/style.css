@@ -12,7 +12,7 @@ a {
   font-weight: 300; }
   .wrapper header, .wrapper footer {
     background-color: #325C80;
-    color: white;
+    color: #ECF2F2;
     float: left;
     position: fixed;
     width: 270px;
@@ -30,6 +30,9 @@ a {
         text-decoration: none; }
       .wrapper header h1 button {
         display: none; }
+    .wrapper header h2 {
+      margin-top: 10px;
+      margin-bottom: 10px; }
     .wrapper header h1, .wrapper header h2, .wrapper header h3, .wrapper header h4 {
       color: white; }
       .wrapper header h1:first-child, .wrapper header h2:first-child, .wrapper header h3:first-child, .wrapper header h4:first-child {
@@ -45,20 +48,31 @@ a {
       .wrapper header .buttons > * {
         margin-right: 10px;
         margin-bottom: 10px; }
-      .wrapper header .buttons a.btn-launch, .wrapper header .buttons a.btn-download {
-        font-family: "Helvetica Neue Roman for IBM", Helvetica, Arial, sans-serif;
-        font-weight: 400;
+      .wrapper header .buttons a {
         text-decoration: none;
-        border: 2px solid white;
-        border-radius: 7px;
+        border: 1px solid white;
+        border-radius: 0px;
         display: inline-block;
-        height: 40px;
-        line-height: 36px;
+        height: 30px;
+        line-height: 28px;
         width: 140px;
         text-align: center;
         vertical-align: top; }
-        .wrapper header .buttons a.btn-launch:hover, .wrapper header .buttons a.btn-download:hover {
+        .wrapper header .buttons a:hover {
           background-color: #4178BE; }
+        .wrapper header .buttons a svg {
+          width: 28px;
+          height: 28px;
+          padding: 4px;
+          display: inline-block;
+          vertical-align: top; }
+        .wrapper header .buttons a.btn-slack {
+          font-family: "Helvetica Neue Roman for IBM", Helvetica, Arial, sans-serif;
+          font-weight: 400;
+          background-color: #FBFCFC;
+          color: #464646; }
+          .wrapper header .buttons a.btn-slack:hover {
+            background-color: #F0F2F4; }
     .wrapper header ul.index {
       list-style: none;
       padding: 0;
