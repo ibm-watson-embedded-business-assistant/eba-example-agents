@@ -158,7 +158,8 @@ a {
         line-height: 24px;
         position: relative; }
         .wrapper header h1 a {
-          margin-right: 34px; }
+          display: inline-block;
+          max-width: calc(100% - 34px); }
         .wrapper header h1 button {
           position: absolute;
           display: block;
