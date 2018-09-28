@@ -11097,8 +11097,9 @@ a {
       margin: auto;
       display: block; }
     .wrapper section table {
-      width: 95%;
-      border-collapse: collapse; }
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 10px; }
       .wrapper section table thead {
         display: table-header-group;
         vertical-align: middle;
