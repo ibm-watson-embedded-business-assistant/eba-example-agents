@@ -105,7 +105,7 @@
           edit article
         </a>
         <script>
-          document.getElementsByClassName("github-edit")[0].href = "https://github.com/ibm-watson-embedded-business-assistant/eba-example-agents/edit/master" + window.location.pathname.replace(/.html$/, ".md")
+          document.getElementsByClassName("github-edit")[0].href = "https://github.com/ibm-watson-embedded-business-assistant/eba-example-agents/edit/master" + window.location.pathname.replace(/.html$/, ".md").replace(/\/$/, "/README.md")
         </script>
 
       </section>
