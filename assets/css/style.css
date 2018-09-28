@@ -31,6 +31,8 @@ a {
       line-height: 30px; }
       .wrapper header h1 a {
         text-decoration: none; }
+      .wrapper header h1 button {
+        display: none; }
     .wrapper header h1, .wrapper header h2, .wrapper header h3, .wrapper header h4 {
       color: white; }
       .wrapper header h1:first-child, .wrapper header h2:first-child, .wrapper header h3:first-child, .wrapper header h4:first-child {
@@ -39,6 +41,7 @@ a {
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
+      justify-content: center;
       margin-top: 20px;
       margin-right: -10px;
       margin-bottom: 10px; }
@@ -122,6 +125,23 @@ a {
     .wrapper header, .wrapper footer, .wrapper section {
       float: none;
       position: relative;
-      width: 100%; } }
+      width: 100%; }
+    .wrapper header {
+      padding: 15px; }
+      .wrapper header h1 {
+        font-size: 20px;
+        line-height: 24px; }
+        .wrapper header h1 button {
+          display: block; }
+          .wrapper header h1 button svg {
+            width: 24px;
+            height: 24px; }
+      .wrapper header h2 {
+        margin-top: 15px;
+        margin-bottom: 10px; }
+      .wrapper header:not(.opened) > *:first-child {
+        margin-bottom: 0; }
+      .wrapper header:not(.opened) > *:not(:first-child) {
+        display: none; } }
 
 /*# sourceMappingURL=style.css.map */
