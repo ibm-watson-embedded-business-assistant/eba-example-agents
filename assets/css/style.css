@@ -154,12 +154,18 @@ a {
       padding: 20px; }
       .wrapper header h1 {
         font-size: 20px;
-        line-height: 24px; }
+        line-height: 24px;
+        position: relative; }
+        .wrapper header h1 a {
+          margin-right: 34px; }
         .wrapper header h1 button {
+          position: absolute;
           display: block;
-          margin-left: 15px;
           height: 24px;
-          z-index: 1; }
+          z-index: 1;
+          top: 0;
+          right: 0;
+          float: none; }
           .wrapper header h1 button svg {
             width: 24px;
             height: 24px; }
