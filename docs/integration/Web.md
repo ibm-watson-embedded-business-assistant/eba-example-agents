@@ -19,7 +19,8 @@ This script should be loaded in the start of your application by simply adding a
         IBM_EBA_CONFIG = {
             agent_name: 'Agent Kevin',
             disable_button: false,
-            disable_shadow: true
+            disable_shadow: true,
+            loading_delay: 1000
         }
     </script>
     <script src="https://eba.ibm.com/static/assistant.js" defer></script>
@@ -29,12 +30,13 @@ With these few lines of code in your host application, Watson Assistant will be 
 
 As mentioned above, you can pass in the following fields to customize Watson Assistant either via optional global object `IBM_EBA_CONFIG` or during the call to `IBM_EBA.setup`, viz. 
 
-* `access_token` –– JWT access token, check Settings tab in Lab for more details
-* `agent_name` –– replaces Watson as the name to whatever is supplied
+* `access_token` –– JWT access token, check Settings tab in Lab for more details.
+* `agent_name` –– replaces Watson as the name to whatever is supplied.
 * `agent_voice` –– tunes Watson Assistant's voice. Check [the list of voices](./Voices.md) supported by Watson Assistant.
 * `user_first_name`, `user_last_name`, `user_full_name` –– makes Watson Assistant aware about current user so it will use personalization in answers.
-* `disable_button` –– disables button control when set to true, enables button control when set to false
-* `disable_shadow` –– disables modal shadow when set to true, enables modal shadow when set to false
+* `disable_button` –– disables button control when set to true, enables button control when set to false.
+* `disable_shadow` –– disables modal shadow when set to true, enables modal shadow when set to false.
+* `loading_delay` –– delays EBA iframe loading by given number of miliseconds, it helps to avoid showing browser spinning wheel while iframe is loading is background.
 
 In order to create a new session you will need to supply a JWT signed `access_token`. An `access_token` should be generated based on the `iss`, `sub`, and `private key` provided within our Lab Settings, where we have outlined the required integration steps. For an example on generating this `access_token` programatically, please reference our [headless integration](./Headless.md)
 
