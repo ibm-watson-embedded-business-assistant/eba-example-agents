@@ -29,9 +29,11 @@ a {
       font-weight: 400;
       font-size: 26px;
       line-height: 30px;
-      margin-top: 0; }
+      color: white; }
       .wrapper header h1 a {
         text-decoration: none; }
+    .wrapper header h1:first-child, .wrapper header h2:first-child, .wrapper header h3:first-child, .wrapper header h4:first-child {
+      margin-top: 0; }
     .wrapper header .buttons {
       display: flex;
       flex-direction: row;
