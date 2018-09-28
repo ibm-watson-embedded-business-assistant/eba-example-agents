@@ -75,6 +75,9 @@
 
       </header>
       <section>
+
+        {{ content }}
+
         <a href="#" class="github-edit" target="_blank">
           <svg
              xmlns:svg="http://www.w3.org/2000/svg"
@@ -103,8 +106,6 @@
         <script>
           document.getElementsByClassName("github-edit")[0].href = "https://github.com/ibm-watson-embedded-business-assistant/eba-example-agents/edit/master" + window.location.pathname.replace(/.html$/, ".md")
         </script>
-
-        {{ content }}
 
       </section>
       <footer>
