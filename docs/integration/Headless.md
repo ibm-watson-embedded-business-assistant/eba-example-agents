@@ -8,7 +8,7 @@ The steps required for integration are as follows:
 
 ### Connecting to Watson Assistant
 
-In order to generate an acess token, please visit our [settings page](https://eba-3.adm01.com/assistant#/lab/settings) to get started. You will find an `iss` and `sub` claims, as well as instructions for generating private and public keys. As mentioned within our documentation, please store your private key within a secure location and do not share it with anyone. Having obtained these required data elements, lets take a look at how you can generate an access token programatically within your headless client.
+In order to generate an acess token, please visit our [settings page](https://eba.ibm.com/assistant#/lab/settings) to get started. You will find an `iss` and `sub` claims, as well as instructions for generating private and public keys. As mentioned within our documentation, please store your private key within a secure location and do not share it with anyone. Having obtained these required data elements, lets take a look at how you can generate an access token programatically within your headless client.
 
 ```
 const settings = {
