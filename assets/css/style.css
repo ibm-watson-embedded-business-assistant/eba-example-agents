@@ -131,6 +131,8 @@ a {
       .wrapper section table code {
         padding: 0;
         background-color: transparent; }
+    .wrapper section blockquote {
+      display: none; }
   .wrapper:after {
     content: "";
     display: block;
