@@ -88,18 +88,17 @@ a {
     margin-right: 30px;
     padding-right: calc(100% - 270px - 800px); }
     .wrapper section .github-edit {
-      position: absolute;
-      top: 15px;
-      right: 15px;
       color: #323232;
       text-decoration: none;
-      font-size: 14px; }
+      font-size: 14px;
+      line-height: 16px;
+      display: block;
+      margin-top: 20px; }
       .wrapper section .github-edit svg {
-        width: 14px;
-        height: 14px;
+        width: 16px;
+        height: 16px;
         display: inline-block;
-        vertical-align: middle;
-        margin-right: 4px; }
+        vertical-align: top; }
     .wrapper section em {
       font-family: "Helvetica Neue for IBM", Helvetica, Arial, sans-serif;
       font-weight: 300; }
