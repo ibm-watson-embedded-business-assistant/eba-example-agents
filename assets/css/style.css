@@ -11093,15 +11093,14 @@ a {
     .wrapper section > h2:first-child {
       margin-top: 0; }
     .wrapper section img {
-      max-width: 100%; }
-  .wrapper:after {
-    content: "";
-    display: block;
-    clear: both; }
-  @media (max-width: 800px) {
-    .wrapper header, .wrapper footer, .wrapper section {
-      float: none;
-      position: relative;
-      width: 100%; } }
-
-/*# sourceMappingURL=style.css.map */
+      max-width: 100%;
+      margin: auto;
+      display: block; }
+    .wrapper section table {
+      width: 95%;
+      border-collapse: collapse; }
+      .wrapper section table thead {
+        display: table-header-group;
+        vertical-align: middle;
+        border-color: inherit; }
+      
