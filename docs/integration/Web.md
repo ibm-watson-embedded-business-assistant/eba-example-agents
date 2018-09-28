@@ -57,7 +57,7 @@ In order to create a new session for authorized user you will need to supply a J
 Since IBM_EBA is a global object, you will be able to send data to the assistant anytime you like by simply invoking `IBM_EBA.send`. This enables you to encode various events across your web application. For instance, here is a click event that triggers an order event inside of Watson Assistant:
 
 ```
-<button onclick="javascript :IBM_EBA.send({
+<button onclick="javascript:IBM_EBA.send({
     order_meta: {
         order_id: 1234,
         order_name: "paper",
