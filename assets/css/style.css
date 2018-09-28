@@ -1,242 +1,178 @@
-@import "node_modules/x1-ui-bootstrap/app/src/x1-ui-sass-tools.scss";
-
-@mixin regular-font() {
-    font-family: $font-family-1;
-    font-weight: $font-weight-light;
-}
-
-@mixin strong-font() {
-    font-family: $font-family-2;
-    font-weight: $font-weight-roman;
-}
-
-@mixin title-font() {
-    font-family: $font-family-2;
-    font-weight: $font-weight-roman;
-}
-
-@mixin truncate-text() {
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-}
-
+/**
+ * @todo deprecate these eventuallyyyyyy
+ */
+/*
+ * end
+ **/
 a {
-    text-decoration: underline;
-}
+  text-decoration: underline; }
 
 .wrapper {
-    @include regular-font();
-    $side-panel-width: 270px;
-    header, footer {
-        background-color: $blue60;
-        color: $cool-white40;
-        a {
-            color: white;
-        }
-        float: left;
-        position: fixed;
-        width: $side-panel-width;
-        padding: 20px;
-    }
-    header {
-        height: 100%;
-        h1 {
-            @include strong-font();
-            font-size: 26px;
-            line-height: 30px;
-            a {
-                text-decoration: none;
-            }
-            button {
-                display: none;
-            }
-        }
-        h2 {
-            margin-top: 10px;
-            margin-bottom: 10px;
-        }
-        h1, h2, h3, h4 {
-            color: white;
-            &:first-child {
-                margin-top: 0;
-            }
-        }
-        .buttons {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin-top: 20px;
-            margin-right: -10px;
-            margin-bottom: 10px;
-            & > * {
-                margin-right: 10px;
-                margin-bottom: 10px;
-            }
-            a {
-                // @include title-font();
-                text-decoration: none;
-                border: 1px solid white;
-                border-radius: 0px;
-                display: inline-block;
-                height: 30px;
-                line-height: 28px;
-                width: 140px;
-                text-align: center;
-                vertical-align: top;
-                &:hover {
-                    background-color: $blue50;
-                }
-                svg {
-                    width: 28px;
-                    height: 28px;
-                    padding: 4px;
-                    display: inline-block;
-                    vertical-align: top;
-                }
-                &.btn-slack {
-                    @include title-font();
-                    background-color: $cool-white10;
-                    color: $gray70;
-                    &:hover {
-                        background-color: $cool-white30;
-                    }
-                }
-            }
-        }
-        ul.index {
-            list-style: none;
-            padding: 0;
-            margin: 0;
+  font-family: "Helvetica Neue for IBM", Helvetica, Arial, sans-serif;
+  font-weight: 300; }
+  .wrapper header, .wrapper footer {
+    background-color: #325C80;
+    color: #ECF2F2;
+    float: left;
+    position: fixed;
+    width: 270px;
+    padding: 20px; }
+    .wrapper header a, .wrapper footer a {
+      color: white; }
+  .wrapper header {
+    height: 100%; }
+    .wrapper header h1 {
+      font-family: "Helvetica Neue Roman for IBM", Helvetica, Arial, sans-serif;
+      font-weight: 400;
+      font-size: 26px;
+      line-height: 30px; }
+      .wrapper header h1 a {
+        text-decoration: none; }
+      .wrapper header h1 button {
+        display: none; }
+    .wrapper header h2 {
+      margin-top: 10px;
+      margin-bottom: 10px; }
+    .wrapper header h1, .wrapper header h2, .wrapper header h3, .wrapper header h4 {
+      color: white; }
+      .wrapper header h1:first-child, .wrapper header h2:first-child, .wrapper header h3:first-child, .wrapper header h4:first-child {
+        margin-top: 0; }
+    .wrapper header .buttons {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 20px;
+      margin-right: -10px;
+      margin-bottom: 10px; }
+      .wrapper header .buttons > * {
+        margin-right: 10px;
+        margin-bottom: 10px; }
+      .wrapper header .buttons a {
+        text-decoration: none;
+        border: 1px solid white;
+        border-radius: 0px;
+        display: inline-block;
+        height: 30px;
+        line-height: 28px;
+        width: 140px;
+        text-align: center;
+        vertical-align: top; }
+        .wrapper header .buttons a:hover {
+          background-color: #4178BE; }
+        .wrapper header .buttons a svg {
+          width: 28px;
+          height: 28px;
+          padding: 4px;
+          display: inline-block;
+          vertical-align: top; }
+        .wrapper header .buttons a.btn-slack {
+          font-family: "Helvetica Neue Roman for IBM", Helvetica, Arial, sans-serif;
+          font-weight: 400;
+          background-color: #FBFCFC;
+          color: #464646; }
+          .wrapper header .buttons a.btn-slack:hover {
+            background-color: #F0F2F4; }
+    .wrapper header ul.index {
+      list-style: none;
+      padding: 0;
+      margin: 0; }
+  .wrapper footer {
+    bottom: 0; }
+  .wrapper section {
+    float: right;
+    width: calc(100% - 270px - 30px);
+    padding: 30px;
+    margin-right: 30px;
+    padding-right: calc(100% - 270px - 800px); }
+    .wrapper section em {
+      font-family: "Helvetica Neue for IBM", Helvetica, Arial, sans-serif;
+      font-weight: 300; }
+    .wrapper section code, .wrapper section pre {
+      color: #323232;
+      font-size: 12px;
+      font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+      background-color: #F4F4F4; }
+    .wrapper section h1:first-child, .wrapper section h2:first-child, .wrapper section h3:first-child, .wrapper section h4:first-child {
+      margin-top: 0; }
+    .wrapper section h3, .wrapper section h4 {
+      font-family: "Helvetica Neue Roman for IBM", Helvetica, Arial, sans-serif;
+      font-weight: 400; }
+    .wrapper section img {
+      max-width: 100%;
+      margin: auto;
+      display: block; }
+      .wrapper section img[src$="#zoom=50%"] {
+        zoom: 50%; }
+    .wrapper section table {
+      width: 100%;
+      margin-bottom: 10px;
+      border-collapse: collapse; }
+      .wrapper section table thead {
+        display: table-header-group;
+        vertical-align: middle;
+        border-color: inherit; }
+      .wrapper section table tbody {
+        display: table-row-group;
+        vertical-align: middle;
+        border-color: inherit; }
+      .wrapper section table tr {
+        display: table-row;
+        vertical-align: inherit;
+        border-color: inherit; }
+      .wrapper section table th, .wrapper section table td {
+        text-align: left;
+        padding: 5px 0px 5px 15px;
+        border-bottom: 1px solid #e5e5e5; }
+      .wrapper section table th {
+        text-align: left;
+        background-color: #E0E0E0; }
+      .wrapper section table code {
+        padding: 0;
+        background-color: transparent; }
+  .wrapper:after {
+    content: "";
+    display: block;
+    clear: both; }
 
-        }
-    }
-    footer {
-        bottom: 0;
-    }
-    section {
-        float: right;
-        width: calc(100% - #{$side-panel-width} - 30px);
-        padding: 30px;
-        margin-right: 30px;
-        padding-right: calc(100% - #{$side-panel-width} - 800px);
-        em {
-            @include regular-font();
-        }
-        code, pre {
-            color: $gray80;
-            font-size: 12px;
-            font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
-            background-color: $neutral-white30;
-        }
-        h1, h2, h3, h4 {
-            &:first-child {
-                margin-top: 0;
-            }
-        }
-        h3, h4 {
-            @include title-font();
-        }
-        img {
-            max-width: 100%;
-            margin: auto;
-            display: block;
-            &[src$="#zoom=50%"] {
-                zoom: 50%;
-            }
-        }
-        table {
-            width: 100%;
-            margin-bottom: 10px;
-            border-collapse: collapse;
-            thead {
-                display: table-header-group;
-                vertical-align: middle;
-                border-color: inherit;
-            }
-            tbody {
-                display: table-row-group;
-                vertical-align: middle;
-                border-color: inherit;
-            }
-            tr {
-                display: table-row;
-                vertical-align: inherit;
-                border-color: inherit;
-            }
-            th, td {
-                text-align: left;
-                padding: 5px 0px 5px 15px;
-                border-bottom: 1px solid #e5e5e5;
-            }
-            th {
-                text-align: left;
-                background-color: $gray10;
-            }
-            code {
-                padding: 0;
-                background-color: transparent;
-            }
-        }
-    }
-    &:after {
-        content: "";
-        display: block;
-        clear: both;
-    }
-}
 @media (max-width: 800px) {
-    html, body {
-        height: 100%;
-    }
-    .wrapper {
-        display: flex;
-        flex-direction: column;
-        min-height: 100%;
-        header, footer, section {
-            width: 100%;
-            height: auto;
-            float: none;
-            position: relative;
-        }
-        section {
-            flex-grow: 1;
-        }
-        header {
-            padding: 20px;
-            h1 {
-                font-size: 20px;
-                line-height: 24px;
-                button {
-                    display: block;
-                    margin-left: 15px;
-                    height: 24px;
-                    z-index: 1;
-                    svg {
-                        width: 24px;
-                        height: 24px;
-                    }
-                }
-            }
-            h2 {
-                margin-top: 15px;
-                margin-bottom: 10px;
-            }
-            &:not(.opened) {
-                & > *:first-child {
-                    margin-bottom: 0;
-                }
-                & > *:not(:first-child) {
-                    display: none;
-                }
-            }
-            .buttons {
-                display: none;
-            }
-        }
-        section {
-            padding: 20px;
-        }
-    }
-}
+  html, body {
+    height: 100%; }
+
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%; }
+    .wrapper header, .wrapper footer, .wrapper section {
+      width: 100%;
+      height: auto;
+      float: none;
+      position: relative; }
+    .wrapper section {
+      flex-grow: 1; }
+    .wrapper header {
+      padding: 20px; }
+      .wrapper header h1 {
+        font-size: 20px;
+        line-height: 24px; }
+        .wrapper header h1 button {
+          display: block;
+          margin-left: 15px;
+          height: 24px;
+          z-index: 1; }
+          .wrapper header h1 button svg {
+            width: 24px;
+            height: 24px; }
+      .wrapper header h2 {
+        margin-top: 15px;
+        margin-bottom: 10px; }
+      .wrapper header:not(.opened) > *:first-child {
+        margin-bottom: 0; }
+      .wrapper header:not(.opened) > *:not(:first-child) {
+        display: none; }
+      .wrapper header .buttons {
+        display: none; }
+    .wrapper section {
+      padding: 20px; } }
+
+/*# sourceMappingURL=style.css.map */
