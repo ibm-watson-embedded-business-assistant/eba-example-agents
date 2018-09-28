@@ -8,6 +8,9 @@ body {
 a {
   text-decoration: underline;
 }
+h1 a, p.buttons a {
+  text-decoration: none;
+}
 img[src*="zoom=50%"] {
   zoom: 50%;
   margin: 0 auto;
