@@ -17,7 +17,7 @@ const {Result} = require('eba');
 module.exports.main = () => new Result().setData('wmt:Products', ['product1', 'product2', 'product3']);
 ```
 
-In this placeholder code, we import our standard [eba helpers package](./lab/NodeHelpers.md). This package is useful for working with parameters, results, and other features of our system. In the code above, we are returning a Result which sets data for the `wmt:Products` concept as a hardcoded list of strings, viz. 'product1', 'product2', and 'product3'.
+In this placeholder code, we import our standard [eba helpers package](../lab/NodeHelpers.md). This package is useful for working with parameters, results, and other features of our system. In the code above, we are returning a Result which sets data for the `wmt:Products` concept as a hardcoded list of strings, viz. 'product1', 'product2', and 'product3'.
 
 Save your changes and try the following questions in the chat: 'show me trending products' or 'what products are trending?'. Watson should respond with the hardcoded list above. You can verify Watson's understanding by clicking the information icon above your original question. This should show you the annotation tree of your question. You can view the complete context of your chat in the information space as well by clicking the graph icon in the top right corner of the page.
 
