@@ -132,7 +132,8 @@ a {
         font-size: 20px;
         line-height: 24px; }
         .wrapper header h1 button {
-          display: block; }
+          display: block;
+          margin-left: 15px; }
           .wrapper header h1 button svg {
             width: 24px;
             height: 24px; }
@@ -142,6 +143,8 @@ a {
       .wrapper header:not(.opened) > *:first-child {
         margin-bottom: 0; }
       .wrapper header:not(.opened) > *:not(:first-child) {
-        display: none; } }
+        display: none; }
+    .wrapper section {
+      padding: 20px; } }
 
 /*# sourceMappingURL=style.css.map */
