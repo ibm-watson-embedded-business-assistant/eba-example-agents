@@ -88,6 +88,8 @@ a {
       max-width: 100%;
       margin: auto;
       display: block; }
+      .wrapper section img[src$="#zoom=50%"] {
+        zoom: 50%; }
     .wrapper section table {
       width: 100%;
       margin-bottom: 10px;
