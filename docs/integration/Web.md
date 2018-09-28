@@ -45,7 +45,7 @@ In order to create a new session for authorized user you will need to supply a J
 * `create()`      –– creates the IBM_EBA object and injects assistant into host application (note: this is called within this script itself and should be avoided)
 * `setup(config)` –– posts a setup message to Watson Assistant containing the supplied config
 * `destroy()`     –– destroys the IBM_EBA object and all related DOM elements
-* `send(event)`   –– posts a stringified event message to Watson Assistant
+* `send(event)`   –– posts a JSON event message to Watson Assistant
 * `open()`        –– opens the window containing the assistant
 * `close()`       –– closes the window containing the assistant (note: may render the assistant is compact mode if the last message was tagged as important)
 * `detach()`      –– detaches the assistant into a new tab for full screen experience
