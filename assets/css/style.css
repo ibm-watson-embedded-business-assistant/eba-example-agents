@@ -65,6 +65,7 @@ a {
           height: 28px;
           padding: 4px;
           padding-left: 0;
+          margin-left: -10px;
           display: inline-block;
           vertical-align: top; }
         .wrapper header .buttons a.btn-slack {
