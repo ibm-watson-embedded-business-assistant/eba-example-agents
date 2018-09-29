@@ -1,6 +1,6 @@
 const _ = require('lodash')
 const readline = require('readline')
-const eba = require('./eba-client')
+const eba = require('eba-client')
 const jwt = require('jsonwebtoken')
 const fs = require('fs')
 const chalk = require('chalk')
