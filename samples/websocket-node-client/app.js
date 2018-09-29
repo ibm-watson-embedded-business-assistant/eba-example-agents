@@ -27,16 +27,16 @@ const rl = readline.createInterface({
 
 var client = new eba.Client(settings.url)
 
-client.on('message', (message) => {
+client.on('message', message => {
     console.log(message)
 })
 
-client.on('log', (text) => {
+client.on('log', text => {
     console.log(chalk.cyan(text))
 })
 
 function interact() {
-    rl.question('', (text) => {
+    rl.question('', text => {
         client.ask(text)
         _.defer(interact)
     })
@@ -56,7 +56,7 @@ client
         console.log('type your question or hit Ctrl+D to exit')
         interact()
     })
-    .catch((ex) => {
+    .catch(ex => {
         console.error(chalk.red('unable to connect:'))
         console.error(chalk.red(`${ex}`))
         process.exit(1)
