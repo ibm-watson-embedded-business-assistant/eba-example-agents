@@ -10,6 +10,8 @@ const chalk = require('chalk')
 // to enable programmatic access vist https://eba.ibm.com/assistant#/lab/settings
 
 const settings = {
+    // url: 'https://eba-1.adm01.com/',
+    // url: 'https://eba-2.adm01.com/',
     // url: 'https://eba-3.adm01.com/',
     url: 'https://eba.ibm.com/',
     key: 'private_key.pem',
