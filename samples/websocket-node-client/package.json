@@ -1,19 +1,20 @@
 {
   "name": "websocket-node-client",
   "version": "1.0.0",
-  "description": "",
+  "description": "to enable programmatic access vist https://eba.ibm.com/assistant#/lab/settings",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "MIT",
-  "dependencies": [
-    "chalk",
-    "lodash",
-    "request",
-    "request-promise",
-    "jsonwebtoken",
-    "websocket"
-  ]
+  "dependencies": {
+    "chalk": "^2.4.1",
+    "eba-client": "git+https://github.com/ibm-watson-embedded-business-assistant/eba-node-client.git",
+    "jsonwebtoken": "^8.3.0",
+    "lodash": "^4.17.11",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.2",
+    "websocket": "^1.0.28"
+  }
 }
