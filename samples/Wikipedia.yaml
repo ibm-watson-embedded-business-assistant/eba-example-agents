@@ -472,7 +472,7 @@ statics:
                       attributes = fixAttributes(node)
                       attributes.key = i
                       children = switch node.name
-                        when "img", "br", "hr" then undefined
+                        when "img", "br", "hr", "wbr" then undefined
                         else renderHTML(node.children, node)
                       element = R[node.name](attributes, children)
                       if section?
