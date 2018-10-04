@@ -81,7 +81,7 @@ Message:
 File:
 
     - name: the name of the file attachment
-    - body: data content of the attachment
+    - body: data content of the attachment (must be base64 encoded)
     - dims: dimensions of the image attachment (used for images only)
     
 The example above demonstrates how to send an array of both types of formats.
