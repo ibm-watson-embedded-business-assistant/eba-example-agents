@@ -69,4 +69,19 @@ module.exports.main = ({ input }) => {
 }
 ```
 
-Workspace supports two types of render formats--Messages and Files, where Messages can contain the fields `{ text, title, color, actor }` and Files can contain the fields `{name, body, dims}`. You can also render a JSON array of both types as the example above shows. Note that `dims` is an attribute required for image attachments.
+Workspace supports two types of render formats--Message, File, or a JSON array of both.
+
+Message: 
+
+    - text: the actual natural language text answering users question
+    - title: title heading displayed over response
+    - color: the color of nl text
+    - actor: the entity responsible for sending the message
+
+File:
+
+    - name: the name of the file attachment
+    - body: data content of the attachment
+    - dims: dimensions of the image attachment (used for images only)
+    
+The example above demonstrates how to send an array of both types of formats.
