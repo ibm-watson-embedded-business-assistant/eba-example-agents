@@ -53,7 +53,7 @@ const render = (channel, node, data) => {
     if (name == "sc:Orders") {
       return [
         { text: text , title: _.trimStart(name, 'sc:')},
-        { name: 'orders.csv', body: toCSV(data) }
+        { name: 'orders.csv', body: Buffer.from(toCSV(data)).toString('base64') }
       ]
     }
   }
