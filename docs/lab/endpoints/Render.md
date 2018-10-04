@@ -5,9 +5,6 @@ Watson Assistant can provide native rendering for a few popular communication ch
 - node -- contains the nl text and concept name that data was produced for
 - data -- raw data collection to be rendered
 
-Below is an example that illustrates how to send formatted messages directly to Slack. See [Walmart sample](../../../samples/Walmart.md) for full usage.
-
-
 Slack Example:
 
 ```
