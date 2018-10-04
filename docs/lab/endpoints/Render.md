@@ -7,7 +7,8 @@ Watson Assistant can provide native rendering for a few popular communication ch
 
 Below is an example that illustrates how to send formatted messages directly to Slack. See [Walmart sample](../../../samples/Walmart.md) for full usage.
 
-Example:
+
+Slack Example:
 
 ```
 function render(channel, node, data) {
@@ -40,3 +41,35 @@ module.exports.main = function({ input }) {
     }
 }
 ```
+
+For full documentation and interactive explorer on Slack's message format, consult their [official docs](https://api.slack.com/docs/messages)
+
+Workspace Example: 
+ ```
+const {toCSV} = require('./util.js');
+const _ = require('lodash');
+
+const render = (channel, node, data) => {
+  let { text, name } = node.data.content
+
+  if (channel == "workspace") {
+    if (name == "sc:Orders") {
+      return [
+        { text: text , title: _.trimStart(name, 'sc:')},
+        { name: 'orders.csv', body: toCSV(data) }
+      ]
+    }
+  }
+}
+
+module.exports.main = ({ input }) => {
+  let result = render(input.channel, input.node, input.data)
+  if (result) {
+    return { output: result }
+  } else {
+    return {}
+  }
+}
+```
+
+Workspace supports two types of render formats--Messages and Files, where Messages can contain the fields `{ text, title, color, actor }` and Files can contain the fields `{name, body, dims}`. You can also render a JSON array of both types as the example above shows. Note that `dims` is an attribute required for image attachments.
