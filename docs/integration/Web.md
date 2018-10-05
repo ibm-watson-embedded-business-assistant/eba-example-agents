@@ -55,8 +55,8 @@ In order to create a new session for authorized user you will need to supply a J
 * `destroy()`     –– destroys the IBM_EBA object and all related DOM elements
 * `send(event)`   –– posts a JSON event message to Watson Assistant
 * `open()`        –– opens the popup window containing the assistant
-* `close()`       –– closes the popup window containing the assistant (note: may render the assistant is compact mode if the * * `toggle()`      –– toggles the state of the popup window from opened to closed
-last message was tagged as important)
+* `close()`       –– closes the popup window containing the assistant (note: may render the assistant is compact mode if the last message was tagged as important)
+* `toggle()`      –– toggles the state of the popup window from opened to closed
 * `detach()`      –– detaches the assistant into a new tab for full screen experience
 
 Since IBM_EBA is a global object, you will be able to send data to the assistant anytime you like by simply invoking `IBM_EBA.send`. This enables you to encode various events across your web application. For instance, here is a click event that triggers an order event inside of Watson Assistant:
