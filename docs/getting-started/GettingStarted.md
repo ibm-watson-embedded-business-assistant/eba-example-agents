@@ -1,3 +1,5 @@
+## Getting started
+
 Welcome to Watson Assistant development! This article serves as a getting started guide for new Watson Assistant developers who are unfamilliar with our programming model. As a tutorial, we will develop our sample Walmart agent from sratch. This agent will be able to answer various questions about trending products. You may reference and try out [the complete working sample](../../samples/Walmart.md) any time you wish.
 
 ### Workflow
