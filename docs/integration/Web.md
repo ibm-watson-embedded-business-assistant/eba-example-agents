@@ -20,7 +20,13 @@ This script should be loaded in the start of your application by simply adding a
             agent_name: 'Agent Kevin',
             disable_button: false,
             disable_shadow: true,
-            loading_delay: 1000
+            loading_delay: 1000,
+            user_first_name: 'John',
+            user_last_name: 'Doe',
+            user_full_name: 'John M. Doe',
+            user_locale: 'en_US',
+            user_language: 'en',
+            user_time_zone: 'America/Los_Angeles'
         }
     </script>
     <script src="https://eba.ibm.com/static/assistant.js" defer></script>
