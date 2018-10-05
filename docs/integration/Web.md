@@ -76,7 +76,7 @@ function onViewOrder() {
 <button onclick="onViewOrder()">View Order</button>
 ```
 
-Using our development lab, you will be able to program the assistant to appropriately respond to this event. You may invoke the other api functions across your event handlers in a similar fashion. For details on how to respond to such events using Watson Assistant, please refer to our [@react endpoint](../lab/General#endpoints).
+Using our development lab, you will be able to program the assistant to appropriately respond to this event. You may invoke the other api functions across your event handlers in a similar fashion. For details on how to respond to such events using Watson Assistant, please refer to our [@react endpoint](../lab/General.md#endpoints).
 
 ### Display Modes
 
