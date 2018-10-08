@@ -11,8 +11,8 @@ Slack Example:
 function render(channel, node, data) {
     let { text, name } = node.data.content
 
-    if (channel == "slack") {
-        if (name == "wmt:Products") {
+    if (channel == 'slack') {
+        if (name == 'wmt:Products') {
             let attachments = data.map(renderProduct)
             return {
                 text: text,
@@ -20,7 +20,7 @@ function render(channel, node, data) {
             }
         }
     
-        if (name == "wmt:Product") {
+        if (name == 'wmt:Product') {
             return {
                 text: text,
                 attachments: [renderProduct(data)]
@@ -49,8 +49,8 @@ const _ = require('lodash');
 const render = (channel, node, data) => {
   let { text, name } = node.data.content
 
-  if (channel == "workspace") {
-    if (name == "sc:Orders") {
+  if (channel == 'workspace') {
+    if (name == 'sc:Orders') {
       return [
         { text: text , title: _.trimStart(name, 'sc:')},
         { name: 'orders.csv', body: Buffer.from(toCSV(data)).toString('base64') }
