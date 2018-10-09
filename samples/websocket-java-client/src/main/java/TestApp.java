@@ -94,7 +94,7 @@ public class TestApp {
             }
 
             void handleNode(JsonObject node) {
-                String name =node.getString("name");
+                String name = node.getString("name");
 
                 List<String> tags = node
                     .getJsonArray("tags")
@@ -114,11 +114,13 @@ public class TestApp {
                                     Optional.empty(),
                                     tags);
                                 break;
+
                             case OBJECT:
                                 onReceive(
                                     Optional.ofNullable(((JsonObject)content).getString("text")),
                                     Optional.ofNullable(((JsonObject)content).get("data")),
                                     tags);
+                                break;
                         }
                     }
                 }
