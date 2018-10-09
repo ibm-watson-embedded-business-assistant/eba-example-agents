@@ -115,11 +115,13 @@ public class TestApp {
                                     Optional.empty(),
                                     tags);
                                 break;
+
                             case OBJECT:
                                 onReceive(
                                     Optional.ofNullable(((JsonObject)content).getString("text")),
                                     Optional.ofNullable(((JsonObject)content).get("data")),
                                     tags);
+                                break;
                         }
                     }
                 }
