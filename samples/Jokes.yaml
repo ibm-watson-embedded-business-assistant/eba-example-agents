@@ -1,0 +1,40 @@
+version: 4
+meta:
+  description: 'Watson can tell you jokes! Give it a try, we dare you.'
+  icon: 'https://ibm.box.com/shared/static/jgef4ur2p3fh2xzfjp3ojrq1jdq3rb5p.svg'
+  name: Jokes
+concepts:
+  - name: ':Joke'
+    spelling: joke
+    ontology:
+      subClassOf: ':Showable'
+  - name: ':Showable'
+  - name: ':ActionShow'
+patterns:
+  - text: '{tell me|:ActionShow} a {joke|:Joke}'
+actions:
+  - name: 'jokes:NextJoke'
+    signature: ':Joke -> data :Joke'
+    kind: 'nodejs:8'
+    code: |-
+      const _ = require("lodash")
+      const eba = require("eba")
+      const jokes = require("./jokes.js")
+      const jokesCount = _.size(jokes)
+      function initIndices() {
+        return _.shuffle(Array(jokesCount).fill().map((e, i) => i))
+      }
+      module.exports.main = function(params) {
+        let pointer = params.storage.pointer || 0
+        let indices = params.storage.indices || initIndices()
+        let joke = jokes[indices[pointer % jokesCount]]
+        let result = new eba.Result().setData(":Joke", joke).store("pointer", pointer + 1)
+        return params.storage.indices ? result : result.store("indices", indices)
+      }
+    notes: ''
+statics:
+  - name: jokes.js
+    mime: text/javascript
+    text: "module.exports = [\n\t\"I would tell you a UDP joke, but you might not get it.\",\n\t\"If you put a million monkeys at a million keyboards, one of them will eventually write a Java program. The rest of them will all write Perl programs.\",\n\t\"What do you call 8 Hobbits? A Hobbyte.\",\n\t\"It is easier to change the specification to fit the program than vice versa.\",\n\t\"If enough data is collected, anything may be proven by statistical methods.\",\n\t\"Any sufficiently advanced bug is indistinguishable from a feature. (Rich Kulawiec)\",\n\t\"A little inaccuracy sometimes saves a ton of explanation. (Hector Hugh Munro)\",\n\t\"If debugging is the process of removing bugs, then programming must be the process of putting them in.\",\n\t\"An elephant is a mouse with an operating system.\",\n\t\"Don't worry if it doesn't work right. If everything did, you'd be out of a job.\",\n\t\"Entropy isn't what it used to be.\",\n\t\"The biggest difference between time and space is that you can't reuse time. (Merrick Furst)\",\n\t\"If practice makes perfect, and nobody's perfect, why practice?\",\n\t\"A conclusion is simply the place where you got tired of thinking.\",\n\t\"Counting in octal is just like counting in decimal, if you don't use your thumbs.\",\n\t\"A meeting is an event at which the minutes are kept and the hours are lost.\",\n\t\"Beware of bugs in the above code; I have only proved it correct, not tried it. (Donald Knuth)\",\n\t\"People who live in stone houses shouldn't throw glasses.\",\n\t\"Klein bottle for rent – inquire within.\",\n\t\"Real programmers don't document. If it was hard to write, it should be hard to understand.\",\n\t\"A bird in the hand can be messy.\",\n\t\"Garbage to ten decimal places is still garbage.\",\n\t\"A LISP programmer knows the value of everything, but the cost of nothing.\",\n\t\"The human mind ordinarily operates at only ten percent of its capacity - the rest is overhead for the operating system.\",\n\t\"On a clear disk you can seek forever.\",\n\t\"In Soviet Russia, 0 divides by you.\",\n\t\"I had a band called 999 megabytes.  We didn’t even have one Gig.\",\n\t\"Chuck Norris once ordered a Big Mac at Burger King, and got one.\",\n\t\"Is a computer language with goto's totally Wirth-less?\",\n\t\"Klein bottle for rent - inquire within.\"\n]"
+    notes: ''
+    backend: true
