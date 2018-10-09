@@ -5,16 +5,14 @@ Watson Assistant can provide native rendering for a few popular communication ch
 - node -- contains the nl text and concept name that data was produced for
 - data -- raw data collection to be rendered
 
-Below is an example that illustrates how to send formatted messages directly to Slack. See [Walmart sample](../../../samples/Walmart.md) for full usage.
-
-Example:
+Slack Example:
 
 ```
 function render(channel, node, data) {
     let { text, name } = node.data.content
 
-    if (channel == "slack") {
-        if (name == "wmt:Products") {
+    if (channel == 'slack') {
+        if (name == 'wmt:Products') {
             let attachments = data.map(renderProduct)
             return {
                 text: text,
@@ -22,7 +20,7 @@ function render(channel, node, data) {
             }
         }
     
-        if (name == "wmt:Product") {
+        if (name == 'wmt:Product') {
             return {
                 text: text,
                 attachments: [renderProduct(data)]
@@ -40,3 +38,50 @@ module.exports.main = function({ input }) {
     }
 }
 ```
+
+For full documentation and interactive explorer on Slack's message format, consult their [official docs](https://api.slack.com/docs/messages)
+
+Workspace Example: 
+ ```
+const {toCSV} = require('./util.js');
+const _ = require('lodash');
+
+const render = (channel, node, data) => {
+  let { text, name } = node.data.content
+
+  if (channel == 'workspace') {
+    if (name == 'sc:Orders') {
+      return [
+        { text: text , title: _.trimStart(name, 'sc:')},
+        { name: 'orders.csv', body: Buffer.from(toCSV(data)).toString('base64') }
+      ]
+    }
+  }
+}
+
+module.exports.main = ({ input }) => {
+  let result = render(input.channel, input.node, input.data)
+  if (result) {
+    return { output: result }
+  } else {
+    return {}
+  }
+}
+```
+
+Workspace supports two types of render formats--Message, File, or a JSON array of both.
+
+Message: 
+
+    - text: the actual natural language text answering users question
+    - title: title heading displayed over response
+    - color: the color of nl text
+    - actor: the entity responsible for sending the message
+
+File:
+
+    - name: the name of the file attachment
+    - body: data content of the attachment (must be base64 encoded)
+    - dims: dimensions of the image attachment (used for images only)
+    
+The example above demonstrates how to send an array of both types of formats.

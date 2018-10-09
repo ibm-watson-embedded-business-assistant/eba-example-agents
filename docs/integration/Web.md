@@ -20,7 +20,13 @@ This script should be loaded in the start of your application by simply adding a
             agent_name: 'Agent Kevin',
             disable_button: false,
             disable_shadow: true,
-            loading_delay: 1000
+            loading_delay: 1000,
+            user_first_name: 'John',
+            user_last_name: 'Doe',
+            user_full_name: 'John M. Doe',
+            user_locale: 'en_US',
+            user_language: 'en',
+            user_time_zone: 'America/Los_Angeles'
         }
     </script>
     <script src="https://eba.ibm.com/static/assistant.js" defer></script>
@@ -34,6 +40,8 @@ As mentioned above, you can pass in the following fields to customize Watson Ass
 * `agent_name` –– replaces Watson as the name to whatever is supplied.
 * `agent_voice` –– tunes Watson Assistant's voice. Check [the list of voices](./Voices.md) supported by Watson Assistant.
 * `user_first_name`, `user_last_name`, `user_full_name` –– makes Watson Assistant aware about current user so it will use personalization in answers.
+* `user_locale`, `user_language` –– defines cultural settings which are used to detect and format numbers, dates and currencies in conversation flow.
+* `user_time_zone` –– defines user time zone which will be used for operations with local dates.
 * `disable_button` –– disables floating button control when set to true, enables floating button control when set to false.
 * `disable_shadow` –– disables modal shadow when set to true, enables modal shadow when set to false.
 * `loading_delay` –– delays EBA iframe loading by given number of miliseconds, it helps to avoid showing browser spinning wheel while iframe is loading is background.
@@ -46,26 +54,29 @@ In order to create a new session for authorized user you will need to supply a J
 * `setup(config)` –– posts a setup message to Watson Assistant containing the supplied config
 * `destroy()`     –– destroys the IBM_EBA object and all related DOM elements
 * `send(event)`   –– posts a JSON event message to Watson Assistant
-* `open()`        –– opens the window containing the assistant
-* `close()`       –– closes the window containing the assistant (note: may render the assistant is compact mode if the last message was tagged as important)
+* `open()`        –– opens the popup window containing the assistant
+* `close()`       –– closes the popup window containing the assistant (note: may render the assistant is compact mode if the last message was tagged as important)
+* `toggle()`      –– toggles the state of the popup window from opened to closed
 * `detach()`      –– detaches the assistant into a new tab for full screen experience
-* `toggle()`      –– toggles the state of the window from opened to closed
-* `showPopup()`   –– shows the window as a popup when it is in a hidden state
-* `hidePopup()`   –– hides the popup window when it is in a hidden state
-
 
 Since IBM_EBA is a global object, you will be able to send data to the assistant anytime you like by simply invoking `IBM_EBA.send`. This enables you to encode various events across your web application. For instance, here is a click event that triggers an order event inside of Watson Assistant:
 
 ```
-<button onclick="javascript:IBM_EBA.send({
-    order_meta: {
-        order_id: 1234,
-        order_name: "paper",
-        customer_id: 5678
-    }})">View Order</button>
+<script>
+function onViewOrder() {
+    IBM_EBA.send({
+        order_meta: {
+            order_id: 1234,
+            order_name: 'paper',
+            customer_id: 5678
+        }})
+}
+</script>
+...
+<button onclick="onViewOrder()">View Order</button>
 ```
 
-Using our development lab, you will be able to program the assistant to appropriately respond to this event. You may invoke the other api functions across your event handlers in a similar fashion. For details on how to respond to such events using Watson Assistant, please refer to our [@react endpoint](../lab/General#endpoints).
+Using our development lab, you will be able to program the assistant to appropriately respond to this event. You may invoke the other api functions across your event handlers in a similar fashion. For details on how to respond to such events using Watson Assistant, please refer to our [@react endpoint](../lab/General.md#endpoints).
 
 ### Display Modes
 

@@ -6,7 +6,7 @@ This is the public home of the Embedded Business Assistant ("EBA"). Please log [
 
 ## About EBA
 
-The Embedded Business Assistant (“EBA”) is an omni-channel, enterprise-class, digital AI framework for the business practitioner that supports its human counterpart wherever she may conduct business. This could be across any domain (marketing, commerce, or supply chain for example) and many channels including chat, Slack, workspaces, voice, and (soon) SMS, utilizing any addressable source including databases, APIs, IoT endpoints, automotive sensors. The mission of EBA is to understand the basis of human decisions through observation over time, derive the motivation behind actions in an environment, and then codifying the path and results for machine interpretation and future autonomic response.
+The Embedded Business Assistant (“EBA”) is an omni-channel, enterprise-class, digital AI framework for the business practitioner that supports its human counterpart wherever she may conduct business. This could be across any domain (marketing, commerce, or supply chain for example) and many channels including chat, Slack, workspaces, voice, and (soon) SMS, utilizing any addressable source including databases, APIs, microservices, IoT endpoints, automotive sensors. The mission of EBA is to understand the basis of human decisions through observation over time, derive the motivation behind actions in an environment, and then codifying the path and results for machine interpretation and future autonomic response.
 
 
 ## What can you do with EBA?
