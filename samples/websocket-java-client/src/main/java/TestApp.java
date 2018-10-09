@@ -95,7 +95,7 @@ public class TestApp {
             }
 
             void handleNode(JsonObject node) {
-                String name =node.getString("name");
+                String name = node.getString("name");
 
                 List<String> tags = node
                     .getJsonArray("tags")
