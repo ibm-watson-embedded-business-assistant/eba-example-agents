@@ -11,7 +11,7 @@ jar {
                    'Implementation-Version': version
     }
 }
-task fatJar(type: Jar) {
+task assembly(type: Jar) {
     manifest {
         attributes 'Implementation-Title': 'EBA client sample',  
                    'Implementation-Version': version,
@@ -26,10 +26,4 @@ dependencies {
     compile group: 'org.glassfish.tyrus.bundles', name: 'tyrus-standalone-client', version: '1.14'
     compile group: 'javax.json', name: 'javax.json-api', version: '1.0'
     compile group: 'com.github.pgelinas', name: 'jackson-javax-json', version: '1.0.0'
-    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.9.7'
-    compile group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.9.7'
-    compile group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.9.7'
-
 }
-
-    // java -cp .:javax.websocket-api-1.1.jar:tyrus-standalone-client-1.14.jar:javax.json-api-1.0.jar:jackson-javax-json-1.0.0.jar:jackson-databind-2.9.7.jar:jackson-core-2.9.7.jar:jackson-annotations-2.9.7.jar TestApp
