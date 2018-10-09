@@ -35,7 +35,6 @@ public class TestApp {
 
             public void onOpen(Session client, EndpointConfig config) {
                 System.out.println("Websocket opened");
-                RemoteEndpoint remote = client.getBasicRemote();
                 client.addMessageHandler(new MessageHandler.Whole<String>() {
                      public void onMessage(String text) {
                         JsonReader reader = jsonProvider.createReader(new StringReader(text));
@@ -137,7 +136,21 @@ public class TestApp {
             URI url = new URI(String.format("wss://%s/ws/%s", host, session));
             WebSocketContainer container = ContainerProvider.getWebSocketContainer();
             Session client = container.connectToServer(endpoint, clientConfig, url);
+
+            Timer timer = new Timer();
+            timer.scheduleAtFixedRate(new TimerTask() {
+                public void run() {
+                    client.getAsyncRemote().sendText(
+                        jsonProvider
+                            .createObjectBuilder()
+                            .add("name", "ping")
+                            .build()
+                            .toString());
+                }
+            }, 10000, 10000);
+
             System.out.println("Type your question or hit Ctrl+D to exit");
+
             try {
                 for (;;) {
                     String question = System.console().readLine();
@@ -145,7 +158,7 @@ public class TestApp {
                     if (question == null)
                         break;
 
-                    client.getBasicRemote().sendText(
+                    client.getAsyncRemote().sendText(
                         jsonProvider
                             .createObjectBuilder()
                             .add("name", "ask")
@@ -155,6 +168,7 @@ public class TestApp {
                 }
             }
             finally {
+                timer.cancel();
                 client.close();
             }
         } catch (IOException ex) {
