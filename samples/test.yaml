@@ -1,0 +1,523 @@
+version: 4
+meta:
+  icon: 'https://upload.wikimedia.org/wikipedia/en/8/80/Wikipedia-logo-v2.svg'
+  name: Wikipedia!
+  description: >-
+    Fallback style agents are agents which can handle questions if no matching
+    Semantic API is found. So you can search knowledge base, describe what your
+    agents can do, call other systems and etc.
+
+
+    This example leverages partial reasoning data and adjusts user questions to
+    improve Wikipedia search query to improve search result relevance.
+concepts:
+  - name: 'wikipedia:ArticlesMessage'
+    ontology:
+      subClassOf: ':Message'
+  - name: ':Message'
+  - name: ':Relation'
+  - name: ':Showable'
+  - name: 'wikipedia:Article'
+    spelling: Wikipedia article
+    ontology:
+      subClassOf: ':Showable'
+  - name: ':ActionShow'
+  - name: 'wikipedia:Articles'
+    spelling: Wikipedia articles
+    ontology:
+      subClassOf: ':Showable'
+      isListOf: 'wikipedia:Article'
+actions:
+  - name: 'wikipedia:Search'
+    signature: >-
+      a subClassOf :ActionShow => a (optional :Relation) -> data
+      wikipedia:ArticlesMessage
+    kind: 'nodejs:8'
+    code: |
+      const _ = require('lodash')
+      const request = require('request-promise-native')
+      const eba = require('eba')
+      const wikipedia = require('./wikipedia')
+
+      module.exports.main = async (params) => {
+        let h = new eba.Params(params)
+
+        var question = await h.get('@question')
+        let tokens = await h.get('a')
+        for (let {start, length} of tokens.reverse()) {
+          question =
+            question.slice(0, start) +
+            ' '.repeat(length) +
+            question.slice(start + length, question.length)
+        }
+        question = _.trim(question.replace(/\s+/g, ' '))
+
+        let articles = await wikipedia.search(question)
+
+        return new eba.Result()
+          .addTags('wikipedia:ArticlesMessage', 'fallback')
+          .setData('wikipedia:ArticlesMessage', {
+            name: 'wikipedia:Articles',
+            data: articles,
+            text: "The following article might be relevant to your question."
+          })
+      }
+    notes: ''
+endpoints:
+  - name: '@fallback'
+    kind: 'nodejs:8'
+    code: |
+      const _ = require('lodash')
+      const wikipedia = require('./wikipedia')
+
+      module.exports.main = async (params) => {
+        let question = params.input['@question']
+        let articles = await wikipedia.search(question)
+        if (_.isEmpty(articles))
+          return { output: null }
+        else
+          return {
+            output: {
+              name: 'wikipedia:ArticlesMessage',
+              type: 'data',
+              tags: ['fallback'],
+              data: {
+                name: 'wikipedia:Articles',
+                data: articles,
+                text: 'The following article might be relevant to your question.'
+              }
+            }
+          }
+      }
+    notes: ''
+statics:
+  - name: wikipedia.js
+    mime: text/javascript
+    text: |
+      const _ = require('lodash')
+      const request = require('request-promise-native')
+
+      module.exports.search = async (question) => {
+
+        let result = await request.get({
+          url: 'https://en.wikipedia.org/w/api.php',
+          qs: {
+            action: 'query',
+            list: 'search',
+            srsearch: question,
+            format: 'json',
+            formatversion: 2
+          },
+          json: true
+        })
+
+        var entries = _.take(result.query.search, 1)
+
+        return await Promise.all(
+          _.map(entries, async (entry) => {
+            let result = await request.get({
+              url: 'https://en.wikipedia.org/w/api.php',
+              qs: {
+                action: 'parse',
+                pageid: entry.pageid,
+                format: 'json'
+              },
+              json: true
+            })
+            entry.text = result.parse.text
+            return entry
+          }))
+      }
+    notes: ''
+    backend: true
+  - name: wikipedia_Articles.scss
+    mime: text/x-scss
+    text: >-
+      $font-family-1: "Helvetica Neue for IBM", Helvetica, Arial, sans-serif;
+
+      $font-family-2: "Helvetica Neue Roman for IBM", Helvetica, Arial,
+      sans-serif;
+
+
+      $font-weight-light:  300;
+
+      $font-weight-roman:  400;
+
+      $font-weight-medium: 500;
+
+      $font-weight-bold:   700;
+
+
+      $gray20: #c7c7c7;
+
+      $yellow10: #FDE876;
+
+
+      @mixin strong-font() {
+        font-family: $font-family-2;
+        font-weight: $font-weight-roman;
+      }
+
+
+      .cca-node-content-data-wikipedia-articles {
+        &.cca-node-content-data {
+          box-shadow: none;
+          padding: 0;
+          background-color: transparent;
+          .searchmatch {
+            background-color: transparentize($yellow10, 0.6);
+          }
+        }
+      }
+
+
+      table.cca-wiki-infobox {
+        clear: right;
+        float: right;
+        width: 200px;
+        font-size: 12px;
+        margin-left: 15px;
+        margin-bottom: 15px;
+        background-color: #f8f9fa;
+        border: 1px solid #a2a9b1;
+        border-spacing: 3px;
+        & > tbody > tr {
+          & > td,
+          & > th {
+            padding: 2px 4px;
+            vertical-align: top;
+          }
+        }
+      }
+
+
+      .cca-wiki-toc,
+
+      .cca-wiki-plainlinks,
+
+      .cca-wiki-mw-editsection,
+
+      .cca-wiki-reference,
+
+      .cca-wiki-mw-cite-backlink,
+
+      .cca-wiki-noprint,
+
+      .cca-wiki-navbox {
+        display: none;
+      }
+
+
+      .cca-wiki-mw-parser-output {
+        ul, ol {
+          padding-left: 14px;
+          li {
+            margin-bottom: 5px;
+            &:last-child {
+            margin-bottom: 0;
+            }
+          }
+        }
+        h2 {
+          margin-top: 20px;
+        }
+        blockquote {
+          font-size: 16px;
+          margin-top: 10px;
+          margin-bottom: 10px;
+        }
+        th {
+          @include strong-font();
+        }
+      }
+
+
+      .cca-wiki-thumbinner {
+        background-color: #f8f9fa;
+      }
+
+
+      .cca-wiki-tright,
+
+      .cca-wiki-floatright {
+        clear: right;
+        float: right;
+        margin-left: 15px;
+        margin-bottom: 15px;
+      }
+
+
+      .cca-wiki-tleft,
+
+      .cca-wiki-floatleft {
+        clear: left;
+        float: left;
+        margin-right: 15px;
+        margin-bottom: 15px;
+      }
+
+
+      .cca-wiki-gallery {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        list-style: none;
+        margin-right: -10px;
+        & > * {
+          margin-right: 10px;
+          margin-bottom: 10px;
+        }
+      }
+
+
+      .cca-wiki-wikitable {
+        border-collapse: collapse;
+        border: 1px solid $gray20;
+        background-color: #f8f9fa;
+        & > tbody > tr {
+          td, th {
+            padding: 2px 6px;
+            border: 1px solid $gray20;
+          }
+          th {
+            background-color: #eaecf0;
+            text-align: center;
+          }
+        }
+        margin-bottom: 10px;
+      }
+
+
+      .cca-wiki-content-logo {
+        text-align: center;
+        float: right;
+        img {
+          max-width: 40px;
+          max-height: 40px;
+        }
+      }
+
+
+      .cca-wiki-hlist {
+        ul {
+          margin: 0;
+          padding: 0;
+          li {
+            display: inline;
+          }
+        }
+        &.cca-wiki-hlist-separated > ul {
+          li {
+            &:not(:first-child):before {
+              content: " • ";
+            }
+          }
+        }
+      }
+
+
+      a.cca-wiki-article-section {
+        display: block;
+        h2 {
+          display: inline;
+        }
+        .glyphicon {
+          margin-right: 4px;
+          display: inline-block;
+        }
+        &:focus, &:hover {
+          .glyphicon {
+            text-decoration: none;
+          }
+        }
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+    notes: ''
+    frontend: true
+  - name: wikipedia_Articles.coffee
+    mime: application/vnd.coffeescript
+    text: |
+      class wikipedia_ArticlesData extends PureComponent
+        render: ->
+          R.div className:"form-group cca-cards",
+            _.map @props.data, ({pageid, snippet, title}) =>
+              R.div key:pageid, className:"cca-card",
+                R.a
+                  href: "https://en.wikipedia.org/?curid=#{pageid}"
+                  target: "_blank"
+                  R.h2 null, title
+                  R.p dangerouslySetInnerHTML: __html: snippet
+                  R.div className:"cca-card-icon",
+                    R.img
+                      src:"https://upload.wikimedia.org/wikipedia/commons/c/c8/Black_W_for_promotion.png"
+                      style:
+                        maxWidth: 20
+                        maxHeight: 20
+                  R.div className:"cca-card-text", "Wikipedia"
+
+      class wikipedia_ArticleSection extends PureComponent
+        constructor: (props) ->
+          super props
+          @state = expanded:false
+          
+        render: ->
+          R.div null,
+            R.a
+              href:"#"
+              className: classNames
+                "cca-wiki-article-section": true
+                "cca-wiki-article-section-expanded": @state.expanded 
+                "cca-wiki-article-section-collapsed": !@state.expanded 
+              onClick: (e) =>
+                e.preventDefault()
+                @setState expanded:!@state.expanded
+              R.span
+                className: classNames
+                  "glyphicon": true
+                  "glyphicon-md": true
+                  "glyphicon-chevron-down": @state.expanded
+                  "glyphicon-chevron-right": !@state.expanded
+                style: textDecoration: "none"
+              R.h2 null, @props.title
+            if @state.expanded
+              @props.content
+
+      class wikipedia_ArticlesContent extends PureComponent
+        constructor: (props) ->
+          super props
+          @state = {}
+
+        parseHTML = (data) ->
+          html = []
+          stack = [html]
+          builder =
+            onopentag: (name, attributes) ->
+              node =
+                type: "tag"
+                name: name
+                attributes: attributes
+                children: []
+              _.last(stack).push(node)
+              stack.push(node.children)
+            ontext: (text) ->
+              node =
+                type: "text"
+                data: text
+              _.last(stack).push(node)
+            onclosetag: (name) ->
+                stack.pop()
+
+          parser = new htmlparser2.Parser(builder)
+          parser.write(data)
+          parser.end()
+          html
+          
+        fixClassName = (className) ->
+          _(className)
+            .split(/\s/g)
+            .map (name) -> "cca-wiki-#{name}"
+            .join(' ')
+              
+        fixStyle = (style) ->
+          _(style)
+            .split(/\s*;\s*/g)
+            .filter (entry) ->
+              entry != "" && !_.startsWith(entry, "-")
+            .map (entry) ->
+              [key, value] = entry.split(':')
+              [_.camelCase(key), value]
+            .fromPairs()
+            .value()
+
+        fixAttributes = (node) ->
+          attributes = {}
+          if node.attributes?
+            for key, value of node.attributes
+              switch key
+                when "class"   then attributes.className = fixClassName(value)
+                when "style"   then attributes.style     = fixStyle(value)
+                when "colspan" then attributes.colSpan   = value
+                when "rowspan" then attributes.rowSpan   = value
+                when "for"     then attributes.htmlFor   = value
+                when "srcset"  then attributes.srcSet    = value
+                when "href"
+                  if _.startsWith(value, "/")
+                    attributes.href = "https://en.wikipedia.org#{value}"
+                  else
+                    attributes.href = value
+                  attributes.target = "_blank"
+                else
+                  if _.startsWith(key, "aria-") || _.startsWith(key, "data-")
+                    attributes[key] = value
+                  else
+                    attributes[_.camelCase(key)] = value
+          attributes
+
+        renderHTML = (nodes, parent) ->
+          if nodes?
+            section = null
+            for node, i in nodes
+              switch node.type
+                when "tag" then switch node.name
+                  when "html", "body" then @renderHTML(node.children)
+                  when "head", "script", "style", "link", "input" then null
+                  when "h2"
+                    section = []
+                    React.createElement wikipedia_ArticleSection,
+                      title: renderHTML(node.children, node)
+                      content: section
+                  else
+                    if R[node.name]?
+                      attributes = fixAttributes(node)
+                      attributes.key = i
+                      children = switch node.name
+                        when "img", "br", "hr", "wbr" then undefined
+                        else renderHTML(node.children, node)
+                      element = R[node.name](attributes, children)
+                      if section?
+                        section.push(element)
+                        null
+                      else
+                        element
+                when "text"
+                  switch parent?.name
+                    when "table", "tbody", "thead", "tr" then null
+                    else
+                      element = node.data
+                        .replace(/&lt;/g, "<")
+                        .replace(/&gt;/g, ">")
+                        .replace(/&amp;/g, "&")
+                        .replace(/&#(\d+);/g, (_,x) -> String.fromCharCode(x))
+                      if section?
+                        section.push(element)
+                        null
+                      else
+                        element
+
+        @getDerivedStateFromProps: (nextProps, prevState) ->
+          {pageid, title, text} = nextProps.data[0]
+          console.log "getDerivedStateFromProps", {pageid}
+          html = renderHTML(parseHTML(text['*']))
+          {pageid, title, text, html}
+
+        render: ->
+          {pageid, title, text, html} = @state
+          R.div
+            key: pageid
+            R.a
+              href: "https://en.wikipedia.org/?curid=#{pageid}"
+              target: "_blank"
+              className: "cca-wiki-content-logo"
+              R.img src:"https://upload.wikimedia.org/wikipedia/commons/c/c8/Black_W_for_promotion.png"
+            R.h2 null, title
+            html
+            
+      class wikipedia_ArticlesMessageContent extends PureComponent
+        render: ->
+          console.log(@props.data)
+          props = _.clone(@props)
+          props.data = @props.data.data
+          React.createElement wikipedia_ArticlesContent, props
+    notes: ''
+    frontend: true
