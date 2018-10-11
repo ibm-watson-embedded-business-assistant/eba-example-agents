@@ -1,7 +1,7 @@
 version: 4
 meta:
   icon: 'https://upload.wikimedia.org/wikipedia/en/8/80/Wikipedia-logo-v2.svg'
-  name: Wikipedia!
+  name: Wikipedia
   description: >-
     Fallback style agents are agents which can handle questions if no matching
     Semantic API is found. So you can search knowledge base, describe what your
