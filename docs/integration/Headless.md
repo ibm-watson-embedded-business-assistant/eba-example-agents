@@ -12,7 +12,7 @@ In order to generate an acess token, please visit our [settings page](https://eb
 
 ```
 const settings = {
-    url: 'https://eba-3.adm01.com/',
+    url: 'https://eba.ibm.com/',
     key: 'private_key.pem',
     iss: 'https://prepiam.toronto.ca.ibm.com',
     sub: 'sergey.batin@ibm.com',
