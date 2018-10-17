@@ -110,7 +110,7 @@ An example of output for the output signature: `data :Item`:
     }
 ```
 
-You are welcome to reference the javascript source code implementation of the [helpers module](../../samples/agent-runtime-nodejs/eba.js) which abstracts this protocol. You will find that our sample agents make use of the interfaces exported from this module.
+You are welcome to reference the javascript source code implementation of the [helpers module](https://github.com/ibm-watson-embedded-business-assistant/eba-example-agents/blob/master/samples/agent-runtime-nodejs/eba.js) which abstracts this protocol. You will find that our sample agents make use of the interfaces exported from this module.
 
 ### Modules
 
