@@ -1,6 +1,6 @@
 ## Web Integration
 
-It is possible to integrate Watson Assistant directly into your own web application as an embedded window. You can view a [working example](https://ibm-watson-embedded-business-assistant.github.io/eba-example-agents/docs/integration/index.html).
+It is possible to integrate Watson Assistant directly into your own web application as an embedded window. You can view an [example](https://ibm-watson-embedded-business-assistant.github.io/eba-example-agents/docs/integration/index.html).
 
 There are two simple steps required to perform this integration:
 
