@@ -17,6 +17,7 @@ This script should be loaded in the start of your application by simply adding a
     ...
     <script>
         IBM_EBA_CONFIG = {
+            access_token: '...',
             agent_name: 'Agent Kevin',
             disable_button: false,
             disable_shadow: true,
