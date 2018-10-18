@@ -30,8 +30,8 @@ Action input will be supplied as follows within the __main__ function of the exe
 
 - `secrets` -- object containing secrets
 - `agent` -- string containing agent name
-- `token` -- user specific auth token
-- `storage` -- object containing user specific remote storage
+- `token` -- session access token (JWT)
+- `storage` -- object containing session storage
 - `apiurl` -- api url for EBA,
 - `input` -- object containing nodes specified in action input, where concept name is key and node is value
 - `settings` -- object containing settings
@@ -39,7 +39,7 @@ Action input will be supplied as follows within the __main__ function of the exe
 Action output should be supplied as follows within the __main__ function of the executor:
 
 - `output` -- object containing the data associated with the output concept
-- `storage` -- object containing the key, value pairs to be persisted in remote storage
+- `storage` -- object containing the key, value pairs to be persisted in session storage
 
 An example of input for the input signature: `:Item(data :Number)`:
 ```
@@ -118,7 +118,7 @@ Actions within Watson Assistant can make use of a variety of pre-installed modul
 
 ### Helpers
 
-Watson Assistant also provides developers with a utility pacakge for working with its own components: [node helpers](./NodeHelpers.md)
+Watson Assistant also provides developers with a utility package for working with its own components: [node helpers](./NodeHelpers.md)
 
 
 [Learn more about actions](../components/Actions.md)
