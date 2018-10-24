@@ -1,6 +1,6 @@
 ## Web Integration
 
-It is possible to integrate Watson Assistant directly into your own web application as an embedded window. You can view an [example](https://ibm-watson-embedded-business-assistant.github.io/eba-example-agents/docs/integration/index.html).
+It is possible to integrate EBA directly into your own web application as an embedded window. You can view an [example](https://ibm-watson-embedded-business-assistant.github.io/eba-example-agents/docs/integration/index.html).
 
 There are two simple steps required to perform this integration:
 
@@ -9,7 +9,7 @@ There are two simple steps required to perform this integration:
 
 ### Adding IBM_EBA and Calling Setup
 
-This script should be loaded in the start of your application by simply adding a script tag which points to the path of the script. After loading this script, you should execute `IBM_EBA.setup` to pass any relevant data and credentials for logging into a session with the assistant. Note, in the example below, we have added an additional script tag in the beginning of the file to illustrate a method for providing custom intialization.
+This script should be loaded in the start of your application by simply adding a script tag which points to the path of the script. After loading this script, you should execute `IBM_EBA.setup` to pass any relevant data and credentials for logging into a session with EBA. Note, in the example below, we have added an additional script tag in the beginning of the file to illustrate a method for providing custom intialization.
 
 ```
 <head>
@@ -33,14 +33,14 @@ This script should be loaded in the start of your application by simply adding a
     <script src="https://eba.ibm.com/static/assistant.js" defer></script>
 </head>
 ```
-With these few lines of code in your host application, Watson Assistant will be up and running.
+With these few lines of code in your host application, EBA will be up and running.
 
-As mentioned above, you can pass in the following fields to customize Watson Assistant either via optional global object `IBM_EBA_CONFIG` or during the call to `IBM_EBA.setup`, viz. 
+As mentioned above, you can pass in the following fields to customize EBA either via optional global object `IBM_EBA_CONFIG` or during the call to `IBM_EBA.setup`, viz. 
 
 * `access_token` –– JWT access token, check Settings tab in Lab for more details.
 * `agent_name` –– replaces Watson as the name to whatever is supplied.
-* `agent_voice` –– tunes Watson Assistant's voice. Check [the list of voices](./Voices.md) supported by Watson Assistant.
-* `user_first_name`, `user_last_name`, `user_full_name` –– makes Watson Assistant aware about current user so it will use personalization in answers.
+* `agent_voice` –– tunes EBA's voice. Check [the list of voices](./Voices.md) supported by Watson Assistant.
+* `user_first_name`, `user_last_name`, `user_full_name` –– makes EBA aware about current user so it will use personalization in answers.
 * `user_locale`, `user_language` –– defines cultural settings which are used to detect and format numbers, dates and currencies in conversation flow.
 * `user_time_zone` –– defines user time zone which will be used for operations with local dates.
 * `disable_button` –– disables floating button control when set to true, enables floating button control when set to false.
