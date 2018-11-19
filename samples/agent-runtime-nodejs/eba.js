@@ -46,8 +46,21 @@ function startsWith(text, pat) {
     return _.startsWith(_.toLower(text), _.toLower(pat))
 }
 
+function endsWith(text, pat) {
+  return _.endsWith(_.toLower(text), _.toLower(pat))
+}
+
 function contains(text, pat) {
     return _.toLower(text).indexOf(_.toLower(pat)) != -1
+}
+
+function between(value, range) {
+    let d = new Date(value)
+    if (d != 'Invalid Date') {
+        return range != null && d >= new Date(range.from) && d <= new Date(range.to)
+    } else {
+        return range != null && value >= range.from && value <= range.to
+    }
 }
 
 function evaluateOperator(p) {
@@ -58,8 +71,10 @@ function evaluateOperator(p) {
     if (p == ">=") return (x, y) => x >= y
     if (p == ">")  return (x, y) => x >  y
     if (p == "startsWith") return startsWith
+    if (p == "endsWith") return endsWith
     if (p == "contains") return contains
     if (p == "like") return fuzzyCheck
+    if (p == "between") return between
 
     throw `unknown comparison operator: ${p}`
 }
@@ -77,21 +92,29 @@ class LazyLike {
         return new LazyLike(_.take(this.source, n))
     }
 
-    lazySort(k) {
-        return new LazyLike(_.sortBy(this.source, k))
+    lazySort(column) {
+        return new LazyLike(_.sortBy(this.source, column))
     }
 
-    lazyValues(k) {
-        return new LazyLike(_.map(this.source, k))
+    lazyValues(column) {
+        return new LazyLike(_.map(this.source, column))
     }
 
-    lazyFilter(k, p, v) {
-        let f = evaluateOperator(p)
-        return new LazyLike(_.filter(this.source, obj => f(_.get(obj, k), v)))
+    lazyFilter(column, predicate, value) {
+        let f = evaluateOperator(predicate)
+        return new LazyLike(_.filter(this.source, obj => f(_.get(obj, column), value)))
     }
 
-    lazyPortion(p) {
-        let n = Math.round(_.size(this.source) * p)
+    lazyFilters(filters) {
+        function check(obj) {
+            return _.reduce(filters, (result, [column, predicate, value]) => result || evaluateOperator(predicate)(_.get(obj, column), value), false)
+        }
+
+        return new LazyLike(_.filter(this.source, check))
+    }
+
+    lazyPortion(percentile) {
+        let n = Math.round(_.size(this.source) * percentile)
         return new LazyLike(_.take(this.source, n))
     }
 
@@ -141,20 +164,24 @@ class LazyValue {
         return this.putOnTop("take", [n])
     }
 
-    lazySort(k) {
-        return this.putOnTop("sort", [k])
+    lazySort(column) {
+        return this.putOnTop("sort", [column])
     }
 
-    lazyValues(k) {
-        return this.putOnTop("values", [k])
+    lazyValues(column) {
+        return this.putOnTop("values", [column])
     }
 
-    lazyFilter(k, p, v) {
-        return this.putOnTop("filter", [k, p, v])
+    lazyFilters(filters) {
+        return this.putOnTop("filter", filters)
     }
 
-    lazyPortion(p) {
-        return this.putOnTop("portion", [p])
+    lazyFilter(column, predicate, value) {
+        return this.putOnTop("filter", [[column, predicate, value]])
+    }
+
+    lazyPortion(percentile) {
+        return this.putOnTop("portion", [percentile])
     }
 
     lazyReverse() {
@@ -221,7 +248,7 @@ class GenericLazyExecutor {
                 return lazyLike.lazyReverse().source
 
             case "filter":
-                return lazyLike.lazyFilter(...args).source
+                return lazyLike.lazyFilters(args).source
         }
     }
 
@@ -374,18 +401,19 @@ function sha1(input) {
     return crypto.createHash("sha1").update(input, "utf8").digest("hex")
 }
 
-function makeAnnotation(conceptName, confidence) {
+function makeAnnotation(conceptName, confidence, data) {
     return {
         id: sha1(conceptName),
         concept: conceptName,
-        confidence: confidence
+        confidence: confidence,
+        data: data
     }
 }
 
-function insertAnnotation({ token, annotations }, conceptName, confidence = 1) {
+function insertAnnotation({ token, annotations }, conceptName, confidence = 1, data = null) {
     return {
         token: token,
-        annotations: annotations.concat(makeAnnotation(conceptName, confidence))
+        annotations: annotations.concat(makeAnnotation(conceptName, confidence, data))
     }
 }
 
@@ -406,4 +434,8 @@ function reduceTree(tree, f, accumulator) {
     return _.reduce(subForest, (s, subTree) => reduceTree(subTree, f, s), f(accumulator, rootLabel))
 }
 
-module.exports = {Params, Result, LazyLike, LazyValue, GenericLazyExecutor, NLToken, mapTree, reduceTree, makeAnnotation, insertAnnotation, hasAnnotation}
+function flattenTree(tree) {
+  return reduceTree(tree, (acc, root) => _.concat(acc, root), []);
+}
+
+module.exports = {Params, Result, LazyLike, LazyValue, GenericLazyExecutor, NLToken, mapTree, reduceTree, flattenTree, makeAnnotation, insertAnnotation, hasAnnotation}
