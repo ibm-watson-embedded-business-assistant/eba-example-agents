@@ -60,7 +60,7 @@ If we were to construct a tabular view of weather alerts, it might look somethin
 
 ```
 React.createElement Table,
-    title: R.h2 null, "Weather lets"
+    title: R.h2 null, "Weather alerts"
     items: @props.data
     searchKeys: ["event_desc", "area_name", "st_name", "cntry_cd", "severity"]
     columns: [
