@@ -17,6 +17,11 @@ Here we specify that :OpenRate is a concept which subclasses or dervies from the
 
 Here we specify that the :Mailings concept is a list composed of individual :Mailing concepts. This is useful for actions that the assistant performs when working with collections.
 
+Certain native predicates have significant meaning for our system. We will detail a few of them below.
+- `subClassOf`  -- `a subClassOf b` means that a inherits all of the attributes which b contains. This is particularly useful in the cases that we need to model a hierarchical domain. For instance, `:SalesOrder subClassOf :Order` allows a particular entity to auto derive attributes from its base concept.
+- `isListOf`    -- `a listOf b` means that a is a collection of b. This enables our system to automatically perform data opertaions on top of collections. For instance, `:Orders isListOf :Order` and `:Order hasAttribute :Quantity`, we immediately begin to ask questions such as 'show me all orders where quantity is above 500'. 
+
+
 ## Attributes
 
 Typically concepts are used to model well formed business entities within our domain, and, consequently, the assistant is able to understand a concept as being composed of a set of attributes. For example, the :Mailing concept will contain attributes for subject line, recpeint, send date, etc. Such a relationship might be specified in the skill's ontology as follows.
@@ -25,3 +30,5 @@ Typically concepts are used to model well formed business entities within our do
 :SubjectLine subClassOf :Attribute
 :Mailing hasAttribute :SubjectLine
 ```
+
+We support two forms of concepts within EBA. The first are regular attributes which represent a fully qualified reference to a single data field. The second is meta attributes which represent an unqualified reference to a set of attributes. For instance, `:RequstedClosingDate` and `:ActualClosingDate` are regular attributes directly corresponding to our given data model. However, the concept `:ClosingDate` is unqualified. It can refer to both of them, and, if we ask for closing date, we will get back an object containing both fields.
