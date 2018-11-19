@@ -102,3 +102,49 @@ module.exports.main = (params) => {
 ```
 
 If your api supports such operations out of the box, e.g. filtering by certain types, you can see that based on the method name or based on the input parameters, you could easily make a call to such an api within this endpoint. This would me that the data processing operation is handled server side rather inside IBM Cloud FaaS. Actually, in the example above, this was done in the case of timeframes. The api supported a parameter for timeframes, so it produced the filtered results on their side. If this was not the case, that is, if the api just returned raw unqualified sessions, we could have applied an additional lazy operation to filter by dates, similar to filtering by browser. Pushing down to the api level is always recommended when it is available server side.
+
+In the example above we are implementing a call to get sessions by timeframe. This represents an initial data loading case, where the timeframe parameter is supplied in the original action, and we push this timeframe parameter down to the api level. However, we can leverage the native power of EBA in a more flexible way. Consider the following question: 
+
+'I want to know all about products with brand starting with “Commercial” and expected lead time greater than 1'
+
+In this example, we should get all orders and perform two filtering operations on top of this. Rather than implementing a conjunction of data loading actions, e.g. `getProductsByBrand` or `getProductsByLeadTime`, we can simply implement one action, viz. `getProducts` which returns the lazy value `p.makeLazyData({method: getProducts})`. Within our force endpoint, we implement the following executor. 
+
+```
+class Executor extends eba.GenericLazyExecutor {
+  constructor(params) {
+    super()
+    this.filters = []
+  }
+  
+  force(json) {
+    let { method, args, source } = json
+    
+    if (method == "filter") {
+      this.filters.push(args)
+      return Promise.resolve(this.force(source))
+    } else if (method == "local") {
+      return this.load(source)
+    } else {
+      return Promise.resolve(this.force(source)).then(data => this.apply(data, method, args))
+    }
+  }
+  
+  async load(params) {
+    if (params.method === 'getObjects') {
+      const data = await apiClient.getProducts(this.filters)
+      return data
+    } 
+  
+    return null
+  }
+}
+
+module.exports.main = async (params) => {
+  let executor = new Executor(params)
+  let data = await executor.force(params.input)
+  return new eba.Result(data)
+}
+
+```
+
+Here we have implemented another variant of our `Executor`. In this example, we are overriding the `force` function which we inherit from `GenericLazyExecutor`. By overriding this function, we are able to inspect all incoming lazy operations. In this case, if the operation is a filter operation, we add this filter to a member variable of our Executor. This allows us to accumulate all lazy operations as they come in. In the end, when we are going to call our api to produce this data, we call `await apiClient.getProducts(this.filters)`. This function takes in all filters and pushes them down to the api level, e.g. by constructing a query string. This means that by defining one action, viz. `getProducts`, and the `@force` endpoint above, we can push any arbitrary amount data modifiers, e.g. fitlering, sorting, aggregation, etc. to directly to our api. Lazy data was designed with this sort of efficiency in mind.
