@@ -69,12 +69,31 @@ Watson Assistant supports lazy evaluations to reduce data footprint when executi
 * `lazySort(k)`         -- sorts a collection by k
 * `lazyValues(k)`       -- maps a collection by k
 * `lazyFilter(k, p, v)` -- filters a collection for all k evaluated by p equaling v
+* `lazyFilters(xs)`	-- filters a list of filters using disjunctive OR logic
 * `lazyPortion(p)`      -- takes rounded percentile p from a collection
 * `lazyReverse()`       -- reverses a collection
 * `lazyLength()`        -- gets the length of a collection
 * `lazyFirst()`         -- gets the first element of a collection
 * `lazyLast()`          -- gets the last element of a collection
 * `lazyForce()`         -- forces the execution of lazy operations
+
+Note that in the case of lazyFilter we support the following predicates. 
+
+```
+if (p == "<")  return (x, y) => x <  y
+if (p == "<=") return (x, y) => x <= y
+if (p == "=")  return (x, y) => x == y
+if (p == "<>") return (x, y) => x != y
+if (p == ">=") return (x, y) => x >= y
+if (p == ">")  return (x, y) => x >  y
+if (p == "startsWith") return startsWith
+if (p == "endsWith") return endsWith
+if (p == "contains") return contains
+if (p == "like") return fuzzyCheck
+if (p == "between") return between
+```
+
+These predicates are straightforward, but we will note that the "like" predicate performs a fuzzy check based on levenshtein distance and the "between" predicate is used to check date values between a specified start and end period, e.g. `lazyFilter('closingDate', 'between', {from: date.start, to: date.end})`.
 
 Every method except `lazyForce()` returns new lazy value so the lazy operators can be chained:
 
