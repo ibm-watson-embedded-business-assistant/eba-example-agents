@@ -14,9 +14,9 @@ In order to generate an acess token, please visit our [settings page](https://eb
 const settings = {
     url: 'https://eba.ibm.com/',
     key: 'private_key.pem',
-    iss: 'https://prepiam.toronto.ca.ibm.com',
-    sub: 'sergey.batin@ibm.com',
-    name: 'Sergey Batin'
+    iss: 'https://your-authentication-url.example.com',
+    sub: 'john.doe@example.com',
+    name: 'John Doe'
 }
 
 let claims = {
