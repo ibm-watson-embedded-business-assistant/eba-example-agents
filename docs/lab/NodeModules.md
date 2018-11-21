@@ -58,8 +58,8 @@ The following packages are pre-installed in the Node.js version 8.12.0 environme
 * [superagent v3.8.3](https://www.npmjs.com/package/superagent) - SuperAgent is a small progressive client-side HTTP request library, and Node.js module with the same API, sporting many high-level HTTP client features.
 * [swagger-tools v0.10.4](https://www.npmjs.com/package/swagger-tools) - Package that provides various tools for integrating and interacting with Swagger.
 * [twilio v3.23.2](https://www.npmjs.com/package/twilio) - A wrapper for the Twilio API, related to voice, video, and messaging.
-<li class="style-scope doc-content"><a href="https://www.npmjs.com/package/underscore" target="_blank" class="style-scope doc-content">underscore v1.9.1</a> - Underscore.js is a utility-belt library for JavaScript that provides support for the usual functional suspects (each, map, reduce, filter...) without extending any
-  core JavaScript objects.</li>
+* [underscore v1.9.1]("https://www.npmjs.com/package/underscore") - Underscore.js is a utility-belt library for JavaScript that provides support for the usual functional suspects (each, map, reduce, filter...) without extending any
+  core JavaScript objects.
 * [url-pattern v1.0.3](https://www.npmjs.com/package/url-pattern) - Parse URLs for path parameters more easily than from using a regex string matcher.
 * [uuid v3.3.2](https://www.npmjs.com/package/uuid) - Simple, fast generation of RFC4122 UUIDS.
 * [validator v10.8.0](https://www.npmjs.com/package/validator) - A library of string validators and sanitizers.
