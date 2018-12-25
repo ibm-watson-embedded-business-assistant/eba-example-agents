@@ -12,6 +12,7 @@ A nodejs action within Watson Assistant can import the package "eba" which inclu
 - [Long Term Memory](#long-term-memory)
 - [Natural Language Generation](#natural-language-generation)
 - [Natural Language Understanding](#natural-language-understanding)
+- [Use in external actions](#use-in-external-actions)
 
 ### Input
 
@@ -188,3 +189,13 @@ module.exports.main = function(params) {
 * `insertAnnotation({token, annotations}, conceptName)` -- inserts an annotation into supplied annotations
 * `mapTree(tree, f)`                                    -- applies `f` to each element in the tree
 * `reduceTree(tree, f, acc)`                            -- reduces values to an accumulator after applying `f` recursively.
+
+### Use in external actions
+
+To use EBA helpers in external actions add eba-agent module as a dependency:
+```
+npm install --save eba-agent@git+https://github.com/ibm-watson-embedded-business-assistant/eba-node-agent.git
+...
+const eba = require('eba-agent')
+```
+
