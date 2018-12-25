@@ -11,6 +11,7 @@ const fs = require('fs')
 const jwt = require('jsonwebtoken')
 const express = require('express')
 const bodyBarser = require('body-parser')
+const eba = require('eba-node-agent')
 
 // RSA public key from EBA Lab
 let key = fs.readFileSync('public.pem')
@@ -22,11 +23,7 @@ app.post('/getSomething', (req, res) => {
     let params = jwt.verify(req.body, key)
     res.status(200).json({
         success: true,
-        result: {
-            output: {
-                ':Something': { data: 'Some data' }
-            }
-        }
+        result: new eba.Result().setData(':Something', 42)
     })
 })
 
