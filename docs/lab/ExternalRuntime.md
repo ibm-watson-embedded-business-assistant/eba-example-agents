@@ -1,4 +1,4 @@
-## External Actions
+## External Runtime
 
 External actions allow you host your agents code outside of EBA. You can use any language, any platform any scaling and high availability strategies at your choice. You can host your agents along your application and use unified CI/CD pipeline if you like.
 
