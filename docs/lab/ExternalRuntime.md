@@ -12,11 +12,11 @@ const jwt = require('jsonwebtoken')
 const express = require('express')
 const bodyBarser = require('body-parser')
 
-let app = express()
-app.use(bodyBarser.text({type: 'application/jwt'}))
-
 // RSA public key from EBA Lab
 let key = fs.readFileSync('public.pem')
+
+let app = express()
+app.use(bodyBarser.text({type: 'application/jwt'}))
 
 app.post('/getSomething', (req, res) => {
     let params = jwt.verify(req.body, key)
