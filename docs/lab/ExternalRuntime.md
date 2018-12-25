@@ -16,7 +16,7 @@ let app = express()
 app.use(bodyBarser.text({type: 'application/jwt'}))
 
 // RSA publick key from Lab
-let key = fs.readFileSync("public.pem")
+let key = fs.readFileSync('public.pem')
 
 app.post('/getSomething', (req, res) => {
     let {input} = jwt.verify(req.body, key)
