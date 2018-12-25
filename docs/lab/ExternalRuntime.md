@@ -15,7 +15,7 @@ const bodyBarser = require('body-parser')
 let app = express()
 app.use(bodyBarser.text({type: 'application/jwt'}))
 
-// RSA public key from Lab
+// RSA public key from EBA Lab
 let key = fs.readFileSync('public.pem')
 
 app.post('/getSomething', (req, res) => {
