@@ -19,7 +19,7 @@ app.use(bodyBarser.text({type: 'application/jwt'}))
 let key = fs.readFileSync('public.pem')
 
 app.post('/getSomething', (req, res) => {
-    let {input} = jwt.verify(req.body, key)
+    let params = jwt.verify(req.body, key)
     res.status(200).json({
         success: true,
         result: {
