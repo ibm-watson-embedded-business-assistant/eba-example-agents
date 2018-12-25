@@ -1,4 +1,4 @@
-The request payload will be sent to your URL as JWT token in POST body. You can use RSA public key to verify the origin of such requests. Protocol is just the same as for hosted FaaS actions so you can use EBA helpers package (./NodeHelpers.md)[NodeHelpers].
+The request payload will be sent to your URL as JWT token in POST body. You can use RSA public key to verify the origin of such requests. Protocol is just the same as for hosted FaaS actions so you can use EBA helpers package [./NodeHelpers.md](NodeHelpers).
 
 Please find below the sample agent action code:
 
