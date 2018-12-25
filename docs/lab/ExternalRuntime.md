@@ -17,15 +17,15 @@ let key = fs.readFileSync(...)
 console.log(key)
 
 app.post('/getSomething', (req, res) => {
-	let {input} = jwt.verify(req.body, key)
-	res.status(200).json({
-		success: true,
-		result: {
-			output: {
-				':Something': { data: 'Some data' }
-			}
-		}
-	})
+    let {input} = jwt.verify(req.body, key)
+    res.status(200).json({
+        success: true,
+        result: {
+            output: {
+                ':Something': { data: 'Some data' }
+            }
+        }
+    })
 })
 
 app.listen(5000)
