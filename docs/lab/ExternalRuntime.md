@@ -21,7 +21,7 @@ app.use(bodyBarser.text({type: 'application/jwt'}))
 
 app.post('/getSomething', (req, res) => {
     let params = jwt.verify(req.body, key)
-    res.status(200).json({
+    res.json({
         success: true,
         result: new eba.Result().setData(':Something', 42)
     })
