@@ -22,7 +22,7 @@ A nodejs action within Watson Assistant can import the package "eba" which inclu
 const eba = require('eba')
 
 module.exports.main = function(params) {
-	let p = new eba.Params(params)
+    let p = new eba.Params(params)
 }
 ```
 
@@ -34,8 +34,8 @@ Note: since `get()` forces the execution of lazy data, it is asynchronous and sh
 const eba = require('eba')
 
 module.exports.main = async function(params) {
-	let p = new eba.Params(params)
-	let value = await p.get("example:ParamName")
+    let p = new eba.Params(params)
+    let value = await p.get("example:ParamName")
 }
 ```
 
@@ -49,8 +49,8 @@ You can also get a concept name given a parameter name using `getName(paramName)
 const eba = require('eba')
 
 module.exports.main = function(params) {
-	return new eba.Result()
-		.setData('example:ParamName', { foo: 'bar' })
+    return new eba.Result()
+        .setData('example:ParamName', { foo: 'bar' })
 }
 ```
 
@@ -70,7 +70,7 @@ Watson Assistant supports lazy evaluations to reduce data footprint when executi
 * `lazySort(k)`         -- sorts a collection by k
 * `lazyValues(k)`       -- maps a collection by k
 * `lazyFilter(k, p, v)` -- filters a collection for all k evaluated by p equaling v
-* `lazyFilters(xs)`	-- filters a list of filters using disjunctive OR logic
+* `lazyFilters(xs)` -- filters a list of filters using disjunctive OR logic
 * `lazyPortion(p)`      -- takes rounded percentile p from a collection
 * `lazyReverse()`       -- reverses a collection
 * `lazyLength()`        -- gets the length of a collection
@@ -102,9 +102,9 @@ Every method except `lazyForce()` returns new lazy value so the lazy operators c
 const eba = require("eba")
 
 module.exports.main = async function(params) {
-	let p = new eba.Params(params)
-	let lazyValue = await p.getLazy("example:ParamName")
-	let newLazyValue = lazyValue.lazySort("name").lazyTake(5)
+    let p = new eba.Params(params)
+    let lazyValue = await p.getLazy("example:ParamName")
+    let newLazyValue = lazyValue.lazySort("name").lazyTake(5)
 }
 ```
 
@@ -116,9 +116,9 @@ In semantic action you can create your own lazy value using `makeLazyData()` met
 const eba = require("eba")
 
 module.exports.main = async function(params) {
-	let p = new eba.Params(params)
-	let lazyValue = p. makeLazyData({ foo: "bar" })
-	return new eba.Result().setData("example:ParamName", lazyValue)
+    let p = new eba.Params(params)
+    let lazyValue = p. makeLazyData({ foo: "bar" })
+    return new eba.Result().setData("example:ParamName", lazyValue)
 }
 ```
 
@@ -130,8 +130,8 @@ To query the ontology you can use `query()` method of `Params` object. This meth
 const eba = require("eba")
 
 module.exports.main = async function(params) {
-	let p = new eba.Params(params)
-	let result = await p.query("a isListOf b, b subClassOf :Showable")
+    let p = new eba.Params(params)
+    let result = await p.query("a isListOf b, b subClassOf :Showable")
 }
 ```
 
@@ -147,7 +147,7 @@ Short-term memory is aimed to store and reuse data within a session. To save the
 const eba = require("eba")
 
 module.exports.main = function(params) {
-	return new eba.Result().store("foo", { bar: "baz" })
+    return new eba.Result().store("foo", { bar: "baz" })
 }
 ```
 
@@ -155,7 +155,7 @@ The saved data can be accessed from subsequent actions via params:
 
 ```
 module.exports.main = function(params) {
-	let myData = params.storage.foo
+    let myData = params.storage.foo
 }
 ```
 
@@ -176,10 +176,10 @@ Watson Assistant can generate natural language automatically based on signature 
 const eba = require('eba')
 
 module.exports.main = function(params) {
-	let p = new eba.Params(params)
-	let inputToken = p.getMeta("example:ParamName")
-	let outputToken = new eba.NLtoken("example:OutputName").addProperty(":Relation", inputToken)
-	return new eba.Result().setMeta("example:OutputName", outputToken)
+    let p = new eba.Params(params)
+    let inputToken = p.getMeta("example:ParamName")
+    let outputToken = new eba.NLtoken("example:OutputName").addProperty(":Relation", inputToken)
+    return new eba.Result().setMeta("example:OutputName", outputToken)
 }
 ```
 
