@@ -194,8 +194,8 @@ module.exports.main = function(params) {
 
 To use EBA helpers in external actions add eba-agent module as a dependency:
 ```
-npm install --save eba-agent@git+https://github.com/ibm-watson-embedded-business-assistant/eba-node-agent.git
+npm install git+https://github.com/ibm-watson-embedded-business-assistant/eba-node-agent.git
 ...
-const eba = require('eba-agent')
+const eba = require('eba-node-agent')
 ```
 
