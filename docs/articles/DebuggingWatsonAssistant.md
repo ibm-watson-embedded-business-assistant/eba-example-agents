@@ -8,9 +8,9 @@ Before diving into an exposition of the different debug capabilities available, 
 
  - [Encoded conceptual knowledge](#ontology): Developers encode a set of concepts and relationships to tell our assistant what it _can_ understand and reason about. Without conceptual entities, there is effectively nothing to reason about.
  
- - [SyntaxTree creation](#syntax): A user's natural language question is broken down into its morphological and syntaxical features and represented as a tree.
+ - [SyntaxTree creation](#annotation): A user's natural language question is broken down into its morphological and syntaxical features and represented as a tree.
  
- - [Annotation](#syntax): Natural language within a user's syntax tree is annotated or mapped to conceptual entities.
+ - [Annotation](#annotation): Natural language within a user's syntax tree is annotated or mapped to conceptual entities.
  
  - [Reasoning](#reasoning): Given a starting point of conceptual entites, EBA considers all possible outcome paths and reasons to produce the most relevant one.
  
@@ -29,7 +29,7 @@ An ontology in EBA represents a set of concepts and a set of relationships betwe
   
   - Unapplied filter: A collection of entities can be filtering according to its component attributes out-of-box in EBA. However, if a developer fails to define the singular-plural relationship between two entities, there will be no way for the system to understand that a collection can be filtered by a given attribute, since attributes are defined in terms of the singular entity. If you have defined the revelant attributes and entities but are not able to filter a collection by these attributes, developers should survey their ontology to inspect whether plural entites contain a reference to their singular counterparts within the 'List of' tab. 
 
-#### Syntax Tree and Annotation
+#### Annotation
 
 After asking the assistant a question, hover over your question to see an information icon appear in the top right portion of the message. Clicking this icon will reveal a tokenized representation of your original question. This tokenized representation will contain a part of speech (PoS) breakdown of the questions along with the concept annotations selected by the assistant. 
 
