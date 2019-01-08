@@ -23,7 +23,7 @@ With this pipeline in view, lets walk through the some of the common bugs we hav
 An ontology in EBA represents a set of concepts and a set of relationships between them. A developer should encode his business domain as an ontology. The main features an ontology should capture are showability, singluar-plural references, attribute definition, spelling, and any other custom predicates aligned to a particular use case. In the course of development, it is possible to create an ontology which is incomplete or not well defined.
 
 *Common Bugs:*
-  - _None showable data_: It is possible for a particular NLU variant to be correctly defined and understood but to not be selected for execution in the case that the data being produced by this variant is not showable. In such cases, developers should survey their ontology to confirm that the business entities they intend to show users actually subclass from the concept `:Showable` in the 'Subclass' tab.
+  - _No showable data_: It is possible for a particular NLU variant to be correctly defined and understood but to not be selected for execution in the case that the data being produced by this variant is not showable. In such cases, developers should survey their ontology to confirm that the business entities they intend to show users actually subclass from the concept `:Showable` in the 'Subclass' tab.
   
   - _Deficient spelling_: If you notice a generic response from Watson, such as 'Here is what you are looking for', it is likely that your business entities lack any associated spelling. In such cases, developers should survey their ontology to confirm whether the relevant concepts actually contain spelling in the 'Spelling' tab.
   
