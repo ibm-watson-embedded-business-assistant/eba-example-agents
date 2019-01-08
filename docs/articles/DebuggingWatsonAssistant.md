@@ -6,9 +6,9 @@ EBA was created with transparency in mind – we did not want to provide users w
 
 Before diving into an exposition of the different debug capabilities available, you will want to ensure that you understand _how_ EBA works. That is, you should have a good grasp of our collobarative reasoning pipeline. We provide an brief enumeratation below.
 
- - [Encoded conceptual knowledge](#onotlogy): Developers encode a set of concepts and relationships to tell our assistant what it _can_ understand and reason about. Without conceptual entities, there is effectively nothing to reason about.
+ - [Encoded conceptual knowledge](#ontology): Developers encode a set of concepts and relationships to tell our assistant what it _can_ understand and reason about. Without conceptual entities, there is effectively nothing to reason about.
  
- - [SyntaxTree creation](#syntax): A user's natural language question is broken down into its morphological and syntaxical features and represented as a tree.
+ - [SyntaxTree creation](#syntax tree and annotation): A user's natural language question is broken down into its morphological and syntaxical features and represented as a tree.
  
  - [Annotation](#syntax): Natural language within a user's syntax tree is annotated or mapped to conceptual entities.
  
