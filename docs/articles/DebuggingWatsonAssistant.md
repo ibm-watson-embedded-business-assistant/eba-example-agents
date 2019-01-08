@@ -8,7 +8,7 @@ Before diving into an exposition of the different debug capabilities available, 
 
  - [Encoded conceptual knowledge](#ontology): Developers encode a set of concepts and relationships to tell our assistant what it _can_ understand and reason about. Without conceptual entities, there is effectively nothing to reason about.
  
- - [SyntaxTree creation](#syntax tree and annotation): A user's natural language question is broken down into its morphological and syntaxical features and represented as a tree.
+ - [SyntaxTree creation](#syntax): A user's natural language question is broken down into its morphological and syntaxical features and represented as a tree.
  
  - [Annotation](#syntax): Natural language within a user's syntax tree is annotated or mapped to conceptual entities.
  
