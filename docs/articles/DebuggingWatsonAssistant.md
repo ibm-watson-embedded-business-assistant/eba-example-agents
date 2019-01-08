@@ -6,15 +6,15 @@ EBA was created with transparency in mind – we did not want to provide users w
 
 Before diving into an exposition of the different debug capabilities available, you will want to ensure that you understand _how_ EBA works. That is, you should have a good grasp of our collobarative reasoning pipeline. We provide an brief enumeratation below.
 
- - **Encoded conceptual knowledge**: Developers encode a set of concepts and relationships to tell our assistant what it _can_ understand and reason about. Without conceptual entities, there is effectively nothing to reason about.
+ - [Encoded conceptual knowledge](#onotlogy): Developers encode a set of concepts and relationships to tell our assistant what it _can_ understand and reason about. Without conceptual entities, there is effectively nothing to reason about.
  
- - **SyntaxTree creation**: A user's natural language question is broken down into its morphological and syntaxical features and represented as a tree.
+ - [SyntaxTree creation](#Syntax): A user's natural language question is broken down into its morphological and syntaxical features and represented as a tree.
  
- - **Annotation**: Natural language within a user's syntax tree is annotated or mapped to conceptual entities.
+ - [Annotation](#Syntax): Natural language within a user's syntax tree is annotated or mapped to conceptual entities.
  
- - **Reasoning**: Given a starting point of conceptual entites, EBA considers all possible outcome paths and reasons to produce the most relevant one.
+ - [Reasoning](#Reasoning): Given a starting point of conceptual entites, EBA considers all possible outcome paths and reasons to produce the most relevant one.
  
- - **Execution**: Having settled on the appopriate action path, EBA executes that path including any side effects it may produce.
+ - [Execution](#Execution): Having settled on the appopriate action path, EBA executes that path including any side effects it may produce.
 
 With this pipeline in view, lets walk through the some of the common bugs we have seen associated with each step.
 
