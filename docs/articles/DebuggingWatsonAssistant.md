@@ -8,13 +8,13 @@ Before diving into an exposition of the different debug capabilities available, 
 
  - [Encoded conceptual knowledge](#onotlogy): Developers encode a set of concepts and relationships to tell our assistant what it _can_ understand and reason about. Without conceptual entities, there is effectively nothing to reason about.
  
- - [SyntaxTree creation](#Syntax): A user's natural language question is broken down into its morphological and syntaxical features and represented as a tree.
+ - [SyntaxTree creation](#syntax): A user's natural language question is broken down into its morphological and syntaxical features and represented as a tree.
  
- - [Annotation](#Syntax): Natural language within a user's syntax tree is annotated or mapped to conceptual entities.
+ - [Annotation](#syntax): Natural language within a user's syntax tree is annotated or mapped to conceptual entities.
  
- - [Reasoning](#Reasoning): Given a starting point of conceptual entites, EBA considers all possible outcome paths and reasons to produce the most relevant one.
+ - [Reasoning](#reasoning): Given a starting point of conceptual entites, EBA considers all possible outcome paths and reasons to produce the most relevant one.
  
- - [Execution](#Execution): Having settled on the appopriate action path, EBA executes that path including any side effects it may produce.
+ - [Execution](#execution): Having settled on the appopriate action path, EBA executes that path including any side effects it may produce.
 
 With this pipeline in view, lets walk through the some of the common bugs we have seen associated with each step.
 
