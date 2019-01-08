@@ -53,7 +53,7 @@ Based on the existing conceptual knowledge derived from the syntax and annotatio
  
 #### Execution
  
- Once EBA reasoning core determines the optimal understanding variant, only that variants will be executed. This means that all code, including any side effects, will be executed. Any time runtime errors will be detected and logs will be shown within the 'Debug' tab inside the developments lab.
+ Once EBA reasoning core determines the optimal understanding variant, only that variants will be executed. This means that all code, including any side effects, will be executed. Any time runtime errors will be detected and logs will be shown within the 'Debug' tab inside the development lab.
 
 ### Built-in Debug Tooling
 
