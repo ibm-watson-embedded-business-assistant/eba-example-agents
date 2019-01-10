@@ -1,6 +1,6 @@
 ## Native UI Components
 
-Our team provides users with a few prebuilt and configurable react components that are generic across any application domain. We intend the detail these components and their usage within this document. In particluar, we support [List](#List), [Table](#Table), and [Props](#Props) components. 
+Our team provides users with a few prebuilt and configurable react components that are generic across any application domain. We intend the detail these components and their usage within this document. In particluar, we support [List](#list), [Table](#table), and [Props](#props) components. 
 
 ### List
 
