@@ -13,6 +13,8 @@ These agents were developed completely within our lab tools. The samples should 
 [Wikipedia](../samples/Wikipedia.md) - fallback style agent which searches Wikipedia for relevant article if no other agent handled user question.  
 *topics:* fallback style agent, @fallback endpoint, user input cleaning.
 
+[Watson Discovery](../samples/WatsonDiscovery.md) - fallback style agent which searches Watson Discovery collections for relevant articles.
+
 [EDI sample](../samples/EDI.md) - models inspection operations and a small submission process for objects within the Electronic Data Interchange.  
 *topics:* attribute support, data modifiers, user storage using eba api, @start endpoint, basic process management.
 
