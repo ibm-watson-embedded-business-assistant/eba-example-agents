@@ -1,0 +1,90 @@
+version: 4
+meta:
+  name: Watson Discovery Search
+settings:
+  - name: wds_collection_id
+    value: ''
+  - name: wds_environment_id
+    value: ''
+secrets:
+  - name: wds_password
+  - name: wds_username
+concepts:
+  - name: ':Showable'
+  - name: 'wds:Results'
+    ontology:
+      subClassOf: ':Showable'
+  - name: ':Message'
+  - name: 'wds:ResultsMessage'
+    ontology:
+      subClassOf: ':Message'
+endpoints:
+  - name: '@fallback'
+    kind: 'nodejs:8'
+    code: |
+      const _ = require('lodash')
+      const util = require('util')
+      const DiscoveryV1 = require('watson-developer-cloud/discovery/v1')
+
+      module.exports.main = async (params) => {
+        const question = params.input['@question']
+        
+        const discovery = new DiscoveryV1({
+          version: '2018-03-05',
+          username: params.secrets.wds_username,
+          password: params.secrets.wds_password
+        })
+        
+        return await util.promisify(discovery.query.bind(discovery))({
+          environment_id: params.settings.wds_environment_id,
+          collection_id: params.settings.wds_collection_id,
+          natural_language_query: question,
+          filter: question,
+          deduplicate: true,
+          bias: 'publish-date'
+        })
+        .then((response) => {
+          console.log(response)
+          return {
+            output: {
+              name: 'wds:ResultsMessage',
+              type: 'data',
+              tags: ['fallback'],
+              data: {
+                name: 'wds:Results',
+                data: response,
+                text: 'The following resuts might be relevant to your question.'
+              }
+            }
+          }
+        })
+      }
+statics:
+  - name: watson-discovery-viz.coffee
+    mime: application/vnd.coffeescript
+    text: |-
+      class wds_ResultsData extends PureComponent
+        render: ->
+          R.div
+            ref: "base"
+            React.createElement List,
+              items: @props.data.results
+              renderList: (items, search) =>
+                R.div className: "form-group cca-cards",
+                  _.map items, (item, i) =>
+                    title = item.content.title
+                    text  = item.content.summary
+                    R.div
+                      key: i
+                      className: "cca-card"
+                        R.h2 null, 
+                          R.a 
+                            href: item.content.link
+                            title
+                        R.div dangerouslySetInnerHTML: {__html: text}
+                        R.div className: "cca-card-icon",
+                            React.createElement DiscoveryNewsIcon
+                        R.div className: "cca-card-text",
+                            item.host
+    notes: ''
+    frontend: true
