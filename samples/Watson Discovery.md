@@ -10,7 +10,7 @@ To connect to Watson Discovery via the Watson Developer Cloud modules provided i
 
 ### Fallback
 
-As alluded to above, [@fallback](../docs/lab/Endpoints.md) is an endpoint which is triggered when EBA determines that it cannot sufficently understand a question, i.e. the level of understanding does not surprass its designated threshold. In such cases, as a last resort, EBA will process this question in one shot utilizing whatever logic is provided within this endpoint. In this case, we establish a connection to Watson Discovery and query our documentation collection with the user's original question. Note that this particular example, passes the user's original question as is.
+As alluded to above, [@fallback](../docs/lab/endpoints/Fallback.md) is an endpoint which is triggered when EBA determines that it cannot sufficently understand a question, i.e. the level of understanding does not surprass its designated threshold. In such cases, as a last resort, EBA will process this question in one shot utilizing whatever logic is provided within this endpoint. In this case, we establish a connection to Watson Discovery and query our documentation collection with the user's original question. Note that this particular example, passes the user's original question as is.
 
 ### Assets
 
