@@ -70,7 +70,7 @@ statics:
             React.createElement List,
               items: @props.data.results
               renderList: (items, search) =>
-                R.div className: "form-group cca-cards",
+                R.div className: "cca-cards",
                   _.map items, (item) =>
                     R.div
                       key: item.id
@@ -80,10 +80,11 @@ statics:
                             href: item.link
                             target: "_blank"
                             item.extracted_metadata.title
-                        R.p null, _.truncate(item.text, {length:1000, separator: /,? +/})
+                        R.p null,
+                          _.truncate(item.text, {length:1000, separator: /,? +/})
                         R.div className: "cca-card-icon",
-                            React.createElement DiscoveryNewsIcon
+                          React.createElement DiscoveryNewsIcon
                         R.div className: "cca-card-text",
-                            "Documentation"
+                          "Documentation"
     notes: ''
     frontend: true
