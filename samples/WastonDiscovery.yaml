@@ -76,14 +76,11 @@ statics:
                       key: item.id
                       className: "cca-card"
                         R.h2 null, 
-                          R.a 
-                            href: item.link
-                            target: "_blank"
                             item.extracted_metadata.title
                         R.p null,
                           _.truncate(item.text, {length:1000, separator: /,? +/})
                         R.div className: "cca-card-icon",
-                          React.createElement DiscoveryNewsIcon
+                          React.createElement Qa16pxIcon
                         R.div className: "cca-card-text",
                           "Documentation"
     frontend: true
