@@ -65,22 +65,20 @@ statics:
     text: |-
       class wds_ResultsData extends PureComponent
         render: ->
-          R.div
-            ref: "base"
-            React.createElement List,
-              items: @props.data.results
-              renderList: (items, search) =>
-                R.div className: "cca-cards",
-                  _.map items, (item) =>
-                    R.div
-                      key: item.id
-                      className: "cca-card"
-                        R.h2 null, 
-                            item.extracted_metadata.title
-                        R.p null,
-                          _.truncate(item.text, {length:1000, separator: /,? +/})
-                        R.div className: "cca-card-icon",
-                          React.createElement Qa16pxIcon
-                        R.div className: "cca-card-text",
-                          "Documentation"
+          React.createElement List,
+            items: @props.data.results
+            renderList: (items) =>
+              R.div className: "cca-cards",
+                _.map items, (item) =>
+                  R.div
+                    key: item.id
+                    className: "cca-card"
+                      R.h2 null, 
+                          item.extracted_metadata.title
+                      R.p null,
+                        _.truncate(item.text, {length:1000, separator: /,? +/})
+                      R.div className: "cca-card-icon",
+                        React.createElement Qa16pxIcon
+                      R.div className: "cca-card-text",
+                        "Watson Discovery"
     frontend: true
