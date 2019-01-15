@@ -71,20 +71,19 @@ statics:
               items: @props.data.results
               renderList: (items, search) =>
                 R.div className: "form-group cca-cards",
-                  _.map items, (item, i) =>
-                    title = item.content.title
-                    text  = item.content.summary
+                  _.map items, (item) =>
                     R.div
-                      key: i
+                      key: item.id
                       className: "cca-card"
                         R.h2 null, 
                           R.a 
-                            href: item.content.link
-                            title
-                        R.div dangerouslySetInnerHTML: {__html: text}
+                            href: item.link
+                            target: "_blank"
+                            item.extracted_metadata.title
+                        R.p null, _.truncate(item.text, {length:1000, separator: /,? +/})
                         R.div className: "cca-card-icon",
                             React.createElement DiscoveryNewsIcon
                         R.div className: "cca-card-text",
-                            item.host
+                            "Documentation"
     notes: ''
     frontend: true
