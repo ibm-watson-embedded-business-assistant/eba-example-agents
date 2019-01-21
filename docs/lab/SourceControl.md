@@ -1,4 +1,4 @@
-Our development lab now features GitHub integration, enabling programmers to work collobartively in a source controlled enviornment. Rather than importing, exporting, and storing a local file, developers may now push their saved changes directly a git repository. To view and to configure this integration, make sure the 'GitHub' tab is selected within the development lab. All changes to your agent are now viewable in a git diff file within this tab.
+Our development lab now features GitHub integration, enabling programmers to work collaboratively in a source controlled enviornment. Rather than importing, exporting, and storing a local file, developers may now push their saved changes directly into a git repository. To view and to configure this integration, make sure the 'GitHub' tab is selected within the development lab. All changes to your agent are now viewable in a git diff file within this tab.
 
 ## Semantics
 GitHub integration enables the following workflows. 
@@ -8,7 +8,7 @@ GitHub integration enables the following workflows.
 
 - Save Changes: Save these changes locally and test them within our chat panel.
 
-- Push: You are pleased with your changes, so you decide to push them as a single commit to your github repository. Click the 'Publish' button.
+- Push: Once you are pleased with your changes you can decide to push them as a single commit to your github repository. Click the 'Publish' button.
 
     - No Conflicts: The push is successful. You can reference the github repository to see for your latest commit.
 
@@ -20,11 +20,11 @@ GitHub integration enables the following workflows.
 
 - Save Changes: Save these changes locally and test them within our chat panel. Press the 'Checkout' button. 
 
-- Checkout: You are not pleased with your changes, so you checkout and start from your branch's HEAD. 
+- Checkout: If you are not pleased with your changes you can reverty your changes by using the  checkout feature. 
 
 
 ## Configuration
-To connect your github repository, only two pieces of information are necessary, viz. the path to your yaml configuration on github and an access token which enables GitHub to trust our development lab.
+To connect your github repository, only two pieces of information are necessary: the path to your yaml configuration on github and an access token which enables GitHub to trust our development lab.
 
 The path to your configuration file is really simple to obtain. Simply traverse to the yaml file in GitHub, copy the url, and paste it into 'YAML configuration file' within our lab. As a reference, here is the path to our Walmart sample: https://github.com/ibm-watson-embedded-business-assistant/eba-example-agents/blob/master/samples/walmart.yaml.
 
