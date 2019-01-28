@@ -76,16 +76,15 @@ Please visit [Programming Watson Assistant](docs/LandingPage.md) for more inform
   * Diagnostic tools
   * Instant self-service onboarding
   * Contextual documentation, tutorials, examples
-  
-* Grue is coming for you
  
-## Prospective features ##
+## Recent updates for February 2019 ##
 
-* EBA core reasoning machine
-  * Curiosity extension
-  * Advanced, automatic anomaly detection
-  * Autonomic resolution of business events and derived BPM paths
-  * More to come... deciding what to publicly share ;)
+ * Natural Language patterns now uses Markdown syntax
+ * Patterns now support synonyms, including compound sysnonyms via new Markdown syntax
+ * Regular Expressions are now supported within NL patterns
+ * Support to use arbitrary text in semantic actions via new concept class ":FreeText"
+ * Updates to the code editor now support comments, highlighting, find & replace
+  
 
 ## EBA history ##
 
