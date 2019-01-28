@@ -6,7 +6,7 @@ This is the public home of the Embedded Business AI framework ("EBA"). Please lo
 
 ## About EBA
 
-The Embedded Business AI (“EBA”) is an omni-channel, enterprise-class, digital AI framework for the business practitioner that supports its human counterpart wherever she may conduct business. This could be across any domain (marketing, commerce, or supply chain for example) and many channels including chat, Slack, workspaces, voice, and (soon) SMS, utilizing any addressable source including databases, APIs, microservices, IoT endpoints, automotive sensors. The mission of EBA is to understand the basis of human decisions through observation over time, derive the motivation behind actions in an environment, and then codifying the path and results for machine interpretation and future autonomic response.
+The Embedded Business AI (“EBA”) framework is an omni-channel, enterprise-class, digital AI framework used by developers to enable advanced domain-specific business process use cases for end-users. In the video below, see how IBM used EBA to create an omni-present "digital twin" assistant that supports its human counterpart wherever she may conduct business. This could be across any domain (marketing, commerce, or supply chain for example) and many channels including chat, Slack, workspaces, voice, and (soon) SMS, utilizing any addressable source including databases, APIs, microservices, IoT endpoints, automotive sensors. The mission of EBA is to understand the basis of human decisions through observation over time, derive the motivation behind actions in an environment, and then codifying the path and results for machine interpretation and future autonomic response.
 
 
 ## What can you do with EBA?
