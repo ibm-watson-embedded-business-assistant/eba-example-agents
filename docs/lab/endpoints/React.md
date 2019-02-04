@@ -24,7 +24,6 @@ module.exports.main = params => {
             name: ':OrderEvent',
             data: repr.data
         }
-    } 
     else return {}
 }
 ```
