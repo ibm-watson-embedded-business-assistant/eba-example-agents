@@ -8,7 +8,7 @@ The steps required for integration are as follows:
 
 ### Connecting to EBA
 
-In order to generate an acess token, please visit our [settings page](https://eba.ibm.com/assistant#/lab/settings) to get started. You will find an `iss` and `sub` claims, as well as instructions for generating private and public keys. As mentioned within our documentation, please store your private key within a secure location and do not share it with anyone. Having obtained these required data elements, lets take a look at how you can generate an access token programatically within your headless client.
+In order to generate an access token, please visit our [settings page](https://eba.ibm.com/assistant#/lab/settings) to get started. You will find an `iss` and `sub` claims, as well as instructions for generating private and public keys. As mentioned within our documentation, please store your private key within a secure location and do not share it with anyone. Having obtained these required data elements, lets take a look at how you can generate an access token programmatically within your headless client.
 
 ```
 const settings = {
@@ -33,7 +33,7 @@ client
 
 ```
 
-Here we have established some intial settings and claims, where we have supplied the values taken from Lab Settings. Note that `key` here refers to the file path containing your private key. Following this, we use npm's `jsonwebtoken` module to sign our key appropriately. Once we have our access_token, we pass it into our start handler which posts a request to our setup endpoint containing the supplied token. It is now time to connect to our session.
+Here we have established some initial settings and claims, where we have supplied the values taken from Lab Settings. Note that `key` here refers to the file path containing your private key. Following this, we use npm's `jsonwebtoken` module to sign our key appropriately. Once we have our access_token, we pass it into our start handler which posts a request to our setup end point containing the supplied token. It is now time to connect to our session.
 
 ```
 _connect(sessionId) {
@@ -81,7 +81,7 @@ function interact() {
 }
 ```
 
-Using node's native readline utility, this function waits for the user to input a question to the terminal. Once the user has provided a question, the callback function is executed, which sends the question as data to EBA over our web socket connection. It then calls `defer` on the same interact function, meaning that it intends to interact with the user again for another question but only once the call stack from the current question is completed. This is a convienent illustration of how to handle asynchronous communication with EBA. 
+Using node's native readline utility, this function waits for the user to input a question to the terminal. Once the user has provided a question, the callback function is executed, which sends the question as data to EBA over our web socket connection. It then calls `defer` on the same interact function, meaning that it intends to interact with the user again for another question but only once the call stack from the current question is completed. This is a convenient illustration of how to handle asynchronous communication with EBA. 
 
 When Watson responds with its own data to the client, it will run through the message handler we have assigned above.
 
@@ -108,4 +108,4 @@ async _handleMessages(messages) {
     }
 ```
 
-Here we effectively check the name of the data as well as its type. If it is a string, we simply emit the string. If it is an object, we supply a json contextual representation on top of it. Note that `this.emit('message',...)` is a seperate message event handler attached to our client object (not its websocket connection). This handler simply logs the result back to the console (it is a command line application after all). At this point, the user may continue to interact or else kill the connection.
+Here we effectively check the name of the data as well as its type. If it is a string, we simply emit the string. If it is an object, we supply a json contextual representation on top of it. Note that `this.emit('message',...)` is a separate message event handler attached to our client object (not its websocket connection). This handler simply logs the result back to the console (it is a command line application after all). At this point, the user may continue to interact or else kill the connection.

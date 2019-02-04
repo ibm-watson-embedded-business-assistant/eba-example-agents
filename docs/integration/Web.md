@@ -9,7 +9,7 @@ There are two simple steps required to perform this integration:
 
 ### Adding IBM_EBA and Calling Setup
 
-This script should be loaded in the start of your application by simply adding a script tag which points to the path of the script. After loading this script, you should execute `IBM_EBA.setup` to pass any relevant data and credentials for logging into a session with EBA. Note, in the example below, we have added an additional script tag in the beginning of the file to illustrate a method for providing custom intialization.
+This script should be loaded in the start of your application by simply adding a script tag which points to the path of the script. After loading this script, you should execute `IBM_EBA.setup` to pass any relevant data and credentials for logging into a session with EBA. Note, in the example below, we have added an additional script tag in the beginning of the file to illustrate a method for providing custom initialization.
 
 ```
 <head>
@@ -45,9 +45,9 @@ As mentioned above, you can pass in the following fields to customize EBA either
 * `user_time_zone` –– defines user time zone which will be used for operations with local dates.
 * `disable_button` –– disables floating button control when set to true, enables floating button control when set to false.
 * `disable_shadow` –– disables modal shadow when set to true, enables modal shadow when set to false.
-* `loading_delay` –– delays EBA iframe loading by given number of miliseconds, it helps to avoid showing browser spinning wheel while iframe is loading is background.
+* `loading_delay` –– delays EBA iframe loading by given number of milliseconds, it helps to avoid showing browser spinning wheel while iframe is loading is background.
 
-In order to create a new session for authorized user you will need to supply a JWT signed `access_token`. An `access_token` should be generated based on the `iss`, `sub`, and `private key` provided within our Lab Settings, where we have outlined the required integration steps. For an example on generating this `access_token` programatically, please reference our [headless integration](./Headless.md)
+In order to create a new session for authorized user you will need to supply a JWT signed `access_token`. An `access_token` should be generated based on the `iss`, `sub`, and `private key` provided within our Lab Settings, where we have outlined the required integration steps. For an example on generating this `access_token` programmatically, please reference our [headless integration](./Headless.md)
 
 ### IBM_EBA API
 
@@ -60,7 +60,7 @@ In order to create a new session for authorized user you will need to supply a J
 * `toggle()`      –– toggles the state of the popup window from opened to closed
 * `detach()`      –– detaches the assistant into a new tab for full screen experience
 
-Since IBM_EBA is a global object, you will be able to send data to the assistant anytime you like by simply invoking `IBM_EBA.send`. This enables you to encode various events across your web application. For instance, here is a click event that triggers an order event inside of Watson Assistant:
+Since IBM_EBA is a global object, you will be able to send data to the assistant any time you like by simply invoking `IBM_EBA.send`. This enables you to encode various events across your web application. For instance, here is a click event that triggers an order event inside of Watson Assistant:
 
 ```
 <script>
@@ -85,7 +85,7 @@ Watson Assistant supports four display modes which reflect the size of the embed
 
 * `default` is 375px X 85%.
 * `expanded` expands the default width to 80%.
-* `compact` recieves its height dynamically based on its content.
+* `compact` receives its height dynamically based on its content.
 * `detached` renders Watson Assistant in a new tab.
 
 Note: `compact` mode is designed to only show the content of the last message and serves as a popup. The show/hide semantics for `compact` mode is as follows: if the iframe is in a hidden state and the most recent message is tagged as `important`, then the popup will be shown. Otherwise, it will be hidden. Hence `compact` is designed to give the assistant a way to show itself on screen while it is hidden.

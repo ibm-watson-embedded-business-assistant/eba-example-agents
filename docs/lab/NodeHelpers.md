@@ -16,7 +16,7 @@ A nodejs action within Watson Assistant can import the package "eba" which inclu
 
 ### Input
 
-`Params` is used to interact with the parameters within your action. You can intialize an instance by passing in the input params of your main function:
+`Params` is used to interact with the parameters within your action. You can initialize an instance by passing in the input params of your main function:
 
 ```
 const eba = require('eba')
@@ -39,7 +39,7 @@ module.exports.main = async function(params) {
 }
 ```
 
-You can also get a concept name given a parameter name using `getName(paramName)` method. It can be useful if you semantic action takes polymorfic input parameters and you need to know the exact concept name at the execution time.
+You can also get a concept name given a parameter name using `getName(paramName)` method. It can be useful if you semantic action takes polymorphic input parameters and you need to know the exact concept name at the execution time.
 
 ### Output
 
@@ -108,7 +108,7 @@ module.exports.main = async function(params) {
 }
 ```
 
-Note: `lazyForce()` is an asynchoronous method. It should be handled using Promises or async/await. It is developers responsibility to correctly force the execution of this lazy data.
+Note: `lazyForce()` is an asynchronous method. It should be handled using Promises or async/await. It is developers responsibility to correctly force the execution of this lazy data.
 
 In semantic action you can create your own lazy value using `makeLazyData()` method of `Params` object. This method takes the JSON object with the instructions to force the data once it will be requested. The `@force` endpoint is the place to handle this.
 
@@ -135,7 +135,7 @@ module.exports.main = async function(params) {
 }
 ```
 
-The method returns a list of possible matches where each item is a map of the polymorfic symbols to the concept names.
+The method returns a list of possible matches where each item is a map of the polymorphic symbols to the concept names.
 
 Note: `query()` method is asynchronous and should be handled using either Promises or async/await.
 
@@ -170,7 +170,7 @@ Note that both methods are asynchronous.
 
 ### Natural Language Generation
 
-Watson Assistant can generate natural language automatically based on signature of the samenatic actions. However the semantic actions interface allows developers to provide their own natural language representation. The Natural Language Generator takes natural language token associated with a data node (represented as `NLToken` object) and produces the natural text. In semantic action you can return `NLToken` for the output node using `setMeta()` method of `Result` object. `NLToken` objects are combinable so you can take the `NLToken` from the input nodes and combine them:
+Watson Assistant can generate natural language automatically based on signature of the semantic actions. However the semantic actions interface allows developers to provide their own natural language representation. The Natural Language Generator takes natural language token associated with a data node (represented as `NLToken` object) and produces the natural text. In semantic action you can return `NLToken` for the output node using `setMeta()` method of `Result` object. `NLToken` objects can be combined so you can take the `NLToken` from the input nodes and combine them:
 
 ```
 const eba = require('eba')
@@ -193,6 +193,7 @@ module.exports.main = function(params) {
 ### Use in external actions
 
 To use EBA helpers in external actions add eba-agent module as a dependency:
+
 ```
 npm install git+https://github.com/ibm-watson-embedded-business-assistant/eba-node-agent.git
 ...

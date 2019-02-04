@@ -1,6 +1,6 @@
 ## Actions tab
 
-This tab is responsbile for managing your action signature defintions and the IBM Cloud Functions executors.
+This tab is responsible for managing your action signature definitions and the IBM Cloud Functions executors.
 
 ### Naming
 
@@ -8,7 +8,7 @@ Naming for actions follow a similar format as naming for concepts, viz. `domain:
 
 ### Signature
 
-EBA is able to reason about actions provided by their signature. The signature can be thought of as a map of inputs to outputs while providing some optional constraints on these parameters. The format used for action signatures are the following, viz. `constraints => input -> output`. Watson Assistant is powered by Haskell, and this paradigm for defining actions will be familar to Haskell developers.
+EBA is able to reason about actions provided by their signature. The signature can be thought of as a map of inputs to outputs while providing some optional constraints on these parameters. The format used for action signatures are the following, viz. `constraints => input -> output`. Watson Assistant is powered by Haskell, and this paradigm for defining actions will be familiar to Haskell developers.
 
 ### Constraints
 
@@ -24,7 +24,7 @@ Click the output tab to enter an output definition. Output should be defined as 
 
 ### Protocol
 
-Semantic actions or actions within EBA are a means for creating data nodes associated with various concepts. In order to produce data nodes, our actions define an executor function which is run inside of IBM Cloud FaaS. This is the place where we perform the api requests, data processing, and other functionalities necessary to produce real data for our conversations. We follow a standard protocol when communicating with IBM Cloud Functions which requires us to follow a standard format for the input and output of our executing functions. Please be aware of certain [system limits](https://console.bluemix.net/docs/openwhisk/openwhisk_reference.html#openwhisk_syslimits) imposed by IBM Cloud Functions iteslf. Note that for some language enviornments we have provided convenient [helper interfaces](#helpers) which abstract this protocol accordingly. These helpers may even contain mechanisms to avoid certain system limits, e.g., result size.
+Semantic actions or actions within EBA are a means for creating data nodes associated with various concepts. In order to produce data nodes, our actions define an executor function which is run inside of IBM Cloud FaaS. This is the place where we perform the api requests, data processing, and other functionalities necessary to produce real data for our conversations. We follow a standard protocol when communicating with IBM Cloud Functions which requires us to follow a standard format for the input and output of our executing functions. Please be aware of certain [system limits](https://console.bluemix.net/docs/openwhisk/openwhisk_reference.html#openwhisk_syslimits) imposed by IBM Cloud Functions iteslf. Note that for some language environments we have provided convenient [helper interfaces](#helpers) which abstract this protocol accordingly. These helpers may even contain mechanisms to avoid certain system limits, e.g., result size.
 
 Action input will be supplied as follows within the __main__ function of the executor:
 
@@ -42,6 +42,7 @@ Action output should be supplied as follows within the __main__ function of the 
 - `storage` -- object containing the key, value pairs to be persisted in session storage
 
 An example of input for the input signature: `:Item(data :Number)`:
+
 ```
     {
         ":Number": {
