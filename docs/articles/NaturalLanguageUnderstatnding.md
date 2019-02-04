@@ -15,6 +15,6 @@ When conversing with EBA, you can mention a certain concept only once in a patte
     * You can use IBM Watson NLC for high level intent classification and use its output in downstream reasoning.
     * You can even intercept the reasoning pipeline in the middle of a conversation and apply a completely different approach to handle NL questions. Check out our Riddle and Zork examples to see this in action!
 
-Through these mechanisims, a single pattern will receive a boost factor as cardinality of the Cartesian product:
+Through these mechanisms, a single pattern will receive a boost factor as cardinality of the Cartesian product:
 
 `portable NL pattern X auto synonyms X spell checking X auto translation X permutations X composability X polymorphism`

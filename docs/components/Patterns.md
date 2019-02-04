@@ -1,12 +1,12 @@
 ## Patterns
 
-Patterns are simply natural langauge text samples annotated with concepts. When the assistant receives a question from the user, it is able to tokenize and parse this input into a tree. By using natural language patterns, it is able to annotate this tree with the appropriate concepts. For example consider the patterns below.
+Patterns are simply natural language text samples annotated with concepts. When the assistant receives a question from the user, it is able to tokenize and parse this input into a tree. By using natural language patterns, it is able to annotate this tree with the appropriate concepts. For example consider the patterns below.
 
 ```
 show {trending|wmt:Trending} {products|wmt:Products}
 ```
 
-This pattern tells the system that trending and products tokens correspond to the concepts `wmt:Trending` and `wmt:Products` respectively. From now on, the system will recognize and consider "trending" and "products" approriately for all further input. Additionally, it is able to capture the syntactic part of speech tree associated with these tokens.
+This pattern tells the system that trending and products tokens correspond to the concepts `wmt:Trending` and `wmt:Products` respectively. From now on, the system will recognize and consider "trending" and "products" appropriately for all further input. Additionally, it is able to capture the syntactic part of speech tree associated with these tokens.
 
 ### Best practices
 
