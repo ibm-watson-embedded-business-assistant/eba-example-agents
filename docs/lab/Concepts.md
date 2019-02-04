@@ -8,7 +8,7 @@ A concept will require a `:` deliminated name of the following form (domain):(co
 
 ### Spelling, subClasses, and listOfs
 
-The most common ontology predicates have been factored out into their own tabs within the concepts table. It is important to understand each. Spelling is useful for natural language generation (NLG). Watson Assistant does not produce hardcoded, canned responses to user questions. It relies on NLG to reply intelligently to users. Providing a spelling of your concept enables the system to reply to you in an intellegent and expected manner. SubClasses are used to model a hierarchial relationship between concepts. For instance, anything which is a subclass of `:Showable` concept is able to be shown to the user. isListOf is a predicate used to distinguish collections from the singular counterparts.
+The most common ontology predicates have been factored out into their own tabs within the concepts table. It is important to understand each. Spelling is useful for natural language generation (NLG). Watson Assistant does not produce hard coded, canned responses to user questions. It relies on NLG to reply intelligently to users. Providing a spelling of your concept enables the system to reply to you in an intelligent and expected manner. SubClasses are used to model a hierarchical relationship between concepts. For instance, anything which is a subclass of `:Showable` concept is able to be shown to the user. isListOf is a predicate used to distinguish collections from the singular counterparts.
 
 ### Attributes
 
@@ -17,7 +17,7 @@ In order to attach an attribute to a concept, click on the attributes tab link, 
 
 ### Ontology
 
-The ontology tab link is provided to developers in order to inspect existing ontology as well as to add additional ontology predicates outside of spelling, subClassOf, and isListOf. You can expand your ontology in this tab by entering an RDF triple: subject, predicate, and ontology. Note that the spelling predicate is not enabled to be viewable in this tab. Deleting an ontology entry in this tab may have side effects in other existing components. For example, if we remove the triple `:CustomerID subClassOf :Attribtue` entry. You will see this change reflected in the concepts table itself, but, more importantly, any actions relying on this previous relationship may be broken. Our lab ensures that your changes will be propagated and reflected accordingly through the skill, but it is the responsbility of the developer to ensure that their components are consistent.
+The ontology tab link is provided to developers in order to inspect existing ontology as well as to add additional ontology predicates outside of spelling, subClassOf, and isListOf. You can expand your ontology in this tab by entering an RDF triple: subject, predicate, and ontology. Note that the spelling predicate is not enabled to be viewable in this tab. Deleting an ontology entry in this tab may have side effects in other existing components. For example, if we remove the triple `:CustomerID subClassOf :Attribtue` entry. You will see this change reflected in the concepts table itself, but, more importantly, any actions relying on this previous relationship may be broken. Our lab ensures that your changes will be propagated and reflected accordingly through the skill, but it is the responsibility of the developer to ensure that their components are consistent.
 
 ### Notes
 

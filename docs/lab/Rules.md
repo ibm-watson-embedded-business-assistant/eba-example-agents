@@ -1,6 +1,6 @@
 ## Rules tab
 
-This tab is responsbilie for managing your rule defintions.
+This tab is responsible for managing your rule definitions.
 
 ### Naming
 

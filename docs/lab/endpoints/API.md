@@ -1,16 +1,17 @@
 ## API Endpoint
 
-The api endpoiint is used in cases where you wish to communicate directly to your own agent from the frontend. In other words, this endpoint enables your agent to handle requests to iteself from the client side. Within the endpoint, we will recieve certain input params, i.e. `params.input`. These are the input parameters passed to the client request. The following paradigm should be employed to enable this functionality:
+The api endpoint is used in cases where you wish to communicate directly to your own agent from the front end. In other words, this endpoint enables your agent to handle requests to itself from the client side. Within the endpoint, we will receive certain input params, i.e. `params.input`. These are the input parameters passed to the client request. The following paradigm should be employed to enable this functionality:
 
 - on the client side, create an instance of the `AgentInterface` supplying agent name and `props` to its constructor
 - invoke the instance method `request` with the desired data object as argument (note: returns a Promise)
 - on the agent side, implement `@api` which processes this input data and returns desired results
 
-Below is an example that implements an 'echo' api request example, where `@api` simply returns the input data it recieves.
+Below is an example that implements an 'echo' api request example, where `@api` simply returns the input data it receives.
 
 Example:
 
 In your frontend asset, add the following:
+
 ```
 class MyDataRenderer extends React.Component {
   constructor(props) {
@@ -32,6 +33,7 @@ class MyDataRenderer extends React.Component {
 ```
 
 Within your agent's `@api` endpoint, add the following:
+
 ```
 module.exports.main = function(params) {
   return {

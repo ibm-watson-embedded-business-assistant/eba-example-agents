@@ -5,6 +5,7 @@ External actions allow you host your agents code outside of EBA. You can use any
 The request payload will be sent to your URL as JWT token in POST body. You can use RSA public key to verify the origin of such requests. Protocol is the same as for hosted FaaS actions so you can use EBA [node helpers](./NodeHelpers.md) to parse input and form result.
 
 Please find below the sample agent action code:
+
 ```
 npm install git+https://github.com/ibm-watson-embedded-business-assistant/eba-node-agent.git
 ```

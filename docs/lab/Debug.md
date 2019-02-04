@@ -1,6 +1,6 @@
 ## Debug tab
 
-This is responsbile for showing debug output related to action invocations. Watson Assistant uses IBM FaaS to execute actions, and we have provided details related to timings, logs, and other infomration within this tab.
+This is responsible for showing debug output related to action invocations. Watson Assistant uses IBM FaaS to execute actions, and we have provided details related to timings, logs, and other information within this tab.
 
 To view logs, click the show button within the appropriate entry. Any logs you programmatically execute will be displayed here.
 

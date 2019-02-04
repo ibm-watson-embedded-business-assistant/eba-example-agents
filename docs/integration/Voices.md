@@ -4,8 +4,8 @@ Watson Assistant supports the following voices for Text-to-Speach service. The d
 
 | Name | Language | Gender | Description |
 |------|----------|--------|-------------|
-| de-DE_BirgitVoice | de-DE | female | Birgit: Standard German of Germany (Standarddeutsch) female voice |
-| de-DE_DieterVoice | de-DE | male | Dieter: Standard German of Germany (Standarddeutsch) male voice |
+| de-DE_BirgitVoice | de-DE | female | Birgit: Standard German of Germany (Standard Deutsch) female voice |
+| de-DE_DieterVoice | de-DE | male | Dieter: Standard German of Germany (Standard Deutsch) male voice |
 | en-GB_KateVoice | en-GB | female | Kate: British English female voice |
 | en-US_AllisonVoice | en-US | female | Allison: American English female voice |
 | en-US_LisaVoice | en-US | female | Lisa: American English female voice |

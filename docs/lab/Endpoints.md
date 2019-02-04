@@ -1,8 +1,8 @@
 ## Endpoints
 
-Watson Assistant provides developers with control over various stages of its execution pipeline. Endpoints represent different proccesses that developers can utilize to achieve different behvaiors suitable to their particular application. We support the following endpoints:
+Watson Assistant provides developers with control over various stages of its execution pipeline. Endpoints represent different proccesses that developers can utilize to achieve different behaviors suitable to their particular application. We support the following endpoints:
 
-- [@start](./endpoints/Start.md): session initilization process which can be useful for setting up connections to dependant systems/resources.
+- [@start](./endpoints/Start.md): session initialization process which can be useful for setting up connections to dependent systems/resources.
 - [@annotate](./endpoints/Annotate.md): annotation process by which concepts are introduced into the parse tree.
 - [@force](./endpoints/Force.md): lazy data execution process which converts lazy meta information into real data
 - [@react](./endpoints/React.md): event handling process for evaluating and dispatching incoming events

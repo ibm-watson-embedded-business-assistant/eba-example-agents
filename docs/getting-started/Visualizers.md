@@ -1,10 +1,10 @@
 ## Visualizers
 
-Watson is able to understand our questions, but these raw JSON responses are not very pretty. We should add some visualizers to our frontend.
+Watson is able to understand our questions, but these raw JSON responses are not very pretty. We should add some visualizers to our front end.
 
-Switch to the Assets tab, create two assets, and mark them as frontend. The first asset is `wmt/products.jsx` and the second is `wmt/product.css`. Make sure you set the type of each file appropriately, viz. `text/jsx` and `text/css`
+Switch to the Assets tab, create two assets, and mark them as front end. The first asset is `wmt/products.jsx` and the second is `wmt/product.css`. Make sure you set the type of each file appropriately, viz. `text/jsx` and `text/css`
 
-In jsx file we will declare the following objects, viz. `wmt_ProductsData` and `wmt_ProductData`. Each concept can be assigned a visualization following the pattern: `<namespace>_<Concept>Data`. The data produced by our actions is passed to these functions for visaulization.
+In the jsx file we will declare the following objects, viz. `wmt_ProductsData` and `wmt_ProductData`. Each concept can be assigned a visualization following the pattern: `<namespace>_<Concept>Data`. The data produced by our actions is passed to these functions for visualization.
 
 Add the following jsx code to your asset:
 
@@ -99,8 +99,8 @@ In the css file, add the following styles:
 }
 ```
 
-We now have some nice visaulizations for our responses. Save your changes and try them out. Note: if you do not see any changes, try refreshing your browser. Session refresh and browser refresh are two distinct operations within our application.
+We now have some nice visualizations for our responses. Save your changes and try them out. Note: if you do not see any changes, try refreshing your browser. Session refresh and browser refresh are two distinct operations within our application.
 
 ### The End For Now
 
-At this point, you should have a working Walmart sample, which is almost identical to the sample we have posted online. There are always a points of improvement. We leave these as an exercise to the reader. For instance, you may have noticed that our action bodies are almost identical. In this case, we may create a backend asset which encapsulates our http request to walmart by exposing a simple `get` function with takes certain configuration parameters. You can then import this asset within your actions and perform a single function call to return the appropriate data. Additionally, the NLG could be improved for a few responses. You may reference our other public samples for examples on how to tune NLG using our helpers package. And, of course, feel free to extend the sample according to your desire.
+At this point, you should have a working Walmart sample, which is almost identical to the sample we have posted online. There are always a points of improvement. We leave these as an exercise to the reader. For instance, you may have noticed that our action bodies are almost identical. In this case, we may create a back end asset which encapsulates our http request to walmart by exposing a simple `get` function with takes certain configuration parameters. You can then import this asset within your actions and perform a single function call to return the appropriate data. Additionally, the NLG could be improved for a few responses. You may reference our other public samples for examples on how to tune NLG using our helpers package. And, of course, feel free to extend the sample according to your desire.
