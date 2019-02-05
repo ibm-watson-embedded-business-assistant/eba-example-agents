@@ -103,7 +103,7 @@ const eba = require("eba")
 
 module.exports.main = async function(params) {
     let p = new eba.Params(params)
-    let lazyValue = await p.getLazy("example:ParamName")
+    let lazyValue = p.getLazy("example:ParamName")
     let newLazyValue = lazyValue.lazySort("name").lazyTake(5)
 }
 ```
