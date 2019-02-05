@@ -42,13 +42,13 @@ The following packages are available out of the box for front-end assets and can
 EBA provides global (render) functions which are available for frontend assets. A subset of common used functions are listed here:
  - `renderText(field)` -- used to render a non-String based value (Number, Date) as text, e.g. `renderText(123)` => `'123.0'` 
  - `renderBoolean(field)` -- renders the boolean value based on the user's locale, e.g. with `locale: de_DE` => `renderBoolean(true)` => `'wahr'`
- - `renderDecimal(field)` -- renders the number value based on the user's locale, e.g. `locale: de_DE` => `renderDecimal(17.34)` => `'17,34'`
- - `renderPercent(field)` -- renders the percent value based on the user's locale, e.g. `locale: de_DE` => `renderPercent(0.344)` => `'34,4%'`
- - `renderCurrency(field)` -- renders the currency value based on the user's locale, e.g. `locale: de_DE` => `renderCurrency(17.34)` => `'17.34 EUR'`
- - `renderDate(field)` -- renders the date value based on the user's locale, e.g. `locale: fr_FR` => `renderDate(1549369035501)` => `'5 février 2019'`
+ - `renderDecimal(field)` -- renders the number value based on the user's locale, e.g. `locale: de` => `renderDecimal(17.34)` => `'17,34'`
+ - `renderPercent(field)` -- renders the percent value based on the user's locale, e.g. `locale: de` => `renderPercent(0.344)` => `'34,4%'`
+ - `renderCurrency(field)` -- renders the currency value based on the user's locale, e.g. `locale: de` => `renderCurrency(17.34)` => `'17.34 EUR'`
+ - `renderDate(field)` -- renders the date value based on the user's locale, e.g. `locale: fr` => `renderDate(1549369035501)` => `'5 février 2019'`
  - `renderDuration(field)` -- renders the duration value based on the user's locale. TODO @kevingrozav: Example for duration???
 
-Check out a more detailed description on [i18n support](./../I18N.md).
+Check out a more detailed description on [l10n support](./../l10N.md).
 
 ##### Global Objects
 
@@ -57,7 +57,7 @@ EBA provides a set of global objects which are available for frontend assets.
  - `bridge` TODO @kevingrozav. Please provide more details for the bridge object.
     - `.trigger(action, question)` -- triggers an event to ask Watson Assistant a question,   
     e.g. `bridge.trigger('ask', 'Tell me a joke')` will execute the question `Tell me a joke` in the EBA reasoning pipeline.
- - `I18N` module for globalization support. Check out a more detailed description on [i18n support](./../I18N.md).
+ - `L10N` module for globalization support. Check out a more detailed description on [l10N support](./../l10N.md).
  - TODO @kevingrozav: do we have others?
 
 
