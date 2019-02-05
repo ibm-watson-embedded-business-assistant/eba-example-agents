@@ -71,7 +71,7 @@ The information space also contains a set of auxiliary nodes, viz. token, meta, 
 
 #### Reasoning in debug mode
 
-To bring alternative understandings into the information space, simply asking your question and append "\|\|debug" to the end of it, e.g. "show me all invoices\|\|debug". 
+To bring alternative understandings into the information space, simply asking your question and append `||debug` to the end of it, e.g. "show me all invoices||debug". 
 
 ![alternative-intrepretations.png](../assets/images/alternative-intrepretations.png#zoom=50%)
 
