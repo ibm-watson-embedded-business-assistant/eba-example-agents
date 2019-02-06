@@ -12,7 +12,7 @@ Before diving into an exposition of the different debug capabilities available, 
  
  - [Annotation](#annotation): Natural language within a user's syntax tree is annotated or mapped to conceptual entities.
  
- - [Reasoning](#reasoning): Given a starting point of conceptual entitles, EBA considers all possible outcome paths and reasons to produce the most relevant one.
+ - [Reasoning](#reasoning): Given a starting point of conceptual entities, EBA considers all possible outcome paths and reasons to produce the most relevant one.
  
  - [Execution](#execution): Having settled on the appropriate action path, EBA executes that path including any side effects it may produce.
 
