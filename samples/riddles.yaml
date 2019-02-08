@@ -1,14 +1,16 @@
-version: 2
-description: >-
-  This agent helps you solve riddles! It is an example of a "take over" agent in
-  Watson Assistant, i.e. an agent which, given a certain trigger, can take
-  control of an entire conversation.
+version: 5
+meta:
+  description: >-
+    This agent helps you solve riddles! It is an example of a "take over" agent
+    in Watson Assistant, i.e. an agent which, given a certain trigger, can take
+    control of an entire conversation.
 
 
-  When the user says "Watson, ask me a riddle", this agent will respond
-  accordingly and begin to supply custom annotations for subsequent
-  interactions. It maintains its own gameplay logic until the user exists the
-  game.
+    When the user says "Watson, ask me a riddle", this agent will respond
+    accordingly and begin to supply custom annotations for subsequent
+    interactions. It maintains its own gameplay logic until the user exists the
+    game.
+  name: Riddles
 concepts:
   - name: 'riddle:Stop'
   - name: 'riddle:Message'
@@ -26,12 +28,12 @@ concepts:
     ontology:
       subClassOf: ':Message'
   - name: 'riddle:StartGame'
-patterns:
-  - '{stop|riddle:Stop}'
-  - '{stop the game|riddle:Stop}'
-  - '{give me a clue|riddle:Clue}'
-  - '{clue|riddle:Clue}?'
-  - 'Watson, {ask me a riddle|riddle:StartGame}'
+patterns: |-
+  - [stop](riddle:Stop)
+  - [stop the game](riddle:Stop)
+  - [give me a clue](riddle:Clue)
+  - [clue](riddle:Clue)?
+  - Watson, [ask me a riddle](riddle:StartGame)
 actions:
   - name: 'riddle:HardStop'
     signature: 'riddle:Stop -> data riddle:Message'
