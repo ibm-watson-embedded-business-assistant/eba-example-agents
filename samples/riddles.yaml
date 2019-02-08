@@ -6,7 +6,7 @@ meta:
     control of an entire conversation.
 
 
-    When the user says "Watson, ask me a riddle", this agent will respond
+    When the user says [Watson, ask me a riddle](ask:Watson,%20ask%20me%20a%20riddle), this agent will respond
     accordingly and begin to supply custom annotations for subsequent
     interactions. It maintains its own gameplay logic until the user exists the
     game.
