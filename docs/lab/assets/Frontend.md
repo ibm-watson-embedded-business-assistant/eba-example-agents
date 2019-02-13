@@ -68,7 +68,7 @@ EBA provides global (render) functions which are available for frontend assets. 
  - `renderDate(field)` -- renders the date value based on the user's locale, e.g. `locale: fr` => `renderDate(1549369035501)` => `'5 février 2019'`
  - `renderDuration(field)` -- renders the duration value based on the user's locale (time units are pretty well standardized), e.g. `locale: fr` => `renderDuration(0.12)` => `'120 ms'`
 
-Check out a more detailed description on [l10n support](./../l10N.md).
+Note: `en-us` is the default locale in case it is not provided.
 
 #### Global Objects
 
