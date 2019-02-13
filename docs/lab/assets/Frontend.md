@@ -24,11 +24,11 @@ Under any circumstances UI component **must not modify** data passed through `@p
 ### Render Environment
 The following packages are available out of the box for front-end assets and can be used within your front end asset codes.
 
-##### CSS based frontend assets
+#### CSS packages
 - [x1-ui-bootstrap](https://eba.ibm.com/assistant#/lab/glyphicons) - a set of available icons
 - [jquery-ui](https://jqueryui.com/)
 
-##### Javascript based frontend assets
+#### Javascript packages
 
 **Core**
 - [react](https://reactjs.org/) - the main UI Framework used for EBA
@@ -55,7 +55,7 @@ The following packages are available out of the box for front-end assets and can
 
 ### Global Functions and Objects
 
-##### Global Functions
+#### Global Functions
 
 EBA provides global (render) functions which are available for frontend assets. A subset of common used functions are listed here:
  - `renderText(field)` -- used to render a non-String based value (Number, Date) as text, e.g. `renderText(123)` => `'123.0'` 
@@ -68,7 +68,7 @@ EBA provides global (render) functions which are available for frontend assets. 
 
 Check out a more detailed description on [l10n support](./../l10N.md).
 
-##### Global Objects
+#### Global Objects
 
 EBA provides a set of global objects which are available for frontend assets.
 
