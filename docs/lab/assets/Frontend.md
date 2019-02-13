@@ -30,28 +30,30 @@ The following packages are available out of the box for front-end assets and can
 
 #### Javascript packages
 
-**Core**
+Core
 - [react](https://reactjs.org/) - the main UI Framework used for EBA
 - [react dom](https://reactjs.org/docs/react-dom.html) - top level DOM specific methods
 - [react dom server](https://reactjs.org/docs/react-dom-server.html) - enables us to render components to static markup
+
+Util
 - [jquery](https://jquery.com/) - javascripti utility library for handling DOM, ajax, etc. 
 - [jquery-ui](https://jqueryui.com/) - UI speicific features built on top of JQuery
-
-**Tools**
 - [lodash](https://lodash.com/) -  A modern JavaScript utility library delivering modularity, performance & extras.
-- [one-color](https://github.com/One-com/one-color) - JavaScript color calculation toolkit for node.js and the browser.
-- [FileSaver](https://github.com/eligrey/FileSaver.js/) - a HTML5 saveAs() FileSaver implementation
-- [ace editor](https://ace.c9.io/) - The High Performance Code Editor for the Web
+
+Internationalization
 - [moment-with-locales](https://momentjs.com/) - Parse, validate, manipulate, and display dates and times in JavaScript.
 - [globalize.js](https://github.com/globalizejs/globalize) - A JavaScript library for internationalization and localization that leverage the official Unicode CLDR JSON data.
 - [cldr.js](https://github.com/rxaviers/cldrjs) - provides a simple layer to facilitate i18n software to access and use the official CLDR JSON data. 
 
-**Visualization Libraries**
+Graphs, charts, editors, and more
+- [one-color](https://github.com/One-com/one-color) - JavaScript color calculation toolkit for node.js and the browser.
+- [ace editor](https://ace.c9.io/) - The High Performance Code Editor for the Web
 - [plotly](https://plot.ly/javascript/) - Open Source Graphing Library
 - [webcola](https://ialab.it.monash.edu/webcola/) - Constraint-Based Layout in the Browser
 - [d3](https://d3js.org/) - Data-Driven Documents
 - [dc.js](https://dc-js.github.io/dc.js/) - Dimensional Charting Javascript Library
-- [crossfilter](http://square.github.io/crossfilter/) - Crossfilter is a JavaScript library for exploring large multivariate datasets in the browser. 
+- [crossfilter](http://square.github.io/crossfilter/) - Crossfilter is a JavaScript library for exploring large multivariate datasets in the browser.
+- [FileSaver](https://github.com/eligrey/FileSaver.js/) - a HTML5 saveAs() FileSaver implementation
 
 ### Global Functions and Objects
 
