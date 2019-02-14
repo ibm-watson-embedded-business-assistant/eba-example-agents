@@ -1,21 +1,39 @@
 ## Assets tab
 
-EBA UI is implemented using React.js as the foundation library. Official React.js documentation can be found [here](https://reactjs.org/docs). All data snippets you can see in the conversation, content or graph areas are implemented using corresponding React.js components. You are welcome to utilize a few native [ui components](./UIComponents.md) during the course of development.
+The assets tab within EBA provides developers a mechanism to create resuable code which can be leveraged across all actions as well as to implement client side renderers for their data. Consequently, we support two types of assets within the dev lab, viz. backend assets and frontend assets.
 
-We use auto discovery for data visualization components: give your component a name following the following convention: `<concept namespace>_<concept name><suffix>` where suffix can be one of:
+### Backend assets
 
-- `Data` – will be used both in conversation area and Knowledge Graph
-- `Node` – will be used in Knowledge Graph only
-- `Content` – will be used on Content tab and in full screen mode. 
+It is common in the course of building an agent that certain routines and api calls will be repeated across different actions. In an effort to prevent duplication and promote more modular code, EBA allows developers to create backend assets which can be imported as modules within an action. These assets should export a set of functions and objects which are intended to be reused. Likewise, these assets can import any modules loaded in their particular envionrment, e.g. an http request client. In the case of javascript, these assets are bundled together at runtime and can be imported as local files. For instance, consider a backend asset named 'api-client.js' containing the following code:
 
-Note that you likely want to use multiple suffix types for the same concept. For example, if you are rendering data for weather, you will likely want to show this both within the chat panel as well as the content panel. A concise, largely textual representation of the weather can be provided within `weather_WeatherData`, while a larger, graphical representation will be provided within `weather_WeatherContent`. 
+```
+const rp = require('request-promise-native')
 
-The following properties will be given to your component in `@props`:
+const getEntities = (entity, secrets) => {
+   // construct some api options
+   const data = await rp(someApiOptions)
+   return data
+}
 
-- `data` – concept’s data in JSON
-- `node` – information space node
-- `colors` – d3 ordinal colors you can use as the consistent palette
+module.exports.getEntities = getEntities
+```
 
-Under any circumstances UI component **must not modify** data passed through `@props`.
+This module imports the 'request-promise-native' module which is provided OOB by Openwhisk for the Node.js runtime. It then 
+exports a module called `getEntities`, which can be reused across our actions for different entities, e.g. sales orders, shipments, etc. Within a semantic action, we can import and use this exposed functionality.
 
-[Lodash](https://lodash.com/) library is widely used for data transformations. Consider it if it fits your needs.
+```
+const eba    = require('eba')
+const client = require('./api-client.js')
+
+module.exports.main = async (params) => {
+   // some code ...
+   const entities = await client.getEntities('shipments', params.secrets)
+   // some code...
+}
+```
+
+### Frontend assets
+
+EBA enables data visualizations directly within agents. As each agent can introduce its own conceptual domain understanding and produce data for its particular ontology, it can likewise visual its own data. Custom visualization components and styles can be added by developers within our development lab to render their data in any way they choose to. These are added under the 'Assets' tab within the dev lab and denoted as 'frontend' assets. We support jsx, javascript, coffeescript, css, sccs, sass files as frontend assets. Live examples of such assets can be viewed from shared agents, e.g. the Weather agent. Below we detail the environment provided to agent developers on the client side.
+
+For full details on data visualizations please consult our [frontend docs](./assets/Frontend.md)
