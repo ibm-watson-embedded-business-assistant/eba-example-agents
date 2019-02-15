@@ -1,6 +1,6 @@
 ## Getting started
 
-Welcome to Watson Assistant development! This article serves as a getting started guide for new Watson Assistant developers who are unfamiliar with our programming model. As a tutorial, we will develop our sample Walmart agent from scratch. This agent will be able to answer various questions about trending products. You may reference and try out [the complete working sample](../../samples/Walmart.md) any time you wish.
+Welcome to Watson Assistant development! This article serves as a getting started guide for developers who are unfamiliar with our unique machine reasoning programming model. As a tutorial, we will develop our sample Walmart agent from scratch. This agent will be able to answer various questions about trending products. You may reference and try out [the complete working sample](../../samples/Walmart.md) any time you wish.
 
 ### Workflow
 - [ontology](./Ontology.md)
