@@ -66,7 +66,7 @@ EBA provides global (render) functions which are available for frontend assets. 
  - `renderDate(field)` -- renders the date value based on the user's locale, e.g. `locale: fr` => `renderDate(1549369035501)` => `'5 février 2019'`
  - `renderDuration(field)` -- renders the duration value based on the user's locale (time units are pretty well standardized), e.g. `locale: fr` => `renderDuration(0.12)` => `'120 ms'`
 
-Note: `en-us` is the default locale in case it is not provided.
+Note: Locale is taken from browser, and defaults to `en-us`.
 
 #### Global Objects
 
@@ -76,7 +76,6 @@ EBA provides a set of global objects which are available for frontend assets.
     - `.trigger('ask', question)` -- triggers an event to ask Watson Assistant a question,   
     e.g. `bridge.trigger('ask', 'Tell me a joke')` will execute the question `Tell me a joke` in the EBA reasoning pipeline.
     - `.trigger('showDetails', detailsObject)` -- triggers an event which passes data from Data component to Content components. This is useful in cases where the Content components is meant to show the details of a single data item which is selected from the content view (such behavior can be viewed by our Docs agent), e.g. `bridge.trigger "showDetails", {id: @props.id, node: @props.node, data: @props.data, item: item}` executed from the Data component will enable the Content component to show details for `item`.
- - `L10N` module for globalization support. 
  - `R` global object for creating DOM elements given set of arguments, e.g. `R.p null, "Hello World"` creates `<p>Hello World</p>`.
  - `React` global object used in React library
  - `$` global object used in JQuery
