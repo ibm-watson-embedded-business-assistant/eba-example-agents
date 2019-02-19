@@ -18,8 +18,8 @@ const getEntities = (entity, secrets) => {
 module.exports.getEntities = getEntities
 ```
 
-This module imports the 'request-promise-native' module which is provided OOB by Openwhisk for the Node.js runtime. It then 
-exports a module called `getEntities`, which can be reused across our actions for different entities, e.g. sales orders, shipments, etc. Within a semantic action, we can import and use this exposed functionality.
+This module imports the 'request-promise-native' module which is provided OOB by OpenWhisk for the Node.js runtime. It then 
+exports a function called `getEntities`, which can be reused across our actions for different entities, e.g. sales orders, shipments, etc. Within a semantic action, we can import and use this exposed functionality.
 
 ```
 const eba    = require('eba')
