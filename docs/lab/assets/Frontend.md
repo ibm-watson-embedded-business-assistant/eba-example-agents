@@ -1,7 +1,7 @@
 ## Front End Assets
 
 ### Overview
-EBA UI is implemented using React.js as the foundation library. Official React.js documentation can be found [here](https://reactjs.org/docs). All data snippets you can see in the conversation, content or graph areas are implemented using corresponding React.js components. You are welcome to utilize a few native [ui components](./UIComponents.md) during the course of development.
+EBA UI is implemented using React.js as the foundation library. Official React.js documentation can be found [here](https://reactjs.org/docs). All data snippets you can see in the conversation, content or graph areas are implemented using corresponding React.js components.
 
 We use auto discovery for data visualization components: give your component a name following the following convention: `<concept namespace>_<concept name><suffix>` where suffix can be one of:
 
