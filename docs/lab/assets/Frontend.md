@@ -57,7 +57,7 @@ Graphs, charts, editors, and more
 
 #### Global Functions
 
-EBA provides global (render) functions which are available for frontend assets. A subset of common used functions are listed here:
+EBA provides global functions for rendering primitive data types which are available for frontend assets. A subset of common used functions are listed here:
  - `renderText(field)` -- used to render a non-String based value (Number, Date) as text, e.g. `renderText(123)` => `'123.0'` 
  - `renderBoolean(field)` -- renders the boolean value based on the user's locale, e.g. with `locale: de_DE` => `renderBoolean(true)` => `'wahr'`
  - `renderDecimal(field)` -- renders the number value based on the user's locale, e.g. `locale: de` => `renderDecimal(17.34)` => `'17,34'`
