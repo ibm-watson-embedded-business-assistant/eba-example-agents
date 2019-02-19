@@ -58,7 +58,7 @@ Graphs, charts, editors, and more
 #### Global Functions
 
 EBA provides global functions for rendering primitive data types which are available for frontend assets. A subset of common used functions are listed here:
- - `renderText(field)` -- used to render long String values in a way that is suitable for table columns; globally replaces `_` with `_\u200b`
+ - `renderText(field)` -- used to render long string values in a way that is suitable for table columns; globally replaces `_` with `_\u200b`
  - `renderBoolean(field)` -- renders the boolean value based on the user's locale, e.g. with `locale: de_DE` => `renderBoolean(true)` => `'wahr'`
  - `renderDecimal(field)` -- renders the number value based on the user's locale, e.g. `locale: de` => `renderDecimal(17.34)` => `'17,34'`
  - `renderPercent(field)` -- renders the percent value based on the user's locale, e.g. `locale: de` => `renderPercent(0.344)` => `'34,4%'`
