@@ -1,6 +1,6 @@
 ## Assets tab
 
-The assets tab within EBA provides developers a mechanism to create resuable code which can be leveraged across all actions as well as to implement client side renderers for their data. Consequently, we support two types of assets within the dev lab, viz. backend assets and frontend assets.
+The assets tab within EBA provides developers a mechanism to create reusable code which can be leveraged across all actions as well as to implement client side renderers for their data. Consequently, we support two types of assets within the dev lab, viz. backend assets and frontend assets.
 
 ### Backend assets
 
