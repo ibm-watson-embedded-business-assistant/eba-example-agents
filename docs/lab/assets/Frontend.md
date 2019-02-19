@@ -23,8 +23,8 @@ Under any circumstances UI component **must not modify** data passed through `@p
 The following packages are available out of the box for front-end assets and can be used within your front end asset codes.
 
 #### CSS packages
-- [x1-ui-bootstrap](https://eba.ibm.com/assistant#/lab/glyphicons) - a set of available icons
-- [jquery-ui](https://jqueryui.com/)
+- [x1-ui-bootstrap](https://eba.ibm.com/assistant#/lab/glyphicons) - ported bootstrap using IBM styling
+- [jquery-ui](https://jqueryui.com/) - jquery UI CSS
 
 #### Javascript packages
 
@@ -58,7 +58,7 @@ Graphs, charts, editors, and more
 #### Global Functions
 
 EBA provides global functions for rendering primitive data types which are available for frontend assets. A subset of common used functions are listed here:
- - `renderText(field)` -- used to render a non-String based value (Number, Date) as text, e.g. `renderText(123)` => `'123.0'` 
+ - `renderText(field)` -- used to render long String values in a way that is suitable for table columns; globally replaces _ with _\u200b
  - `renderBoolean(field)` -- renders the boolean value based on the user's locale, e.g. with `locale: de_DE` => `renderBoolean(true)` => `'wahr'`
  - `renderDecimal(field)` -- renders the number value based on the user's locale, e.g. `locale: de` => `renderDecimal(17.34)` => `'17,34'`
  - `renderPercent(field)` -- renders the percent value based on the user's locale, e.g. `locale: de` => `renderPercent(0.344)` => `'34,4%'`
