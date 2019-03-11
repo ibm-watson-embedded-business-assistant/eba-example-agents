@@ -77,8 +77,10 @@ Please visit [Programming EBA](docs/LandingPage.md) for more information about E
   * Instant self-service onboarding
   * Contextual documentation, tutorials, examples
  
-## Recent updates for February 2019 ##
+## Recent updates##
 
+ * Activation & De-activation of EBA agents by users including OOB agents
+ * EBA responses now can be made available via URL
  * Natural Language patterns now uses Markdown syntax
  * Patterns now support synonyms, including compound sysnonyms via new Markdown syntax
  * Regular Expressions are now supported within NL patterns
