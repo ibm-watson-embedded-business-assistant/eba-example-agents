@@ -79,6 +79,7 @@ Please visit [Programming EBA](docs/LandingPage.md) for more information about E
  
 ## Recent updates##
 
+ * [Activation & De-activation of agent components](./release/blogs/ActivationControls.md)
  * Activation & De-activation of EBA agents by users including OOB agents
  * EBA responses now can be made available via URL
  * Natural Language patterns now uses Markdown syntax
