@@ -13,7 +13,7 @@ Here is the Props component for a given weather alert. You can note that this in
 
 ```
 React.createElement Props,
-    data: @props.data.alertDetails
+    data: alert
     style: "plain"
     props: [
         ["Area", "area_name"]
