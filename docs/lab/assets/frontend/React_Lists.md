@@ -18,8 +18,6 @@ React.createElement List,
     renderList: (items, search) ->
         search
         R.h2 null, "Weather alerts"
-        R.div className:"cca-weather-alerts-severities",
-            # code for rendering severities selection panel
         R.ul style:margin:0,
             _.map items, (item) ->
                 R.li
