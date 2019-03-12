@@ -24,7 +24,12 @@ module.exports.main = (params) => {
 
 From this code, we note two things. First, we rename our concept to `:Question` using the `setName` api detailed in our [node helpers](../lab/NodeHelpers.md). Secondly, as data, we supply the follow up question itself. With these two elements in place, our system will be able to understand that `weather:Weather` cannot be resolved in the current execution; instead, it should display a follow up question. 
 
-Note that more complex cases can be modeled, e.g. our `weather:Forecast` requires both a timeframe as well as a location in order for data to be produced. We can either model this a 3-step sequence, viz. ask for forecast, ask for location, and, finally, ask for timeframe. Or we can model it as 2-step sequence, viz. ask for forecast and timeframe or location and then ask for the remaining element. Or we can be flexible enough to support both variants. This will depend largely on the agent's business requirements. In our implementation of `weather:Forecast`, we have followed the second route. Accordingly, you will find the following signatures in our implementation: `weather:Forecast(optional :Relation(data :Timeframe) -> promise weather:Forecast` and `weather:Forecast(optional :Relation(city)) -> promise weather:Forecast`. You will find that the body of such actions all follow the similar pattern described above, viz. rename to `:Question` with supplied NL question.
+Note that more complex cases can be modeled, e.g. our `weather:Forecast` requires both a timeframe as well as a location in order for data to be produced. We can either model this a 3-step sequence, viz. ask for forecast, ask for location, and, finally, ask for timeframe. Or we can model it as 2-step sequence, viz. ask for forecast and timeframe or location and then ask for the remaining element. Or we can be flexible enough to support both variants. This will depend largely on the agent's business requirements. In our implementation of `weather:Forecast`, we have followed the second route. Accordingly, you will find the following signatures in our implementation: 
+
+ - `weather:Forecast(optional :Relation(data :Timeframe) -> promise weather:Forecast`
+ - `weather:Forecast(optional :Relation(city)) -> promise weather:Forecast`
+ 
+You will find that the body of such actions all follow the similar pattern described above, viz. rename to `:Question` with supplied NL question.
 
 ### Generating data
 
