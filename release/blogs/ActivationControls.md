@@ -1,3 +1,6 @@
+## Fine grained component activation and deactivation
+
+
 We are glad to announce a new control to EBA dev lab--fine grained component activation and deactivation. Following our last release which allowed developers to deactivate entire agents, developers can now deactivate particular components within an agent. We found that this feature is integral to active development and experimentation within EBA. Concepts, actions, assets, endpoints, etc. can now all be controlled in a more developer friendly way when debugging certain reasoning and execution flows within EBA. The example below shows a case where are all actions producing data for `weather:Forecast` are deactivated.
 
 [![Activation example](../activation.png "Watson Marketing Assistant powered by EBA")](../activation.png)
