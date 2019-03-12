@@ -147,7 +147,7 @@ a {
     .wrapper section blockquote {
       display: none; }
     .wrapper section li {
-      margin-bottom: 10px; }
+      margin-bottom: 5px; }
       .wrapper section li:last-child {
         margin-bottom: 0; }
   .wrapper:after {
