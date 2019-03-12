@@ -32,10 +32,7 @@ For example, `["Score", "score", renderDecimal]` will display a column within th
 Another coffee script example demonstrates the usage of a custom render function:
 
 ``` javascript
-["Score", "score", (field) -> 
-					if field
-						"#{field} %"
-]
+["Score", "score", (field) -> if field then "#{field} %"]
 ```
 This function checks for `null` first and if `field` is not null it adds ` %` to the `field` value.
 
