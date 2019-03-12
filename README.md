@@ -77,7 +77,7 @@ Please visit [Programming EBA](docs/LandingPage.md) for more information about E
   * Instant self-service onboarding
   * Contextual documentation, tutorials, examples
  
-## Recent updates##
+## Recent updates
 
  * [Activation & De-activation of agent components](./release/blogs/ActivationControls.md)
  * Activation & De-activation of EBA agents by users including OOB agents
@@ -89,7 +89,7 @@ Please visit [Programming EBA](docs/LandingPage.md) for more information about E
  * Updates to the code editor now support comments, highlighting, find & replace
   
 
-## EBA history ##
+## EBA history
 
 EBA began in 2016 as a proof of concept. The aim was to create a digital assistant for the business practioner using modern techniques in machine reasoning. We started by describing and emulating the nature of the intern– growing from a helpful admin, not capable of making decisions, into a trusted employee. In order to do this, we needed to erase the typical intent-based pre-crafted predicate rule system and develop a wholly new approach to observation, self-learning, and domain application. We also recognized we needed to divorce the developer from on-going care and feeding of the AI, receiving full instruction through passive and active interaction with the business user. We needed to code a framework for an AI that becomes curious about its business context and seeks to fill gaps in knowledge.
 
