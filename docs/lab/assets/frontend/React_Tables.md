@@ -48,15 +48,15 @@ For each `fieldNames` listed in `columns` property you need to add a `config` en
 
 
 ```
-fieldName: 
-	visible: true
+fieldName:
+   visible: true
  ```
 
 The following coffee script example uses the above `score` column declaration and hides it behind the scenes.
 
 ```
 "score":
-	visible: false
+    visible: false
 ```
 
 The following full blown example shows the usage of all 5 initialization properties for the Table component.
@@ -68,36 +68,21 @@ React.createElement Table,
     items: @props.data
     searchKeys: ["event_desc", "area_name", "st_name", "cntry_cd", "severity"]
     config: 
-        "area_name":
-         	visible: true
-        "st_name":
-         	visible: false
-        "cntry_name":
-         	visible: true
-        "phenomena":
-         	visible: true
-        "event_desc":
-         	visible: true
-        "certainty":
-         	visible: false
-        "class":
-         	visible: false
-        "severity":
-         	visible: true
-        "expire_time_gmt":
-         	visible: false
-        "response_types":
-         	visible: false
-        "categories":
-         	visible: true
-        "office_name":
-         	visible: false
-        "source":
-         	visible: false
-        "lat":
-         	visible: false
-        "lon":
-         	visible: false
+        area_name: visible: true
+        st_name: visible: false
+        cntry_name: visible: true
+        phenomena: visible: true
+        event_desc: visible: true
+        certainty: visible: false
+        class: visible: false
+        severity: visible: true
+        expire_time_gmt: visible: false
+        response_types: visible: false
+        categories: visible: true
+        office_name: visible: false
+        source: visible: false
+        lat: visible: false
+        lon: visible: false
     configKey: "ReactComponentName"
     columns: [
         ["Area", "area_name"]
