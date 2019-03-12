@@ -146,8 +146,10 @@ a {
         background-color: transparent; }
     .wrapper section blockquote {
       display: none; }
-    .wrapper section li > p:last-child {
+    .wrapper section li {
       margin-bottom: 10px; }
+      .wrapper section li:last-child {
+        margin-bottom: 0; }
   .wrapper:after {
     content: "";
     display: block;
