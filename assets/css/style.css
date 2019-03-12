@@ -146,6 +146,8 @@ a {
         background-color: transparent; }
     .wrapper section blockquote {
       display: none; }
+    .wrapper section li > p:last-child {
+      margin-bottom: 10px; }
   .wrapper:after {
     content: "";
     display: block;
