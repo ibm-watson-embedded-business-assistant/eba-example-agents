@@ -1,23 +1,26 @@
-description: |-
-  Sales orders
+version: 6
+meta:
+  description: |-
+    Sales orders
 
-  - show me all sales orders
-  - show me top 5 scheduled sales orders
-  - show me sales orders with status “Scheduled”
-  - show me top 3 sales orders estimated to arrive in Aug 2017
-  - show me top 3 sales orders with requested ship date in Aug 2017
-  - show me top 3 sales orders for July 2017
-  - show me top 5 sales orders sorted by value
-  - what is average quantity
+    - show me all sales orders
+    - show me top 5 scheduled sales orders
+    - show me sales orders with status “Scheduled”
+    - show me top 3 sales orders estimated to arrive in Aug 2017
+    - show me top 3 sales orders with requested ship date in Aug 2017
+    - show me top 3 sales orders for July 2017
+    - show me top 5 sales orders sorted by value
+    - what is average quantity
 
-  Sales order
+    Sales order
 
-  - what is the quantity of sales order #100044322?
-  - tell me about sales order #100044322
+    - what is the quantity of sales order #100044322?
+    - tell me about sales order #100044322
 
-  Supply orders
+    Supply orders
 
-  - show me all supply orders
+    - show me all supply orders
+  name: Supply Chain
 settings:
   - name: ClientId
     value: put your key here
@@ -27,103 +30,110 @@ settings:
     value: put your key here
 concepts:
   - name: ':Number'
-  - name: ''
   - name: 'sc:Quantity'
-    spelling: quantity
     ontology:
       subClassOf:
         - ':NumAttribute'
         - ':Attribute'
+      isSpellAs: quantity
   - name: ':NumAttribute'
   - name: 'sc:RequestedShipDate'
-    spelling: requested ship date
     ontology:
       subClassOf:
         - ':Attribute'
         - ':DateAttribute'
+      isSpellAs: requested ship date
   - name: ':Showable'
   - name: 'action:Filter'
   - name: ':All'
   - name: ':Filter'
   - name: 'sc:Status'
-    spelling: status
     ontology:
       subClassOf:
         - ':Attribute'
         - ':StrAttribute'
+      isSpellAs: status
   - name: ':DateAttribute'
   - name: 'sc:Value'
-    spelling: value
     ontology:
       subClassOf:
         - ':NumAttribute'
         - ':Attribute'
+      isSpellAs: value
   - name: ':WithId'
   - name: 'sc:SalesOrders'
-    spelling: sales orders
     ontology:
       isListOf: 'sc:SalesOrder'
       subClassOf: ':Showable'
+      isSpellAs: sales orders
   - name: ':Relation'
   - name: 'sc:SupplyOrder'
-    spelling: supply order
     ontology:
       subClassOf: ':Showable'
+      isSpellAs: supply order
   - name: 'sc:SalesOrder'
-    spelling: sales order
     ontology:
       subClassOf: ':Showable'
+      isSpellAs: sales order
     attributes:
-      orderValue: 'sc:Value'
-      recordCreated: 'sc:DateCreated'
-      quantity: 'sc:Quantity'
-      requestedShipDate: 'sc:RequestedShipDate'
-      orderStatus: 'sc:Status'
-      estimatedDeliveryDate: 'sc:EstimatedDeliveryDate'
-      plannedShipDate: 'sc:PlannedShipDate'
+      'sc:Value': orderValue
+      'sc:DateCreated': recordCreated
+      'sc:Quantity': quantity
+      'sc:RequestedShipDate': requestedShipDate
+      'sc:Status': orderStatus
+      'sc:EstimatedDeliveryDate': estimatedDeliveryDate
+      'sc:PlannedShipDate': plannedShipDate
   - name: 'sci:FilterScheduledOrders'
     ontology:
       subClassOf: 'action:Filter'
   - name: ':StrAttribute'
   - name: ':Scheduled'
   - name: 'sc:PlannedShipDate'
-    spelling: planned ship date
     ontology:
       subClassOf:
         - ':DateAttribute'
         - ':Attribute'
+      isSpellAs: planned ship date
   - name: ':Timeframe'
   - name: ':Attribute'
   - name: 'sc:DateCreated'
-    spelling: date created
     ontology:
       subClassOf:
         - ':Attribute'
         - ':DateAttribute'
+      isSpellAs: date created
   - name: 'sc:SupplyOrders'
-    spelling: supply orders
     ontology:
       subClassOf: ':Showable'
       isListOf: 'sc:SupplyOrder'
+      isSpellAs: supply orders
   - name: 'sc:EstimatedDeliveryDate'
-    spelling: estimated delivery date
     ontology:
       subClassOf:
         - ':Attribute'
         - ':DateAttribute'
-patterns:
-  - 'show me {supply orders|sc:SupplyOrders}'
-  - 'show me {scheduled|:Scheduled} sales orders'
-  - >-
-    show me sales orders with {requested ship date|sc:RequestedShipDate} in
-    January
-  - 'what sales orders {estimated to arrive|sc:EstimatedDeliveryDate} in January'
-  - 'show me {sales orders|sc:SalesOrders}'
-  - 'show me {status|sc:Status} of this order'
-  - 'what sales orders {planned to be shipped|sc:PlannedShipDate} in January'
-  - 'show me sales orders sorted by {quantity|sc:Quantity}'
-  - 'what sales orders were {created|sc:DateCreated} in January'
-  - 'show me sales orders sorted by {value|sc:Value}'
+      isSpellAs: estimated delivery date
+patterns: >-
+  - show me [supply orders](sc:SupplyOrders)
+
+  - show me [scheduled](:Scheduled) sales orders
+
+  - show me sales orders with [requested ship date](sc:RequestedShipDate) in
+  January
+
+  - what sales orders [estimated to arrive](sc:EstimatedDeliveryDate) in January
+
+  - show me [sales orders](sc:SalesOrders)
+
+  - show me [status](sc:Status) of this order
+
+  - what sales orders [planned to be shipped](sc:PlannedShipDate) in January
+
+  - show me sales orders sorted by [quantity](sc:Quantity)
+
+  - what sales orders were [created](sc:DateCreated) in January
+
+  - show me sales orders sorted by [value](sc:Value)
 actions:
   - name: 'sci:GetSalesOrdersByDates'
     signature: >-
@@ -251,7 +261,6 @@ endpoints:
       }
 
       module.exports = {main}
-    notes: ''
 statics:
   - name: common.css
     mime: text/css
