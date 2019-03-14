@@ -15,7 +15,7 @@ As ontology is an interconnected set of relationships, we have also introduced t
 ### Some use cases to consider
 
 
-Note: this is a general troubleshooting feature, but we provide some use cases to shed more light on how it can be leveraged.
+_Note: this is a general troubleshooting feature, but we provide some use cases to shed more light on how it can be leveraged._
 
 
 If a developer is implementing some action, and, in course of development, realized that the action should be decomposed into smaller actions, he would have previously had to manually delete the signature and back up relevant code block--quite tedious. Now you can simply deactivate the action and even refer to it in the course of your refactor.
