@@ -23,4 +23,4 @@ If a developer is implementing some action, and, in course of development, reali
 
 Another example is with endpoints. If a developer wanted to test execution with and without a certain endpoint in the pipeline, we found that some developers would provide an invalid name as a way of "commenting" out this endpoint, e.g. rename `@start` to `@start2` or `@annotate` to `@annotate-old`. Deactivation provides a standard way of doing this across _all_ components. 
 
-This can also be useful in the case of more fundamental changes to your agent--when intending to the refactor the ontology in a less destructive way. This feature allows you to easily comment out a concept (and all associated actions and rules)when providing your new implementation. You can maintain both side by side during experimentation phase.
+This can also be useful in the case of more fundamental changes to your agent--when intending to the refactor the ontology in a less destructive way. This feature allows you to easily comment out a concept (and all associated actions and rules) when providing your new implementation. You can maintain both side by side during experimentation phase.
