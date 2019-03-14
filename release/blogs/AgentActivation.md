@@ -1,6 +1,6 @@
 ## Agent level activation and deactivation
 
-We are proud to announce a new feature to our users--the ability to activate and deactivate entire agents. EBA is, by design, a collaborative ecosystem, where multiple agents help contribute various domain knowledge. By releasing this feature, developers and users have fine-grained control over which agents are in place for a given session. The screen shot below provides an illustrates the activation component for each agent. By navigating to the [agents tab](https://eba.ibm.com/assistant#/lab/agents) at eba.ibm.com, you can try out this feature for yourself. Since we prefer to keep EBA as an open system, we have even provided the ability to deactivate native, core agents. 
+We are proud to announce a new feature to our users--the ability to activate and deactivate entire agents. EBA is, by design, a collaborative ecosystem, where multiple agents help contribute various domain knowledge. By releasing this feature, developers and users have fine-grained control over which agents are in place for a given session. The screen shot below provides an illustrates the activation component for each agent. By navigating to the [agents tab](https://eba.ibm.com/assistant#/lab/agents), you can try out this feature for yourself. Since we prefer to keep EBA as an open system, we have even provided the ability to deactivate native, core agents. 
 
 [![Activation example](../agent-deactivation.png "Agent activation control")](../agent-deactivation.png)
 
