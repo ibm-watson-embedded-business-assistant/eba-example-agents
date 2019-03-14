@@ -6,7 +6,7 @@ We love to release new features both for our reasoning core as well as our devel
 
 ### 2019
 
- * [Activation & De-activation of agent components](./blogs/ActivationControls.md) [March 12]
+ * [Activation & De-activation of agent components](./blogs/AgentActivation.md) [March 12]
  * [Activation & De-activation of EBA agents by users including OOB agents](./blogs/AgentActivation.md) [March 1]
  * EBA responses now can be made available via URL
  * Natural Language patterns now uses Markdown syntax
