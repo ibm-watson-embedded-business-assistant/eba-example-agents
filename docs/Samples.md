@@ -22,3 +22,5 @@ These agents were developed completely within our lab tools. The samples should 
 [Supply chain insights](../samples/SupplyChain.md) - provides an agent interface for working with supply orders and sales orders.  
 *topics:* lazy data api, @force endpoint, multiple attribute types, backend assets, complex action signatures.
 
+[Quest example](../samples/Quest.md) - provides Natural Language Interface to Databases by creating SQL queries from natural language questions. 
+*topics:* structured data, database schema, SQL queries.
