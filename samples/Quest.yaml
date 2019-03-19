@@ -1,0 +1,697 @@
+version: 6
+meta:
+  name: QUEST Warehouse
+  description: "- which  shops have stocked more  products than average quantity of stocked products; show shop name and location\r\n- which products have higher price than IPHONE; show product type\r\n- what is the name of manufacturer that has manufactured lower number of products than APPLE\r\n- what manufacturer manufactured more than 2 products; add manufacturer name\r\n- what products have prices greater than GALAXYTAB;  add product type and price\r\n\r\n- what is the most expensive product; show product type\r\n- which vendor sold the most products in 2014; show vendor name\r\n- which shop has stocked the highest quantity of products; show shop name\r\n\r\n"
+  icon: 'https://ibm.box.com/shared/static/jgef4ur2p3fh2xzfjp3ojrq1jdq3rb5p.svg'
+settings:
+  - name: quest_cognos_connection
+    value: 'http://129.34.32.61:9300/p2pd/servlet/dispatch'
+    notes: >-
+      Cognos Dispatcher URL (http://<cognos_host>:9300/p2pd/servlet/dispatch).
+      You can use https://www.ibm.com/cloud/secure-gateway if your Cognos
+      instance is not publicly accessible.
+  - name: quest_model_name
+    value: QUEST-WAREHOUSE
+    notes: Cognos Model Name
+  - name: quest_db_name
+    value: LogicView
+    notes: Name of Reporting Schema View in the Cognos Model
+  - name: quest_db_model
+    value: QUEST-WAREHOUSE
+    notes: Cognos Package name published on IBMCognos BI Server
+secrets:
+  - name: quest_cognos_pw
+    notes: >-
+      Password to logon to the  Cognos Service in authentication mode  using
+      Campaign as authentication provider. Leave it empty In order to connect to
+      Cognos in Anonymous mode.
+  - name: quest_cognos_uid
+    notes: >-
+      User name to logon to the Cognos Service in authentication mode using
+      Campaign as authentication provider. Leave it empty In order to connect to
+      Cognos in Anonymous mode.
+  - name: quest_cognos_namespace
+    notes: >-
+      Namespace  to logon to the Cognos Service in authentication mode using
+      Campaign as authentication provider. Leave it empty In order to connect to
+      Cognos in Anonymous mode.
+concepts:
+  - name: ':Message'
+  - name: 'quest:Query'
+    ontology:
+      subClassOf: ':Message'
+patterns: ''
+actions:
+  - name: 'quest:RunQuery'
+    signature: 'quest:Query -> data quest:Query'
+    kind: quest
+    code: execute
+endpoints:
+  - name: '@annotate'
+    kind: quest
+    code: annotate
+statics:
+  - name: tokens.txt
+    mime: text/plain
+    text: |
+      date
+      shop
+      for
+      sum
+      type
+      manufacturer
+      products
+      number
+      default
+      vendor
+      price
+      has
+      stock
+      stocked
+      manufactured
+      element
+      on
+      sold
+      a
+      amount
+      product
+      address
+      quantity
+      in
+      bought
+      made
+      is
+      sale
+      phone
+      name
+      located
+      location
+      customer
+    backend: true
+  - name: noun.trigger.mapping
+    mime: text/plain
+    text: "SHOPS.ADDRESS\t[address, location]\nSUM_TOTAL\t[amount, sum]\nSHOP_ID\t[shop, stock]\nSHOP_ID\t[shop, stock]\nCUSTOMERS.ADDRESS\t[address]\nQUANTITY\t[quantity]\nMANUFACTURERS\t[name, manufacturer]\nVENDORS\t[vendor, name]\nMANUFACTURER_ID\t[manufacturer]\nPRODUCTS.PRODUCT_ID\t[product, products]\nCUSTOMERS.NAME\t[name]\nCUSTOMERS.PHONE_NUMBER\t[number, phone]\nSTOCK\t[product, quantity, stock, products]\nSALES.DATE\t[date]\nCUSTOMERS\t[number, address, phone, name, customer]\nSTOCK.PRODUCT_ID\t[product, products]\nSALES_ID\t[sale]\nSALES.SALES_ID\t[sale]\nCUSTOMERS.CUSTOMER_ID\t[customer]\nSTOCK.SHOP_ID\t[stock]\nMANUFACTURERS.NAME\t[name]\nSALES_DETAILS.PRODUCT_ID\t[product, products]\nSALES\t[date, sale, amount, sum]\nTYPE\t[type]\nPRICE\t[price]\nVENDORS.NAME\t[name]\nSALES_DETAILS\t[product, products]\nSALES.SUM_TOTAL\t[amount, sum]\nPRODUCTS.PRICE\t[price]\nCUSTOMER_ID\t[customer]\nSHOPS.SHOP_ID\t[shop]\nPRODUCT_ID\t[product, products]\nSHOPS\t[shop, address, name, location]\nVENDOR_ID\t[vendor]\nNAME\t[name]\nDATE\t[date]\nSHOPS.NAME\t[name]\nSTOCK.QUANTITY\t[quantity]\nFAKE.FAKE\t[]\nFAKE\t[]\nPRODUCTS\t[product, price, type, products]\nPRODUCTS.TYPE\t[type]\nADDRESS\t[address, location]\nPHONE_NUMBER\t[number, phone]\nMANUFACTURERS.MANUFACTURER_ID\t[manufacturer, manufacture]\nVENDORS.VENDOR_ID\t[vendor]\n"
+    backend: true
+  - name: NLGPattern.annotate
+    mime: text/plain
+    text: "SHOPS.SHOP_ID\t[shops, shop]\nSHOPS.NAME\t[name of shops, the name of shop]\nSHOPS.ADDRESS\t[address of shops, the address of shop]\n\nMANUFACTURERS.MANUFACTURER_ID\t[manufacturers, manufacture]\nMANUFACTURERS.NAME\t[name of manufacturers, the name of manufacturer]\n\nPRODUCTS.PRODUCT_ID\t[products, product]\nPRODUCTS.PRICE\t[price of products, the price of product]\nPRODUCTS.TYPE\t[types of products, the type of product]\n\nCUSTOMERS.NAME\t[name of customers, the name of customer]\nCUSTOMERS.ADDRESS\t[addresses, address]\nCUSTOMERS.PHONE_NUMBER\t[phone numbers of customers, the phone number of customer]\nCUSTOMERS.CUSTOMER_ID\t[customers, customer]\n\nSALES.DATE\t[sale dates, sale date]\nSALES.YEAR\t[years of sales, year of the sale]\nSALES_DETAILS.PRODUCT_ID\t[sold products, sold product]\nSALES.SALES_ID\t[sales, sale]\nSALES.CUSTOMER_ID\t[customers, customer]\nSALES.SUM_TOTAL\t[the total amount of sales, the total amount of sales]\nSALES_DETAILS.QUANTITY\t[quantity of sold products, quantity of sold products]\n\nSTOCK.PRODUCT_ID\t[stocked products, stocked product]\nSTOCK.SHOP_ID\t[shops, shop]\nSTOCK.QUANTITY\t[quantity of stocked products, the quantity of stocked product]\n\nVENDORS.NAME\t[names of vendors, the name of vendor]\nVENDORS.VENDOR_ID\t[vendors, vendor]"
+    backend: true
+  - name: NLG.pattern.SAFBased
+    mime: text/plain
+    text: "Sale has date\tSALES.SALES_ID\tSALES.DATE\nsale has sum\tSALES.SALES_ID\tSALES.SUM_TOTAL\nsale has amount\tSALES.SALES_ID\tSALES.SUM_TOTAL\nproduct has type\tPRODUCTS.PRODUCT_ID\tPRODUCTS.TYPE\nproduct has type\tSALES_DETAILS.PRODUCT_ID\tPRODUCTS.TYPE\nproduct has price\tPRODUCTS.PRODUCT_ID\tPRODUCTS.PRICE\nproduct has price\tSALES_DETAILS.PRODUCT_ID\tPRODUCTS.PRICE\ncustomer has name\tCUSTOMERS.CUSTOMER_ID\tCUSTOMERS.NAME\ncustomer has address\tCUSTOMERS.CUSTOMER_ID\tCUSTOMERS.ADDRESS\ncustomer has phone number\tCUSTOMERS.CUSTOMER_ID\tCUSTOMERS.PHONE_NUMBER\nvendor has name\tVENDORS.VENDOR_ID\tVENDORS.NAME\nmanufacturer has name\tMANUFACTURERS.MANUFACTURER_ID\tMANUFACTURERS.NAME\nStock has quantity\tSTOCK.SHOP_ID\tSTOCK.QUANTITY\nshop has name\tSHOPS.SHOP_ID\tSHOPS.NAME\nshop has address\tSHOPS.SHOP_ID\tSHOPS.ADDRESS\nshop has location\tSHOPS.SHOP_ID\tSHOPS.ADDRESS\ncustomer bought products\tCUSTOMERS.CUSTOMER_ID\tSALES_DETAILS.PRODUCT_ID\ncustomer bought products\tCUSTOMERS.CUSTOMER_ID\tPRODUCTS.PRODUCT_ID\ncustomer bought products\tSALES.CUSTOMER_ID\tPRODUCTS.PRODUCT_ID\ncustomer bought products\tSALES.CUSTOMER_ID\tSALES_DETAILS.PRODUCT_ID\ncustomer bought products on a date\tCUSTOMERS.CUSTOMER_ID\tSALES.DATE\ncustomer bought products on a date\tSALES.CUSTOMER_ID\tSALES.DATE\nvendor sold products\tVENDORS.VENDOR_ID\tSALES_DETAILS.PRODUCT_ID\nvendor sold products\tVENDORS.VENDOR_ID\tPRODUCTS.PRODUCT_ID\nvendor made sale\tVENDORS.VENDOR_ID\tSALES.SALES_ID\nmanufacturer manufactured products\tMANUFACTURERS.MANUFACTURER_ID\tPRODUCTS.PRODUCT_ID\nmanufacturer made products\tMANUFACTURERS.MANUFACTURER_ID\tPRODUCTS.PRODUCT_ID\nproduct is stocked\tSTOCK.PRODUCT_ID\tSTOCK.PRODUCT_ID\nproduct is sold\tSALES_DETAILS.PRODUCT_ID\tSALES_DETAILS.PRODUCT_ID\nproduct is bought\tSALES_DETAILS.PRODUCT_ID\tSALES_DETAILS.PRODUCT_ID\nproduct is manufactured\tPRODUCTS.PRODUCT_ID\tPRODUCTS.PRODUCT_ID\nproduct is manufactured by manufacturer\tPRODUCTS.PRODUCT_ID\tMANUFACTURERS.MANUFACTURER_ID\nproduct is manufactured by manufacturer\tSALES_DETAILS.PRODUCT_ID\tMANUFACTURERS.MANUFACTURER_ID\nproduct is made\tPRODUCTS.PRODUCT_ID\tPRODUCTS.PRODUCT_ID\nproduct is sold in shop\tSALES_DETAILS.PRODUCT_ID\tSHOPS.SHOP_ID\nproduct is sold in shop\tPRODUCTS.PRODUCT_ID\tSHOPS.SHOP_ID\nproduct is sold on date\tSALES_DETAILS.PRODUCT_ID\tSALES.DATE\nproduct is sold on date\tPRODUCTS.PRODUCT_ID\tSALES.DATE\nproduct is bought on date\tSALES_DETAILS.PRODUCT_ID\tSALES.DATE\nproduct is bought on date\tPRODUCTS.PRODUCT_ID\tSALES.DATE\nsale is made\tSALES.SALES_ID\tSALES.SALES_ID\nSale is made on date\tSALES.SALES_ID\tSALES.DATE\nshop stocked products\tSHOPS.SHOP_ID\tSTOCK.PRODUCT_ID\nshop sold products\tSHOPS.SHOP_ID\tPRODUCTS.PRODUCT_ID\nshop is located in location\tSHOPS.SHOP_ID\tSHOPS.ADDRESS\n"
+    backend: true
+  - name: ExternalDictionary.csv
+    mime: text/plain
+    text: "/*--------------------- dictionary entries ------------------------ */\n/* NULL:  this entry can be empty or \"null\"                         */\n/*------------------------------------------------------------------*/\n\n/* COLUMN VALUE, (as entered in the input question --NO NULL) */\n/* PRIMARY_TABLE, (primary search table  --NO NULL)  */\n/* PRIMARY_COLUMN  (primary search column  --NO NULL) */\n/* REPLACEMANT IN SENTENCE (generic \"TABLE has COLUMN\" format is replaced with \"Synonym has Synonym\" --NULL */\n/* REPLACEMENT COLUMN VALUE, (value different from actual column value e.g Australian Open is \"O\"  --NULL) */\n/* ALTERNATE_TABLE,  (alternate search table --NULL) */\n/* ALTERNATE_COLUMN, (alternate search column  --NULL*/\n/* .... more alternate TABLE/COLUMN match --NULL */\n/*------------------------------------------------------------------*/\n\n<--substitute_map-->\n\nby type,                per type\nby price,               per price\nby year,                per year\nby date,                per date\n\n/* following are valid if type is not default */\n/*\nby type,                per product type\nper type,               per product type\nfor each type,          per product type\nof each type,           per product type\n*/\n\nphone number,           phone_number\npurchase,               buy\npurchased,              bought\npurchasing,             buying\nclient,                 customer\nclients,                customers\nperson,                 customer\npersons,                customers\npeople,                 customers\nbuyer,                  customer\nbuyers,                 customers\npurchaser,              customer\npurchasers,             customers\ncustomer id,            customer_id\ncustomer ids,           customer_id\nproduct id,             product_id\nproduct ids,            product_id\nmost expensive,         highest priced\nleast expensive,        lowest priced\nis more expensive,      has higher price\nis less expensive,      has lower price\nare more expensive,     have higher price\nare less expensive,     have lower price\nmore expensive product,  products with higher price\nless expensive product,  products with lower price\n\ncheapest,               lowest priced\nis cheaper,             has  lower price\nare cheaper,            have lower price\ncheaper product,        products with lower price\n\nstore,                  shop\nstores,                 shops\ncompany,                manufacturer\nproducer,               manufacturer\nproducers,              manufacturers\nproduce,                manufacture\nproduces,               manufactures\nproduced,               manufactured\nseller,                 vendor\nsellers,                vendors\nmodel,                  type\nmodels,                 types\npurchase,               buy\npurchased,              bought\npurchasing,             buying\n\n\n\n/* need to add plural form because it's not a simple added 's' to the end */\ncompanies,              manufacturers                \nsum total,              total sum\nsum_total,              total sum\nsumtotal,               total sum\n<--END-->\n\n\n<--GENERIC_MAP-->\n\n/* following block is included because names like APPLE will be replaced by \"manufacturer\" \nin the input sentence, and APPLE PRODUCT will end up \"manufacturer product\". It doesn't \ncause a problem for most rules, but just to be safe add correct replacement here    \n*/\n\nAPPLE PRODUCT,       MANUFACTURERS, NAME, PRODUCTS, APPLE\nSAMSUNG PRODUCT,     MANUFACTURERS, NAME, PRODUCTS, SAMSUNG\nCDFCORP PRODUCT,     MANUFACTURERS, NAME, PRODUCTS, CDFCORP\nMICROSOFT PRODUCT,   MANUFACTURERS, NAME, PRODUCTS, MICROSOFT\n\nIPHONE,        PRODUCTS, TYPE\nMACBOOK,       PRODUCTS, TYPE\nGALAXY,        PRODUCTS, TYPE\nGALAXYTAB,     PRODUCTS, TYPE\nIPODNANO,      PRODUCTS, TYPE\nSURFACE,       PRODUCTS, TYPE\nWINDOWS8,      PRODUCTS, TYPE\n \n\nATT,           VENDORS, NAME\nVERIZON,       VENDORS, NAME\nSPRINT,        VENDORS, NAME\n\nAPPLE,         MANUFACTURER, NAME\nSAMSUNG,       MANUFACTURER, NAME\nCDFCORP,       MANUFACTURER, NAME\nMICROSOFT,     MANUFACTURER, NAME\n\nRADIOSHACK,    SHOPS, NAME\nBESTBUY,       SHOPS, NAME\nBEST BUY,      SHOPS, NAME, SHOPS, BESTBUY\nKohls,         SHOPS, NAME\nWalmart,       SHOPS, NAME\n\n/*\nRADIOSHACKs,    SHOPS, NAME\nBESTBUYs,       SHOPS, NAME\nBEST BUYs,      SHOPS, NAME, SHOPS, BESTBUY\nBest Buys,      SHOPS, NAME, SHOPS, BESTBUY\nWalmarts,       SHOPS, NAME \n*/\n\nNew York,    \t  SHOP, ADDRESS, LOCATION\nNY,     \t  SHOP, ADDRESS, LOCATION, New York\nNew Jersey,   \t  SHOP, ADDRESS, LOCATION\nSan Francisco,    SHOP, ADDRESS, LOCATION\nChicago,     \t  SHOP, ADDRESS, LOCATION\nSeattle,     \t  SHOP, ADDRESS, LOCATION\nCalifornia,   \t  SHOP, ADDRESS, LOCATION\n\nAlonzo           ,CUSTOMERS, NAME\nAmy              ,CUSTOMERS, NAME\nAndrew           ,CUSTOMERS, NAME\nAnthony          ,CUSTOMERS, NAME\nBrandon          ,CUSTOMERS, NAME\nCharlotte        ,CUSTOMERS, NAME\nDaniel           ,CUSTOMERS, NAME\nDonald           ,CUSTOMERS, NAME\nFrances          ,CUSTOMERS, NAME\nFranklin         ,CUSTOMERS, NAME\nHellen           ,CUSTOMERS, NAME\nIda              ,CUSTOMERS, NAME\nJason            ,CUSTOMERS, NAME\nJose             ,CUSTOMERS, NAME\nJoshua           ,CUSTOMERS, NAME\nJuan             ,CUSTOMERS, NAME\nKenneth          ,CUSTOMERS, NAME\nLois             ,CUSTOMERS, NAME\nLyndia           ,CUSTOMERS, NAME\nMabel            ,CUSTOMERS, NAME\nMark             ,CUSTOMERS, NAME\nMartina          ,CUSTOMERS, NAME\nMary             ,CUSTOMERS, NAME\nMatt             ,CUSTOMERS, NAME\nMichelle         ,CUSTOMERS, NAME\nMyles            ,CUSTOMERS, NAME\nNeil             ,CUSTOMERS, NAME\nNicole           ,CUSTOMERS, NAME\nNorma            ,CUSTOMERS, NAME\nPatricia         ,CUSTOMERS, NAME\nPatrick          ,CUSTOMERS, NAME\nPaul             ,CUSTOMERS, NAME\nRaymond          ,CUSTOMERS, NAME\nRichard          ,CUSTOMERS, NAME\nRonald           ,CUSTOMERS, NAME\nStanley          ,CUSTOMERS, NAME\nSylvia           ,CUSTOMERS, NAME\nThomas           ,CUSTOMERS, NAME\nWillie           ,CUSTOMERS, NAME\nWindy            ,CUSTOMERS, NAME\n\n<--END-->\n\n<--AddSentence_map-->\n/*............................................... */\n/* new section: add extra phrases to the sentence */\n/*............................................... */\n/* if the word monthly is present in the sentence add a new phrase \"per month\" to the sentence (separated with semicolon) */  \n\nmonthly,                aggregated per month\nweekly,                 aggregated per week\nannual,                 aggregated per year\nannually,               aggregated per year\nyearly,                 aggregated per year\n\n<--END-->\n\n<--REPLACEMENT_MAP-->\n\n/* Create a related list for the following items. If they appear in a groupBy\n * item, the item-key in the list that appears in the dataItem lists (and has aggregation) \n * will be added to the parameters of the groupBy (most likely as rightValue). This \n * extra information will be used in Cognos interface when creating nested \n * queries. eg. what are the average weekly sales values. vs what are the average weekly quantity of sales.\n * both will create a groupBy week. In the former the element representing \"sales value\" should\n * be associated with weekly, in the latter, one representing \"sales quanity\" \n \n * NOTE: this is obsolete and not used, keep here for reference \n\nSALES!!!YEAR__RELATEDAGGR,    SALES!!!SALES_ID,  SALES!!!SUM_TOTAL,  SALES_DETAILS!!!QUANTITY  \nSALES!!!WEEK__RELATEDAGGR,    SALES!!!SALES_ID,  SALES!!!SUM_TOTAL,  SALES_DETAILS!!!QUANTITY \n*/\n\n/* CUSTOMERS!!!CUSTOMER_ID is the default setting for customer,\n * when the qustion is customer buying something, customer_Id in\n * SALES table should replace that to avoid an unnecessary join\n * this entry means if there is a reference to SALES table in the\n * output map replace customers!!!customer_ID with SALES!!!Customer_ID\n*/\n\nCUSTOMERS!!!CUSTOMER_ID__ORPHAN,     SALES!!!CUSTOMER_ID\n\n/* remove PRODUCTS!!!PRODUCT_ID if SALES_DETAILS!!!PRODUCT_ID is present with same parameters. */\n/* This could happen if an unnecessary select rule is fired on PRODUCT_ID */\n/* In warehouse schema the product ID of \"sold\" items is different than generic */\n/* so there are two contexts for PRODUCT_ID, when it's bought/sold, and when */\n/* it's manufactured or checked for price etc. */\n\nPRODUCTS!!!PRODUCT_ID__REMOVE-COND,    SALES_DETAILS!!!PRODUCT_ID\n\n/* in warehouse schema sales has $\"sum total\" or \"amount\" which is the default */\n/* aggregation field if aggregation rules fire. It also has \"quantity\" which is */\n/* in sales_detail table. So when a question is \"what is the quantity of sales...*/\n/* it is confusing because \"quantity\" is a property of sales but is also an */\n/* aggregation keyword which will create an aggregation dataItem with the sum_total*/\n/* column. The priority in this case should be the quantity, so remove the other */\n\n/* SALES!!!SUM_TOTAL is aggregated by default when it's selected. If another */\n/* element of sales is explicitly aggregated it takes priority, and SALES!!!SUM_TOTAL */\n/* should be removed. The possible candidates are SALES_DETAILS!!!QUANTITY and */\n/* SALES!!!SALES_ID (when the question is \"how many sales...\". */\n\n\nSALES_DETAILS!!!QUANTITY,      SALES!!!SUM_TOTAL__REMOVE-DEFAULTAGGR\nSALES!!!SALES_ID,      \t       SALES!!!SUM_TOTAL__REMOVE-DEFAULTAGGR\n\n/*SALES!!!YEAR__@1,              SALES!!!DATE__REMOVE-UNCONDITIONAL */ \n\n/* If question is \"show customers who bought something\" the default dataItem */\n/* for customer may be customer_id which is selected. Select customer_name too*/\n/* The number of items to be added could be a list (name, address, etc)      */\n\n/*CUSTOMERS!!!CUSTOMER_ID__ADDSELECTS,   CUSTOMERS!!!NAME */\n\n<--END-->\n\n<--filter_map-->\n/*sale date is after 2009 */\n<--END-->\n"
+    frontend: false
+    backend: true
+  - name: schema.saf
+    mime: text/plain
+    text: >
+      /*
+       * Required parameters:
+       * tableName, columnName, dataType, aggType
+
+       * Optional parameters:
+       * isNotNumber = yes --> element has a numeric type but not subject to numberic functions (caompare, aggregate)
+       * semanticType = "person" (subject to "who" queries), "location" (subject to "where" in some cases), "date'
+       * userFunc = <uselect usort uaggrsort ugroup utotal ucount uaggr> (required in userDefined entries)
+       * 4 extra params for aggregation, when an element has a different column for "select" and "aggregate"
+       * aggTable = aggregation table name (only if different from element's default table)
+       * aggColumnType = aggregation column's aggType (usually "sum")
+       * aggColumn = aggregation Column-name  (different from elements columnName)
+       * aggDataType = aggregation dataType  (must be numeric like integer, decimal, etc.)
+       *
+       * Following parameters provide specific behaviour for particular elements
+       * aggDefault = yes --> aggregate the element by default even if not explicit in the query
+       * countAggMost = yes --> different operation on the element with different aggregation columns
+       *        in aggregation cases of "most" or "number of" count the default column instead of aggregating
+       *        the aggregation column with the aggregation type (usually sum)
+       *        Example "who placed the most orders" (count) "who placed the highest orde" (add values)
+       */
+
+      This line is first.
+
+      default for customer element; tableName = CUSTOMERS; columnName =
+      CUSTOMER_ID; isNotNumber = yes; semanticType = person; dataType = integer;
+      aggType = countD; tableName1 = CUSTOMERS; columnName1 = CUSTOMER_ID;
+      semanticType1 = person; dataType1 = integer; isNotNumber1 = yes; aggType1
+      = countD.
+
+      default for vendor element; tableName = VENDORS; columnName =
+      VENDOR_ID;isNotNumber = yes; semanticType = person; dataType = integer;
+      aggType = countD; tableName1 = VENDORS; columnName1 = VENDOR_ID;
+      semanticType1 = person; dataType1 = integer; isNotNumber1 = yes; aggType1
+      = countD.
+
+      default for shop element; tableName = SHOPS; columnName = SHOP_ID;
+      isNotNumber = yes; dataType = integer; aggType = countD; tableName1 =
+      SHOPS; columnName1 = SHOP_ID; dataType1 = integer; isNotNumber1 = yes;
+      aggType1 = countD.
+
+      default for manufacturer element; tableName = MANUFACTURERS; columnName =
+      MANUFACTURER_ID; isNotNumber = yes;dataType = integer; aggType = countD;
+      tableName1 = MANUFACTURERS; columnName1 = MANUFACTURER_ID; dataType1 =
+      integer; isNotNumber1 = yes;  aggType1 = countD.
+
+      default for type element; tableName = PRODUCTS; columnName = TYPE;
+      dataType = string; aggType = countD; tableName1 = PRODUCTS; columnName1 =
+      TYPE; dataType1 = string; aggType1 = countD;
+
+      default for price element; tableName = PRODUCTS; columnName = PRICE;
+      dataType = decimal; aggType = sum; tableName1 = PRODUCTS; columnName1 =
+      PRICE; dataType1 = decimal; aggType1 = sum;
+
+      default for date element; tableName = SALES; columnName = DATE; dataType =
+      date; aggType = countD; tableName1 = SALES; columnName1 = DATE; dataType1
+      = date; aggType1 = countD.
+
+      default for year element; tableName = SALES; columnName = YEAR; dataType =
+      year; aggType = countD; tableName1 = SALES; columnName1 = YEAR; dataType1
+      = year; aggType1 = countD.
+
+      default for week element; tableName = SALES; columnName = WEEK; dataType =
+      integer; isNotNumber = yes;  aggType = countD; tableName1 = SALES;
+      columnName1 = WEEK; dataType1 = integer; isNotNumber1 = yes;  aggType1 =
+      countD.
+
+
+      default for sale element; tableName = SALES; columnName = SALES_ID;
+      dataType = integer; isNotNumber = yes; aggType = countD; aggDataType =
+      decimal; aggColumn = SUM_TOTAL; aggDefault = yes; countAggMost = yes;
+      aggColumnType = sum; tableName1 = SALES; columnName1 = SALES_ID; dataType1
+      = integer;  isNotNumber1 = yes; aggType1 = countD; aggDataType1 = decimal;
+      aggColumn1 = SUM_TOTAL; aggDefault1 = yes; countAggMost1 = yes;
+      aggColumnType1 = sum.
+
+
+
+
+      Sale has sale_id; tableName = SALES; columnName = SALES_ID; dataType =
+      integer;  isNotNumber = yes; aggType = countD; aggDataType = decimal;
+      aggColumn = SUM_TOTAL; aggDefault = yes; countAggMost = yes; aggColumnType
+      = sum; tableName1 = SALES; columnName1 = SALES_ID; dataType1 = integer;
+      isNotNumber1 = yes; aggType1 = countD.
+
+      Sale has week; tableName = SALES; columnName = SALES_ID; dataType =
+      integer; isNotNumber = yes;  aggType = countD; aggDataType = decimal;
+      aggColumn = SUM_TOTAL; aggDefault = yes; countAggMost = yes; aggColumnType
+      = sum; tableName1 = SALES; columnName1 = WEEK; dataType1 = integer; 
+      isNotNumber1 = yes; aggType1 = countD.
+
+      Sale has year; tableName = SALES; columnName = SALES_ID; dataType =
+      integer; isNotNumber = yes;  aggType = countD; aggDataType = decimal;
+      aggColumn = SUM_TOTAL; aggDefault = yes; countAggMost = yes; aggColumnType
+      = sum; tableName1 = SALES; columnName1 = YEAR; dataType1 = year; aggType1
+      = countD.
+
+
+      Sale has date; tableName = SALES; columnName = SALES_ID; dataType =
+      integer; isNotNumber = yes;  aggType = countD; aggDataType = decimal;
+      aggColumn = SUM_TOTAL; aggDefault = yes; countAggMost = yes; aggColumnType
+      = sum; tableName1 = SALES; columnName1 = DATE; dataType1 = date; aggType1
+      = countD.
+
+      sale has sum; tableName = SALES; columnName = SALES_ID; dataType =
+      integer;  isNotNumber = yes; aggType = countD; aggDataType = decimal;
+      aggColumn = SUM_TOTAL; aggDefault = yes; countAggMost = yes; aggColumnType
+      = sum; tableName1 = SALES; columnName1 = SUM_TOTAL; dataType1 = decimal;
+      aggDefault1 = yes; aggType1 = sum.
+
+      sale has revenue; tableName = SALES; columnName = SALES_ID; dataType =
+      integer;  isNotNumber = yes; aggType = countD; aggDataType = decimal;
+      aggColumn = SUM_TOTAL; aggDefault = yes; countAggMost = yes; aggColumnType
+      = sum; tableName1 = SALES; columnName1 = SUM_TOTAL; dataType1 = decimal;
+      aggDefault1 = yes; aggType1 = sum.
+
+      sale has amount; tableName = SALES; columnName = SALES_ID; dataType =
+      integer; isNotNumber = yes;  aggType = countD; aggDataType = decimal;
+      aggColumn = SUM_TOTAL; aggDefault = yes; countAggMost = yes; aggColumnType
+      = sum; tableName1 = SALES; columnName1 = SUM_TOTAL; dataType1 = decimal;
+      aggDefault1 = yes; aggType1 = sum.
+
+      sale has quantity; tableName = SALES; columnName = SALES_ID; dataType =
+      integer;  isNotNumber = yes; aggType = countD; aggDataType = decimal;
+      aggColumn = SUM_TOTAL; aggDefault = yes; countAggMost = yes; aggColumnType
+      = sum; tableName1 = SALES_DETAILS; columnName1 = QUANTITY; aggDefault1 =
+      yes; dataType1 = integer; aggType1 = sum.
+
+
+      sale has sum on a date; tableName = SALES; columnName = SALES_ID; dataType
+      = integer;  isNotNumber = yes; aggType = countD; aggDataType = decimal;
+      aggColumn = SUM_TOTAL; aggDefault = yes; countAggMost = yes; aggColumnType
+      = sum; tableName1 = SALES; columnName1 = DATE; dataType1 = date; aggType1
+      = countD.
+
+      sale has sum in a year; tableName = SALES; columnName = SALES_ID; dataType
+      = integer;  isNotNumber = yes; aggType = countD; aggDataType = decimal;
+      aggColumn = SUM_TOTAL; aggDefault = yes; countAggMost = yes; aggColumnType
+      = sum; tableName1 = SALES; columnName1 = YEAR; dataType1 = year; aggType1
+      = countD.
+
+      sale has quantity on a date; tableName = SALES; columnName = SALES_ID;
+      dataType = integer;  isNotNumber = yes; aggType = countD; aggDataType =
+      decimal; aggColumn = SUM_TOTAL; aggDefault = yes; countAggMost = yes;
+      aggColumnType = sum; tableName1 = SALES; columnName1 = DATE; dataType1 =
+      date; aggType1 = countD.
+
+      sale has quantity in a year; tableName = SALES; columnName = SALES_ID;
+      dataType = integer;  isNotNumber = yes; aggType = countD; aggDataType =
+      decimal; aggColumn = SUM_TOTAL; aggDefault = yes; countAggMost = yes;
+      aggColumnType = sum; tableName1 = SALES; columnName1 = YEAR; dataType1 =
+      year; aggType1 = countD.
+
+
+      Sale has week; tableName = SALES; columnName = SALES_ID; dataType =
+      integer; aggType = countD; aggDataType = decimal; aggColumn = SUM_TOTAL;
+      aggDefault = yes; countAggMost = yes; aggColumnType = sum; tableName1 =
+      SALES; columnName1 = WEEK; dataType1 = integer;  isNotNumber1 = yes;
+      aggType1 = countD.
+
+      sale is made; tableName = SALES; columnName = SALES_ID; dataType =
+      integer;  isNotNumber = yes; aggType = countD; aggDataType = decimal;
+      aggColumn = SUM_TOTAL; aggDefault = yes; countAggMost = yes; aggColumnType
+      = sum; tableName1 = SALES; columnName1 = SALES_ID; dataType1 = integer;
+      isNotNumber1 = yes;  aggType1 = countD; aggDataType1 = decimal; aggColumn1
+      = SUM_TOTAL; aggDefault1 = yes; countAggMost1 = yes; aggColumnType1 = sum.
+
+      Sale is made on a date; tableName = SALES; columnName = SALES_ID; dataType
+      = integer;  isNotNumber = yes; aggType = countD; aggDataType = decimal;
+      aggColumn = SUM_TOTAL; aggDefault = yes; countAggMost = yes; aggColumnType
+      = sum; tableName1 = SALES; columnName1 = DATE; dataType1 = date; aggType1
+      = countD;
+
+      sale has product on a date; tableName = SALES; columnName = SALES_ID;
+      dataType = integer;  isNotNumber = yes; aggType = countD; aggDataType =
+      decimal; aggColumn = SUM_TOTAL; aggDefault = yes; countAggMost = yes;
+      aggColumnType = sum; tableName1 = SALES; columnName1 = DATE; dataType1 =
+      date; aggType1 = countD.
+
+      sale has product in a year; tableName = SALES; columnName = SALES_ID;
+      dataType = integer;  isNotNumber = yes; aggType = countD; aggDataType =
+      decimal; aggColumn = SUM_TOTAL; aggDefault = yes; countAggMost = yes;
+      aggColumnType = sum; tableName1 = SALES; columnName1 = YEAR; dataType1 =
+      year; aggType1 = countD.
+
+
+      Product has product_id; tableName = PRODUCTS; columnName = PRODUCT_ID;
+      dataType = integer;  isNotNumber = yes; aggType = countD; tableName1 =
+      PRODUCTS; columnName1 = PRODUCT_ID; dataType1 = integer; isNotNumber1 =
+      yes;  aggType1 = countD.
+
+
+      Product has type; tableName = PRODUCTS; columnName = PRODUCT_ID; dataType
+      = integer;  isNotNumber = yes; aggType = countD; tableName1 = PRODUCTS;
+      columnName1 = TYPE; dataType1 = string; aggType1 = countD.
+
+      product has price; tableName = PRODUCTS; columnName = PRODUCT_ID; dataType
+      = integer;  isNotNumber = yes; aggType = countD; tableName1 = PRODUCTS;
+      columnName1 = PRICE; dataType1 = decimal; aggType1 = sum.
+
+      product has manufacturer; tableName = PRODUCTS; columnName = PRODUCT_ID;
+      dataType = integer;  isNotNumber = yes; aggType = countD; tableName1 =
+      MANUFACTURERS; columnName1 = MANUFACTURER_ID; dataType1 = integer;
+      isNotNumber1 = yes;  aggType1 = countD.
+
+
+      customer has name; tableName = CUSTOMERS; columnName = CUSTOMER_ID;
+      semanticType = person; dataType = integer;  isNotNumber = yes; aggType =
+      countD; tableName1 = CUSTOMERS; columnName1 = NAME; dataType1 = string;
+      aggType1 = countD.
+
+      customer has address; tableName = CUSTOMERS; columnName = CUSTOMER_ID;
+      semanticType = person; dataType = integer;  isNotNumber = yes; aggType =
+      countD; tableName1 = CUSTOMERS; columnName1 = ADDRESS; semanticType =
+      location; dataType1 = string; aggType1 = countD.
+
+      customer has phone_number; tableName = CUSTOMERS; columnName =
+      CUSTOMER_ID; semanticType = person; dataType = integer; isNotNumber =
+      yes;  aggType = countD; tableName1 = CUSTOMERS; columnName1 = PHONE_NR;
+      dataType1 = string; aggType1 = countD.
+
+      vendor has name; tableName = VENDORS; columnName = VENDOR_ID; semanticType
+      = person; dataType = integer; isNotNumber = yes;  aggType = countD;
+      tableName1 = VENDORS; columnName1 = NAME; dataType1 = string; aggType1 =
+      countD.
+
+      manufacturer has name; tableName = MANUFACTURERS; columnName =
+      MANUFACTURER_ID; dataType = integer; isNotNumber = yes;  aggType = countD;
+      tableName1 = MANUFACTURERS; columnName1 = NAME; dataType1 = string;
+      aggType1 = countD.
+
+      Stock has quantity; tableName = STOCK; columnName = PRODUCT_ID; dataType =
+      integer;  isNotNumber = yes; aggType = countD; tableName1 = STOCK;
+      columnName1 = QUANTITY; aggDefault1 = yes; dataType1 = integer; aggType1 =
+      sum.
+
+      Stock has amount; tableName = STOCK; columnName = PRODUCT_ID; dataType =
+      integer;  isNotNumber = yes; aggType = countD; tableName1 = STOCK;
+      columnName1 = QUANTITY; aggDefault1 = yes; dataType1 = integer; aggType1 =
+      sum.
+
+      shop has name; tableName = SHOPS; columnName = SHOP_ID; dataType =
+      integer;  isNotNumber = yes; aggType = countD; tableName1 = SHOPS;
+      columnName1 = NAME; dataType1 = string; aggType1 = countD.
+
+      shop has address; tableName = SHOPS; columnName = SHOP_ID; dataType =
+      integer; isNotNumber = yes;  aggType = countD; tableName1 = SHOPS;
+      columnName1 = ADDRESS; dataType1 = string; semanticType1 = location;
+      aggType1 = countD.
+
+      shop has location; tableName = SHOPS; columnName = SHOP_ID; dataType =
+      integer; isNotNumber = yes;  aggType = countD; tableName1 = SHOPS;
+      columnName1 = ADDRESS; dataType1 = string; semanticType1 = location;
+      aggType1 = countD.
+
+      shop has stock; tableName = SHOPS; columnName = SHOP_ID; dataType =
+      integer; isNotNumber = yes;  aggType = countD; tableName1 = STOCK;
+      columnName1 = PRODUCT_ID; dataType1 = integer;  isNotNumber1 = yes;
+      aggType1 = countD; aggDataType1 = integer; aggColumn1 = QUANTITY;
+      aggColumnType1 = sum .
+
+      shop has sale; tableName = SHOPS; columnName = SHOP_ID; dataType =
+      integer; isNotNumber = yes;  aggType = countD; tableName1 = SALES;
+      columnName1 = SALES_ID; dataType1 = integer;  isNotNumber1 = yes; aggType1
+      = countD; aggDataType1 = decimal; aggColumn1 = SUM_TOTAL; aggDefault1 =
+      yes; countAggMost1 = yes; aggColumnType1 = sum.
+
+      vendor has sale; tableName = VENDORS; columnName = VENDOR_ID; semanticType
+      = person; dataType = integer;  isNotNumber = yes; aggType = countD;
+      tableName1 = SALES; columnName1 = SALES_ID; dataType1 = integer;
+      isNotNumber1 = yes;  aggType1 = countD; aggDataType1 = decimal; aggColumn1
+      = SUM_TOTAL; aggDefault1 = yes; countAggMost1 = yes; aggColumnType1 = sum.
+
+      vendor made sale; tableName = VENDORS; columnName = VENDOR_ID;
+      semanticType = person; dataType = integer; isNotNumber = yes;  aggType =
+      countD; tableName1 = SALES; columnName1 = SALES_ID; dataType1 = integer; 
+      isNotNumber1 = yes; aggType1 = countD; aggDataType1 = decimal; aggColumn1
+      = SUM_TOTAL; aggDefault1 = yes; countAggMost1 = yes; aggColumnType1 = sum.
+
+
+      customer bought products; tableName = SALES; columnName = CUSTOMER_ID;
+      semanticType = person; dataType = integer; isNotNumber = yes;  aggType =
+      countD; semanticType = person; tableName1 = SALES_DETAILS; columnName1 =
+      PRODUCT_ID; dataType1 = integer;  isNotNumber1 = yes; aggType1 = countD;
+      aggDataType1 = integer; aggColumn1 = QUANTITY; aggColumnType1 = sum.
+
+      vendor sold products; tableName = VENDORS; columnName = VENDOR_ID;
+      semanticType = person; dataType = integer; aggType = countD; tableName1 =
+      SALES_DETAILS; columnName1 = PRODUCT_ID; dataType1 = integer; 
+      isNotNumber1 = yes; aggType1 = countD; aggDataType1 = integer; aggColumn1
+      = QUANTITY; aggColumnType1 = sum.
+
+
+      manufacturer manufactured products; tableName = MANUFACTURERS; columnName
+      = MANUFACTURER_ID; dataType = integer; isNotNumber = yes;  aggType =
+      countD; tableName1 = PRODUCTS; columnName1 = PRODUCT_ID; dataType1 =
+      integer; isNotNumber1 = yes; aggType1 = countD.
+
+      manufacturer made products; tableName = MANUFACTURERS; columnName =
+      MANUFACTURER_ID; dataType = integer; isNotNumber = yes;  aggType = countD;
+      tableName1 = PRODUCTS; columnName1 = PRODUCT_ID; dataType1 = integer;
+      isNotNumber1 = yes;  aggType1 = countD.
+
+
+      product has sale; tableName = SALES_DETAILS; columnName = PRODUCT_ID;
+      dataType = integer;  isNotNumber = yes; aggType = countD; aggDataType =
+      integer; aggColumn = QUANTITY; aggColumnType = sum;  tableName1 = SALES;
+      columnName1 = SALES_ID; dataType1 = integer;  isNotNumber1 = yes; aggType1
+      = countD; aggDataType1 = decimal; aggColumn1 = SUM_TOTAL; aggDefault1 =
+      yes; countAggMost1 = yes; aggColumnType1 = sum.
+
+      product has sale on a date; tableName = SALES_DETAILS; columnName =
+      PRODUCT_ID; dataType = integer;  isNotNumber = yes; aggType = countD;
+      aggDataType = integer; aggColumn = QUANTITY; aggColumnType = sum;
+      tableName1 = SALES; columnName1 = DATE; dataType1 = date; aggType1 =
+      countD.
+
+      product has sale in a year; tableName = SALES_DETAILS; columnName =
+      PRODUCT_ID; dataType = integer;  isNotNumber = yes; aggType = countD;
+      aggDataType = integer; aggColumn = QUANTITY; aggColumnType = sum;
+      tableName1 = SALES; columnName1 = YEAR; dataType1 = year; aggType1 =
+      countD.
+
+
+      product is stocked; tableName = STOCK; columnName = PRODUCT_ID; dataType =
+      integer; isNotNumber = yes;  aggType = countD; aggDataType = integer;
+      aggColumn = QUANTITY; aggColumnType = sum; tableName1 = STOCK; columnName1
+      = PRODUCT_ID; dataType1 = integer; isNotNumber1 = yes;  aggType1 = countD;
+      aggDataType1 = integer; aggColumn1 = QUANTITY; aggColumnType1 = sum .
+
+      product is sold; tableName = SALES_DETAILS; columnName = PRODUCT_ID;
+      dataType = integer;  isNotNumber = yes; aggType = countD; aggDataType =
+      integer; aggColumn = QUANTITY; aggColumnType = sum; tableName1 =
+      SALES_DETAILS; columnName1 = PRODUCT_ID; dataType1 = integer; isNotNumber1
+      = yes;  aggType1 = countD; aggDataType1 = integer; aggColumn1 = QUANTITY;
+      aggColumnType1 = sum.
+
+      product is bought; tableName = SALES_DETAILS; columnName = PRODUCT_ID;
+      dataType = integer;  isNotNumber = yes; aggType = countD; aggDataType =
+      integer; aggColumn = QUANTITY; aggColumnType = sum; tableName1 =
+      SALES_DETAILS; columnName1 = PRODUCT_ID; dataType1 = integer; 
+      isNotNumber1 = yes; aggType1 = countD; aggDataType1 = integer; aggColumn1
+      = QUANTITY; aggColumnType1 = sum.
+
+      product is manufactured; tableName = PRODUCTS; columnName = PRODUCT_ID;
+      dataType = integer;  isNotNumber = yes; aggType = countD; tableName1 =
+      PRODUCTS; columnName1 = PRODUCT_ID; dataType1 = integer; aggType1 =
+      countD.
+
+      product is made; tableName = PRODUCTS; columnName = PRODUCT_ID; dataType =
+      integer;  isNotNumber = yes; aggType = countD; tableName1 = PRODUCTS;
+      columnName1 = PRODUCT_ID; dataType1 = integer; aggType1 = countD.
+
+      product is sold in a shop; tableName = SALES_DETAILS; columnName =
+      PRODUCT_ID; dataType = integer;  isNotNumber = yes; aggType = countD;
+      aggDataType = integer; aggColumn = QUANTITY; aggColumnType = sum;
+      tableName1 = SHOPS; columnName1 = SHOP_ID; dataType1 = integer; 
+      isNotNumber1 = yes; aggType1 = countD;
+
+      product is stocked in a shop; tableName = STOCK; columnName = PRODUCT_ID;
+      dataType = integer; isNotNumber = yes;  aggType = countD; aggDataType =
+      integer; aggColumn = QUANTITY; aggColumnType = sum; tableName1 = SHOPS;
+      columnName1 = SHOP_ID; dataType1 = integer; isNotNumber1 = yes;  aggType1
+      = countD;
+
+      product is sold on a date; tableName = SALES_DETAILS; columnName =
+      PRODUCT_ID; dataType = integer;  isNotNumber = yes; aggType = countD;
+      aggDataType = integer; aggColumn = QUANTITY; aggColumnType = sum;
+      tableName1 = SALES; columnName1 = DATE; dataType1 = date; aggType1 =
+      countD.
+
+      product is bought on a date; tableName = SALES_DETAILS; columnName =
+      PRODUCT_ID; dataType = integer; isNotNumber = yes;  aggType = countD;
+      aggDataType = integer; aggColumn = QUANTITY; aggColumnType = sum;
+      tableName1 = SALES; columnName1 = DATE; dataType1 = date; aggType1 =
+      countD.
+
+      product is sold in a year; tableName = SALES_DETAILS; columnName =
+      PRODUCT_ID; dataType = integer;  isNotNumber = yes; aggType = countD;
+      aggDataType = integer; aggColumn = QUANTITY; aggColumnType = sum;
+      tableName1 = SALES; columnName1 = YEAR; dataType1 = year; aggType1 =
+      countD.
+
+      product is bought in a year; tableName = SALES_DETAILS; columnName =
+      PRODUCT_ID; dataType = integer; isNotNumber = yes;  aggType = countD;
+      aggDataType = integer; aggColumn = QUANTITY; aggColumnType = sum;
+      tableName1 = SALES; columnName1 = YEAR; dataType1 = year; aggType1 =
+      countD.
+
+
+      shop sold products; tableName = SHOPS; columnName = SHOP_ID; dataType =
+      integer; isNotNumber = yes;  aggType = countD; tableName1 = SALES_DETAILS;
+      columnName1 = PRODUCT_ID; dataType1 = integer;  isNotNumber1 = yes;
+      aggType1 = countD; aggDataType1 = integer; aggColumn1 = QUANTITY;
+      aggColumnType1 = sum .
+
+      shop stocked products; tableName = SHOPS; columnName = SHOP_ID; dataType =
+      integer;  isNotNumber = yes; aggType = countD; tableName1 = STOCK;
+      columnName1 = PRODUCT_ID; dataType1 = integer; aggType1 = countD;
+      aggDataType1 = integer; aggColumn1 = QUANTITY; aggColumnType1 = sum .
+
+      shop is located in a location; tableName = SHOPS; columnName = SHOP_ID;
+      dataType = integer;  isNotNumber = yes; aggType = countD; tableName1 =
+      SHOPS; columnName1 = ADDRESS; semanticType1 = location; dataType1 =
+      string; aggType1 = countD.
+
+
+      UserDefined for rank price; tableName = PRODUCTS; columnName = PRICE;
+      dataType = decimal; aggType = sum; userFunc = uselect; tableName1 =
+      PRODUCTS; columnName1 = PRICE; dataType1 = decimal; userFunc1 = usort;
+      aggType1 = sum.
+
+      UserDefined for rank product by price; tableName = PRODUCTS; columnName =
+      PRODUCT_ID; dataType = integer;  isNotNumber = yes; aggType = countD;
+      userFunc = uselect; tableName1 = PRODUCTS; columnName1 = PRICE; dataType1
+      = decimal; userFunc1 = usort; aggType1 = sum.
+
+      UserDefined for rank customer by product; tableName = SALES; columnName =
+      CUSTOMER_ID; semanticType = person; dataType = integer; aggType = countD;
+      userFunc = uselect; tableName1 = SALES_DETAILS; columnName1 = PRODUCT_ID;
+      dataType1 = integer;  isNotNumber1 = yes; aggType1 = countD; userFunc1 =
+      uaggrsort; aggDataType1 = integer; aggColumn1 = QUANTITY; aggColumnType1 =
+      sum.
+
+      UserDefined for rank manufacturer by products; tableName = MANUFACTURERS;
+      columnName = MANUFACTURER_ID; dataType = integer; aggType = countD;
+      userFunc = uselect; tableName1 = PRODUCTS; columnName1 = PRODUCT_ID;
+      dataType1 = integer;  isNotNumber1 = yes; aggType1 = countD; userFunc1 =
+      uaggrsort.
+
+      UserDefined for rank product by customer; tableName = SALES_DETAILS;
+      columnName = PRODUCT_ID; dataType = integer;  isNotNumber = yes; aggType =
+      countD; userFunc = uselect; tableName1 = SALES; columnName1 = CUSTOMER_ID;
+      semanticType1 = person; dataType1 = integer;  isNotNumber1 = yes; aggType1
+      = countD; userFunc1 = uaggrsort.
+
+      UserDefined for rank product by stock; tableName = STOCK; columnName =
+      PRODUCT_ID; dataType = integer;  isNotNumber = yes; aggType = countD;
+      userFunc = uselect; tableName1 = STOCK; columnName1 = QUANTITY; dataType1
+      = integer; aggType1 = sum; userFunc1 = uaggrsort.
+
+      UserDefined for rank shop by stock; tableName = SHOPS; columnName =
+      SHOP_ID; dataType = integer; isNotNumber = yes;  aggType = countD;
+      userFunc = uselect; tableName1 = STOCK; columnName1 = QUANTITY; dataType1
+      = integer; aggType1 = sum; userFunc1 = uaggrsort.
+
+      UserDefined for rank vendor by product; tableName = VENDORS; columnName =
+      VENDOR_ID; semanticType = person; dataType = integer;  isNotNumber = yes;
+      aggType = countD; userFunc = uselect; tableName1 = SALES_DETAILS;
+      columnName1 = QUANTITY; dataType1 = integer; aggType1 = sum; userFunc1 =
+      uaggrsort .
+
+      UserDefined for rank products selling; tableName = SALES_DETAILS;
+      columnName = PRODUCT_ID; dataType = integer; isNotNumber = yes;  aggType =
+      countD; userFunc = uselect; tableName1 = SALES_DETAILS; columnName1 =
+      QUANTITY; dataType1 = integer; userFunc1 = uaggrsort; aggType1 = sum.
+
+      UserDefined for rank products by sale; tableName = SALES_DETAILS;
+      columnName = PRODUCT_ID; dataType = integer; isNotNumber = yes;  aggType =
+      countD; userFunc = uselect; tableName1 = SALES; columnName1 = SALES_ID;
+      dataType1 = integer; isNotNumber1 = yes;  aggType1 = countD; aggDataType1
+      = decimal; aggColumn1 = SUM_TOTAL; aggDefault1 = yes; countAggMost1 = yes;
+      aggColumnType1 = sum; userFunc1 = uaggrsort .
+
+
+      customer bought products on a date; tableName = SALES; columnName =
+      CUSTOMER_ID; semanticType = person; dataType = integer; isNotNumber =
+      yes;  aggType = countD; semanticType = person; tableName1 = SALES;
+      columnName1 = DATE; dataType1 = date; aggType1 = countD.
+
+      customer bought products in a year; tableName = SALES; columnName =
+      CUSTOMER_ID; semanticType = person; dataType = integer; isNotNumber =
+      yes;  aggType = countD; semanticType = person; tableName1 = SALES;
+      columnName1 = YEAR; dataType1 = year; aggType1 = countD.
+
+      customer bought products in a shop; tableName = SALES; columnName =
+      CUSTOMER_ID; semanticType = person; dataType = integer; isNotNumber =
+      yes;  aggType = countD; semanticType = person; tableName1 = SHOPS;
+      columnName1 = SHOP_ID; dataType1 = integer;  isNotNumber1 = yes; aggType1
+      = countD;
+
+      customer bought products in a location; tableName = SALES; columnName =
+      CUSTOMER_ID; semanticType = person; dataType = integer; isNotNumber =
+      yes;  aggType = countD; semanticType = person; tableName1 = SHOPS;
+      columnName1 = ADDRESS; dataType1 = string; semanticType1 = location;
+      aggType1 = countD.
+
+
+      customer bought products from a vendor; tableName = SALES; columnName =
+      CUSTOMER_ID; semanticType = person; dataType = integer; isNotNumber =
+      yes;  aggType = countD; semanticType = person; tableName1 = VENDORS;
+      columnName1 = VENDOR_ID; semanticType1 = person; dataType1 = integer;
+      isNotNumber1 = yes;  aggType1 = countD;
+
+      shop sold products for a customer ; tableName = SHOPS; columnName =
+      SHOP_ID; dataType = integer; isNotNumber = yes;  aggType = countD;
+      tableName1 = SALES; columnName1 = CUSTOMER_ID; semanticType1 = person;
+      dataType1 = integer; isNotNumber1 = yes; aggType1 = countD.
+
+      shop sold products on a date; tableName = SHOPS; columnName = SHOP_ID;
+      dataType = integer; isNotNumber = yes;  aggType = countD; tableName1 =
+      SALES; columnName1 = DATE; dataType1 = date; aggType1 = countD .
+
+      shop sold products in a year; tableName = SHOPS; columnName = SHOP_ID;
+      dataType = integer; isNotNumber = yes;  aggType = countD; tableName1 =
+      SALES; columnName1 = YEAR; dataType1 = year; aggType1 = countD .
+
+
+      vendor sold products on a date; tableName = VENDORS; columnName =
+      VENDOR_ID; semanticType = person; dataType = integer; isNotNumber = yes; 
+      aggType = countD;  tableName1 = SALES; columnName1 = DATE; dataType1 =
+      date; aggType1 = countD.
+
+      vendor sold products in a year; tableName = VENDORS; columnName =
+      VENDOR_ID; semanticType = person; dataType = integer; isNotNumber = yes; 
+      aggType = countD;  tableName1 = SALES; columnName1 = YEAR; dataType1 =
+      year; aggType1 = countD.
+
+      vendor sold products in a shop; tableName = VENDORS; columnName =
+      VENDOR_ID; semanticType = person; dataType = integer; isNotNumber = yes; 
+      aggType = countD; tableName1 = SHOPS; columnName1 = SHOP_ID; dataType1 =
+      integer;  isNotNumber1 = yes; aggType1 = countD;
+
+      vendor sold products for a customer; tableName = VENDORS; columnName =
+      VENDOR_ID; semanticType = person; dataType = integer; isNotNumber = yes; 
+      aggType = countD; tableName1 = SALES; columnName1 = CUSTOMER_ID;
+      semanticType1 = person; dataType1 = integer; isNotNumber1 = yes; aggType1
+      = countD.
+
+
+      shop has product in stock; tableName = SHOPS; columnName = SHOP_ID;
+      dataType = integer; isNotNumber = yes;  aggType = countD; tableName1 =
+      STOCK; columnName1 = PRODUCT_ID; dataType1 = integer;  isNotNumber1 = yes;
+      aggType1 = countD; aggDataType1 = integer; aggColumn1 = QUANTITY;
+      aggColumnType1 = sum .
+
+      stock has product; tableName = STOCK; columnName = PRODUCT_ID; dataType =
+      integer; isNotNumber = yes;  aggType = countD; aggDataType = integer;
+      aggColumn = QUANTITY; aggColumnType = sum; tableName1 = STOCK; columnName1
+      = PRODUCT_ID; dataType1 = integer; isNotNumber1 = yes;  aggType1 = countD;
+      aggDataType1 = integer; aggColumn1 = QUANTITY; aggColumnType1 = sum .
+
+
+      customer has customer_id; tableName = CUSTOMERS; columnName = CUSTOMER_ID;
+      isNotNumber = yes; semanticType = person; dataType = integer; aggType =
+      countD; tableName1 = CUSTOMERS; columnName1 = CUSTOMER_ID; semanticType1 =
+      person; dataType1 = integer; isNotNumber1 = yes; aggType1 = countD.
+
+      customer_id has name; tableName = CUSTOMERS; columnName = CUSTOMER_ID;
+      semanticType = person; dataType = integer;  isNotNumber = yes; aggType =
+      countD; tableName1 = CUSTOMERS; columnName1 = NAME; dataType1 = string;
+      aggType1 = countD.
+
+      Product_id has type; tableName = PRODUCTS; columnName = PRODUCT_ID;
+      dataType = integer;  isNotNumber = yes; aggType = countD; tableName1 =
+      PRODUCTS; columnName1 = TYPE; dataType1 = string; aggType1 = countD.
+
+
+      resolve_value for product_id element; tableName = PRODUCTS; columnName =
+      PRODUCT_ID; dataType = integer;  isNotNumber = yes; aggType = countD;
+      tableName1 = PRODUCTS; columnName1 = PRODUCT_ID; dataType1 = integer;
+      isNotNumber1 = yes;  aggType1 = countD.
+
+
+      resolve_value for customer_id element; tableName = CUSTOMERS; columnName =
+      CUSTOMER_ID; isNotNumber = yes; semanticType = person; dataType = integer;
+      aggType = countD; tableName1 = CUSTOMERS; columnName1 = CUSTOMER_ID;
+      semanticType1 = person; dataType1 = integer; isNotNumber1 = yes; aggType1
+      = countD.
+
+      resolve_value for sale_id element; tableName = SALES; columnName =
+      SALES_ID; dataType = integer;  isNotNumber = yes; aggType = countD;
+      tableName1 = SALES; columnName1 = SALES_ID; dataType1 = integer;
+      isNotNumber1 = yes; aggType1 = countD.
+
+
+      sale has product; tableName = SALES; columnName = SALES_ID; dataType =
+      integer;  isNotNumber = yes; aggType = countD; aggDataType = decimal;
+      aggColumn = SUM_TOTAL; aggDefault = yes; countAggMost = yes; aggColumnType
+      = sum; tableName1 = SALES_DETAILS; columnName1 = PRODUCT_ID; dataType1 =
+      integer;  isNotNumber1 = yes; aggType1 = countD; aggDataType1 = integer;
+      aggColumn1 = QUANTITY; aggColumnType1 = sum.
+
+
+      This line is last.
+    frontend: false
+    backend: true
