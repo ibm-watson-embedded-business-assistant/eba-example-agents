@@ -1,4 +1,4 @@
-Our development lab now features GitHub integration, enabling programmers to work collaboratively in a source controlled environment. Rather than importing, exporting, and storing a local file, developers may now push their saved changes directly into a git repository. To view and to configure this integration, make sure the 'GitHub' tab is selected within the development lab. All changes to your agent are now viewable in a git diff file within this tab.
+Our development lab now features GitHub integration, enabling programmers to work collaboratively in a source controlled environment. Rather than importing, exporting, and storing a local file, developers may now push their saved changes directly into a git repository. To view and to configure this integration, make sure the 'GitHub' tab is selected within the development lab. All changes to your agent are now viewable in a git diff file within this tab. Note that we currently only support proper git integrations from Github. We do not support other source control systems such as Gitlab.
 
 ## Semantics
 GitHub integration enables the following workflows. 
