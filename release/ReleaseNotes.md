@@ -7,7 +7,7 @@ We love to release new features both for our reasoning core as well as our devel
 ### 2019
  * [task management and delegation support](./blogs/TaskManagement.md) [March 23]
  * [Preview: BPMN UI tooling](./blogs/BPMN.md) [March 16]
- * [NL based clarification learning](./blogs/NLLearning.md) [March 12]
+ * [Preview: NL based clarification learning](./blogs/NLLearning.md) [March 12]
  * [EBA statisical agent made generally available](./blogs/StatisicsAgent.md) [March 12]
  * [Activation & De-activation of agent components](./blogs/ComponentActivation.md) [March 12]
  * [Webpacked bundled assets now supported](./blogs/WebpackAssets.md) [March 5]
