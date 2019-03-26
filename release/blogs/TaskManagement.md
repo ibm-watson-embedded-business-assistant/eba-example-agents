@@ -2,6 +2,7 @@
 
 We are pleased to announce a new capabilty to our system--task management and delegation. EBA will allow you to create, view, and manage a set of tasks for your daily business workflow. Additionally, you may delegate a task to another colleague within your organization. All of this is accomplished through natural dialog with your assistant. Furthermore, task management works in conjunction with our notification service. You can imagine logging into EBA at the start of your business day to find your assistant notifying you of a set of existing tasks; and, likewise, your assistant will be able to delegate pressing tasks to another colleagues in real time. 
 
+[![Task management](../task-management.png "Task management")](../task-management.png)
 
 You will notice the following natural langauge commands which allow you to manage your tasks:
  - show me my tasks (shows all tasks)
