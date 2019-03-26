@@ -15,7 +15,7 @@ We love to release new features both for our reasoning core as well as our devel
  * [Generic concepts highlighting and warning](./blogs/GenericConceptsHighlight.md) [Feburary 20]
  * [EBA responses now can be made available via URL](./blogs/PortableSnippet.md) [Feburary 19]
  * [Natural Language patterns with Markdown syntax](./blogs/MarkdownPatterns.md) [Janurary 25]
- * [Support to use arbitrary text in semantic actions via new concept class ":FreeText"[(./blogs/FreeText.md) [January 25]
+ * [Support to use arbitrary text in semantic actions via new concept class ":FreeText"](./blogs/FreeText.md) [January 25]
  * [Docs agent reimplemented as remote agent](./blogs/RemoteDocsAgent.md)
  * [QUEST agent enablement](./blogs/QuestIntegration.md) [January 17]
  * [Iframe Snippets for external channels](./blogs/ChannelSnippets.md) [January 16]
