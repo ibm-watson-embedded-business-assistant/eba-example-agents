@@ -6,7 +6,7 @@ The Warehouse schema model that is shown here represents a Sales/Warehouse datab
 
  ![Warehouse schema](./images/warehouseSchema.png)
 
-## Sample questions:  
+### Sample questions:  
 
 * which  shops have stocked more  products than average quantity of stocked products; show shop name and location  
 * which products have higher price than IPHONE; show product types  
