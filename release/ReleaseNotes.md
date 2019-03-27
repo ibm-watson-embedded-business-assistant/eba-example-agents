@@ -13,7 +13,7 @@ We love to release new features both for our reasoning core as well as our devel
  * [Webpacked bundled assets now supported](./blogs/WebpackAssets.md) [March 5]
  * [Activation & De-activation of EBA agents by users including OOB agents](./blogs/AgentActivation.md) [March 1]
  * [Generic concepts highlighting and warning](./blogs/GenericConceptsHighlight.md) [Feburary 20]
- * [EBA responses now can be made available via URL](./blogs/PortableSnippet.md) [Feburary 19]
+ * [EBA responses now can be made available via URL](./blogs/PortableSnippets.md) [Feburary 19]
  * [Natural Language patterns with Markdown syntax](./blogs/MarkdownPatterns.md) [Janurary 25]
  * [Support to use arbitrary text in semantic actions via new concept class ":FreeText"](./blogs/FreeText.md) [January 25]
  * [Docs agent reimplemented as remote agent](./blogs/RemoteDocsAgent.md)
