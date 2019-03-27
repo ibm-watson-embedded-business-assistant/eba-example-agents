@@ -1,6 +1,6 @@
 ## NLU best practices
 
-EBA represents a paradigm shift in the way conversational AI is implemented for businesses. It is not based on intent-classification or ownership of a particular question among multiple agents. The system is designed to be collaborative, where multiple agents work together to produce understanding and meaningful assistance. Free collaboration will always imply that one agent can introduce side effects across the total envionrment. For instance, our [Riddle agent](../../Riddles.md) can entirely take over a conversation--by design, of course. The implication for developers is that a particular agent should follow a set of best practices to not introduce unwanted interference to NLU proccess. To this end, we provide a list of areas where best practices should be carefully considered:
+EBA represents a paradigm shift in the way conversational AI is implemented for businesses. It is not based on intent-classification or ownership of a particular question among multiple agents. The system is designed to be collaborative, where multiple agents work together to produce understanding and meaningful assistance. Free collaboration will always imply that one agent can introduce side effects across the total environment. For instance, our [Riddle agent](../../Riddles.md) can entirely take over a conversation--by design, of course. The implication for developers is that a particular agent should follow a set of best practices to not introduce unwanted interference to NLU process. To this end, we provide a list of areas where best practices should be carefully considered:
 
 * [Conceptual semantics](#correct-semantics)
 * [Implicit knowledge](#implicit-knowledge)
@@ -9,7 +9,7 @@ EBA represents a paradigm shift in the way conversational AI is implemented for 
 
 ### Correct semantics
 
-Every agent loaded into an enviornment is invoked in an effort to provide understanding of natural language for its particular domain. In other words, each agent will provide a set of annotations to introduce conceptual knowledge into the system. Consequently, developers should be careful to introduce conceptual knowledge that actually makes sense, i.e. conveys the correct semantics. Considers the two NL patterns and their directives to the system:
+Every agent loaded into an environment is invoked in an effort to provide understanding of natural language for its particular domain. In other words, each agent will provide a set of annotations to introduce conceptual knowledge into the system. Consequently, developers should be careful to introduce conceptual knowledge that actually makes sense, i.e. conveys the correct semantics. Considers the two NL patterns and their directives to the system:
 
 * `when was this order [delivered](example:DeliveryDate)`
 
@@ -53,4 +53,4 @@ output:
 data object
 ```
 
-Based on the provided name, you would expect this action to one thing--to fetch an object by its id. However, a close look at the signature reveals that it _optionally_ can take any given field and indentifier to perform data filtering. This action is clearly not atomic. Furthermore, the constraints are loosely provided, it allows any object and any field but does not necessarily contrain this field to belong to this object. Because these contraints are so loose, we can reasonably expect that, in the course of reasoning, this action can be used to consume some attribute for some entity in some unexpected way. Decomposing this action into two atomic pieces, removing hidden optional functionality, and providing more substantive contraints will lead to a much more predictable behavior at reasoning time.
+Based on the provided name, you would expect this action to do one thing--to fetch an object by its id. However, a close look at the signature reveals that it _optionally_ can take any given field and indentifier to perform data filtering. This action is clearly not atomic. Furthermore, the constraints are loosely provided, it allows any object and any field but does not necessarily contrain this field to belong to this object. Because these contraints are so loose, we can reasonably expect that, in the course of reasoning, this action can be used to consume some attribute for some entity in some unexpected way. Decomposing this action into two atomic pieces, removing hidden optional functionality, and providing more substantive contraints will lead to a much more predictable behavior at reasoning time.
