@@ -1,5 +1,5 @@
 theme: jekyll-theme-minimal
-title: Watson Embedded Business Assistant
+title: IBM Embedded Business AI Framework
 google_analytics: UA-122581302-1
 plugins:
   - jekyll-seo-tag
