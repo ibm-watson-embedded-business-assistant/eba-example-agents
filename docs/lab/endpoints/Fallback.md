@@ -1,6 +1,6 @@
 ## Fallback Endpoint
 
-The *fallback* endpoint can be used to configure a default fallback process in the case that the user's question was unanswered. For example, if you are building a domain about order management but the user inputs questions which are irrelevant or unhandled, you may wish to defer them to a quick wikipedia search for their question. Note that we have provided an entire [fallback sample agent](../../../Wikipedia.md) to demonstrate this feature. Such fallbacks can significantly improve the user experience.
+The *fallback* endpoint can be used to configure a default fallback process in the case that the user's question was unanswered. For example, if you are building a domain about order management but the user inputs questions which are irrelevant or unhandled, you may wish to defer them to a quick wikipedia search for their question. Note that we have provided an entire [fallback sample agent](../../../samples/Wikipedia.md) to demonstrate this feature. Such fallbacks can significantly improve the user experience.
 
 Below is an example that illustrates of to render a set of wikipedia articles as a fallback.
 
