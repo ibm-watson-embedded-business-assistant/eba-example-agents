@@ -9,7 +9,7 @@ EBA represents a paradigm shift in the way conversational AI is implemented for 
 
 ### Correct semantics
 
-Every agent loaded into an environment is invoked in an effort to provide understanding of natural language for its particular domain. In other words, each agent will provide a set of annotations to introduce conceptual knowledge into the system. Consequently, developers should be careful to introduce conceptual knowledge that actually makes sense, i.e. conveys the correct semantics. Considers the two NL patterns and their directives to the system:
+Every agent loaded into an environment is invoked in an effort to provide understanding of natural language for its particular domain. In other words, each agent will provide a set of annotations to introduce conceptual knowledge into the system. Consequently, developers should be careful to introduce conceptual knowledge that actually makes sense, i.e. conveys the correct semantics. Consider this NL pattern and its directive to the system:
 
 * `when was this order [delivered](example:DeliveryDate)`
 
