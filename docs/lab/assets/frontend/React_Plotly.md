@@ -48,8 +48,8 @@ layout =
     title: "TimeSeries"
 
 React.createElement PlotlyChart,
-    traces: @state.traces
-    layout: @state.layout
+    traces: traces
+    layout: layout
 ```
 
 A screen shot of this visualuzation in action is below.
