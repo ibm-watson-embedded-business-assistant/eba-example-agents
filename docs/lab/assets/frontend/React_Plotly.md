@@ -7,7 +7,29 @@ We support a component which allows developers to create and customize Plotly ch
 
 Note that CSS `styles` can be provided as props.
 
-Below is an example which illustrate how to create this component programatically to model a timeseries chart.
+An example of `layout` can be:
+```
+layout =
+    title: "Relation of #{column1.name} and #{column2.name}"
+    xaxis: title: column1.name
+    yaxis: title: column2.name
+    margin:
+        l: leftMargin
+```
+
+An example of `traces` can be:
+```
+type: "scatter"
+x: values1
+y: values2
+hoverinfo: "x+y"
+mode: "markers"
+marker:
+    size: 10
+    opacity: 0.5
+```
+
+Below is an example which illustrates how to create this component programatically to model a timeseries chart.
 
 ```
 # values is a list of coordinate pairs
