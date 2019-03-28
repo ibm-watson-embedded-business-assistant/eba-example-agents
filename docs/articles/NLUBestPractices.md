@@ -2,8 +2,8 @@
 
 EBA represents a paradigm shift in the way conversational AI is implemented for businesses. It is not based on intent-classification or ownership of a particular question which belongs to a single agent. The system is designed to be collaborative, where multiple agents work together to produce understanding and meaningful assistance. Free collaboration will always imply that one agent can introduce side effects across the total environment. For instance, our [Riddle agent](../../Riddles.md) can entirely take over a conversation--by design, of course. The implication for developers is that a particular agent should follow a set of best practices to avoid introducing unwanted interference to their NLU pipeline. To this end, we outline key steps to developing a quality agent, one which can serve as a good citizen within a larger system.
 
-* [Golden Rule](#golden-rule)
-* [Thorough Ontology](#thorough-ontology)
+* [The Golden Rule](#the-golden-rule)
+* [Thorough ontology](#thorough-ontology)
 * [Baseline NLU](#baseline-nlu)
 
 Additionally, by way of negation, we provide a list of areas where best practices should be carefully considered to avoid common pitfalls:
@@ -13,7 +13,7 @@ Additionally, by way of negation, we provide a list of areas where best practice
 * [Extending core functionality](#extending-core-functionality)
 * [Atomic actions](#atomic-actions)
 
-### Golden rule
+### The Golden Rule
 
 The golden rule of EBA is to _describe_ your business domain to the machine in a simple, consistent, complete and straightforward way. We say this because EBA is not a chat bot. The typical workflow for chat bot development is to be provided with a list of questions or dialogs and to begin to implement each one in turn, the result of which is often a patch-work agent with poor NLU. Your goal as an EBA developer, on the other hand, is to explain your world, your domain, your business in a way that makes sense to the machine. When you begin your development process, you should begin by understanding your own domain and formulating this at a conceptual level. In fact, using our [debug mechanism](./DebuggingWatsonAssistant.md#reasoning-in-debug-mode) you can even verify that your agent is conceptually consistent without executing one line of code. 
 
