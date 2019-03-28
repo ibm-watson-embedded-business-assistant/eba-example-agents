@@ -23,7 +23,7 @@ trace =
         size: 10
 
 layout =
-    title: "Time Series"
+    title: "TimeSeries"
 
 React.createElement PlotlyChart,
     traces: @state.traces
