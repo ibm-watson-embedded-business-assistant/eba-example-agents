@@ -52,6 +52,6 @@ React.createElement PlotlyChart,
     layout: @state.layout
 ```
 
-A screen shot of this visualuzation is action is below.
+A screen shot of this visualuzation in action is below.
 
 [![Timeseries chart](../../../../assets/img/timeseries-chart.png "Timeseries chart")](../timeseries-cahrt.png)
