@@ -63,7 +63,7 @@ EBA provides global functions for rendering primitive data types which are avail
  - `renderDecimal(field)` -- renders the number value based on the user's locale, e.g. `locale: de` => `renderDecimal(17.34)` => `'17,34'`
  - `renderPercent(field)` -- renders the percent value based on the user's locale, e.g. `locale: de` => `renderPercent(0.344)` => `'34,4%'`
  - `renderCurrency(field, currency='USD')` -- renders the currency value based on the user's locale, e.g. `locale: de` => `renderCurrency(17.34, 'EUR')` => `'17,34 EUR'`
- - `renderDate(field)` -- renders the date value based on the user's locale, e.g. `locale: fr` => `renderDate(1549369035501)` => `'5 février 2019'`
+ - `renderDate(field)` -- renders the date value based on the user's locale, e.g. `locale: fr` => `renderDate(1549369035501)` => `'5 février 2019'`. Note that this function can work with Javascript Dates, Numbers, and Strings and, in the case the input is a number, we expect its value to be in terms of seconds.
  - `renderDuration(field)` -- renders the duration value based on the user's locale (time units are pretty well standardized), e.g. `locale: fr` => `renderDuration(0.12)` => `'120 ms'`
 
 Note: Locale is taken from browser, and defaults to `en-us`.
