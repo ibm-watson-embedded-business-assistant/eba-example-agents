@@ -87,5 +87,6 @@ Our team provides users with a few pre-built and configurable react components t
 In particular, we support the following components:
  - [List](./frontend/React_Lists.md)
  - [Table](./frontend/React_Tables.md)
- - [Props](./frontend/React_Props.md) 
+ - [Props](./frontend/React_Props.md)
+ - [Plotly](./frontend/React_Plotly.md)
  
