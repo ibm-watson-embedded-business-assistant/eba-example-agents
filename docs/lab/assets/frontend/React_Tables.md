@@ -27,7 +27,7 @@ renderFunction = (field, row) ->
 ```
 The first argument is always the value of the `field`, the second optional argument `row` contains the complete record which is used to render the current row. 
 
-For example, `["Score", "score", renderDecimal]` will display a column within the table with column name `Score` and it will populate each entry within this column by accessing the data field named `score`. It will render this item by applying the [renderDecimal](../Frontend.html#global-functions) function.
+For example, `["Score", "score", renderDecimal]` will display a column within the table with column name `Score` and it will populate each entry within this column by accessing the data field named `score`. It will render this item by applying the [renderDecimal](../Frontend.md#global-functions) function.
 
 Another coffee script example demonstrates the usage of a custom render function:
 
