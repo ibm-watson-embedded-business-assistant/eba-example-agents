@@ -2,7 +2,7 @@
 layout: page
 title: Best practices
 tagline: Best practices
-description: Explore a new way to craft A.I. solutions using a modern approach to machine reasoning.
+description: Explore a new way to craft A.I. solutions using a modern approach to machine reasoning
 ---
 
 ## Best practices
