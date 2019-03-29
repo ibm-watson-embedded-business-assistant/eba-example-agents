@@ -1,8 +1,22 @@
 ## Getting started
 
-Welcome to EBA development! This article serves as a getting started guide for developers who are unfamiliar with our unique machine reasoning programming model. As a tutorial, we will develop our sample Walmart agent from scratch. This agent will be able to answer various questions about trending products. You may reference and try out [the complete working sample](../../samples/Walmart.md) any time you wish.
+Welcome to EBA development! This article serves as a getting started guide for developers who are unfamiliar with our unique machine reasoning programming model. First, we provide a brief overview of EBA's collaborative reasoning pipeline. This will help you get a solid grasp of the fundamentals before you dive into building your first agent. Next, we provide a tutorial which guides the development of a sample Walmart agent from scratch. This agent will be able to answer various questions about trending products. You may reference and try out [the complete working sample](../../samples/Walmart.md) any time you wish.
 
-### Workflow
+### Reasoning pipeline
+The steps below essentially describe how EBA works, and demonstrates the journey of a user's question through EBA's collaborative reasoning pipeline.
+
+Encoded conceptual knowledge: Developers encode a set of concepts and relationships to tell our assistant what it can understand and reason about. Without conceptual entities, there is effectively nothing to reason about.
+
+SyntaxTree creation: A user’s natural language question is broken down into its morphological and syntactical features and represented as a tree.
+
+Annotation: Natural language within a user’s syntax tree is annotated or mapped to conceptual entities.
+
+Reasoning: Given a starting point of conceptual entities, EBA considers all possible outcome paths and reasons to produce the most relevant one.
+
+Execution: Having settled on the appropriate action path, EBA executes that path including any side effects it may produce.
+
+
+### Development workflow
 - [ontology](./Ontology.md)
 - [patterns](./Patterns.md)
 - [actions](./Actions.md)
