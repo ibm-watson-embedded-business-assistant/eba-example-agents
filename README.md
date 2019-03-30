@@ -1,17 +1,14 @@
 ## Greetings from IBM's Embedded Business AI framework ("EBA") engineering team
 
-This is the public home of the Embedded Business AI framework ("EBA"). Please log [issues](https://github.com/ibm-watson-embedded-business-assistant/eba-example-agents/issues) you encounter with EBA, and if you have a contribution, please submit a [pull request](https://github.com/ibm-watson-embedded-business-assistant/eba-example-agents/pulls).
+Business Assistant ... Digital Twin ... Business Process AI ... whatever the you call it, engineers need the best techniques in order to bring valuable AI to their customers.  EBA presents a unique and proven model based on modern approaches to machine reasoning.
+
+The Embedded Business AI (“EBA”) framework is an omni-channel, enterprise-class, digital AI framework used by developers to enable advanced domain-specific business process use cases for end-users. Unlike other dialog management systems that use rule-based reasoning and predicate logic, with EBA you describe your business domain to the machine in a simple, consistent, complete and straightforward way. In other words: this isn't a chatbot.
 
 [![Watson Marketing Assistant powered by EBA](/assets/img/eba_wma_screenshot.png "Watson Marketing Assistant powered by EBA")](/assets/img/eba_wma_screenshot.png)
 
-## About EBA
-
-The Embedded Business AI (“EBA”) framework is an omni-channel, enterprise-class, digital AI framework used by developers to enable advanced domain-specific business process use cases for end-users. In the video below, see how IBM used EBA to create an omni-present "digital twin" assistant that supports its human counterpart wherever she may conduct business. This could be across any domain (marketing, commerce, or supply chain for example) and many channels including chat, Slack, workspaces, voice, and (soon) SMS, utilizing any addressable source including databases, APIs, microservices, IoT endpoints, automotive sensors. The mission of EBA is to understand the basis of human decisions through observation over time, derive the motivation behind actions in an environment, and then codifying the path and results for machine interpretation and future autonomic response.
-
-
 ## What can you do with EBA?
 
-Here's a video we published that promotes the IBM Watson Marketing Assistant which was constructed using EBA technology.
+In the video below, see how IBM used EBA to create an omni-present "digital twin" for marketing professionals that supports its human counterpart wherever she may conduct business. 
 
 [![IBM Watson Marketing](https://img.youtube.com/vi/KlavNwVEEuU/0.jpg)](https://www.youtube.com/watch?v=KlavNwVEEuU)
 
@@ -97,6 +94,10 @@ Once we established the domain-agnostic design of the reasoning core, we crafted
 What we found through these early years of EBA engineering was a profound means with which to deliver total one-to-one application experiences for the business practitioner. Whereas customers may select best of breed vendors to run their operations, EBA functions as the over the top experience linking cross functional processes and data across disparate vendors within various clouds and on-premise systems. Much in the same way retailers attempt to create one-to-one personalized experiences for their customers, EBA is becoming the means to create one-to-one command and control experiences for the business practitioners across any domain– a workspace that morphs itself to accommodate the most important tactical and strategic tasks that the human needs to address based on positive/negative effects on KPI; where KPIs are the rules of engagement governed by the humans upon which the machine will operate.
 
 While we haven’t yet released the “curiosity extension”, we feel we’ve advanced our work enough to share it with you. We have opened up this fully self-contained business user and lab experience, along with a base set of contributing agents. In this way, our colleagues can craft custom AI-driven business experiences for their own use cases right alongside our team. Please explore this public repository for articles and deeper dives on what powers EBA.
+
+## Contributing
+
+This is the public home of the Embedded Business AI framework ("EBA"). Please log [issues](https://github.com/ibm-watson-embedded-business-assistant/eba-example-agents/issues) you encounter with EBA, and if you have a contribution, please submit a [pull request](https://github.com/ibm-watson-embedded-business-assistant/eba-example-agents/pulls).
 
 ## License
 
