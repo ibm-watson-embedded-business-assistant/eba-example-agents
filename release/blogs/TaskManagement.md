@@ -17,5 +17,4 @@ As an aside, we would like to remind users that the Notification agent, which im
 - notify me if an open rate of my recent mailings is below 15%
 - notify me if an anomaly is detected in my supply chain
 
-A word from the architect:
-> Both notifications and tasks represent a unit of work – a live structured data with a sequence of actions and a set of allowed operations. Notifications justifies its operationality and ability to execute in autonomous mode. Task assignment and delegation justify its mobility and ability to execute in various contexts. Both notifications and tasks support continuity of conversation. These properties are vital for EBA and BPM worlds interconnect.
+A word from the architect: _Both notifications and tasks represent a unit of work – a live structured data with a sequence of actions and a set of allowed operations. Notifications justifies its operationality and ability to execute in autonomous mode. Task assignment and delegation justify its mobility and ability to execute in various contexts. Both notifications and tasks support continuity of conversation. These properties are vital for EBA and BPM worlds interconnect._
