@@ -4,6 +4,6 @@ We have released a new core feature--the ability to use arbitrary text in semant
 
 ### Some use cases to consider
 
-EBA is properly a platform for business. Business domains are typically well-formed and don't require the use of arbitrary textual data. However, EBA can be successfully employed to handle use cases which require a form of _search_. For instance, EBA was successfully employed in conjunction with content provides to arbitrarily search for audio, images, and videos for any given topic.
+EBA is properly a platform for business. Business domains are typically well-formed and don't require the use of arbitrary textual data. However, EBA can be successfully employed to handle use cases which require a form of _search_. For instance, EBA was successfully employed in conjunction with content providers to arbitrarily search for audio, images, and videos for any given topic.
 
 [![Freetext example](../images/freetext-example.png "Freetext example")](../images/freetext-example.png)
