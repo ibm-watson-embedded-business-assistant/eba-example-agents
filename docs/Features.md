@@ -39,14 +39,3 @@ We push releases every Thursday evening PST. All new features and enhancements a
   * Diagnostic tools
   * Instant self-service onboarding
   * Contextual documentation, tutorials, examples
- 
-## Recent updates
-
- * [Activation & De-activation of agent components](./release/blogs/ComponentActivation.md)
- * Activation & De-activation of EBA agents by users including OOB agents
- * EBA responses now can be made available via URL
- * Natural Language patterns now uses Markdown syntax
- * Patterns now support synonyms, including compound sysnonyms via new Markdown syntax
- * Regular Expressions are now supported within NL patterns
- * Support to use arbitrary text in semantic actions via new concept class ":FreeText"
- * Updates to the code editor now support comments, highlighting, find & replace
