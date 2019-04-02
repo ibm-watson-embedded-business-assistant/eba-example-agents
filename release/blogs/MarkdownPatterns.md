@@ -2,7 +2,7 @@
 
 We are glad to announce a new, more flexible syntax for EBA NL patterns! This new syntax is compact, human readable, and reuses an existing standard (Markdown). Additionally, it introduces new support for language synonyms and regular expressions which lends itself to a more seamless NLU development process. As a result of these decisions, NL patterns are now represented and developed within a code editor rather than in tabular fashion as beforehand. 
 
-[![NL patterns syntax](../nl-patterns.png "NL patterns syntax")](../nl-patterns.png)
+[![NL patterns syntax](../images/nl-patterns.png "NL patterns syntax")](../images/nl-patterns.png)
 
 With respect to the syntax itself, we follow the same syntax one would expect when working with links in Markdown. As an illustration, we would migrate the following pattern from the old syntax to new syntax like this:
 
