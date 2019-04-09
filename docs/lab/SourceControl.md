@@ -22,6 +22,7 @@ GitHub integration enables the following workflows.
 
 - Create Pull Request: If you are pleased with your changes you can create a new branch and a pull request      automatically in EBA. Go to the GitHub Tab in EBA and select to create a Pull Request. Additional
   dialog components will show up asking you  for the new branch name and a commit message.
+  Please be aware that the branch name must not have embedded spaces.
   You can also assign optional reviewers. Once you press the Create button, the new branch and pull request will be created in your GitHub Repository.
 
 ### Checkout Changes
