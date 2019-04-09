@@ -14,6 +14,16 @@ GitHub integration enables the following workflows.
 
     - Conflicts: There is a merge conflict from another contributor's change. You will create a separate branch and submit a pull request. Developers should resolve these conflicts appropriately within GitHub. Note that a bundled approach to git integration is proposed for future development. In this case, each component of the assistant, e.g. action1, will reside in its own file within the repository, e.g. action1.js. In this case, merge conflicts are only possible within the scope of this single action.
 
+### Creating a Pull Request
+
+- Develop: Make changes to your assistant using our development lab.
+
+- Save Changes: Save these changes locally and test them within our chat panel.
+
+- Create Pull Request: If you are pleased with your changes you can create a new branch and a pull request      automatically in EBA. Go to the GitHub Tab in EBA and select to create a Pull Request. Additional
+  dialog components will show up asking you  for the new branch name and a commit message.
+  Please be aware that the branch name must not have embedded spaces.
+  You can also assign optional reviewers. Once you press the Create button, the new branch and pull request will be created in your GitHub Repository.
 
 ### Checkout Changes
 - Develop: Make changes to your assistant using our development lab.
