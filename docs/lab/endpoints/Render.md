@@ -2,7 +2,7 @@
 
 Watson Assistant can provide native rendering for a few popular communication channels. Currently, we support Slack and Watson Workspace. The rendering format is, of course, dependent upon the api exposed by such channels. Be advised that Watson Assistant already has a default mechanism for rendering messages in such channels. By default, Watson will take a clickable snapshot of the original message that would otherwise be rendered within our web application and post it as an image link to the channel. Within the channel, this message can be clicked to engage into a full view of the message data. You should consider using the render endpoint if you desire to override this default behavior by using the native formatting provided by a particular channel. Within the endpoint, you will have the following information supplied as input:
 - channel -- the name of the channel, so you can render appropriately for each
-- message -- a node contains the natural language text, concept name and the that data to be rendered
+- message -- a node contains the natural language text, concept name and the data to be rendered
 
 If node data size exceeds certain limit it maybe be represented as lazy data. The best way to handle such cases is to use the helper function which will request the actual node data in the case it's represented as lazy data.
 
