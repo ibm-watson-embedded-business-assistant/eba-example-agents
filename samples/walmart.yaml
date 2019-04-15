@@ -38,16 +38,10 @@ secrets:
 concepts:
   - name: ':MinimumBy'
   - name: ':LowValue'
-  - name: 'wmt:Cheapest'
-    ontology:
-      isSpellAs: cheapest
   - name: 'wmt:Cheap'
     ontology:
       isSpellAs: cheap
   - name: ':MaximumBy'
-  - name: 'wmt:MostExpensive'
-    ontology:
-      isSpellAs: most expensive
   - name: 'wmt:SalePrice'
     ontology:
       isSpellAs: sale price
@@ -114,10 +108,8 @@ patterns: |-
   - what is [description](wmt:Description) for this product?
 
   <!-- for data modifiers -->
-  - show me [expensive](wmt:Expensive) products
-  - show me the [most expensive](wmt:MostExpensive) products
-  - show me [cheap|inexpensive](wmt:Cheap) products
-  - show me the [cheapest|most inexpensive|least cheap](wmt:Cheapest) products
+  - show me [expensive|most expensive](wmt:Expensive) products
+  - show me [cheap|inexpensive|least expensive](wmt:Cheap) products
 actions:
   - name: 'wmt:SearchProductByUPC'
     signature: 'wmt:Product (optional :UPC (data :Number)) -> data wmt:Product'
@@ -225,12 +217,12 @@ actions:
       module.exports = {main}
 rules:
   - name: toMinSalePrice
-    signature: 'wmt:Cheapest (wmt:Product) -> :MinimumBy (wmt:SalePrice, wmt:Product)'
-  - name: toLowSalePrices
+    signature: 'wmt:Cheap (wmt:Product) -> :MinimumBy (wmt:SalePrice, wmt:Product)'
+  - name: toLowSalePrice
     signature: 'wmt:Cheap (wmt:Products) -> :LowValue (wmt:SalePrice, wmt:Products)'
   - name: toMaxSalePrice
-    signature: 'wmt:MostExpensive (wmt:Product) -> :MaximumBy (wmt:SalePrice, wmt:Product)'
-  - name: toHighSalePrices
+    signature: 'wmt:Expensive (wmt:Product) -> :MaximumBy (wmt:SalePrice, wmt:Product)'
+  - name: toHighSalePrice
     signature: 'wmt:Expensive (wmt:Products) -> :HighValue (wmt:SalePrice, wmt:Products)'
   - name: toTrendingProducts
     signature: 'wmt:TrendingNow -> wmt:Trending (wmt:Products)'
