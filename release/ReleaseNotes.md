@@ -5,6 +5,7 @@ We push releases every Thursday evening PST. All new features and enhancements a
 We love to release new features both for our reasoning core as well as our development lab. This page serves as a catalog for each new feature. Since each feature deserves attention in its own right, we have provided a table of contents below which links to a detailed page where you can find descriptions, examples, and use case scenarios. Note that a few features may be currently marked as preview only. To preview such features, simply add 'preview' as a query string to our url--[like so](https://eba.ibm.com/assistant?preview).
 
 ### 2019
+* [April 11]    [Superclass rendering](./blogs/SuperclassRender.md)
 * [March 23]    [Task management and delegation support](./blogs/TaskManagement.md)
 * [March 16]    [Preview: BPMN UI tooling](./blogs/BPMN.md)
 * [March 12]    [NL based clarification learning](./blogs/NLLearning.md)
