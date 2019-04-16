@@ -7,3 +7,8 @@ Since EBA concepts are well formed and often contain subclass ontology relations
 ### Some use cases to consider
 
 You can consider a case where you have some custom data type, such as a percent value associated with your domain, e.g. open rate. In standard practice, `:OpenRate` is considered a numerical attribute which subclasses from `:NumAttribute`. However, in its native implementation, the visualizer associated with `:NumAttribute` simply renders the value as is. You may wish to render this value in a custom way, e.g. with a percentage sign. This attribute and all like attributes can subclass from, say, `:PercentegeValue`. You can now render all these concepts in a custom fashion.
+
+
+Below is an example of a numeric value which represents a `:Currency` value. It can be more appropriately visualized by explicity representing the currency (USD). 
+
+[![Superclass currency](../images/superclass-currency.png "Superclass currency")](../images/superclass-currency.png)
