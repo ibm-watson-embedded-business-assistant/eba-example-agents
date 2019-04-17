@@ -16,10 +16,13 @@ In the video below, see how IBM used EBA to create an omni-present "digital twin
 
 We also have sample agents for other domains, like Supply Chain, within the [dev lab](https://eba.ibm.com/assistant#/lab) for you to dig into.
 
-
 ## Contributing
 
 This is the public home of the Embedded Business AI framework ("EBA"). Please log [issues](https://github.com/ibm-watson-embedded-business-assistant/eba-example-agents/issues) you encounter with EBA, and if you have a contribution, please submit a [pull request](https://github.com/ibm-watson-embedded-business-assistant/eba-example-agents/pulls).
+
+## Usage
+
+Developers, feel free to explore EBA, build your Ai experiences, and share with your work colleagues and friends. When it comes time for you to release to production, please [contact us](https://github.com/mbordash) and we’ll help get you over the line.  Services include developer integration support, service level agreements, and access to the latest Ai contributions from our staff and partners.
 
 ## License
 
