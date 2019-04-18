@@ -1,4 +1,4 @@
-version: 4
+version: 6
 meta:
   description: >+
     Demo agent based on [Walmart Open API](https://developer.walmartlabs.com)
@@ -36,9 +36,26 @@ secrets:
   - name: apiKey
     notes: 'Get your API key at https://developer.walmartlabs.com/'
 concepts:
+  - name: ':MinimumBy'
+  - name: ':LowValue'
+  - name: 'wmt:Cheap'
+    ontology:
+      isSpellAs: cheap
+  - name: ':MaximumBy'
+  - name: 'wmt:SalePrice'
+    ontology:
+      isSpellAs: sale price
+      subClassOf:
+        - ':NumAttribute'
+        - ':Attribute'
+  - name: ':HighValue'
+  - name: 'wmt:Expensive'
+    ontology:
+      isSpellAs: expensive
   - name: ':Number'
   - name: ':UPC'
-    spelling: UPC
+    ontology:
+      isSpellAs: UPC
   - name: ':Name'
   - name: ':UserString'
   - name: ':WithName'
@@ -46,52 +63,53 @@ concepts:
   - name: ':Showable'
   - name: ':NumAttribute'
   - name: 'wmt:MSRP'
-    spelling: msrp
     ontology:
       subClassOf:
         - ':NumAttribute'
         - ':Attribute'
-  - name: 'wmt:SalePrice'
-    spelling: sale price
-    ontology:
-      subClassOf:
-        - ':Attribute'
-        - ':NumAttribute'
+      isSpellAs: msrp
   - name: ':Attribute'
-  - name: ''
   - name: 'wmt:Trending'
   - name: 'wmt:SalePriceValue'
   - name: ':StrAttribute'
   - name: ':What'
   - name: 'wmt:Description'
-    spelling: description
     ontology:
       subClassOf:
         - ':StrAttribute'
         - ':Attribute'
+      isSpellAs: description
   - name: ':Timeframe'
   - name: 'wmt:Product'
-    spelling: product
     ontology:
       subClassOf: ':Showable'
+      isSpellAs: product
     attributes:
+      'wmt:SalePrice': salePrice
       ':Name': name
       'wmt:MSRP': msrp
-      'wmt:SalePrice': salePrice
       'wmt:Description': shortDescription
   - name: 'wmt:Products'
-    spelling: products|*
     ontology:
-      isListOf: 'wmt:Product'
       subClassOf: ':Showable'
-patterns:
-  - text: 'what is product name for {UPC|:UPC} 1234'
-  - text: '{what''s|:What} {trending now|wmt:TrendingNow}'
-  - text: 'show {price|wmt:SalePrice} for this product'
-  - text: 'show {msrp|wmt:MSRP} for this product'
-  - text: 'what is {description|wmt:Description} for this product?'
-  - text: 'show {trending|wmt:Trending} {products|wmt:Products}'
-  - text: 'show {popular|wmt:Trending} products'
+      isListOf: 'wmt:Product'
+      isSpellAs: products|*
+patterns: |-
+  <!-- for core entities -->
+  - show [trending](wmt:Trending) [products](wmt:Products)
+  - show [popular](wmt:Trending) products
+  - [what's](:What) [trending now](wmt:TrendingNow)
+
+
+  <!-- for attributes -->
+  - what is product name for [UPC](:UPC) 1234
+  - show [price](wmt:SalePrice) for this product
+  - show [msrp](wmt:MSRP) for this product
+  - what is [description](wmt:Description) for this product?
+
+  <!-- for data modifiers -->
+  - show me [expensive|most expensive](wmt:Expensive) products
+  - show me [cheap|inexpensive|least expensive](wmt:Cheap) products
 actions:
   - name: 'wmt:SearchProductByUPC'
     signature: 'wmt:Product (optional :UPC (data :Number)) -> data wmt:Product'
@@ -121,7 +139,6 @@ actions:
             return { error: `Walmart API error: ${error}` }
           })
       }
-    notes: ''
   - name: 'wmt:SearchProductsByName'
     signature: 'wmt:Products (optional :WithName (data :UserString)) -> data wmt:Products'
     kind: 'nodejs:8'
@@ -147,7 +164,6 @@ actions:
             return { error: `Walmart API error: ${error}` }
           })
       }
-    notes: ''
   - name: 'wmt:SearchProductByName'
     signature: 'wmt:Product (optional :WithName (data :UserString)) -> data wmt:Product'
     kind: 'nodejs:8'
@@ -176,9 +192,8 @@ actions:
             return { error: `Walmart API error: ${error}` }
           })
       }
-    notes: ''
-  - name: 'wmt:GetTrendingProducts'
-    signature: 'wmt:Products (wmt:Trending) -> data wmt:Products'
+  - name: 'wmt:GetProducts'
+    signature: 'wmt:Products (optional wmt:Trending) -> data wmt:Products'
     kind: 'nodejs:8'
     code: |-
       const request = require('request-promise-native')
@@ -201,7 +216,15 @@ actions:
       }
       module.exports = {main}
 rules:
-  - name: rule
+  - name: toMinSalePrice
+    signature: 'wmt:Cheap (wmt:Product) -> :MinimumBy (wmt:SalePrice, wmt:Product)'
+  - name: toLowSalePrice
+    signature: 'wmt:Cheap (wmt:Products) -> :LowValue (wmt:SalePrice, wmt:Products)'
+  - name: toMaxSalePrice
+    signature: 'wmt:Expensive (wmt:Product) -> :MaximumBy (wmt:SalePrice, wmt:Product)'
+  - name: toHighSalePrice
+    signature: 'wmt:Expensive (wmt:Products) -> :HighValue (wmt:SalePrice, wmt:Products)'
+  - name: toTrendingProducts
     signature: 'wmt:TrendingNow -> wmt:Trending (wmt:Products)'
 endpoints:
   - name: '@render'
@@ -250,7 +273,6 @@ endpoints:
           return {}
         }
       }
-    notes: ''
 statics:
   - name: wmt/products.jsx
     mime: text/jsx
