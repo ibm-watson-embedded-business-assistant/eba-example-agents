@@ -1,4 +1,4 @@
-This agent allows you to search content using Watson Discovery. It utilizes our @fallback endpoint which is triggered when Watson Assistant detects that a given question does not surpass its understanding level threshold. In such cases, the agent processes this question by sending it to Watson Discovery. Consequently, this agent provides an illustration how Watson Assistant can be leveraged as a fallback documentation service in conjunction with other traditional agents.
+This agent allows you to search content using Watson Discovery. It utilizes our @fallback endpoint which is triggered when EBA detects that a given question does not surpass its understanding level threshold. In such cases, the agent processes this question by sending it to Watson Discovery. Consequently, this agent provides an illustration how EBA can be leveraged as a fallback documentation service in conjunction with other traditional agents.
 
 To get the most out of this sample, please load the [yaml configuration](./WastonDiscovery.yaml) into your own sandbox enviornment.
 

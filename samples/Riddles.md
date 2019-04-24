@@ -1,4 +1,4 @@
-This agent helps you solve riddles! It is an example of a "take over" agent in Watson Assistant, i.e. an agent which, given a certain trigger, can take control of an entire conversation.
+This agent helps you solve riddles! It is an example of a "take over" agent in EBA, i.e. an agent which, given a certain trigger, can take control of an entire conversation.
 
 When the user says "Watson, ask me a riddle", this agent will respond accordingly and begin to supply custom annotations for subsequent interactions. It maintains its own gameplay logic until the user exists the game.
 

@@ -1,6 +1,6 @@
 This sample models some basic operations within the [electronic data interchange](https://en.wikipedia.org/wiki/Electronic_data_interchange) or "EDI".
 
-In particular, we support a set of inspection operations for purchase orders as well as a small process for submitting a complete invoice. This sample should provide some insight into a number of areas in Watson Assistant development, e.g. attribute support, data modifiers, user storage via Params api, the start endpoint, as well as a simple action logic for handling a process.
+In particular, we support a set of inspection operations for purchase orders as well as a small process for submitting a complete invoice. This sample should provide some insight into a number of areas in EBA development, e.g. attribute support, data modifiers, user storage via Params api, the start endpoint, as well as a simple action logic for handling a process.
 
 To get the most out of this sample, please load the [yaml configuration](edi.yaml) into your own sandbox enviornment.
 
@@ -9,7 +9,7 @@ To get the most out of this sample, please load the [yaml configuration](edi.yam
 ### General
 
 This sample makes use of the endpoints within the General tab. In particular, we implement the @start endpoint, which is used 
-to perform some initialization tasks upon session creation. This sample makes use of small persistent storage which Watson Assistant provides to its users. The start endpoint contains some bootstrap logic for populating the storage endpoints "purchaseOrders" and "invoices" for first time users. The Params api, made available in the "eba" pacakge, provides a simple load/save interface for read and modifying data from these endpoints. We check if the load operation returns a 404, meaning that the storage endpoint is empty. If it is empty, we populate some hardcoded sample data in the form of json data, which is located in the assets table.
+to perform some initialization tasks upon session creation. This sample makes use of small persistent storage which EBA provides to its users. The start endpoint contains some bootstrap logic for populating the storage endpoints "purchaseOrders" and "invoices" for first time users. The Params api, made available in the "eba" pacakge, provides a simple load/save interface for read and modifying data from these endpoints. We check if the load operation returns a 404, meaning that the storage endpoint is empty. If it is empty, we populate some hardcoded sample data in the form of json data, which is located in the assets table.
 
 ### Concepts
 
@@ -25,7 +25,7 @@ We label {to|edi:To} to provide some increased confidence to the system. Other a
 
 `what is the {trailer items count|edi:TrailerCount} and {trailer details|edi:TrailerDetails} and {trailer amount|edi:TrailerAmount} for this {order|edi:PurchaseOrder}`.
 
-This pattern will enable Watson Assistant to perform natural language understanding for these different concepts using just one pattern as an input. However, the assistant may not support answering this exact question. In this particular example, the assistant is not able to reuse the purchase order concept three times.
+This pattern will enable EBA to perform natural language understanding for these different concepts using just one pattern as an input. However, the assistant may not support answering this exact question. In this particular example, the assistant is not able to reuse the purchase order concept three times.
 
 ### Actions
 
