@@ -74,7 +74,7 @@ Note: Locale is taken from browser, and defaults to `en-us`.
 EBA provides a set of global objects which are available for frontend assets.
 
  - `bridge` object enables communication between EBA frotend and backend. Most commonly this module is used to generate a question to the backend from an event handler on the client side.
-    - `.trigger('ask', question)` -- triggers an event to ask Watson Assistant a question,   
+    - `.trigger('ask', question)` -- triggers an event to ask EBA a question,   
     e.g. `bridge.trigger('ask', 'Tell me a joke')` will execute the question `Tell me a joke` in the EBA reasoning pipeline.
     - `.trigger('showDetails', detailsObject)` -- triggers an event which passes data from Data component to Content components. This is useful in cases where the Content components is meant to show the details of a single data item which is selected from the content view (such behavior can be viewed by our Docs agent), e.g. `bridge.trigger "showDetails", {id: @props.id, node: @props.node, data: @props.data, item: item}` executed from the Data component will enable the Content component to show details for `item`.
  - `R` global object for creating DOM elements given set of arguments, e.g. `R.p null, "Hello World"` creates `<p>Hello World</p>`.

@@ -1,6 +1,6 @@
-## Voices supported by Watson Assistant
+## Voices supported by EBA
 
-Watson Assistant supports the following voices for Text-to-Speach service. The default voice is en-US_MichaelVoice.
+EBA supports the following voices for Text-to-Speach service. The default voice is en-US_MichaelVoice.
 
 | Name | Language | Gender | Description |
 |------|----------|--------|-------------|

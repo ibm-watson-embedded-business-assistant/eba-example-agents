@@ -8,7 +8,7 @@ A concept will require a `:` deliminated name of the following form (domain):(co
 
 ### Spelling, subClasses, and listOfs
 
-The most common ontology predicates have been factored out into their own tabs within the concepts table. It is important to understand each. Spelling is useful for natural language generation (NLG). Watson Assistant does not produce hard coded, canned responses to user questions. It relies on NLG to reply intelligently to users. Providing a spelling of your concept enables the system to reply to you in an intelligent and expected manner. SubClasses are used to model a hierarchical relationship between concepts. For instance, anything which is a subclass of `:Showable` concept is able to be shown to the user. isListOf is a predicate used to distinguish collections from the singular counterparts.
+The most common ontology predicates have been factored out into their own tabs within the concepts table. It is important to understand each. Spelling is useful for natural language generation (NLG). EBA does not produce hard coded, canned responses to user questions. It relies on NLG to reply intelligently to users. Providing a spelling of your concept enables the system to reply to you in an intelligent and expected manner. SubClasses are used to model a hierarchical relationship between concepts. For instance, anything which is a subclass of `:Showable` concept is able to be shown to the user. isListOf is a predicate used to distinguish collections from the singular counterparts.
 
 ### Attributes
 

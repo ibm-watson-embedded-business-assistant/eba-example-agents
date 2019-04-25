@@ -42,7 +42,7 @@ Only the secrets `key` is part of the YAML file and will be exported. The values
 
 ### Endpoints
 
-Watson Assistant provides developers with control over various stages of its execution pipeline. Endpoints represent different processes that developers can utilize to achieve different behaviors suitable to their particular application. We support the following endpoints:
+EBA provides developers with control over various stages of its execution pipeline. Endpoints represent different processes that developers can utilize to achieve different behaviors suitable to their particular application. We support the following endpoints:
 
 - [@start](./endpoints/Start.md): session initialization process which can be useful for initializing certain resources.
 - [@annotate](./endpoints/Annotate.md): annotation process by which concepts are introduced into the syntax tree.

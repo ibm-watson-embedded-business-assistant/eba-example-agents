@@ -1,6 +1,6 @@
 ## Node helpers
 
-A nodejs action within Watson Assistant can import the package "eba" which includes a variety of utility methods for working within the Assistant framework.
+A nodejs action within EBA can import the package "eba" which includes a variety of utility methods for working within the Assistant framework.
 
 ### Table of contents
 
@@ -43,7 +43,7 @@ You can also get a concept name given a parameter name using `getName(paramName)
 
 ### Output
 
-`Result` is a convenience class for providing an appropriate response to Watson Assistant. It contains methods to set data for the output nodes of your semantic action. Instances are typically created using an empty constructor.
+`Result` is a convenience class for providing an appropriate response to EBA. It contains methods to set data for the output nodes of your semantic action. Instances are typically created using an empty constructor.
 
 ```
 const eba = require('eba')
@@ -64,7 +64,7 @@ Using the `Result` object you can also change name, type and tags of the output 
 
 ### Lazy Evaluation
 
-Watson Assistant supports lazy evaluations to reduce data footprint when executing semantic actions. Lazy evaluations are especially important in OpenWhisk actions as OpenWhisk has limitations for input/output data. The input and output data of a semantic action may contain lazy values. `Params` helper is designed to recognize and handle lazy values properly. If you use `get()` method it will force the lazy data for you. However if you need to keep the data lazy (for example to perform another lazy operations on top of the data) you should use `getLazy()` method instead. Lazy value has the following methods:
+EBA supports lazy evaluations to reduce data footprint when executing semantic actions. Lazy evaluations are especially important in OpenWhisk actions as OpenWhisk has limitations for input/output data. The input and output data of a semantic action may contain lazy values. `Params` helper is designed to recognize and handle lazy values properly. If you use `get()` method it will force the lazy data for you. However if you need to keep the data lazy (for example to perform another lazy operations on top of the data) you should use `getLazy()` method instead. Lazy value has the following methods:
 
 * `lazyTake(n)`         -- takes top n from a collection
 * `lazySort(k)`         -- sorts a collection by k
@@ -170,7 +170,7 @@ Note that both methods are asynchronous.
 
 ### Natural Language Generation
 
-Watson Assistant can generate natural language automatically based on signature of the semantic actions. However the semantic actions interface allows developers to provide their own natural language representation. The Natural Language Generator takes natural language token associated with a data node (represented as `NLToken` object) and produces the natural text. In semantic action you can return `NLToken` for the output node using `setMeta()` method of `Result` object. `NLToken` objects can be combined so you can take the `NLToken` from the input nodes and combine them:
+EBA can generate natural language automatically based on signature of the semantic actions. However the semantic actions interface allows developers to provide their own natural language representation. The Natural Language Generator takes natural language token associated with a data node (represented as `NLToken` object) and produces the natural text. In semantic action you can return `NLToken` for the output node using `setMeta()` method of `Result` object. `NLToken` objects can be combined so you can take the `NLToken` from the input nodes and combine them:
 
 ```
 const eba = require('eba')

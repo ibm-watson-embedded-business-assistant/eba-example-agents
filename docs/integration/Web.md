@@ -39,7 +39,7 @@ As mentioned above, you can pass in the following fields to customize EBA either
 
 * `access_token` –– JWT access token, check Settings tab in Lab for more details.
 * `agent_name` –– replaces Watson as the name to whatever is supplied.
-* `agent_voice` –– tunes EBA's voice. Check [the list of voices](./Voices.md) supported by Watson Assistant.
+* `agent_voice` –– tunes EBA's voice. Check [the list of voices](./Voices.md) supported by EBA.
 * `user_first_name`, `user_last_name`, `user_full_name` –– makes EBA aware about current user so it will use personalization in answers.
 * `user_locale`, `user_language` –– defines cultural settings which are used to detect and format numbers, dates and currencies in conversation flow.
 * `user_time_zone` –– defines user time zone which will be used for operations with local dates.
@@ -52,15 +52,15 @@ In order to create a new session for authorized user you will need to supply a J
 ### IBM_EBA API
 
 * `create()`      –– creates the IBM_EBA object and injects assistant into host application (note: this is called within this script itself and should be avoided)
-* `setup(config)` –– posts a setup message to Watson Assistant containing the supplied config
+* `setup(config)` –– posts a setup message to EBA containing the supplied config
 * `destroy()`     –– destroys the IBM_EBA object and all related DOM elements
-* `send(event)`   –– posts a JSON event message to Watson Assistant
+* `send(event)`   –– posts a JSON event message to EBA
 * `open()`        –– opens the popup window containing the assistant
 * `close()`       –– closes the popup window containing the assistant (note: may render the assistant is compact mode if the last message was tagged as important)
 * `toggle()`      –– toggles the state of the popup window from opened to closed
 * `detach()`      –– detaches the assistant into a new tab for full screen experience
 
-Since IBM_EBA is a global object, you will be able to send data to the assistant any time you like by simply invoking `IBM_EBA.send`. This enables you to encode various events across your web application. For instance, here is a click event that triggers an order event inside of Watson Assistant:
+Since IBM_EBA is a global object, you will be able to send data to the assistant any time you like by simply invoking `IBM_EBA.send`. This enables you to encode various events across your web application. For instance, here is a click event that triggers an order event inside of EBA:
 
 ```
 <script>
@@ -77,16 +77,16 @@ function onViewOrder() {
 <button onclick="onViewOrder()">View Order</button>
 ```
 
-Using our development lab, you will be able to program the assistant to appropriately respond to this event. You may invoke the other api functions across your event handlers in a similar fashion. For details on how to respond to such events using Watson Assistant, please refer to our [@react endpoint](../lab/General.md#endpoints).
+Using our development lab, you will be able to program the assistant to appropriately respond to this event. You may invoke the other api functions across your event handlers in a similar fashion. For details on how to respond to such events using EBA, please refer to our [@react endpoint](../lab/General.md#endpoints).
 
 ### Display Modes
 
-Watson Assistant supports four display modes which reflect the size of the embedded iframe: 
+EBA supports four display modes which reflect the size of the embedded iframe: 
 
 * `default` is 375px X 85%.
 * `expanded` expands the default width to 80%.
 * `compact` receives its height dynamically based on its content.
-* `detached` renders Watson Assistant in a new tab.
+* `detached` renders EBA in a new tab.
 
 Note: `compact` mode is designed to only show the content of the last message and serves as a popup. The show/hide semantics for `compact` mode is as follows: if the iframe is in a hidden state and the most recent message is tagged as `important`, then the popup will be shown. Otherwise, it will be hidden. Hence `compact` is designed to give the assistant a way to show itself on screen while it is hidden.
 
