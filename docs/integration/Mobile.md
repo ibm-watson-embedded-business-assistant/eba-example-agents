@@ -1,6 +1,6 @@
 ### Mobile web integration
 
-While EBA does not have a native iOS application, EBA can be added as a mobile web application to your device's home screen. To add EBA mobile to your iphone, follow the steps below.
+While EBA does not support a native iOS application, EBA can be added as a mobile web application to your device's home screen. To add EBA mobile to your iphone, follow the steps below.
 
 - Navigate to eba.ibm.com on your iPhone.
 - In your browser select the share icon and select the option titled 'Add to Home Screen'.
