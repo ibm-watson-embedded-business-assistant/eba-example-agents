@@ -37,7 +37,13 @@ a {
       color: white; }
       .wrapper header h1:first-child, .wrapper header h2:first-child, .wrapper header h3:first-child, .wrapper header h4:first-child {
         margin-top: 0; }
-    .wrapper header .buttons {
+    .wrapper header ul.index {
+      list-style: none;
+      padding: 0;
+      margin: 0; }
+  .wrapper footer {
+    bottom: 0; }
+    .wrapper footer .buttons {
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
@@ -45,10 +51,10 @@ a {
       margin-top: 20px;
       margin-right: -10px;
       margin-bottom: 10px; }
-      .wrapper header .buttons > * {
+      .wrapper footer .buttons > * {
         margin-right: 10px;
         margin-bottom: 10px; }
-      .wrapper header .buttons a {
+      .wrapper footer .buttons a {
         text-decoration: none;
         border: 1px solid white;
         border-radius: 0px;
@@ -58,9 +64,9 @@ a {
         width: 140px;
         text-align: center;
         vertical-align: top; }
-        .wrapper header .buttons a:hover {
+        .wrapper footer .buttons a:hover {
           background-color: #4178BE; }
-        .wrapper header .buttons a svg {
+        .wrapper footer .buttons a svg {
           width: 28px;
           height: 28px;
           padding: 4px;
@@ -68,19 +74,13 @@ a {
           margin-left: -10px;
           display: inline-block;
           vertical-align: top; }
-        .wrapper header .buttons a.btn-slack {
+        .wrapper footer .buttons a.btn-slack {
           font-family: "Helvetica Neue Roman for IBM", Helvetica, Arial, sans-serif;
           font-weight: 400;
           background-color: #FBFCFC;
           color: #464646; }
-          .wrapper header .buttons a.btn-slack:hover {
+          .wrapper footer .buttons a.btn-slack:hover {
             background-color: #F0F2F4; }
-    .wrapper header ul.index {
-      list-style: none;
-      padding: 0;
-      margin: 0; }
-  .wrapper footer {
-    bottom: 0; }
   .wrapper section {
     float: right;
     width: calc(100% - 270px - 30px);
