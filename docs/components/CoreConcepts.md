@@ -74,7 +74,5 @@ These concepts represent certain language qualifiers for designated certain enti
 These concepts pertain to extending custom NLG capabilties. 
 
 - `nlg:PostModifier` -- denotes that the spelling for a particular concept operates as a post modifier, e.g. 'show me complaints _against_ this product'.
-
 - `nlg:PreModifier` -- denotes that the spelling for a particular concept operates as a pre modifier, e.g. 'show me _late_ sales orders'.
-
 - `nlg:PlainText`   -- used within NLToken interface to denote a plain text entry, where the data supplied to this concept will be spelled as is.
