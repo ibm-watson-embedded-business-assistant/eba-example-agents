@@ -17,4 +17,4 @@ When conversing with EBA, you can mention a certain concept only once in a patte
 
 Through these mechanisms, a single pattern will receive a boost factor as cardinality of the Cartesian product:
 
-`portable NL pattern X auto synonyms X spell checking X auto translation X permutations X composability X polymorphism`
+`portable NL pattern ✕ auto synonyms ✕ spell checking ✕ auto translation ✕ permutations ✕ composability ✕ polymorphism`
