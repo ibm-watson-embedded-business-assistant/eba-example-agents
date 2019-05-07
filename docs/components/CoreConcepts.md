@@ -61,7 +61,7 @@ These concepts represent aggregration and modifier operations on top of collecti
 
 ### Qualifiers
 
-These concepts represent certain language qualifiers for designated certain entities. Often times these qualifiers can be ommitted in natural language, and, consequently, they are often denoted as `optional` when used within semantic actions.
+These concepts represent certain language qualifiers for designated entities. Often times these qualifiers can be ommitted in natural language, and, consequently, they are often denoted as `optional` when used within semantic actions.
 
 - `:WithName` -- qualifier which references a value as being the name of an entity, e.g. 'show product _named_ iPhone X. 
 - `:WithId`   -- qualifier which references a value as being the id of an entity, e.g. 'show product _id_ 123.
