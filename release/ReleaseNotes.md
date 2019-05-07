@@ -8,7 +8,7 @@ We love to release new features both for our reasoning core as well as our devel
 * [April 30]    [Agent training](./blogs/AgentLearning.md)
 * [April 30]    [Table reordering](./blogs/TableOrdering.md)
 * [April 30]    [Annotate mode](./blogs/AnnotateMode.md)
-* [April 11]    [Auto Lazy Render](./blogs/AutoLazyRender.md)
+* [April 11]    [Auto lazy rendering](./blogs/AutoLazyRender.md)
 * [April 11]    [Superclass rendering](./blogs/SuperclassRender.md)
 * [March 23]    [Task management and delegation support](./blogs/TaskManagement.md)
 * [March 16]    [Preview: BPMN UI tooling](./blogs/BPMN.md)
