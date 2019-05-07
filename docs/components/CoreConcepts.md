@@ -45,19 +45,19 @@ These concepts represent the basic types of data which our system provides OOB.
 
 These concepts represent aggregration and modifier operations on top of collections. Typically these concepts will be used in conjunction with certain predicates and collections, e.g. `:SortedBy(:Quantity, :SalesOrders)`.
 
-- `:TopN`      -- gets the top N values within a collection
+- `:TopN`      -- gets the top N elements within a collection
 - `:SortedBy`  -- sorts a collection by a criteria
 - `:Filter`    -- filter a collection
 - `:First`     -- get the first element in a collection
 - `:Largest`   -- get the largest element in a collection
-- `:HighValue` -- gets values within a collection within the highest quartile
-- `:LowValue`  -- gets values within a collection within the lowest quartile
+- `:HighValue` -- gets elements within a collection within the highest quartile
+- `:LowValue`  -- gets elements within a collection within the lowest quartile
 - `:Average`   -- get the average value across a collection
 - `:Total`     -- get the sum total value across a collection
 - `:Minimum`   -- get the minimum element within a collection
 - `:Maximum`   -- get the maximum element within a collection
-- `:MinimumBy` -- get the minimum value by a particular predicate within a colleciton
-- `:MaximumBy` -- get the maximum value by a particular predicate within a colleciton
+- `:MinimumBy` -- get the minimum element by a particular predicate within a colleciton
+- `:MaximumBy` -- get the maximum element by a particular predicate within a colleciton
 
 ### Qualifiers
 
