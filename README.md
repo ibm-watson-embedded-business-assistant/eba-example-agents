@@ -1,6 +1,6 @@
 ## This is *not* a chatbot. This is EBA.
 
-Business Assistant ... Digital Twin ... Business Process AI ... top-down RPA ... whatever you call it by, engineers need the best techniques in order to bring valuable AI to their customers.  EBA presents a unique and proven model based on modern, patent-pending, approaches to machine reasoning.
+Business Assistant ... Digital Twin ... Business Process AI ... top-down RPA/BPU/BPA ... whatever you call it by, engineers need the best techniques in order to bring valuable AI to their customers.  EBA presents a unique and proven model based on modern, patent-pending, approaches to machine reasoning.
 
 The Embedded Business AI (“EBA”) framework is an open, hybrid multi-cloud deployable, omni-channel, enterprise-class, digital AI framework used by developers to enable advanced domain-specific process automation (RPA) use cases for business users. Unlike other dialog management systems that use rule-based reasoning and predicate logic, with EBA you describe your business domain to the machine in a simple, consistent, complete and straightforward way. Dialog (whether human:machine or machine:machine interaction) are simply inputs to and outputs from the reasoning core. 
 
