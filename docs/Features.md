@@ -1,4 +1,4 @@
-We push releases every Thursday evening PST. All new features and enhancements are made available immediately to developers. Check out the [release notes](release/ReleaseNotes.html) to keep up2date. 
+We push releases every Thursday evening PST. All new features and enhancements are made available immediately to developers. Check out the [release notes](/release/ReleaseNotes.html) to keep up2date. 
 
 ## Current major features ##
 
