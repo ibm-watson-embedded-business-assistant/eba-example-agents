@@ -2,7 +2,7 @@
 
 Chat bots have proven incapable of handling the breadth and complexity of language, tasks, and processes in the workplace. If you’ve experienced the frustration of trying to train a standard chat bot to be contextually aware or to execute tasks across business domains and multiple channels, EBA may prove to be a better solution for your AI use case pattern engineering.
 
-(/docs/assets/images/EBA-top-down.png "Powered by EBA")](/docs/assets/images/EBA-top-down.png)
+[(/docs/assets/images/EBA-top-down.png "Powered by EBA")](/docs/assets/images/EBA-top-down.png)
  
 ### Experience
 The engineering team behind EBA has a combined 40 years in active AI development, including half of that time spent specifically on machine reasoning. We are well versed in many theoretical and practical machine reasoning designs including basic rules, case-based, blackboard, and PRS. (some tenets of PRS have proven valuable). You can rely on a team that is constantly analyzing leading edge movements in reasoning techniques - all for your benefit. You concentrate on the use cases that will bring customer value, EBA has your back.
