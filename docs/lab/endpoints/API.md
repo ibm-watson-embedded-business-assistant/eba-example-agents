@@ -35,9 +35,8 @@ class MyDataRenderer extends React.Component {
 Within your agent's `@api` endpoint, add the following:
 
 ```
+const {Result} = require('eba')
 module.exports.main = function(params) {
-  return {
-    output: params.input
-  }
+  return new Result(params.input)
 }
 ```
