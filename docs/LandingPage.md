@@ -6,6 +6,6 @@ As you begin your agent development, you may want to familiarize yourself with t
 
 The following articles describe various features of EBA:
 * [Amplification in natural language understanding](./articles/NaturalLanguageUnderstanding.md)
-* [Debugging Watson Embedded Business Assistant](./articles/DebuggingWatsonAssistant.md)
+* [Debugging Embedded Business Assistant](./articles/DebuggingEBA.md)
 
 You can find some tips [here](./DevTips.md).
