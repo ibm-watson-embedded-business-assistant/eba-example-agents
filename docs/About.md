@@ -17,7 +17,7 @@ Those of you who have worked on intent-based chat bots know how easy it is to ge
 
 EBA borrows from many well-established machine reasoning techniques dating back to the 1980s and later. We’ve attracted a core group of engineers that have taken these concepts and greatly expanded on them through elegant functional design. In fact, EBA’s core was built using Haskell. Domain-agent extensions can be written in any language thanks to IBM Cloud Functions and the integration we’ve crafted to bridge other runtimes with our reasoning core.
 
-Please visit [Programming EBA](docs/LandingPage.md) for more information about EBA construction and building extensions using our sample agents included in this repository.
+Please visit [Programming EBA](/docs/LandingPage.md) for more information about EBA construction and building extensions using our sample agents included in this repository.
 
 ## EBA history
 
