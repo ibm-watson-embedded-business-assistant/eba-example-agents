@@ -10,4 +10,4 @@ Referencing the timing metrics from IBM Faas, we have the following breakdown.
 `wait time` -- time spent waiting in the internal OpenWhisk system
 `full time` -- end-to-end time for EBA to return result
 
-[Learn more about debugging EBA](../articles/DebuggingWatsonAssistant.md)
+[Learn more about debugging EBA](../articles/DebuggingEBA.md)
