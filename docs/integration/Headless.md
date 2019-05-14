@@ -83,7 +83,7 @@ function interact() {
 
 Using node's native readline utility, this function waits for the user to input a question to the terminal. Once the user has provided a question, the callback function is executed, which sends the question as data to EBA over our web socket connection. It then calls `defer` on the same interact function, meaning that it intends to interact with the user again for another question but only once the call stack from the current question is completed. This is a convenient illustration of how to handle asynchronous communication with EBA. 
 
-When Watson responds with its own data to the client, it will run through the message handler we have assigned above.
+When EBA responds with its own data to the client, it will run through the message handler we have assigned above.
 
 ```
 async _handleMessages(messages) {
