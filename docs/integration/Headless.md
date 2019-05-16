@@ -52,7 +52,7 @@ function interact() {
 
 Using node's native readline utility, this function waits for the user to input a question to the terminal. Once the user has provided a question, the callback function is executed, which sends the question as data to EBA over our web socket connection. It then calls `defer` on the same interact function, meaning that it intends to interact with the user again for another question but only once the call stack from the current question is completed. This is a convenient illustration of how to handle asynchronous communication with EBA to hold a conversation.
 
-After sending our question via `client.ask`, we anticipate the response using an event handler. In particular, we await EBA's response to our question in `client.on('message')` as well as any connectivity logs in `client.on('log')`. Because this particular application models a command interface chat, our use of `console.log` will output EBA's response to the user's terminal to form a dialog. With our `interact` function in place, we will be able to continue a dialog with the user indefintely via standard input and output.
+After sending our question via `client.ask`, we anticipate the response using an event handler. In particular, we await EBA's response to our question in `client.on('message')` as well as any client activity logs in `client.on('log')`. Because this particular application models a command interface chat, our use of `console.log` will output EBA's response to the user's terminal to form a dialog. With our `interact` function in place, we will be able to continue a dialog with the user indefintely via standard input and output.
 
 ```
 // listen for messages
@@ -76,9 +76,9 @@ Having this illustration in mind, we here outline the api exposes by our client:
 
 EBA currently supports the following events:
 
-- `message` -- event providing user's with EBA's response to a question. Depending on the particular implementation, this may be either a primitive textual response or else an object containing the fields `{data, name, text}`. 
+- `message` -- event providing user's with EBA's response to a question. This may be either a primitive textual response or else an object containing the fields `{data, name, text}`. 
 
-- `log` -- event containing event logs of the client module itself, signifying the state of your connections, e.g. 'connected'.
+- `log` -- event containing event logs of the client module itself, signifying the state of your connections or any other client activity, e.g. 'connected'.
 
 Regarding the initial session claims used within the jwt `access_token`. We currently support the following claim fields:
 
