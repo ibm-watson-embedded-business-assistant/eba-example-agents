@@ -1,4 +1,4 @@
-## Amplification in natural language understanding
+## Natural language understanding
 
 Let's examine the ways in which EBA boosts natural language understanding.
 
