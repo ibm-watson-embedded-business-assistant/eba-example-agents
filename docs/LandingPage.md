@@ -1,4 +1,4 @@
-## Programming Embedded Business Assistant
+## Programming EBA
 
 The Embedded Business Assistant (EBA) consists of a reasoning engine and a set of domain agents. Agents can be programmed and directly executed using this lab. 
 
