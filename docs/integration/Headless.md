@@ -76,7 +76,7 @@ Having this illustration in mind, we here outline the api exposes by our client:
 
 EBA currently supports the following events:
 
-- `message` -- event providing user's with EBA's response to a question. This may be either a primitive textual response or else an object containing the fields `{data, name, text}`. 
+- `message` -- event providing user's with EBA's response to a question. This may be either a primitive textual response or, in the event that their is underlying data associated with a response, an object containing the fields `{data, name, text}`. 
 
 - `log` -- event containing event logs of the client module itself, signifying the state of your connections or any other client activity, e.g. 'connected'.
 
