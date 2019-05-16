@@ -37,7 +37,7 @@ client
 
 ```
 
-Here we have established some initial settings and claims, where we have supplied the values taken from Lab Settings. Note that `key` here refers to the file path containing your private key. Following this, we use npm's `jsonwebtoken` module to sign our key appropriately. Once we have our access_token, we pass it into our start function to . 
+Here we have established some initial settings and claims, where we have supplied the values taken from Lab Settings. Note that `key` here refers to the file path containing your private key. Following this, we use npm's `jsonwebtoken` module to sign our key appropriately. Once we have our access_token, we pass it into our start function to . See more information on [JSON web tokens](https://www.iana.org/assignments/jwt/jwt.xhtml)
 
 When the promise above resolves, i.e. when the websocket connection is opened, we execute a function called `interact`.
 
@@ -70,7 +70,7 @@ client.on('log', (text) => {
 Having this illustration in mind, we here outline the api exposes by our client:
 
 - `start` -- this function will create and connect the client to a session. From here the client is able to post questions and hold a conversation with EBA. This function requires an `access_token`, which is a signed JWT of your session claims.
-- `ask`  -- this function will post a question to EBA. It text as a `String` input representing the user's input.
+- `ask`  -- this function will post a question to EBA. It takes a `String` parameter representing the user's input.
 - `on`   -- a generic event handler for intercepting EBA events. Currently, we support two events, viz. `message` and `log`.
 - `stop` -- this function will terminate your connection to EBA and logout.
 
@@ -79,3 +79,13 @@ EBA currently supports the following events:
 - `message` -- event providing user's with EBA's response to a question. Depending on the particular implementation, this may be either a primitive textual response or else an object containing the fields `{data, name, text}`. 
 
 - `log` -- event containing event logs of the client module itself, signifying the state of your connections, e.g. 'connected'.
+
+Regarding the initial session claims used within the jwt `access_token`. We currently support the following claim fields:
+
+- `name`
+- `email`
+- `locale`
+- `zoneinfo`
+- `given_name`
+- `family_name`
+- `middle_name`
