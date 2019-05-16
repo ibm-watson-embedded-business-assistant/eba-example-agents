@@ -1,4 +1,4 @@
-## Headless Integration
+## Headless integration
 
 It is possible to connect to EBA in headless mode. You can review a [working example](https://github.com/ibm-watson-embedded-business-assistant/eba-example-agents/tree/master/samples/websocket-node-client). This example demonstrates a web-socket based connection to EBA for a command line application. Following this example, you should be able to ask EBA questions from your terminal just like you would from our web application.
 
