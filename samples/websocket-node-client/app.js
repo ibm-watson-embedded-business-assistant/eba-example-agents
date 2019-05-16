@@ -25,7 +25,7 @@ const rl = readline.createInterface({
     output: process.stdout
 })
 
-var client = new eba.Client(settings.url)
+const client = new eba.Client(settings.url)
 
 client.on('message', message => {
     console.log(message)
@@ -42,13 +42,13 @@ function interact() {
     })
 }
 
-let claims = {
+const claims = {
     iss: settings.iss,
     sub: settings.sub,
     name: settings.name
 }
 
-let access_token = jwt.sign(claims, fs.readFileSync(settings.key), { algorithm: 'RS256' })
+const access_token = jwt.sign(claims, fs.readFileSync(settings.key), { algorithm: 'RS256' })
 
 client
     .start({ access_token })
