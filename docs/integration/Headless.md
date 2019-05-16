@@ -11,6 +11,8 @@ The steps required for integration are as follows:
 In order to generate an access token, please visit our [settings page](https://eba.ibm.com/assistant#/lab/settings) to get started. You will find an `iss` and `sub` claims, as well as instructions for generating private and public keys. As mentioned within our documentation, please store your private key within a secure location and do not share it with anyone. Having obtained these required data elements, lets take a look at how you can generate an access token programmatically within your headless client.
 
 ```
+const eba = require('eba-client')
+
 const settings = {
     url: 'https://eba.ibm.com/',
     key: 'private_key.pem',
@@ -19,13 +21,15 @@ const settings = {
     name: 'John Doe'
 }
 
-let claims = {
+const client = new eba.Client(settings.url)
+
+const claims = {
     iss: settings.iss,
     sub: settings.sub,
     name: settings.name
 }
 
-let access_token = jwt.sign(claims, fs.readFileSync(settings.key), { algorithm: 'RS256' })
+const access_token = jwt.sign(claims, fs.readFileSync(settings.key), { algorithm: 'RS256' })
 
 client
     .start({ access_token })
