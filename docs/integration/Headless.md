@@ -4,7 +4,7 @@ It is possible to connect to EBA in headless mode. You can review a [working exa
 
 The steps required for integration are as follows:
 1. Generating an access_token used and connecting to your session using your headless client
-2. Implementing async interaction logic within your client to communicate with Watson
+2. Implementing async interaction logic within your client to communicate with EBA
 
 ### An illustration
 
