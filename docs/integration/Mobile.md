@@ -1,4 +1,4 @@
-## Mobile Integration
+## Mobile integration
 
 While EBA does not currently offer a native iOS application, it can be added as a mobile web application to your device's home screen. To add EBA mobile to your iphone, follow the steps below.
 
