@@ -46,7 +46,21 @@ function interact() {
 }
 ```
 
-Using node's native readline utility, this function waits for the user to input a question to the terminal. Once the user has provided a question, the callback function is executed, which sends th- e question as data to EBA over our web socket connection. It then calls `defer` on the same interact function, meaning that it intends to interact with the user again for another question but only once the call stack from the current question is completed. This is a convenient illustration of how to handle asynchronous communication with EBA to hold a conversation.
+Using node's native readline utility, this function waits for the user to input a question to the terminal. Once the user has provided a question, the callback function is executed, which sends the question as data to EBA over our web socket connection. It then calls `defer` on the same interact function, meaning that it intends to interact with the user again for another question but only once the call stack from the current question is completed. This is a convenient illustration of how to handle asynchronous communication with EBA to hold a conversation.
+
+After sending our question via `client.ask`, we anticipate the response using an event handler. In particular, we await EBA's response to our question in `client.on('message')` as well as any connectivity logs in `client.on('log')`. Because this particular application models a command interface chat, our use of `console.log` will output EBA's response to the user's terminal to form a dialog. With our `interact` function in place, we will be able to continue a dialog with the user indefintely via standard input and output.
+
+```
+// listen for messages
+client.on('message', (message) => {
+    console.log(message)
+})
+
+// listen for logs
+client.on('log', (text) => {
+    console.log(text)
+})
+```
 
 ### Client api reference
 Having this illustration in mind, we here outline the api exposes by our client:
