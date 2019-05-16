@@ -1,4 +1,4 @@
-## Web Integration
+## Web integration
 
 It is possible to integrate EBA directly into your own web application as an embedded window. You can view an [example](https://ibm-watson-embedded-business-assistant.github.io/eba-example-agents/docs/integration/index.html).
 
