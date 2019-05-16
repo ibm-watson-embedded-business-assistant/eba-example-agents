@@ -66,7 +66,7 @@ client.on('log', (text) => {
 })
 ```
 
-### Client api reference
+### Client API reference
 Having this illustration in mind, we here outline the api exposes by our client:
 
 - `start` -- this function will create and connect the client to a session. From here the client is able to post questions and hold a conversation with EBA. This function requires an `access_token`, which is a signed JWT of your session claims.
