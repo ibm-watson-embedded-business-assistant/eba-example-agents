@@ -90,4 +90,4 @@ Regarding the initial session claims used within the jwt `access_token`. We curr
 - `family_name`
 - `middle_name`
 
-You can find more information at [IANA JSON Web Token Registry](https://www.iana.org/assignments/jwt/jwt.xhtml)
+You can find more information at [IANA JSON Web Token Registry](https://www.iana.org/assignments/jwt/jwt.xhtml).
