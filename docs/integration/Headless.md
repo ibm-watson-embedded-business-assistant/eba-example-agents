@@ -37,7 +37,7 @@ client
 
 ```
 
-Here we have established some initial settings and claims, where we have supplied the values taken from Lab Settings. Note that `key` here refers to the file path containing your private key. Following this, we use npm's `jsonwebtoken` module to sign our key appropriately. Once we have our access_token, we pass it into our start function to . See more information on [JSON web tokens](https://www.iana.org/assignments/jwt/jwt.xhtml)
+Here we have established some initial settings and claims, where we have supplied the values taken from Lab Settings. Note that `key` here refers to the file path containing your private key. Following this, we use npm's `jsonwebtoken` module to sign our key appropriately. Once we have our access_token, we pass it into our start function to . See more information on [JSON web tokens](https://jwt.io/introduction/)
 
 When the promise above resolves, i.e. when the websocket connection is opened, we execute a function called `interact`.
 
@@ -80,7 +80,7 @@ EBA currently supports the following events:
 
 - `log` -- event containing event logs of the client module itself, signifying the state of your connections or any other client activity, e.g. 'connected'.
 
-Regarding the initial session claims used within the jwt `access_token`. We currently support the following claim fields:
+Regarding the initial session claims used within the jwt `access_token`. We currently support the following public claim fields:
 
 - `name`
 - `email`
@@ -89,3 +89,5 @@ Regarding the initial session claims used within the jwt `access_token`. We curr
 - `given_name`
 - `family_name`
 - `middle_name`
+
+You can find more details at [IANA JSON Web Token Registry](https://www.iana.org/assignments/jwt/jwt.xhtml)
