@@ -1,4 +1,4 @@
-## EBA Components
+## EBA components
 
 This document covers each of the core components that constitute a skill. It is important to note that EBA follows an ontology based paradigm, meaning that it derives understanding about the world based on a relationship of concepts. This is in contrast to most other systems which are intent based and depend on predicate logic.
 
