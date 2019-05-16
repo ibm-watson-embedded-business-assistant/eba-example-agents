@@ -56,7 +56,7 @@ Having this illustration in mind, we here outline the api exposes by our client:
 - `on`   -- a generic event handler for intercepting EBA events. Currently, we support two events, viz. `message` and `log`.
 - `stop` -- this function will terminate your connection to EBA and logout.
 
-EBA currently supports the following event notifications:
+EBA currently supports the following events:
 
 - `message` -- event provides user's with EBA's response to a question. Depending on the particular implementation, this may be either a primitive textual response or else an object which containing the fields `{data, name, text}`. 
 
