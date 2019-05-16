@@ -1,6 +1,6 @@
 ## Headless Integration
 
-It is possible to connect to EBA in headless mode. You can review a [working example](https://github.com/ibm-watson-embedded-business-assistant/eba-example-agents/tree/master/samples/websocket-node-client). This example demonstrates a web-socket based connection to EBA for a command line application. Following this example, you should be able to ask Watson questions from your terminal just like you would from our web application.
+It is possible to connect to EBA in headless mode. You can review a [working example](https://github.com/ibm-watson-embedded-business-assistant/eba-example-agents/tree/master/samples/websocket-node-client). This example demonstrates a web-socket based connection to EBA for a command line application. Following this example, you should be able to ask EBA questions from your terminal just like you would from our web application.
 
 The steps required for integration are as follows:
 1. Generating an access_token used and connecting to your session using your headless client
