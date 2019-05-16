@@ -1,4 +1,4 @@
-## Example Agents
+## Example agents
 
 Our team has provided some samples of various agents. 
 
