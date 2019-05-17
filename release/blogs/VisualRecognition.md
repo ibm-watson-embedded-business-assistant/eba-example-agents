@@ -11,4 +11,4 @@ You are welcome to try out the following types of questions:
 - show me my images about cats
 - Watson, delete all my images
 
-[![VR agent](../images/vr-agent.png "VR agent")](../images/vr-agent.png)
+[![VR agent](../images/visual-recognition-agent.png "VR agent")](../images/visual-recognition-agent.png)
