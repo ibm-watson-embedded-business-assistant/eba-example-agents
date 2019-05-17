@@ -12,4 +12,4 @@ Below we illustrate an example of how our [Walmart sample](../../samples/walmart
 
 [![Image attributes](../images/img-attributes.png "Image attributes")](../images/img-attributes.png)
 
-[![Image attribute ontology](../images/img-ontology.png "Image attribute ontology")](../images/img-ontology.png)
+[![Image attribute ontology](../images/img-attr-ontology.png "Image attribute ontology")](../images/img-attr-ontology.png)
