@@ -94,7 +94,7 @@ In particular, we support the following components:
 ### Message formatting
 
 EBA provides a few convenience mechanisms for formatting NL messages:
- - [Markdown syntax](./frontend/Markdown.md)
+ - [Markdown syntax](./frontend/Markdown.html)
  - [Form fields](./frontend/FormFields.md)
  - [Action buttons](./frontend/ActionButtons.md) 
  
