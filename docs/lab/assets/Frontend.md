@@ -90,4 +90,11 @@ In particular, we support the following components:
  - [Table](./frontend/React_Tables.md)
  - [Props](./frontend/React_Props.md)
  - [Plotly](./frontend/React_Plotly.md)
+
+### Message formatting
+
+EBA provides a few convenience mechanisms for formatting NL messages:
+ - [Markdown syntax](./frontend/Markdown.md)
+ - [Form fields](./frontend/FormFields.md)
+ - [Action buttons](./frontend/ActionButtons.md) 
  
