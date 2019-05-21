@@ -86,15 +86,15 @@ EBA provides a set of global objects which are available for frontend assets.
 Our team provides users with a few pre-built and configurable react components that are generic across any application domain. We intend the detail these components and their usage within this document. 
 
 In particular, we support the following components:
- - [List](./frontend/React_Lists.md)
- - [Table](./frontend/React_Tables.md)
- - [Props](./frontend/React_Props.md)
- - [Plotly](./frontend/React_Plotly.md)
+ - [List](./frontend/React_Lists.html)
+ - [Table](./frontend/React_Tables.html)
+ - [Props](./frontend/React_Props.html)
+ - [Plotly](./frontend/React_Plotly.html)
 
 ### Message formatting
 
 EBA provides a few convenience mechanisms for formatting NL messages:
  - [Markdown syntax](./frontend/Markdown.html)
- - [Form fields](./frontend/FormFields.md)
- - [Action buttons](./frontend/ActionButtons.md) 
+ - [Form fields](./frontend/FormFields.html)
+ - [Action buttons](./frontend/ActionButtons.html) 
  
