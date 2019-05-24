@@ -17,4 +17,4 @@ You will note that a `:FormFields` take a list of forms as a data. Each form con
 
 - name -- a required name of the form field, which describes the data being requested
 - value -- an optional value of the form field itself
-- regex -- an optional regular expression to validate inputs
+- regex -- an optional regular expression to validate inputs. The regex should be a string which can be passed to RegExp constructor.
