@@ -9,3 +9,4 @@ EBA provides developers with control over various stages of its execution pipeli
 - [@render](./endpoints/Render.md): rendering process used for formatted responses to external channels (Slack and Watson Workspace)
 - [@api](./endpoints/API.md): api registration process for enabling backend operations to be executed within frontend assets
 - [@fallback](./endpoints/Fallback.md): documentation fallback process used to supply default responses to unhandled questions
+- [@trace](./enpoints/Trace.md): final pass observational process for monitoring all low level conversational history.
