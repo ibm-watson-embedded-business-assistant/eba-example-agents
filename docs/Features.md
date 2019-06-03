@@ -18,6 +18,7 @@ We push releases every Thursday evening PST. All new features and enhancements a
   * NLG-derived response framework -- NO hardcoded outputs!
   
 * Business process extensions
+  * Business process discovery (BPMN 2.0)
   * Multi-channel and cross-channel mode
   * Time-series evaluation
   * Multi-human actor mode
