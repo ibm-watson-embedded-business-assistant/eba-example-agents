@@ -19,6 +19,8 @@ The following properties will be given to your component in `@props`:
 
 Under any circumstances UI component **must not modify** data passed through `@props`.
 
+As a cautionary note, it is important to understand that the UI components of all agents are gathered and run in the same browser enviornment. Consequently, we encouraged developers to employ the appropiate namespacing for their components and to implement their assets strictly to visualize their own data. The rule here is that developers should respect other components and styles within the system so as to prevent any interference.
+
 ### Render Environment
 The following packages are available out of the box for front-end assets and can be used within your front end asset codes.
 
