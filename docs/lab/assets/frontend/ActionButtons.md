@@ -6,8 +6,7 @@ EBA messages provide native support for actions via button clicks using a simple
 return new Result()
     .setData(':UploadEvent', {
       data: ["upload file"],
-      name: ":Actions",
-      tags: ["markdown"]
+      name: ":Actions"
     })
 ```
 
