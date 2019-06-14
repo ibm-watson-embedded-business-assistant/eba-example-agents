@@ -36,7 +36,7 @@ Core
 - [react dom server](https://reactjs.org/docs/react-dom-server.html) - enables us to render components to static markup
 
 Util
-- [jquery](https://jquery.com/) - javascripti utility library for handling DOM, ajax, etc. 
+- [jquery](https://jquery.com/) - JavaScript utility library for handling DOM, ajax, etc. 
 - [jquery-ui](https://jqueryui.com/) - UI speicific features built on top of JQuery
 - [lodash](https://lodash.com/) -  A modern JavaScript utility library delivering modularity, performance & extras.
 
@@ -51,7 +51,7 @@ Graphs, charts, editors, and more
 - [plotly](https://plot.ly/javascript/) - Open Source Graphing Library
 - [webcola](https://ialab.it.monash.edu/webcola/) - Constraint-Based Layout in the Browser
 - [d3](https://d3js.org/) - Data-Driven Documents
-- [dc.js](https://dc-js.github.io/dc.js/) - Dimensional Charting Javascript Library
+- [dc.js](https://dc-js.github.io/dc.js/) - Dimensional Charting JavaScript Library
 - [crossfilter](http://square.github.io/crossfilter/) - Crossfilter is a JavaScript library for exploring large multivariate datasets in the browser.
 - [FileSaver](https://github.com/eligrey/FileSaver.js/) - a HTML5 saveAs() FileSaver implementation
 
