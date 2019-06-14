@@ -63,7 +63,7 @@ EBA provides global functions for rendering primitive data types which are avail
  - `renderText(field)` -- used to render long string values in a way that is suitable for table columns; globally replaces `_` with `_\u200b`
  - `renderBoolean(field)` -- renders the boolean value based on the user's locale, e.g. with `locale: de_DE` => `renderBoolean(true)` => `'wahr'`
  - `renderDecimal(field)` -- renders the number value based on the user's locale, e.g. `locale: de` => `renderDecimal(17.34)` => `'17,34'`
- - `renderPercent(field)` -- renders the percent value based on the user's locale, e.g. `locale: de` => `renderPercent(0.344)` => `'34,4%'`
+ - `renderPercent(field)` -- renders the percent value based on the user's locale, e.g. `locale: de` => `renderPercent(34.4)` => `'34,4%'`
  - `renderCurrency(field, currency='USD')` -- renders the currency value based on the user's locale, e.g. `locale: de` => `renderCurrency(17.34, 'EUR')` => `'17,34 EUR'`
  - `renderDate(field)` -- renders the date value based on the user's locale, e.g. `locale: fr` => `renderDate(1549369035501)` => `'5 février 2019'`. 
  - `renderDuration(field)` -- renders the duration value based on the user's locale (time units are pretty well standardized), e.g. `locale: fr` => `renderDuration(0.12)` => `'120 ms'`
