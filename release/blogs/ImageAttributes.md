@@ -10,6 +10,6 @@ By subclassing an image url attribute from `:ImgAttribute`, you enable following
 
 Below we illustrate an example of how our [Walmart sample](../../samples/walmart.yaml) leverages this feature:
 
-[![Image attributes](../images/img-attributes.png "Image attributes")](../images/img-attributes.png)
+[![Image attributes](../images/img-attributes.png "Image attributes")](../images/img-attributes.png#zoom=50%)
 
 [![Image attribute ontology](../images/img-attr-ontology.png "Image attribute ontology")](../images/img-attr-ontology.png)
