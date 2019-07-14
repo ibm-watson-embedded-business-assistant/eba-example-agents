@@ -22,7 +22,7 @@ This is the public home of the Embedded Business AI framework ("EBA"). Please lo
 
 ## Usage
 
-Developers, feel free to explore EBA, build your AI experiences, and share with your work colleagues and friends. When it comes time for you to release to production, please [contact us](https://github.com/mbordash) and we’ll help get you over the line.  Services include developer integration support, service level agreements, and access to the latest AI contributions from our staff and partners.
+Developers, feel free to explore EBA, build your AI experiences, and share with your work colleagues and friends. When it comes time for you to release to production, please [contact us](https://github.com/meaganjohnson) and we’ll help get you over the line.  Services include developer integration support, service level agreements, and access to the latest AI contributions from our staff and partners.
 
 ## License
 
