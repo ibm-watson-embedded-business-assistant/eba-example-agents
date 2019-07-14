@@ -26,5 +26,5 @@ Developers, feel free to explore EBA, build your AI experiences, and share with 
 
 ## License
 
-EBA is a platform constructed and operated by the [Watson Customer Engagement](https://www.ibm.com/customer-engagement) platform engineering team. This repository hosts documentation and sample configurations that work with the EBA core platform. This content is licensed under the Apache 2.0 license. Full license text is
+EBA is a framework constructed and operated by the [IBM Watson Supply Chain](https://www.ibm.com/supply-chain) platform engineering team. This repository hosts documentation and sample configurations that work with the EBA core platform. This content is licensed under the Apache 2.0 license. Full license text is
 available in [LICENSE](LICENSE).
