@@ -1,0 +1,206 @@
+version: 6
+meta:
+  name: Watson Assistant Orchestration
+  description: >-
+    This agent uses [Watson
+    Assistant](https://www.ibm.com/cloud/watson-assistant/) as a fallback for
+    questions not covered by other skills.
+
+
+    Check `config.js` in Assets for configuration options
+  bundler: webpack
+concepts:
+  - name: 'wa:Message'
+    ontology:
+      subClassOf: ':Message'
+  - name: 'wa:Response'
+    ontology:
+      subClassOf: ':Showable'
+  - name: ':Showable'
+  - name: ':Message'
+patterns: ''
+ontobot: ''
+endpoints:
+  - name: '@fallback'
+    kind: 'nodejs:10'
+    code: |-
+      const _ = require('lodash')
+      const eba = require('eba')
+      const config = require('./config')
+      const assistant = require('./assistant')
+
+      module.exports.main = async (params) => {
+        let question = params.input['@question']
+        
+        let probes = await Promise.all(
+          _.map(config.instances, (instance,i) =>
+            assistant
+              .createServiceV1(instance)
+              .message({
+                workspace_id: instance.workspace_id,
+                input: {text: question}
+              })
+              .then(({intents}) => {
+                return {
+                  intents,
+                  instance,
+                  session: params.storage.sessions[i]
+                }
+              })
+            ))
+        
+        console.log(JSON.stringify(_.map(probes, "intents[0]"),null,2))
+        
+        let probe = _.maxBy(probes, "intents[0].confidence") || probes[0]
+        
+        console.log(JSON.stringify({probe}))
+
+        let {instance,session:{session_id}} = probe
+
+        let {output} = await assistant
+          .createService(instance)
+          .message({
+            assistant_id: instance.assistant_id,
+            session_id: session_id,
+            input: {
+              message_type: 'text',
+              text: question
+            },
+            context: instance.context
+          })
+        
+        console.log(JSON.stringify({output}))
+
+        let texts = []
+        let nonText = false
+        if (output.generic)
+          for (response of output.generic)
+            switch (response.response_type) {
+              case 'text':
+                texts.push(response.text)
+                break
+              case 'image':
+              case 'option':
+                nonText = true
+                break
+            }
+        
+        return {
+          output: {
+            name: 'message',
+            tags: ['selected'],
+            type: 'data',
+            data: nonText ? {
+              name: 'wa:Response',
+              names: ['wa:Response', ':Showable'],
+              data: output,
+              text: texts.join('\n')
+            } : texts.join('\n')
+          }
+        }
+      }
+  - name: '@start'
+    kind: 'nodejs:10'
+    code: |-
+      const _ = require('lodash')
+      const eba = require('eba')
+      const config = require('./config')
+      const assistant = require('./assistant')
+
+      module.exports.main = async (params) => {
+        let sessions = await Promise.all(
+            _.map(config.instances, async (instance) => {
+              let service = assistant.createService(instance)
+              let session = await service.createSession(instance)
+              await service.message({
+                assistant_id: instance.assistant_id,
+                session_id: session.session_id,
+                input: {message_type: 'text', text: ''},
+                context: instance.context
+              })
+              return session
+          }))
+
+        console.log(sessions)
+
+        return new eba.Result().store('sessions', sessions)
+      }
+statics:
+  - name: config.js
+    mime: text/javascript
+    text: |
+      module.exports.instances = [{
+        gateway: '<enter-gateway>',
+        assistant_id: '<enter-id>',
+        workspace_id: '<enter-id>',
+        context: { },
+        username: 'apikey',
+        password: '<enter-password>'
+      }, {
+        gateway: '<enter-gateway>',
+        assistant_id: '<enter-id>',
+        workspace_id: '<enter-id>',
+        context: {},
+        username: 'apikey',
+        password: '<enter-password>'
+      }]
+    backend: true
+  - name: assistant.js
+    mime: text/javascript
+    text: |-
+      const AssistantV1 = require('ibm-watson/assistant/v1')
+      const AssistantV2 = require('ibm-watson/assistant/v2')
+
+      module.exports.createServiceV1 = (instance) =>
+        new AssistantV1({
+          url: `${instance.gateway}/assistant/api`,
+          username: instance.username,
+          password: instance.password,
+          iam_apikey: instance.iam_apikey,
+          version: '2018-02-28'})
+
+      module.exports.createServiceV2 = (instance) =>
+        new AssistantV2({
+          url: `${instance.gateway}/assistant/api`,
+          username: instance.username,
+          password: instance.password,
+          iam_apikey: instance.iam_apikey,
+          version: '2018-02-28'})
+
+      module.exports.createService = module.exports.createServiceV2
+    backend: true
+  - name: wa_Response.coffee
+    mime: application/vnd.coffeescript
+    text: |+
+      export class wa_ResponseData extends PureComponent
+        render: ->
+          _.map @props.data.generic, (response, key) =>
+            switch response.response_type
+              when "image", "option"
+                R.div {key},
+
+                  if response.title
+                    R.h2 null, response.title
+        
+                  if response.description
+                    R.p null, response.description
+
+                  switch response.response_type
+                    when "image"
+                      R.img
+                        src: response.source
+                        style: maxWidth: "100%"
+
+                    when "option"
+                      R.ul null,
+                        _.map response.options, ({label, value}, key) =>
+                          R.li {key},
+                            R.a
+                              href: "#"
+                              onClick: (e) =>
+                                e.preventDefault()
+                                if value.input && value.input.text
+                                  bridge.trigger "ask", value.input.text
+                              label
+
+    frontend: true
