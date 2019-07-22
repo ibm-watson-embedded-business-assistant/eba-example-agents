@@ -24,3 +24,5 @@ These agents were developed completely within our lab tools. The samples should 
 
 [Quest example](../samples/Quest.md) - provides Natural Language Interface to Databases by creating SQL queries from natural language questions. 
 *topics:* structured data, database schema, SQL queries.
+
+[Watson Assisstant Orchestrator](../samples/WatsonAssistantOrchestrator.md) - an agent which orchestrates multiple Watson Assistant assets as a fallback mechanism. 
