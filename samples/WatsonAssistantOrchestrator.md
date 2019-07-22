@@ -1,4 +1,4 @@
-This [sample](./WatsonAsssistantOrchestrator.yaml) illustrates a method of integrating different assistants built with Watson Assistant (WA) into the EBA framework. In particular, it highlights how EBA can function as an orchestrator to these various assistants.
+This [sample](./WatsonAssistantOrchestrator.yaml) illustrates a method of integrating different assistants built with Watson Assistant (WA) into the EBA framework. In particular, it highlights how EBA can function as an orchestrator to these various assistants.
 
 ### config 
 
