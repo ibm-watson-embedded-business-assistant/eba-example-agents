@@ -12,7 +12,7 @@
     "chalk": "^2.4.1",
     "eba-client": "git+https://github.com/ibm-watson-embedded-business-assistant/eba-node-client.git",
     "jsonwebtoken": "^8.3.0",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.13",
     "request": "^2.88.0",
     "request-promise": "^4.2.2",
     "websocket": "^1.0.28"
