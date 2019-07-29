@@ -22,9 +22,9 @@ This is the public home of the Embedded Business AI framework ("EBA"). Please lo
 
 ## Usage
 
-Developers, feel free to explore EBA, build your AI experiences, and share with your work colleagues and friends. When it comes time for you to release to production, please [contact us](https://github.com/meaganjohnson) and we’ll help get you over the line.  Services include developer integration support, service level agreements, and access to the latest AI contributions from our staff and partners.
+Developers, feel free to explore EBA, build your AI experiences, and share with your work colleagues and friends. When it comes time for you to release to production, please [contact us](https://github.com/osidorkin) and we’ll help get you over the line.  Services include developer integration support, service level agreements, and access to the latest AI contributions from our staff and partners.
 
 ## License
 
-EBA is a framework constructed and operated by the [IBM Watson Supply Chain](https://www.ibm.com/supply-chain) platform engineering team. This repository hosts documentation and sample configurations that work with the EBA core platform. This content is licensed under the Apache 2.0 license. Full license text is
+EBA is a framework constructed and operated by the EBA platform engineering team at IBM. This repository hosts documentation and sample configurations that work with the EBA core platform. This content is licensed under the Apache 2.0 license. Full license text is
 available in [LICENSE](LICENSE).
