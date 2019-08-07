@@ -29,7 +29,7 @@ First, there should be an understanding of the domain you wish to model. You sho
 
 Secondly, we encourage the developer to implement [natural language patterns](../components/Patterns.md). These patterns serve as a bridge between natural language and the conceptual language which Watson is able to understand. In these patterns, you will match natural language tokens to their corresponding concepts. Natural language patterns are more than a mere keyword match; rather, they capture the syntactical context in which a token is used. For instance, consider the following the pattern:
 
-`what is the {weather|:Weather} today?`
+`what is the [weather](:Weather) today?`
 
 The term 'weather' signifies a noun subject in this case. However, the word 'weather' can contain a very different semantic meaning in other sentences, e.g. 'can we weather the storm?'. Based on the natural language pattern above, Watson will understand that this usage of 'weather' is different from the first usage and, subsequently, it will not introduce the concept `:Weather` into its reasoning pipeline when answering the second type of question.
 
