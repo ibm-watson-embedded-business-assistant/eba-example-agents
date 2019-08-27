@@ -29,6 +29,7 @@ module.exports.main = async (params) => {
   
   // insert annotation based on named entities
   const namedTree = eba.mapTree(params.input.tokens, (tt) => {
+    
     // see how many named entities a given token matches
     const matches = _.filter(namedEntities, ({start, end}) => {
       return start <= tt.token.start && tt.token.start < end
