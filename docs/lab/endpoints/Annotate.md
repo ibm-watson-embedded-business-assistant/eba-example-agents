@@ -29,13 +29,18 @@ module.exports.main = async (params) => {
   
   // insert annotation based on named entities
   const namedTree = eba.mapTree(params.input.tokens, (tt) => {
-    const namedEntity = _.find(namedEntities, ({start, end}) => {
+    // see how many named entities a given token matches
+    const matches = _.filter(namedEntities, ({start, end}) => {
       return start <= tt.token.start && tt.token.start < end
     })
+    
+    // insert annotations for each match
+    _.forEach(matches, (namedEntity) => {
+      tt = eba.insertAnnotation(tt, namedEntity.name, 1.0, namedEntity.meta)
+    })
 
-    return (namedEntity)
-      ? eba.insertAnnotation(tt, namedEntity.name, 1.0, namedEntity.meta)
-      : tt
+    // return the mutatated token
+    return tt
   })
   
   // return the annotation tree as Result
