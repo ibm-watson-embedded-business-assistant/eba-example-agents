@@ -23,7 +23,7 @@ class demo_ProductData extends PureComponent
 
 ```
 
-For built-in UI components, such as Table and List, this interface is further simplified, as it may suffice just to specify the name of the key itself as `itemKey` or `data-item-key` property. Here is an example for a Table component and List component:
+For built-in UI components, such as Table and List, this interface is further simplified, as it may suffice just to specify the name of the key itself as `itemKey` or `data-item-key` property. Here is an example for a Table component and List component.
 
 ```
 class demo_MerchantsData extends PureComponent
