@@ -5,6 +5,10 @@ We push releases every Thursday evening PST. All new features and enhancements a
 We love to release new features both for our reasoning core as well as our development lab. This page serves as a catalog for each new feature. Since each feature deserves attention in its own right, we have provided a table of contents below which links to a detailed page where you can find descriptions, examples, and use case scenarios. Note that a few features may be currently marked as preview only. To preview such features, you will need to use EBA in [preview mode](https://eba.ibm.com/assistant?preview).
 
 ### 2019
+* [August 30]   [Multi-modal UX](./blogs/MultiModalUI.md)
+* [August 30]   [Open microphone support](./blogs/OpenMicrophone.md)
+* [August 16]   [Generic attribute grouping](./blogs/AttributeGrouping.md)
+* [July 11]     [Plural-singular reasoning deduction](./blogs/PluralSingularResolution.md)
 * [June 30]     [Language translator for training](./blogs/NLTranslatorTraining.md)
 * [May 31]      [@trace endpoint](./blogs/TraceEndpoint.md)
 * [May 16]      [Image attributes](./blogs/ImageAttributes.md)
