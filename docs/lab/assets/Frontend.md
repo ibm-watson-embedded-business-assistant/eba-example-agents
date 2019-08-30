@@ -100,3 +100,6 @@ EBA provides a few convenience mechanisms for formatting NL messages:
  - [Form fields](./frontend/FormFields.md)
  - [Action buttons](./frontend/ActionButtons.md) 
  
+### Multi-modal UI support
+
+- [focused multi-modal UI](./frontend/FocusedUI.md)
