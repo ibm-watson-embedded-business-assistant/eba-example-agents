@@ -1,6 +1,6 @@
 ## Plotly chart
 
-We support a component which allows developers to create and customize Plotly charts. This component will load the [Plotly library](https://plot.ly/plotly-js-scientific-d3-charting-library/) and expose a couple of props which allow for customization. In particular, it will accept the following props:
+We support a component which allows developers to create and customize Plotly charts. This component will load the [Plotly library](https://plot.ly/javascript/) and expose a couple of props which allow for customization. In particular, it will accept the following props:
 
 * `layout` -- a javascript object containing layout information such as xaxis, yaxis, margins, and title.
 * `traces` -- a list of javascript objects containing directives on how to trace your chart, such as x and y coordinates, chart type, mode, markers, and hover info.
