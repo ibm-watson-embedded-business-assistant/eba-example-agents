@@ -8,4 +8,4 @@ As an illustration, we model an example below where a user inspects a set of pro
 
 For details on how to implement such interactive UI components, developers may consult our [focused multi-modal UI documentation](../../docs/lab/assets/frontend/FocusedUI.md)
 
-_This feature includes an [award winning award multi-modal AI assistant techonlogy](ibm.biz/tyson-demo) from IBM research. For more information about this technology, please contact Jeff Kephart (kephart@us.ibm.com)._
+_This feature includes an [award winning award multi-modal AI assistant techonlogy](https://vimeo.com/243536185) from IBM research. For more information about this technology, please contact Jeff Kephart (kephart@us.ibm.com)._
