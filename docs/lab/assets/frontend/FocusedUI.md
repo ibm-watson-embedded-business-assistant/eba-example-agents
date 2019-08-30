@@ -1,6 +1,6 @@
 ### Multi-modal focused UI elements
 
-As EBA supports the multi-modal UI components, it is important to develop your assets in a manner which can leverage this capability. This capability must be enabled by every UI component which intends to leverage this capability. To enable to this capability, there are a few requirements:
+As EBA supports multi-modal UI components, it is important to develop your assets in a manner which can leverage this capability. This capability must be enabled by every UI component which intends to leverage this capability. To enable to this capability, there are a few requirements:
 
 - The element must contain the class `cca-focusable` to indicate that it is a focusable element
 - The element must contain the class `cca-focused` when the element is actually brought into focus. To determine if an element is focused element provides a object called `focus` which is attached to the component's `props`. This object contains a field called `item` which signifies the element which is selected on the screen. This value can be checked against the element's  own identifier.
