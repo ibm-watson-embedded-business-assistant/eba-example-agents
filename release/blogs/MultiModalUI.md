@@ -6,4 +6,6 @@ As an illustration, we model an example below where a user inspects a set of pro
 
 [![Multi-modal UI](../images/multi-modal-ui-example.png "Multi-modal UI")](../images/multi-modal-ui-example.png)
 
+For details on how to implement such interactive UI components, developers may consult our [focused multi-modal UI documentation](../../docs/lab/assets/frontend/FocusedUI.md)
+
 _This feature includes an [award winning award multi-modal AI assistant techonlogy](ibm.biz/tyson-demo) from IBM research. For more information about this technology, please contact Jeff Kephart (kephart@us.ibm.com)._
