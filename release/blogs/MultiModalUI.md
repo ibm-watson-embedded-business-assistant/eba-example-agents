@@ -4,6 +4,6 @@ EBA now supports multimodal UI interactions and context, where users can now poi
 
 As an illustration, we model an example below where a user inspects a set of product categories within an UI table component. Selecting a particular category from the UI, he then asks a follow-up question using the term "this". Because the category has been brought into the reasoning context, EBA is able to understand that the products which the user requests pertain the selected category (headphones), as indicated by our NLG response.
 
-[![Multi-modal UI](../images/multi-modal-example.png "Multi-modal UI")](../images/multi-modal-example.png)
+[![Multi-modal UI](../images/multi-modal-ui-example.png "Multi-modal UI")](../images/multi-modal-ui-example.png)
 
 _This feature includes an [award winning award multi-modal AI assistant techonlogy](ibm.biz/tyson-demo) from IBM research. For more information about this technology, please contact Jeff Kephart (kephart@us.ibm.com)._
