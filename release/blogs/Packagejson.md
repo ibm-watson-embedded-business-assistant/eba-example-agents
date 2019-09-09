@@ -5,7 +5,7 @@ EBA development lab now provides a convenient interface for allowing developers 
 ```
 {
   "dependencies": {
-    "node-zip": ^1.1.1"
+    "node-zip": "^1.1.1"
   }
 }
 ```
