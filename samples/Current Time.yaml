@@ -1,0 +1,101 @@
+version: 6
+meta:
+  name: Current Time
+  description: >-
+    The agent uses [GeoNames](https://www.geonames.org/) API to get the timezone
+    information.
+
+    Please register at the [GeoNames website](https://www.geonames.org/) to get
+    a username.
+
+    Paste your username from GeoNames to agent secrets.
+secrets:
+  - name: username
+concepts:
+  - name: 'time:CurrentTime'
+    ontology:
+      isSpellAs: current time
+      subClassOf: ':Showable'
+  - name: ':Showable'
+  - name: 'spacy:GeopoliticalEntity'
+  - name: ':Relation'
+patterns: '- show me the [current time](time:CurrentTime) in Europe'
+ontobot: ''
+actions:
+  - name: 'time:GetCurrentTime'
+    signature: >-
+      time:CurrentTime (optional :Relation (data spacy:GeopoliticalEntity)) ->
+      data time:CurrentTime
+    kind: 'nodejs:10'
+    code: |-
+      const eba = require('eba')
+      const _ = require('lodash')
+      const moment = require('moment-timezone')
+      const request = require('request-promise-native')
+
+      module.exports.main = async function(params) {
+        let p = new eba.Params(params)
+        let geoEntity = await p.get('spacy:GeopoliticalEntity')
+        
+        let result = await request({
+          uri: 'http://api.geonames.org/search',
+          qs: {
+            name: geoEntity.text,
+            maxRows: 1,
+            type: 'json',
+            style: 'FULL',
+            username: params.secrets.username
+          },
+          json: true
+        })
+        
+        if (result.totalResultsCount == 0) {
+          return { error: 'I did not find any time zone information related to ' + geoEntity.text }
+        } else {
+          let { timeZoneId } = result.geonames[0].timezone
+          console.log(geoEntity.text, timeZoneId)
+
+          let localTime = moment().tz(timeZoneId)
+          return new eba.Result().setData('time:CurrentTime', {
+            utcOffset: localTime.utcOffset(),
+            dateString: localTime.format()
+          })
+        }
+      }
+statics:
+  - name: package.json
+    mime: application/json
+    text: |-
+      {
+        "dependencies": {
+          "moment-timezone": "^0.5.0"
+        }
+      }
+    backend: true
+  - name: viz.coffee
+    mime: application/vnd.coffeescript
+    text: |-
+      class time_CurrentTimeData extends PureComponent
+        constructor: (props) ->
+          super props
+          @state = {}
+
+        componentDidMount: ->
+          updateTime = () =>
+            dateString = moment().utcOffset(@props.data.utcOffset).format()
+            @setState({ dateString })
+
+          timer = setInterval(updateTime, 1000)
+          @setState({ timer })
+          
+        componentWillUnmount: ->
+          clearInterval(@state.timer)
+        
+        @getDerivedStateFromProps: (nextProps, prevState) ->
+          { dateString: nextProps.data.dateString }
+        
+        render: ->
+          localTime = moment.parseZone(@state.dateString)
+          R.div null,
+            localTime.format("dddd, MMMM Do YYYY, h:mm:ss a")
+    frontend: true
