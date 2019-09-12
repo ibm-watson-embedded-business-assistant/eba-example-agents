@@ -49,7 +49,7 @@ As mentioned above, you can pass in the following fields to customize EBA either
 
 In order to create a new session for authorized user you will need to supply a JWT signed `access_token`. An `access_token` should be generated based on the `iss`, `sub`, and `private key` provided within our Lab Settings, where we have outlined the required integration steps. For an example on generating this `access_token` programmatically, please reference our [headless integration](./Headless.md).
 
-For information on how to enable a complete multi-user integration as an EBA integration partner, consult our [multi-user integration paths](./MultiUserIntegration.md)
+For information on how to enable a multi-user integration so that all targeted end users within a host application may access a designated EBA environment, consult our [multi-user integration paths](./MultiUserIntegration.md)
 
 ### IBM_EBA API
 
