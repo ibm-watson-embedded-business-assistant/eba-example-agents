@@ -2,8 +2,6 @@
 
 In the course of developing their agents, EBA developers may need to make use of external libraries which are not provided out of the box by our system. So far the ability to include any third party module was only supported for backend assets. This is now supported for client side modules as well, meaning that developers can leverage existing third party React components in the course of developing their data visualizations. Below is an illustration of [react-clock](https://www.npmjs.com/package/react-clock), a module for visualization clocks. 
 
-[![Clock example](../images/react-clock-exampe.png "Clock Example")](../images/react-clock-example.png)
-
 
 ### How it works
 
@@ -40,3 +38,5 @@ export class ns_MyEntityData extends PureComponent
         value: @state.date
 
 ```
+
+[![Clock example](../images/react-clock-example.png "Clock Example")](../images/react-clock-example.png)
