@@ -5,7 +5,7 @@ In the course of developing their agents, EBA developers may need to make use of
 
 ### How it works
 
-As described in our [package.json release](Packagejson.md), third party modules can be declared in a package.json file. Our system will download and bundle these assets along with the agent. The only requirement is that the agent utilizes [Webpack bundling](WebpackAssets.md). Afterwards, developers will be able to `require` their third party modules and utlize them within their own source files. Note that not all third party modules are universally are supported, as some may require additional global requirements, e.g. a certain transpiler.
+As described in our [package.json release](Packagejson.md), third party modules can be declared in a package.json file. Our system will download and bundle these assets along with the agent. The only requirement is that the agent utilizes [Webpack bundling](WebpackAssets.md). Afterwards, developers will be able to `require` their third party modules and utlize them within their own source files. Note that not all third party modules are universally are supported, as some may require additional global requirements, e.g. a certain compiler.
 
 An illustration of package.json for react-clock:
 
