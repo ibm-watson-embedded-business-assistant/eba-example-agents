@@ -20,23 +20,24 @@ An illustration of package.json for react-clock:
 An illustration of requiring this component within a source file:
 
 ```
-const Clock = require('react-clock')
+import Clock from 'react-clock'
 
-export class ns_MyEntityData extends PureComponent
+export class time_CurrentTimeData extends PureComponent
   constructor: (props) ->
     super props
-    @state = date: new Date()
+    @state = { date: new Date() }
 
   componentDidMount: ->
-      updateDate = () => @setState date: new Date)_
-      setInterval updateDate, 1000
+    updateTime = () => @setState({ date: new Date() })
+
+    timer = setInterval(updateTime, 1000)
+    @setState({ timer })
+    
+  componentWillUnmount: ->
+    clearInterval(@state.timer)
   
   render: ->
-    R.div null,
-      R.p null, "Current Time"
-      React.createElement Clock,
-        value: @state.date
-
+    React.createElement Clock, value: @state.date, renderNumbers: true
 ```
 
 [![Clock example](../images/react-clock-example.png "Clock Example")](../images/react-clock-example.png)
