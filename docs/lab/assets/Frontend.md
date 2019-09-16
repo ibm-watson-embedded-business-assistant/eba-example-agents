@@ -54,6 +54,8 @@ Graphs, charts, editors, and more
 - [dc.js](https://dc-js.github.io/dc.js/) - Dimensional Charting JavaScript Library
 - [crossfilter](http://square.github.io/crossfilter/) - Crossfilter is a JavaScript library for exploring large multivariate datasets in the browser.
 - [FileSaver](https://github.com/eligrey/FileSaver.js/) - a HTML5 saveAs() FileSaver implementation
+- [Leaflet](https://leafletjs.com/) - an open-source JavaScript library
+for mobile-friendly interactive maps
 
 ### Global Functions and Objects
 
