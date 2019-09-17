@@ -5,6 +5,7 @@ We push releases every Thursday evening PST. All new features and enhancements a
 We love to release new features both for our reasoning core as well as our development lab. This page serves as a catalog for each new feature. Since each feature deserves attention in its own right, we have provided a table of contents below which links to a detailed page where you can find descriptions, examples, and use case scenarios. Note that a few features may be currently marked as preview only. To preview such features, you will need to use EBA in [preview mode](https://eba.ibm.com/assistant?preview).
 
 ### 2019
+* [September 17] [Import third party client side libraries](./blogs/ExternalFrontendPackages.md)
 * [August 30]   [Multi-modal UX](./blogs/MultiModalUI.md)
 * [August 30]   [Open microphone support](./blogs/OpenMicrophone.md)
 * [August 16]   [Generic attribute grouping](./blogs/AttributeGrouping.md)
@@ -34,6 +35,6 @@ We love to release new features both for our reasoning core as well as our devel
 * [January 17]  [QUEST agent enablement](../samples/Quest.md)
 * [January 16]  [Iframe Snippets for external channels](./blogs/ChannelSnippets.md)
 * [January 15]  [Agents-wide metric charts](./blogs/AgentsMetrics.md)
-* [January 3rd] [Detailed execution workflow of questions](./blogs/ExecutionWorkflow.md)
+* [January 3]   [Detailed execution workflow of questions](./blogs/ExecutionWorkflow.md)
 
 
