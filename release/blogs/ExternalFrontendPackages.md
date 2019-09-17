@@ -17,7 +17,7 @@ An illustration of package.json for react-clock:
 }
 ```
 
-An illustration of requiring this component within a source file:
+An example of use this component in data visualization assets:
 
 ```
 import Clock from 'react-clock'
