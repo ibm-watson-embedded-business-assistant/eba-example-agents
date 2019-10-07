@@ -6,7 +6,7 @@ The Embedded Business AI (“EBA”) framework is an open, hybrid multi-cloud de
 
 In other words: this is *not* a chatbot.
 
-[![Watson Marketing Assistant powered by EBA](/assets/img/eba_wma_screenshot.png "Watson Marketing Assistant powered by EBA")](/assets/img/eba_wma_screenshot.png)
+[![Watson Marketing Assistant powered by EBA](assets/img/eba_wma_screenshot.png "Watson Marketing Assistant powered by EBA")](assets/img/eba_wma_screenshot.png)
 
 ## What can you do with EBA?
 
