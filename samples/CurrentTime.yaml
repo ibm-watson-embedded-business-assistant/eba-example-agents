@@ -9,6 +9,7 @@ meta:
     a username.
 
     Paste your username from GeoNames to agent secrets.
+  bundler: webpack
 secrets:
   - name: username
 concepts:
@@ -57,6 +58,7 @@ actions:
 
           let localTime = moment().tz(timeZoneId)
           return new eba.Result().setData('time:CurrentTime', {
+            timeZone: timeZoneId,
             utcOffset: localTime.utcOffset(),
             dateString: localTime.format()
           })
@@ -68,14 +70,18 @@ statics:
     text: |-
       {
         "dependencies": {
-          "moment-timezone": "^0.5.0"
+          "moment-timezone": "^0.5.0",
+          "react-clock": "^2.4.0"
         }
       }
+    frontend: true
     backend: true
   - name: viz.coffee
     mime: application/vnd.coffeescript
     text: |-
-      class time_CurrentTimeData extends PureComponent
+      import Clock from 'react-clock'
+
+      export class time_CurrentTimeData extends PureComponent
         constructor: (props) ->
           super props
           @state = {}
@@ -96,6 +102,19 @@ statics:
         
         render: ->
           localTime = moment.parseZone(@state.dateString)
+          { hours, minutes, seconds } = localTime.toObject()
+          
+          date = new Date()
+          date.setHours(hours)
+          date.setMinutes(minutes)
+          date.setSeconds(seconds)
+          
           R.div null,
-            localTime.format("dddd, MMMM Do YYYY, h:mm:ss a")
+            R.div style: float: 'right',
+              R.div null, 'Time Zone:'
+              R.div style: marginBottom: 20, @props.data.timeZone
+              R.div null, localTime.format("dddd")
+              R.div null, localTime.format("MMM Do YYYY")
+              R.div null, localTime.format("h:mm a")
+            React.createElement Clock, value: date, renderNumbers: true
     frontend: true
