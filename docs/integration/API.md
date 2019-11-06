@@ -24,7 +24,10 @@ The request takes a JSON object with the following data:
 
 * `question` - the question to be analyzed (string)
 
-The request returns a non-empty JSON list of POS-trees. Each tree is represented in the same format as input tokens in the [annotate endpoint](../lab/endpoints/Annotate.md).
+The request returns a non-empty JSON list of POS-trees. Note that multiple trees can be produced and annotated from a single user question. This is because services such as spell-checker and language translation may detect another variant of interpretation. Each tree is represented in the same format as input tokens in the [annotate endpoint](../lab/endpoints/Annotate.md). The tree itself is represented as a tuple or, in JSON, an array of two elements, where the first element is the current root of the tree and the second element is the remaining sub-tree (applied recursively). Each node in the tree encodes two properties, viz. `annotations` and `token`. 
+
+* anntoations -- concept annotations applied to a given token, including the name of the concept and the score assigned to it, e.g. `:Joke` annotates 'joke' with a score of 1.0. 
+* token -- the syntatic features of a given token, e.g. part of speech tag, lemma, synonyms, and text position.
 
 ### Get all the possible interpreatations 
  
@@ -56,7 +59,7 @@ The request takes a JSON object with the following data:
 
 You can pass more than one question. In this case questions will be run sequentially and the data created by one question will be used as a context to analyze the subsequent questions.
 
-The request returns a JSON list with the EBA actions where each action represents changes against EBA information space.
+The request returns a JSON list with the EBA actions where each action represents changes against EBA information space. The response format is identical to what is returned to the [trace endpoint](../lab/endpoints/Trace.md).
 
 ### Side-effects
 
