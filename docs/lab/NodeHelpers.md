@@ -39,7 +39,7 @@ module.exports.main = async function(params) {
 }
 ```
 
-You can also get a concept name given a parameter name using `getName(paramName)` method. It can be useful if you semantic action takes polymorphic input parameters and you need to know the exact concept name at the execution time.
+You can also get a concept name given a parameter name using `getName(paramName)` method. It can be useful if your semantic action takes polymorphic input parameters and you need to know the exact concept name at the execution time.
 
 ### Output
 
@@ -108,9 +108,9 @@ module.exports.main = async function(params) {
 }
 ```
 
-Note: `lazyForce()` is an asynchronous method. It should be handled using Promises or async/await. It is developers responsibility to correctly force the execution of this lazy data.
+Note: `lazyForce()` is an asynchronous method. It should be handled using Promises or async/await. It is the responsibility of the developer to correctly force the execution of this lazy data.
 
-In semantic action you can create your own lazy value using `makeLazyData()` method of `Params` object. This method takes the JSON object with the instructions to force the data once it will be requested. The `@force` endpoint is the place to handle this.
+In semantic actions you can create your own lazy value using `makeLazyData()` method of `Params` object. This method takes the JSON object with the instructions to force the data once it will be requested. The `@force` endpoint is the place to handle this.
 
 ```
 const eba = require("eba")
@@ -124,7 +124,7 @@ module.exports.main = async function(params) {
 
 ### Ontology
 
-To query the ontology you can use `query()` method of `Params` object. This method takes query string. The syntax of ontology query as the same as the one in semantic action constraints:
+To query the ontology you can use `query()` method of `Params` object. This method takes query string. The syntax of ontology queries are the same as the one in semantic action constraints:
 
 ```
 const eba = require("eba")
