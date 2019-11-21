@@ -24,7 +24,7 @@ The request takes a JSON object with the following data:
 
 * `question` - the question to be analyzed (string)
 
-The request returns a non-empty JSON list of POS-trees. Note that multiple trees can be produced and annotated from a single user question. This is because services such as spell-checker and language translation may detect another variant of interpretation. Each tree is represented in the same format as input tokens in the [annotate endpoint](../lab/endpoints/Annotate.md). The tree itself is represented as a tuple or, in JSON, an array of two elements, where the first element is the current root of the tree and the second element is the remaining sub-tree (applied recursively). Each node in the tree encodes two properties, viz. `annotations` and `token`. 
+The request returns a non-empty JSON list of parse trees. Note that multiple trees can be produced and annotated from a single user question. This is because services such as spell-checker and language translation may detect another variant of interpretation. Each tree is represented in the same format as input tokens in the [annotate endpoint](../lab/endpoints/Annotate.md#parse-tree-format).
 
 * anntoations -- concept annotations applied to a given token, including the name of the concept and the score assigned to it, e.g. `:Joke` annotates 'joke' with a score of 1.0. 
 * token -- the syntatic features of a given token, e.g. part of speech tag, lemma, synonyms, and text position.
