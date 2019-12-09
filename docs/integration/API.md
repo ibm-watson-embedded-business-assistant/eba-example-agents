@@ -37,7 +37,7 @@ Analyze a question and get the possible interpretations. The request body should
 
 ```
 {
-  question (string): he question to be analyzed
+  question (string): the question to be analyzed
 }
 ```
 
