@@ -36,7 +36,7 @@ Another coffee script example demonstrates the usage of a custom render function
 ```
 This function checks for `null` first and if `field` is not null it adds ` %` to the `field` value.
 
-Reminder: The render function is not ment to be used for calculations. Since the render function is allowed to return all kinds of elements, including further HTML or React elements it will not be evaluated for sorting. Its only purpose it to have a more user friendly graphical representation of the value. 
+Reminder: The render function is not meant to be used for calculations. Since the render function is allowed to return all kinds of elements, including further HTML or React elements it will not be evaluated for sorting. Its only purpose it to have a more user friendly graphical representation of the value. 
 
 ** Search Keys **
 
